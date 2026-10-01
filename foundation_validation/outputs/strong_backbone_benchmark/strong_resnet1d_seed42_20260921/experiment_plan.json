@@ -1,0 +1,10 @@
+{
+  "hypothesis": "A conventional compact 1D ResNet may provide stronger wrist-level temporal representations than the V8-GN separable TCN plus learned-moment reference.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "V8-GN same-seed fixed inner-development folds",
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Replace only if three-seed BA improves by about 0.01, AUROC by about 0.015, Macro-F1 does not decline, DD recall does not materially decline, most of 15 seed-averaged splits improve, and seed stability does not materially worsen."
+}

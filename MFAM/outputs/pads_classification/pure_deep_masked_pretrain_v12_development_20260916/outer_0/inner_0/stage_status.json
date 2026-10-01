@@ -1,0 +1,96 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_0/inner_0",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-09-16T07:40:45.169545+00:00",
+  "summary": {
+    "fold_id": "outer_0/inner_0",
+    "best_epoch": 12,
+    "best_metric": 0.6499564080209241,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.7047619047619048,
+      "balanced_accuracy": 0.6499564080209241,
+      "macro_precision": 0.6472602739726028,
+      "macro_recall": 0.6499564080209241,
+      "macro_f1": 0.6485260770975056,
+      "weighted_precision": 0.707566862361383,
+      "weighted_recall": 0.7047619047619048,
+      "weighted_f1": 0.7061008530396286,
+      "per_class_precision": [
+        0.7945205479452054,
+        0.5
+      ],
+      "per_class_recall": [
+        0.7837837837837838,
+        0.5161290322580645
+      ],
+      "per_class_f1": [
+        0.7891156462585033,
+        0.5079365079365079
+      ],
+      "support": [
+        74,
+        31
+      ],
+      "confusion_matrix": [
+        [
+          58,
+          16
+        ],
+        [
+          15,
+          16
+        ]
+      ],
+      "sample_count": 105,
+      "macro_auroc": 0.5823888404533566,
+      "per_class_auroc": [
+        0.5823888404533566,
+        0.5823888404533566
+      ],
+      "brier_score": 0.46157567352748363,
+      "negative_log_likelihood": 0.6619633952427004,
+      "loss": 0.6792504821504866,
+      "classification_loss": 0.6792504821504866,
+      "duration_seconds": 0.10746097564697266,
+      "batches": 14,
+      "pd_recall": 0.7837837837837838,
+      "dd_recall": 0.5161290322580645
+    },
+    "train_subject_ids_sha256": "2914d1030506d8cc32a1ca8fa38037df5c1e3c7f5395b624c7e3204b912f2b62",
+    "normalization_sha256": "a7bd58abaf6206fd326ac97cc2e8a1ba778f83ef8d82cd678a209717326b2f35",
+    "checkpoint_sha256": "4b9a64959a470eb476ca9615d5631ebc0f904e0defd32784df1ab2e5764ce61d",
+    "pretraining": {
+      "objective": "masked_sequence_reconstruction",
+      "labels_used": false,
+      "validation_subjects_used": false,
+      "outer_test_loader_created": false,
+      "outer_test_signal_accessed": false,
+      "train_subject_ids_sha256": "2914d1030506d8cc32a1ca8fa38037df5c1e3c7f5395b624c7e3204b912f2b62",
+      "train_subject_count": 205,
+      "mask_ratio": 0.3,
+      "span_length": 25,
+      "epochs": 10,
+      "initial_masked_mse": 0.9689687479154895,
+      "final_masked_mse": 0.7129086069682488,
+      "epoch_losses": [
+        0.9689687479154895,
+        0.8604310076388726,
+        0.8221155931253825,
+        0.8140327773330822,
+        0.7888693455814264,
+        0.7760917094788331,
+        0.7582276908026003,
+        0.7475796189502601,
+        0.7628764825161072,
+        0.7129086069682488
+      ],
+      "decoder_discarded_before_supervised_training": true,
+      "supervised_optimizer_reinitialized": true,
+      "wrist_encoder_checkpoint_sha256": "89f4d0d5c1c99ea48b7d8713bdd45f53ca712edd44a564f6a43911287d7526a2"
+    },
+    "smoke": false
+  }
+}

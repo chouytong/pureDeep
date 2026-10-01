@@ -1,0 +1,12 @@
+{
+  "scope": "fixed inner-development only",
+  "outer_signal_label_prediction_metric_accessed": false,
+  "H1_prediction_seed_count": 1,
+  "STR_V8_seed_count": 3,
+  "H1_positive_class": "DD=1",
+  "H1_score": "probability_dd; logit used only for train-only fusion/residual target",
+  "STR_score": "final_logits[DD]-final_logits[PD]; sigmoid equals DD probability",
+  "stable_error_primary": "three seeds aggregated first within each of four validation appearances; error rate >=0.75 stable-error, <=0.25 stable-correct",
+  "H1_reproduction_max_delta": 1.1102230246251565e-16,
+  "H1_mean_split_AUROC": 0.7515230327772422
+}

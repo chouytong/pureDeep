@@ -1,0 +1,10 @@
+{
+  "hypothesis": "Preserving the fixed ordered structure of all 11 pre-aggregation bilateral activity representations until the decision stage may recover discriminative cross-activity structure lost by the single subject embedding.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "pads_pure_deep_groupnorm_nr01_seed42",
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Retain only if BA improves by at least 0.01, AUROC by at least 0.015, Macro-F1 does not decrease, neither class recall is materially sacrificed, about 10 of 15 matched splits improve, and seed stability does not worsen."
+}

@@ -1,0 +1,68 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_0/inner_1",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-09-30T15:33:56.641975+00:00",
+  "summary": {
+    "fold_id": "outer_0/inner_1",
+    "best_epoch": 8,
+    "best_metric": 0.732648401826484,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.7184466019417476,
+      "balanced_accuracy": 0.732648401826484,
+      "macro_precision": 0.6952107279693487,
+      "macro_recall": 0.732648401826484,
+      "macro_f1": 0.6959796437659034,
+      "weighted_precision": 0.7720678495703605,
+      "weighted_recall": 0.7184466019417476,
+      "weighted_f1": 0.7304824723930927,
+      "per_class_precision": [
+        0.8793103448275862,
+        0.5111111111111111
+      ],
+      "per_class_recall": [
+        0.6986301369863014,
+        0.7666666666666667
+      ],
+      "per_class_f1": [
+        0.7786259541984732,
+        0.6133333333333334
+      ],
+      "support": [
+        73,
+        30
+      ],
+      "confusion_matrix": [
+        [
+          51,
+          22
+        ],
+        [
+          7,
+          23
+        ]
+      ],
+      "sample_count": 103,
+      "macro_auroc": 0.7255707762557078,
+      "per_class_auroc": [
+        0.7255707762557078,
+        0.7255707762557078
+      ],
+      "brier_score": 0.43352413316464256,
+      "negative_log_likelihood": 0.6593835596534166,
+      "loss": 0.683146609554013,
+      "classification_loss": 0.683146609554013,
+      "duration_seconds": 0.11060937901493162,
+      "batches": 13,
+      "pd_recall": 0.6986301369863014,
+      "dd_recall": 0.7666666666666667
+    },
+    "train_subject_ids_sha256": "7c2e19e86f01c25e88b5def67b36ed6a6165fbef74cc692ea19eb6248938ef1a",
+    "normalization_sha256": "4b08facd1b9e0127d1efb99a091d8bb107c7d0af07aa414130baf4a15858c371",
+    "checkpoint_sha256": "eb040c3a062cac40397806c6c00f1463e55b41bcd99a31fbdf40ff515e8df909",
+    "pretraining": null,
+    "smoke": false
+  }
+}

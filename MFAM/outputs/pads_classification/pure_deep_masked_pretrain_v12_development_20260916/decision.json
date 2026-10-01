@@ -1,0 +1,37 @@
+{
+  "candidate": "pure_deep_masked_pretrain_v12_seed42",
+  "baseline": "pure_deep_normfree_moments_v8_seed42",
+  "decision": "reject_and_stop_direction",
+  "replication_seeds_launched": [],
+  "preregistered_gate": {
+    "minimum_balanced_accuracy_delta": 0.01,
+    "minimum_paired_fold_wins": 9,
+    "maximum_auroc_regression": 0.01
+  },
+  "gate_result": {
+    "balanced_accuracy_delta": 0.005454781735580768,
+    "paired_fold_wins": 7,
+    "paired_fold_ties": 1,
+    "auroc_delta": 0.007013838468575077,
+    "passed": false
+  },
+  "candidate_metrics": {
+    "accuracy": 0.7340831926497261,
+    "balanced_accuracy": 0.6736380941869536,
+    "macro_f1": 0.675210411284455,
+    "macro_auroc": 0.6719326591894285,
+    "pd_recall": 0.8190299888930026,
+    "dd_recall": 0.5282461994809047,
+    "negative_log_likelihood": 0.614025489426335,
+    "brier_score": 0.4180404163916948
+  },
+  "pretraining_audit": {
+    "labels_used": false,
+    "validation_subjects_used": false,
+    "outer_test_loader_created": false,
+    "outer_test_signal_accessed": false,
+    "all_15_folds_passed": true,
+    "mean_initial_masked_mse": 0.9677050917557073,
+    "mean_final_masked_mse": 0.7265129229270751
+  }
+}

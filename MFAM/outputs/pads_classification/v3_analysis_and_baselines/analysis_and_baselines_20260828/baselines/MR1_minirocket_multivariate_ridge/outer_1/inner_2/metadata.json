@@ -1,0 +1,59 @@
+{
+  "brier": "N/A",
+  "inner_fold": 2,
+  "metrics": {
+    "accuracy": 0.7184466019417476,
+    "auroc": 0.7575342465753425,
+    "balanced_accuracy": 0.6050228310502282,
+    "binary_dd_brier": null,
+    "confusion_matrix": [
+      [
+        64,
+        9
+      ],
+      [
+        20,
+        10
+      ]
+    ],
+    "dd_pr_auc": 0.6095342219007931,
+    "dd_recall": 0.3333333333333333,
+    "dd_support": 30,
+    "macro_f1": 0.6117249447549721,
+    "negative_log_likelihood": null,
+    "pd_recall": 0.8767123287671232,
+    "pd_support": 73,
+    "sample_count": 103
+  },
+  "model_artifact_sha256": "2f1e6ce58efade5a99c85c1f2dc4facc2c52fb62791cf29e54c37eaf84581853",
+  "model_name": "MR1_minirocket_multivariate_ridge",
+  "n_kernels_requested": 10000,
+  "negative_log_likelihood": "N/A",
+  "outer_context": 1,
+  "outer_test_accessed": false,
+  "probability_calibration": null,
+  "representation": "subject-level 132 channels = 11 activity x 2 wrist x 6 sensor channels; each activity linearly normalized to 976 samples",
+  "ridge_alpha_grid": [
+    0.001,
+    0.004641588833612777,
+    0.021544346900318832,
+    0.1,
+    0.46415888336127775,
+    2.154434690031882,
+    10.0,
+    46.41588833612773,
+    215.44346900318823,
+    1000.0
+  ],
+  "runtime_seconds": 0.8069591321982443,
+  "scope": "development_inner_cv",
+  "seed": 42,
+  "selected_alpha_train_only": 1000.0,
+  "status": "complete",
+  "train_subject_count": 209,
+  "train_subject_ids_sha256": "c3dd98f7191473da4957be552bead36b06233043b1e7c969920f72893205c460",
+  "trainable_parameter_count": 9997,
+  "transformed_feature_count": 9996,
+  "validation_subject_count": 103,
+  "validation_subject_ids_sha256": "ddc965169ad9cd89eea343de4dcbf1de44927670de48db87edd84e44b1ef7e15"
+}

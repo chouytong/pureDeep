@@ -1,0 +1,32 @@
+{
+  "protocol": {
+    "scope": "15 inner-validation folds only",
+    "outer_test_accessed": false,
+    "selection_rule": "For each held inner fold, optimize balanced accuracy using the other two inner-validation folds in the same outer context.",
+    "positive_class": "DD",
+    "decision_rule": "predict DD when p(DD) >= threshold"
+  },
+  "fold_count": 15,
+  "fold_mean": {
+    "accuracy": 0.7058001602433354,
+    "balanced_accuracy": 0.6398845902754355,
+    "macro_precision": 0.6508481996120561,
+    "macro_f1": 0.636805313941677,
+    "pd_recall": 0.7989633469085524,
+    "dd_recall": 0.48080583364231866,
+    "threshold": 0.49173022508621217
+  },
+  "fold_std": {
+    "accuracy": 0.038805671169716206,
+    "balanced_accuracy": 0.038408213990533936,
+    "macro_precision": 0.039726032295128284,
+    "macro_f1": 0.038566460295632744,
+    "pd_recall": 0.08564370786258033,
+    "dd_recall": 0.12467941144277346,
+    "threshold": 0.01817266507267665
+  },
+  "notes": [
+    "AUROC is threshold-independent and is therefore unchanged from the source run.",
+    "The same subjects can occur in different outer contexts; fold dispersion is descriptive, not an independent-subject confidence interval."
+  ]
+}

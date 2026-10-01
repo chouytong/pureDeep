@@ -1,0 +1,10 @@
+{
+  "hypothesis": "Train-fold-only activity-conditioned disease prototypes reduce subject-specific variation without erasing PD/DD separation.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "frozen_v8_gn_same_seed_and_splits",
+  "seed": 44,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Retain only from 15 seed-aggregated matched splits when disease performance does not materially decline and subject retrieval or unseen-subject shift declines consistently."
+}

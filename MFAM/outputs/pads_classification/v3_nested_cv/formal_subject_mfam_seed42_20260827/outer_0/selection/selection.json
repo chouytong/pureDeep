@@ -1,0 +1,104 @@
+{
+  "outer_fold": 0,
+  "candidate_count": 1,
+  "selected_candidate": "unchanged_v3_subject_mfam_baseline",
+  "primary_metric": "balanced_accuracy",
+  "inner_metric_summary": {
+    "balanced_accuracy": {
+      "values": [
+        0.5952484742807324,
+        0.6246575342465753,
+        0.6384034010392065
+      ],
+      "mean": 0.6194364698555047,
+      "std": 0.018000584451883687
+    },
+    "macro_f1": {
+      "values": [
+        0.5974808324205915,
+        0.6316438525095573,
+        0.6470588235294117
+      ],
+      "mean": 0.6253945028198534,
+      "std": 0.02071690258789853
+    },
+    "accuracy": {
+      "values": [
+        0.7333333333333333,
+        0.7184466019417476,
+        0.7352941176470589
+      ],
+      "mean": 0.7290246843073799,
+      "std": 0.007522545610000837
+    },
+    "macro_auroc": {
+      "values": [
+        0.6209677419354839,
+        0.6296803652968036,
+        0.6797354747283892
+      ],
+      "mean": 0.6434611939868923,
+      "std": 0.025895238094339003
+    },
+    "negative_log_likelihood": {
+      "values": [
+        0.6456608908343282,
+        0.7041381843659043,
+        0.6082440826545962
+      ],
+      "mean": 0.6526810526182762,
+      "std": 0.03946206354934891
+    },
+    "brier_score": {
+      "values": [
+        0.4139131234518031,
+        0.43719984506368714,
+        0.3856683515286099
+      ],
+      "mean": 0.4122604400147001,
+      "std": 0.021070077177463193
+    },
+    "pd_recall": {
+      "values": [
+        0.9324324324324325,
+        0.8493150684931506,
+        0.863013698630137
+      ],
+      "mean": 0.8815870665185733,
+      "std": 0.036385450783641124
+    },
+    "dd_recall": {
+      "values": [
+        0.25806451612903225,
+        0.4,
+        0.41379310344827586
+      ],
+      "mean": 0.35728587319243604,
+      "std": 0.07038570261452871
+    }
+  },
+  "threshold": {
+    "source": "inner_oof_only",
+    "positive_class": "DD",
+    "decision_rule": "predict DD when p(DD) >= threshold",
+    "metric": "balanced_accuracy",
+    "threshold": 0.35158929228782654,
+    "balanced_accuracy": 0.6502525252525253,
+    "macro_f1": 0.6540178571428572,
+    "candidate_count": 616,
+    "sample_count": 310
+  },
+  "final_epoch": {
+    "strategy": "median_inner_best_epoch",
+    "inner_best_epochs": [
+      14,
+      41,
+      26
+    ],
+    "median": 26.0,
+    "selected_epoch_count": 26
+  },
+  "inner_oof_subject_count": 310,
+  "inner_oof_predictions_sha256": "070537e5d99ca744115e22dce6513942d1b1f24cafadef34eb80388215d5d610",
+  "outer_test_used_for_selection": false
+}

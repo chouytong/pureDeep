@@ -1,0 +1,13 @@
+{
+  "hypothesis": "Applying one small, physically valid 3-D orientation perturbation per wrist consistently across that subject's activities and both sensor modalities will reduce axis-specific overfitting and improve cross-subject generalization.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": [
+    "PureDeepPool-balanced-v3",
+    "R1"
+  ],
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Reject rotation augmentation if BA gain versus balanced-v3 is below 0.01 or if BA, AUROC, macro-F1 and DD recall do not improve coherently across folds."
+}

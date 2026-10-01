@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-09-01T00:00:00+00:00",
+  "experiment_name": "v3_s4_final_internal_ablation",
+  "project_root": "/home/zyt/MFAM",
+  "output_root": "/home/zyt/MFAM/outputs/pads_classification/v3_s4_final_internal_ablation/s4_final_internal_ablation_20260901",
+  "scope": "final_internal_development_inner_cv_only",
+  "only_new_model": "S4",
+  "completion_rule": "Complete S4 on all frozen 5x3 inner folds, mechanically apply all preregistered success criteria, freeze S1 or S4 development specification, write the project stage summary, and stop architecture development without outer-test access.",
+  "immutable_references": {
+    "frozen_split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+    "base_config_sha256": "3bb1d8dbeea729775d300123b874752c85cce84f7760f4294e560249de472080",
+    "frozen_h1_cache_sha256": "d7b465b251892abbe602539369989c133fce4c4da15e3bee3cb308d07e0f4da5",
+    "frozen_h1_schema_sha256": "bdb83aae1c31b66c659a63f7a723f74b2cc82bfc99725621f6a41ba736389312",
+    "targeted_ablation_tree_sha256": "528be416bfac771a9fe4477330030bfa917be411d0bc0f31fd0ee15f0224b535",
+    "r2_stabilization_tree_sha256": "d46afeb3b62045d427c2b455cdddb71606910a56424af5eeca5aa9d86fa8aa5c",
+    "r2_stabilization_plan_sha256": "e662a059ac3a6ea19088c59d7385ba27b61ef2cba3275eca9b63340d6c224800",
+    "selected_s1_spec_sha256": "4a100373ec9b84834f2a022eb83559f69a91a7362468b63d904126cd9138715d"
+  },
+  "evaluation_units": {
+    "subjects": 390,
+    "activities": 11,
+    "outer_contexts": 5,
+    "inner_folds_per_outer": 3,
+    "development_folds": 15,
+    "expected_validation_rows": 1560,
+    "cluster_unit": "subject_id"
+  },
+  "architecture": {
+    "name": "S4_S1_plus_R1_fullband_simple_concat",
+    "frequency_branch": "Unchanged SubjectMFAM three-band path using 0.5-3, 3-7, and 7-12 Hz, current encoder, MIL, Hard Top-K, bilateral fusion, and activity attention; 514-dimensional subject embedding.",
+    "fullband_branch": "Exact R1 full-band temporal encoder and AttentionMIL definition on the current processed detrended Acc plus current Gyro, followed by the existing bilateral fusion and activity attention modules shared with the frequency path; 514-dimensional subject embedding.",
+    "r1_branch_projection_used": false,
+    "reason_r1_projection_omitted": "S4 preregisters three explicit subject-level branches and direct concatenation; the validated R1 full-band temporal encoder/MIL is reused exactly, while R1's learned frequency/full-band fusion projection is not part of the standalone full-band branch.",
+    "statistical_branch": "Frozen label-independent H1 schema, inner-train StandardScaler, inner-train PCA 4928 to 32.",
+    "fusion": "Direct concat [frequency subject 514, full-band subject 514, statistical PCA 32] to 1060 dimensions.",
+    "classifier": "Same S1 classifier dropout probability followed by one Linear(1060,2); input dimensionality is the only classifier adaptation.",
+    "forbidden_fusion": ["gating", "LayerNorm fusion", "attention fusion", "Transformer", "fusion MLP", "learned branch weighting", "residual fusion network"]
+  },
+  "training": {
+    "precision": "FP32",
+    "cuda_amp": false,
+    "seed": 42,
+    "deterministic": true,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0002,
+    "weight_decay": 0.0001,
+    "betas": [0.9, 0.999],
+    "scheduler": "cosine",
+    "minimum_lr": 0.000001,
+    "batch_size": 8,
+    "maximum_epochs": 50,
+    "patience": 12,
+    "early_stopping_metric": "balanced_accuracy",
+    "gradient_clip_global_norm": 5.0,
+    "loss": "unweighted_cross_entropy",
+    "candidate_specific_tuning": false
+  },
+  "metrics": {
+    "primary": "balanced_accuracy_at_0.5",
+    "secondary": ["macro_auroc", "macro_f1", "pd_recall", "dd_recall", "accuracy", "negative_log_likelihood", "binary_dd_brier"],
+    "cross_fitted_threshold": "For each held inner-validation fold, fit threshold using only the other two validation folds in the same outer context.",
+    "subject_cluster_bootstrap_iterations": 2000,
+    "bootstrap_seed": 20260901
+  },
+  "success_criteria": {
+    "all_must_pass": true,
+    "mean_delta_ba_vs_s1_minimum": 0.015,
+    "mean_delta_auroc_vs_s1_minimum": 0.010,
+    "folds_ba_nonnegative_vs_s1_minimum": 9,
+    "mean_delta_dd_recall_vs_s1_minimum": -0.020,
+    "nonfinite_loss_batches_maximum": 0,
+    "nonfinite_gradient_batches_maximum": 0,
+    "skipped_optimizer_steps_maximum": 0,
+    "failure_action": "Reject S4, retain frozen S1 R2-FP32, do not retrain or tune."
+  },
+  "branch_diagnostics": {
+    "inference_only_no_retraining": true,
+    "modes": ["both", "frequency_disabled", "fullband_disabled", "statistical_disabled"],
+    "outputs": ["delta_ba", "delta_auroc", "mean_absolute_probability_change", "mean_logit_l2_change", "embedding_norms"],
+    "pairwise_cosine": "Frequency versus full-band is recorded directly because both are 514-dimensional. Cosines involving PCA32 are not defined without an extra projection, and no projection will be introduced for a descriptive diagnostic."
+  },
+  "outer_test_policy": {
+    "outer_test_loader_created": false,
+    "outer_test_signal_accessed": false,
+    "outer_test_predictions_accessed": false,
+    "outer_test_features_transformed": false
+  },
+  "forbidden": [
+    "any model other than S4",
+    "outer-test loading, transform, prediction, thresholding, evaluation, or selection",
+    "architecture or hyperparameter changes after preregistration",
+    "PCA dimension or feature schema changes",
+    "new frequency bands or preprocessing",
+    "retraining after a failed success criterion",
+    "continued internal architecture search after S4"
+  ]
+}

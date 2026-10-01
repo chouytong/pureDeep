@@ -1,0 +1,68 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_0/inner_1",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-10-01T07:50:52.173437+00:00",
+  "summary": {
+    "fold_id": "outer_0/inner_1",
+    "best_epoch": 5,
+    "best_metric": 0.6710045662100457,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.6310679611650486,
+      "balanced_accuracy": 0.6710045662100457,
+      "macro_precision": 0.6415343915343915,
+      "macro_recall": 0.6710045662100457,
+      "macro_f1": 0.6180718188914911,
+      "weighted_precision": 0.7315456927107412,
+      "weighted_recall": 0.6310679611650485,
+      "weighted_f1": 0.647484140879016,
+      "per_class_precision": [
+        0.8571428571428571,
+        0.42592592592592593
+      ],
+      "per_class_recall": [
+        0.5753424657534246,
+        0.7666666666666667
+      ],
+      "per_class_f1": [
+        0.6885245901639344,
+        0.5476190476190477
+      ],
+      "support": [
+        73,
+        30
+      ],
+      "confusion_matrix": [
+        [
+          42,
+          31
+        ],
+        [
+          7,
+          23
+        ]
+      ],
+      "sample_count": 103,
+      "macro_auroc": 0.6835616438356165,
+      "per_class_auroc": [
+        0.6835616438356165,
+        0.6835616438356165
+      ],
+      "brier_score": 0.4766578881951227,
+      "negative_log_likelihood": 0.6685266608659742,
+      "loss": 0.6431185284864556,
+      "classification_loss": 0.6431185284864556,
+      "duration_seconds": 0.10961162799503654,
+      "batches": 13,
+      "pd_recall": 0.5753424657534246,
+      "dd_recall": 0.7666666666666667
+    },
+    "train_subject_ids_sha256": "7c2e19e86f01c25e88b5def67b36ed6a6165fbef74cc692ea19eb6248938ef1a",
+    "normalization_sha256": "4b08facd1b9e0127d1efb99a091d8bb107c7d0af07aa414130baf4a15858c371",
+    "checkpoint_sha256": "e313287eee1de688ba783f2782d9ab5200f9e558c7ac65ee5e7d6cef616e0267",
+    "pretraining": null,
+    "smoke": false
+  }
+}

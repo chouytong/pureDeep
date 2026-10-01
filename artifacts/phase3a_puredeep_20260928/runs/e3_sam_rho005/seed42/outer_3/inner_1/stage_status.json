@@ -1,0 +1,68 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_3/inner_1",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-09-28T11:57:01.110774+00:00",
+  "summary": {
+    "fold_id": "outer_3/inner_1",
+    "best_epoch": 23,
+    "best_metric": 0.7118570183086312,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.7523809523809524,
+      "balanced_accuracy": 0.7118570183086312,
+      "macro_precision": 0.7045454545454546,
+      "macro_recall": 0.7118570183086312,
+      "macro_f1": 0.7078339041095891,
+      "weighted_precision": 0.7572871572871573,
+      "weighted_recall": 0.7523809523809525,
+      "weighted_f1": 0.7545539791258971,
+      "per_class_precision": [
+        0.8333333333333334,
+        0.5757575757575758
+      ],
+      "per_class_recall": [
+        0.8108108108108109,
+        0.6129032258064516
+      ],
+      "per_class_f1": [
+        0.8219178082191781,
+        0.59375
+      ],
+      "support": [
+        74,
+        31
+      ],
+      "confusion_matrix": [
+        [
+          60,
+          14
+        ],
+        [
+          12,
+          19
+        ]
+      ],
+      "sample_count": 105,
+      "macro_auroc": 0.7846556233653008,
+      "per_class_auroc": [
+        0.7846556233653008,
+        0.7846556233653008
+      ],
+      "brier_score": 0.3756653498556119,
+      "negative_log_likelihood": 0.5855708110943085,
+      "loss": 0.590162353856223,
+      "classification_loss": 0.590162353856223,
+      "duration_seconds": 0.20193793205544353,
+      "batches": 14,
+      "pd_recall": 0.8108108108108109,
+      "dd_recall": 0.6129032258064516
+    },
+    "train_subject_ids_sha256": "fbbc1bde07313b98342428286630c698d7cdfef7fa31aaa44900f15d21ba8bf2",
+    "normalization_sha256": "f4ae046e1a2c86aef8fb380dc0a1045ac1ec2cd7b6d96de8dac6177fb0c70553",
+    "checkpoint_sha256": "1be8ab4b84dbd368805e672c3b7ef97def28cb1a05cca67e095c8f1cc28ca417",
+    "pretraining": null,
+    "smoke": false
+  }
+}

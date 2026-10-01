@@ -1,0 +1,99 @@
+{
+  "analysis_scope": "post_freeze_outer_test_descriptive_only",
+  "model_selection_performed": false,
+  "candidate": "/home/zyt/MFAM/outputs/pads_classification/pure_deep_v8_final_nested_cv_20260916",
+  "reference": "/home/zyt/MFAM/outputs/pads_classification/v3_nested_cv/formal_subject_mfam_seed42_20260827",
+  "subject_count": 390,
+  "candidate_fold_threshold_metrics": {
+    "accuracy": 0.6615384615384615,
+    "balanced_accuracy": 0.6115560640732265,
+    "macro_precision": 0.6038461538461539,
+    "macro_recall": 0.6115560640732265,
+    "macro_f1": 0.6063738683631025,
+    "auroc": 0.6346618357487923,
+    "negative_log_likelihood": 0.6755843425962106,
+    "two_class_brier": 0.4629989030059887,
+    "pd_recall": 0.7318840579710145,
+    "dd_recall": 0.49122807017543857
+  },
+  "candidate_default_0p5_metrics": {
+    "accuracy": 0.6641025641025641,
+    "balanced_accuracy": 0.6133676582761252,
+    "macro_precision": 0.6059431524547804,
+    "macro_recall": 0.6133676582761252,
+    "macro_f1": 0.6084787456606202,
+    "auroc": 0.6346618357487923,
+    "negative_log_likelihood": 0.6755843425962106,
+    "two_class_brier": 0.4629989030059887,
+    "pd_recall": 0.7355072463768116,
+    "dd_recall": 0.49122807017543857
+  },
+  "reference_fold_threshold_metrics": {
+    "accuracy": 0.7051282051282052,
+    "balanced_accuracy": 0.5934401220442411,
+    "macro_precision": 0.6244444444444445,
+    "macro_recall": 0.5934401220442411,
+    "macro_f1": 0.5984744715709183,
+    "auroc": 0.6016240783117214,
+    "negative_log_likelihood": 0.619258531119416,
+    "two_class_brier": 0.40863882373780075,
+    "pd_recall": 0.8623188405797102,
+    "dd_recall": 0.32456140350877194
+  },
+  "stratified_subject_bootstrap": {
+    "replicates": 10000,
+    "seed": 20260916,
+    "candidate": {
+      "balanced_accuracy": {
+        "mean": 0.6117266685736079,
+        "lower_95": 0.5594012204424104,
+        "upper_95": 0.6652364607170099
+      },
+      "macro_f1": {
+        "mean": 0.6063246067808362,
+        "lower_95": 0.556300068261528,
+        "upper_95": 0.6581239419050164
+      },
+      "auroc": {
+        "mean": 0.6345129735570811,
+        "lower_95": 0.571604849987287,
+        "upper_95": 0.6972738685481821
+      }
+    },
+    "reference": {
+      "balanced_accuracy": {
+        "mean": 0.5934617181540809,
+        "lower_95": 0.5467200610221206,
+        "upper_95": 0.6409229595728452
+      },
+      "macro_f1": {
+        "mean": 0.5980761160299211,
+        "lower_95": 0.545,
+        "upper_95": 0.6514893712945855
+      },
+      "auroc": {
+        "mean": 0.6016690280956012,
+        "lower_95": 0.536786883422324,
+        "upper_95": 0.666512522247648
+      }
+    },
+    "candidate_minus_reference": {
+      "balanced_accuracy": {
+        "mean": 0.01826495041952708,
+        "lower_95": -0.041004004576659044,
+        "upper_95": 0.07875667429443178
+      },
+      "macro_f1": {
+        "mean": 0.008248490750915235,
+        "lower_95": -0.05376807865697068,
+        "upper_95": 0.07143346436000196
+      },
+      "auroc": {
+        "mean": 0.032843945461479784,
+        "lower_95": -0.036185005085176844,
+        "upper_95": 0.10253027269260116
+      }
+    }
+  },
+  "guardrail": "Outer-test results are final descriptive evidence. They must not be used to modify architecture, thresholds, epochs, or hyperparameters."
+}

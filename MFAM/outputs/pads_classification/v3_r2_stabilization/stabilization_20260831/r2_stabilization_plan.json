@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-08-31T00:00:00+00:00",
+  "experiment_name": "v3_r2_stabilization_development",
+  "project_root": "/home/zyt/MFAM",
+  "output_root": "/home/zyt/MFAM/outputs/pads_classification/v3_r2_stabilization/stabilization_20260831",
+  "scope": "development_inner_cv_only",
+  "completion_rule": "Run S0 numerical replay diagnostics and complete S1, S2, and S3 on the frozen 15 inner folds; perform the preregistered analyses; freeze one development candidate specification; stop without outer-test access or additional candidates.",
+  "immutable_references": {
+    "frozen_v3_directory": "/home/zyt/MFAM/outputs/pads_classification/v3_nested_cv/formal_subject_mfam_seed42_20260827",
+    "frozen_v3_manifest_sha256": "af5fdda01ceed8f90944f9a25e3a630b09ad17e07ece5f1d32dfe3d147271321",
+    "frozen_v3_artifact_tree_sha256": "b168b86b4a9cf9acba2d165c5230bb1b4aae7020234e70b983d91549f123d103",
+    "frozen_split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+    "base_config_sha256": "3bb1d8dbeea729775d300123b874752c85cce84f7760f4294e560249de472080",
+    "handcrafted_feature_cache_sha256": "d7b465b251892abbe602539369989c133fce4c4da15e3bee3cb308d07e0f4da5",
+    "handcrafted_feature_schema_sha256": "bdb83aae1c31b66c659a63f7a723f74b2cc82bfc99725621f6a41ba736389312",
+    "s0_targeted_ablation_directory": "/home/zyt/MFAM/outputs/pads_classification/v3_targeted_ablation/targeted_ablation_20260828",
+    "s0_artifact_tree_sha256": "528be416bfac771a9fe4477330030bfa917be411d0bc0f31fd0ee15f0224b535",
+    "s0_plan_sha256": "61dc8ef8923c7d8cadfee7615f5bd0247486a3ec619d14295bff2d29c45de448"
+  },
+  "evaluation_units": {
+    "subjects": 390,
+    "outer_contexts": 5,
+    "inner_folds_per_outer": 3,
+    "development_folds": 15,
+    "expected_validation_rows_per_model": 1560,
+    "uncertainty_cluster": "subject_id",
+    "independent_row_inference_forbidden": true
+  },
+  "training": {
+    "seed": 42,
+    "deterministic": true,
+    "precision_for_S1_S2_S3": "FP32",
+    "cuda_amp": false,
+    "epochs": 50,
+    "batch_size": 8,
+    "optimizer": "adamw",
+    "learning_rate": 0.0002,
+    "weight_decay": 0.0001,
+    "adam_betas": [0.9, 0.999],
+    "scheduler": "cosine",
+    "minimum_lr": 0.000001,
+    "gradient_clip_global_norm": 5.0,
+    "early_stopping_metric": "balanced_accuracy",
+    "early_stopping_mode": "max",
+    "early_stopping_patience": 12,
+    "early_stopping_minimum_delta": 0.0,
+    "loss": "unweighted_cross_entropy",
+    "label_smoothing": 0.0,
+    "candidate_specific_training_changes": false
+  },
+  "statistical_features": {
+    "source": "frozen H1 label-independent 4928-dimensional cache",
+    "scaler": "inner-train StandardScaler only",
+    "pca": "inner-train PCA only",
+    "pca_components": 32,
+    "pca_whiten": false,
+    "pca_svd_solver": "full",
+    "pca_random_state": 42,
+    "validation_labels_used": false,
+    "outer_test_features_transformed": false
+  },
+  "candidates": {
+    "S0": {
+      "action": "read existing targeted_ablation_20260828 R2 predictions, metrics, checkpoints, logs, overflow counts, and preprocessing metadata",
+      "retrain_for_model_comparison": false,
+      "architecture": "original R2 concat of 514-dimensional deep embedding and 32-dimensional PCA statistical embedding followed by the existing dropout and Linear(546,2) classifier",
+      "precision": "AMP historical reference"
+    },
+    "S1": {
+      "name": "R2-FP32",
+      "architecture": "exactly S0 R2",
+      "fusion": "raw concat 514+32 then existing dropout and Linear(546,2)",
+      "precision": "FP32",
+      "only_primary_change_from_S0": "disable CUDA AMP"
+    },
+    "S2": {
+      "name": "R2-NormFusion",
+      "precision": "FP32",
+      "fusion": "LayerNorm(514, elementwise_affine=true) on deep embedding and LayerNorm(32, elementwise_affine=true) on statistical embedding, concatenate to 546, then the unchanged R2 dropout and Linear(546,2) classifier",
+      "new_complex_modules": false
+    },
+    "S3": {
+      "name": "R2-GatedFusion",
+      "precision": "FP32",
+      "projection_dimension": 64,
+      "deep_projection": "single Linear(514,64)",
+      "statistical_projection": "single Linear(32,64)",
+      "gate": "sigmoid of single Linear(concat[d,s]=128,64)",
+      "fusion": "g*d + (1-g)*s, then the same classifier dropout probability and Linear(64,2)",
+      "activation_after_projection": "none",
+      "normalization": "none",
+      "new_complex_modules": false
+    }
+  },
+  "s0_overflow_diagnostic_replay": {
+    "reason": "Historical S0 artifacts contain overflow counts but no per-layer gradients or activation-scale attribution, so bounded diagnostic replay is necessary.",
+    "scope": "one deterministic first training epoch for each of the 15 frozen inner-train folds",
+    "architecture": "exact S0 R2",
+    "precision": "AMP float16 with the same GradScaler initialization and optimizer",
+    "optimizer_steps": "same as S0 for the bounded diagnostic epoch, but diagnostic outputs are never used as model candidates or checkpoints",
+    "saved_model": false,
+    "model_selection_use": false,
+    "records": [
+      "loss",
+      "GradScaler scale before and after update",
+      "skipped step",
+      "global gradient norm before and after clipping",
+      "per-parameter-group gradient norm and finiteness",
+      "parameter norm",
+      "deep/statistical/fused/classifier-input/logit activation norms"
+    ]
+  },
+  "branch_diagnostics": {
+    "activation_statistics": ["dimension", "mean_l2", "std_l2", "median_l2", "p5_l2", "p95_l2", "maximum_absolute"],
+    "S2_S3_inference_modes": ["both", "deep_disabled", "statistical_disabled"],
+    "retraining_for_ablation": false,
+    "S3_gate_statistics": ["mean", "std", "median", "p5", "p95", "minimum", "maximum", "PD_mean", "DD_mean", "subtype_mean"]
+  },
+  "threshold_protocol": {
+    "primary": "default probability_dd threshold 0.5",
+    "cross_fitted": "For a held inner validation fold, fit the balanced-accuracy threshold using only the other two disjoint inner validation folds in the same outer context.",
+    "outer_test_used": false
+  },
+  "statistics": {
+    "fold_paired_references": ["S0", "M0", "H1"],
+    "subject_cluster_bootstrap_iterations": 2000,
+    "subject_cluster_bootstrap_seed": 20260831,
+    "interval": "percentile_95",
+    "dd_subtypes": ["Other Movement Disorders", "Essential Tremor", "Atypical Parkinsonism", "Multiple Sclerosis"]
+  },
+  "candidate_selection_rule": {
+    "no_single_metric_automatic_success": true,
+    "priority_order": ["numerical stability", "AUROC and balanced accuracy", "DD recall", "simplicity"],
+    "numerical_stability_requirement": "zero nonfinite FP32 loss or gradient and zero skipped optimizer steps",
+    "S2_retention": "Retain S2 over S1 only if S2 has either mean paired BA >= +0.01 with at least 9/15 nonnegative BA folds, mean paired AUROC >= +0.01 with at least 9/15 nonnegative AUROC folds, or train-validation BA gap reduction >= 0.03 without BA or AUROC decreasing by more than 0.01.",
+    "S3_retention": "Retain S3 only if it improves mean paired BA or AUROC by at least 0.01 over the best simpler stable candidate with at least 9/15 nonnegative folds, the mean gate is within [0.10,0.90], and disabling the deep branch reduces BA or AUROC by at least 0.01.",
+    "fallback": "If S2 and S3 do not meet their retention rules and S1 is numerically stable, recommend S1.",
+    "freeze_scope": "development candidate specification only"
+  },
+  "forbidden": [
+    "outer-test loading, prediction, evaluation, threshold selection, or model selection",
+    "R1+R2 or any three-way fusion",
+    "new fusion candidate beyond S2 and S3",
+    "learning-rate tuning",
+    "loss or class-weight changes",
+    "FFT-band, MIL, Hard Top-K, activity-attention, bilateral-fusion, temporal-BatchNorm, preprocessing, sensor, wrist, or activity changes",
+    "PCA dimensionality search"
+  ],
+  "outer_test_policy": {
+    "outer_test_loader_created": false,
+    "outer_test_signal_accessed": false,
+    "outer_test_predictions_accessed": false,
+    "outer_test_features_transformed": false
+  }
+}

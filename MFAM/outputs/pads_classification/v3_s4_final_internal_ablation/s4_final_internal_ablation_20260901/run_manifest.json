@@ -1,0 +1,102 @@
+{
+  "analysis_artifact_tree_sha256": "045f747df2de455cf758d6a0960ef123423732a0169b0603195078f95d9be107",
+  "architecture_search_status": "closed",
+  "architecture_search_stop_after_this_run": true,
+  "artifact_file_count": 363,
+  "artifact_tree_sha256": "646c2e5ee40cf67f39fb7f5377baa80408412154b62f74d0f0dfff20e4d273e6",
+  "base_config_sha256": "3bb1d8dbeea729775d300123b874752c85cce84f7760f4294e560249de472080",
+  "completed_at_utc": "2026-09-01T07:02:31.136773+00:00",
+  "created_at_utc": "2026-09-01T06:45:21.439221+00:00",
+  "expected_fold_count": 15,
+  "feature_cache_sha256": "d7b465b251892abbe602539369989c133fce4c4da15e3bee3cb308d07e0f4da5",
+  "feature_schema_sha256": "bdb83aae1c31b66c659a63f7a723f74b2cc82bfc99725621f6a41ba736389312",
+  "inner_folds": 3,
+  "outer_contexts": 5,
+  "outer_test_features_transformed": false,
+  "outer_test_loader_created": false,
+  "outer_test_predictions_accessed": false,
+  "outer_test_signal_accessed": false,
+  "plan_sha256": "3ae383049af664dc970d9893927d2b8543afa04c1d8d83ff98ea2a641bd1d157",
+  "precision": "FP32",
+  "schema_version": 1,
+  "scope": "s4_final_internal_development_inner_cv_only",
+  "source_hashes_final": {
+    "scripts/run_v3_s4_final_internal_ablation.py": "8eef8ed0a2347ce5551c59c1e7f54361c0ae9e97bc256f4ab55f65ebd1cebcb2",
+    "src/s4_final/__init__.py": "39f5149940546cc183c98f5694f07bbc0ac2b542aa2f8bf3ccbb2b0bab40f9a3",
+    "src/s4_final/analysis.py": "2815e3cc722ac0d1a3f027c47f4928a3772b59459b47a30ea04cebb9fc60fc10",
+    "src/s4_final/models.py": "bfec3808f32d5d15e85873439bc1d3e06971fca4af6b6ef8182e33e348319fd8",
+    "src/s4_final/training.py": "cf8dc6169ac64cc07dc7a060cf9ddd8c632b938e08cb6058ede877a7b3e2dd89",
+    "tests/test_s4_final.py": "c7d12feca71b5fefe7de56dabf82de0a652f8ef0e315e85080cd8a3d83dffe9d"
+  },
+  "source_hashes_initial": {
+    "scripts/run_v3_s4_final_internal_ablation.py": "8eef8ed0a2347ce5551c59c1e7f54361c0ae9e97bc256f4ab55f65ebd1cebcb2",
+    "src/s4_final/__init__.py": "39f5149940546cc183c98f5694f07bbc0ac2b542aa2f8bf3ccbb2b0bab40f9a3",
+    "src/s4_final/analysis.py": "2815e3cc722ac0d1a3f027c47f4928a3772b59459b47a30ea04cebb9fc60fc10",
+    "src/s4_final/models.py": "bfec3808f32d5d15e85873439bc1d3e06971fca4af6b6ef8182e33e348319fd8",
+    "src/s4_final/training.py": "cf8dc6169ac64cc07dc7a060cf9ddd8c632b938e08cb6058ede877a7b3e2dd89",
+    "tests/test_s4_final.py": "c7d12feca71b5fefe7de56dabf82de0a652f8ef0e315e85080cd8a3d83dffe9d"
+  },
+  "split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+  "stabilization_artifact_tree_sha256": "d46afeb3b62045d427c2b455cdddb71606910a56424af5eeca5aa9d86fa8aa5c",
+  "stages": {
+    "analyze": {
+      "completed_at_utc": "2026-09-01T07:00:21.167495+00:00",
+      "status": "complete",
+      "summary": {
+        "outer_test_accessed": false,
+        "s4_passes": false,
+        "selected_development_candidate": "S1"
+      }
+    },
+    "finalize": {
+      "completed_at_utc": "2026-09-01T07:02:31.137051+00:00",
+      "status": "complete",
+      "summary": {
+        "artifact_file_count": 363,
+        "artifact_tree_sha256": "646c2e5ee40cf67f39fb7f5377baa80408412154b62f74d0f0dfff20e4d273e6"
+      }
+    },
+    "initialize": {
+      "completed_at_utc": "2026-09-01T06:45:21.439564+00:00",
+      "status": "complete",
+      "summary": {
+        "created_at_utc": "2026-09-01T06:45:21.277099+00:00",
+        "cuda_available": true,
+        "cuda_version": "12.8",
+        "gpu": "NVIDIA GeForce RTX 5090 D v2",
+        "platform": "Linux-6.8.0-40-generic-x86_64-with-glibc2.35",
+        "python": "3.10.16",
+        "torch": "2.8.0+cu128"
+      }
+    },
+    "run_S4": {
+      "completed_at_utc": "2026-09-01T06:57:06.801642+00:00",
+      "status": "complete",
+      "summary": {
+        "failed_fold_count": 0,
+        "fold_count": 15,
+        "outer_test_accessed": false,
+        "status": "complete"
+      }
+    },
+    "smoke": {
+      "completed_at_utc": "2026-09-01T06:45:28.527175+00:00",
+      "status": "complete",
+      "summary": {
+        "fold_count": 1,
+        "outer_test_accessed": false,
+        "status": "complete"
+      }
+    },
+    "verify": {
+      "completed_at_utc": "2026-09-01T07:02:29.516992+00:00",
+      "status": "complete",
+      "summary": {
+        "check_count": 13,
+        "status": "pass"
+      }
+    }
+  },
+  "status": "complete",
+  "targeted_artifact_tree_sha256": "528be416bfac771a9fe4477330030bfa917be411d0bc0f31fd0ee15f0224b535"
+}

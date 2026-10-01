@@ -1,0 +1,10 @@
+{
+  "hypothesis": "A single lightweight Gyro-only learnable rFFT branch focused on 0-12 Hz captures stable low-frequency and 3-7 Hz structure not fully used by V8-GN.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "pads_pure_deep_groupnorm_nr01_same_seed",
+  "seed": 44,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Retain only if BA improves by 0.01-0.015, AUROC by at least 0.015, Macro-F1 does not decline, DD recall does not materially decline, about 10/15 seed-averaged matched splits improve, and seed stability is preserved."
+}

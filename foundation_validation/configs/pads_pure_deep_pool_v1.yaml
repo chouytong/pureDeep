@@ -1,0 +1,25 @@
+# Inherits the fixed data and 5x3 nested-CV protocol from the V3 baseline.
+_base_: pads_multi_activity_v3_nested_cv.yaml
+
+experiment:
+  name: pads_pure_deep_pool_v1
+  output_root: outputs/pads_classification/pure_deep_pool_v1
+  seed: 42
+  deterministic: true
+
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  pure_deep:
+    feature_dim: 128
+    dropout: 0.1
+    pooling: attention_mean_std
+  activity_fusion:
+    attention_dim: 128
+    dropout: 0.1
+    classifier_dropout: 0.2
+
+training:
+  mixed_precision: false

@@ -1,0 +1,298 @@
+{
+  "protocol": {
+    "raw_seed_fold_rows": 45,
+    "primary_statistical_units": 15,
+    "aggregation": "arithmetic mean across seeds 42/43/44 per outer-inner split",
+    "outer_test_accessed": false
+  },
+  "split_level_metrics": {
+    "head_accuracy": {
+      "mean": 0.7169944251868866,
+      "std_across_15_splits": 0.035975010286150966,
+      "minimum": 0.6317460317460317,
+      "maximum": 0.7702265372168284
+    },
+    "head_balanced_accuracy": {
+      "mean": 0.6714501871399186,
+      "std_across_15_splits": 0.030359815244381243,
+      "minimum": 0.6204591688462656,
+      "maximum": 0.7266362252663622
+    },
+    "head_macro_f1": {
+      "mean": 0.6641171332772146,
+      "std_across_15_splits": 0.033509509441245575,
+      "minimum": 0.6072973410007264,
+      "maximum": 0.7236356210849876
+    },
+    "head_auroc": {
+      "mean": 0.6788662031223781,
+      "std_across_15_splits": 0.043265999645224935,
+      "minimum": 0.6155187445510026,
+      "maximum": 0.769558599695586
+    },
+    "disease_probe_accuracy": {
+      "mean": 0.6937042708544708,
+      "std_across_15_splits": 0.03682890034937889,
+      "minimum": 0.6185897435897436,
+      "maximum": 0.7540453074433656
+    },
+    "disease_probe_balanced_accuracy": {
+      "mean": 0.620730687412541,
+      "std_across_15_splits": 0.03507054457448129,
+      "minimum": 0.546996996996997,
+      "maximum": 0.6890410958904108
+    },
+    "disease_probe_macro_f1": {
+      "mean": 0.6220432683576498,
+      "std_across_15_splits": 0.037384461655581146,
+      "minimum": 0.545651860113067,
+      "maximum": 0.693284028133207
+    },
+    "disease_probe_auroc": {
+      "mean": 0.6691793387243429,
+      "std_across_15_splits": 0.03760684003752691,
+      "minimum": 0.6050566695727987,
+      "maximum": 0.7374429223744293
+    },
+    "disease_centroid_ba": {
+      "mean": 0.6375738773805119,
+      "std_across_15_splits": 0.03849760530724156,
+      "minimum": 0.5599389712292938,
+      "maximum": 0.684855403348554
+    },
+    "disease_silhouette_euclidean": {
+      "mean": 0.05342387691554091,
+      "std_across_15_splits": 0.018406633939336652,
+      "minimum": 0.027788805464903435,
+      "maximum": 0.09034675732254976
+    },
+    "disease_silhouette_cosine": {
+      "mean": 0.03592859293437662,
+      "std_across_15_splits": 0.014217144687826897,
+      "minimum": 0.010857407314081934,
+      "maximum": 0.0609533178309599
+    },
+    "disease_fisher_ratio": {
+      "mean": 0.1481308722661601,
+      "std_across_15_splits": 0.049491956437577686,
+      "minimum": 0.07435088977217674,
+      "maximum": 0.2584505478541056
+    },
+    "domain_probe_auc_disease_controlled_mean": {
+      "mean": 0.6254707823174116,
+      "std_across_15_splits": 0.06091626505488663,
+      "minimum": 0.5350141986275552,
+      "maximum": 0.7557721315785831
+    },
+    "domain_probe_auc_disease_controlled_max": {
+      "mean": 0.7028237806835569,
+      "std_across_15_splits": 0.07883636163694055,
+      "minimum": 0.5728891239203243,
+      "maximum": 0.8443593949334791
+    },
+    "normalized_mean_shift": {
+      "mean": 0.11164302974939343,
+      "std_across_15_splits": 0.009113511021058295,
+      "minimum": 0.0948759093880653,
+      "maximum": 0.12420723338921862
+    },
+    "coral_covariance_shift": {
+      "mean": 0.4731711484860724,
+      "std_across_15_splits": 0.07111678067582251,
+      "minimum": 0.36469307322272887,
+      "maximum": 0.573272507732583
+    },
+    "pd_centroid_drift": {
+      "mean": 2.83374789290958,
+      "std_across_15_splits": 0.6159563542353725,
+      "minimum": 1.9527641932169597,
+      "maximum": 3.7351674238840737
+    },
+    "dd_centroid_drift": {
+      "mean": 6.353410249286227,
+      "std_across_15_splits": 2.055518421916918,
+      "minimum": 4.133101065953572,
+      "maximum": 11.049654165903727
+    },
+    "activity_probe_accuracy": {
+      "mean": 0.6993512222067333,
+      "std_across_15_splits": 0.017310073731580507,
+      "minimum": 0.6754927919976463,
+      "maximum": 0.7333916083916083
+    },
+    "subject_retrieval_top1": {
+      "mean": 0.06448565320923969,
+      "std_across_15_splits": 0.008076127887589026,
+      "minimum": 0.0519480519480519,
+      "maximum": 0.07649308620182403
+    },
+    "subject_retrieval_top5": {
+      "mean": 0.1785321909936416,
+      "std_across_15_splits": 0.01730308044522894,
+      "minimum": 0.15328037658134744,
+      "maximum": 0.21037296037296035
+    },
+    "subject_retrieval_mrr": {
+      "mean": 0.13937746482186286,
+      "std_across_15_splits": 0.01100223014600505,
+      "minimum": 0.12251683613816243,
+      "maximum": 0.15729262273347458
+    },
+    "subject_retrieval_chance": {
+      "mean": 0.009616336452430072,
+      "std_across_15_splits": 9.921431341806818e-05,
+      "minimum": 0.0095238095238095,
+      "maximum": 0.0098039215686274
+    },
+    "same_subject_similarity": {
+      "mean": 0.17822002066953338,
+      "std_across_15_splits": 0.02482482379774525,
+      "minimum": 0.14511250174916715,
+      "maximum": 0.2362256498217532
+    },
+    "same_disease_other_subject_similarity": {
+      "mean": 0.025532460055951087,
+      "std_across_15_splits": 0.009610739061092728,
+      "minimum": 0.006421456707312,
+      "maximum": 0.04319798655167597
+    },
+    "subject_similarity_gap": {
+      "mean": 0.1526875606135822,
+      "std_across_15_splits": 0.023535090111157952,
+      "minimum": 0.12611236741785484,
+      "maximum": 0.20201577324772443
+    },
+    "disease_variance_ratio": {
+      "mean": 0.004571278620545249,
+      "std_across_15_splits": 0.002489824504424404,
+      "minimum": 0.0014650122673456002,
+      "maximum": 0.008972084180518534
+    },
+    "subject_within_disease_variance_ratio": {
+      "mean": 0.16388929124723306,
+      "std_across_15_splits": 0.021259533851551316,
+      "minimum": 0.13710165189487297,
+      "maximum": 0.2057176332891345
+    },
+    "activity_shift_variance_ratio": {
+      "mean": 0.011614275956161489,
+      "std_across_15_splits": 0.0011737845270784128,
+      "minimum": 0.009542725516238333,
+      "maximum": 0.014203560267050634
+    }
+  },
+  "relationships_with_ba": [
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "disease_probe_balanced_accuracy",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": 0.7214285714285712,
+      "p_value": 0.002398868072673344
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "disease_probe_auroc",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": 0.7999999999999999,
+      "p_value": 0.0003422698330356917
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "disease_centroid_ba",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": 0.8607142857142854,
+      "p_value": 3.8055250226647814e-05
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "disease_silhouette_euclidean",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": 0.3571428571428571,
+      "p_value": 0.19127476343157904
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "disease_silhouette_cosine",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": 0.6249999999999999,
+      "p_value": 0.012727453511233668
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "disease_fisher_ratio",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": 0.46071428571428563,
+      "p_value": 0.08393338135031411
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "subject_retrieval_top1",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": -0.0857142857142857,
+      "p_value": 0.7613341261907667
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "subject_similarity_gap",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": -0.18928571428571428,
+      "p_value": 0.49926303323854526
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "activity_probe_accuracy",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": -0.3142857142857143,
+      "p_value": 0.2539400163236714
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "domain_probe_auc_disease_controlled_mean",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": 0.08928571428571427,
+      "p_value": 0.751672517350277
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "normalized_mean_shift",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": -0.3321428571428571,
+      "p_value": 0.2264717590707243
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "coral_covariance_shift",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": -0.4107142857142856,
+      "p_value": 0.12832864601574887
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "pd_centroid_drift",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": -0.0964285714285714,
+      "p_value": 0.7324528633867308
+    },
+    {
+      "statistical_unit": "seed-aggregated independent inner split",
+      "n": 15,
+      "variable": "dd_centroid_drift",
+      "outcome": "head_balanced_accuracy",
+      "spearman_rho": -0.16785714285714282,
+      "p_value": 0.5498555542278019
+    }
+  ]
+}

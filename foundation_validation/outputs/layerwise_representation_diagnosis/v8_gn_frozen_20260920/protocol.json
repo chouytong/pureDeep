@@ -1,0 +1,23 @@
+{
+  "scope": "fixed inner-development train/validation only",
+  "outer_test_accessed": false,
+  "architecture_modified": false,
+  "model_retrained": false,
+  "training_modules_added": false,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "raw_seed_fold_layer_rows": 225,
+  "primary_independent_splits": 15,
+  "seed_aggregation": "arithmetic mean within identical outer/inner split before inference",
+  "layer_definitions": {
+    "wrist_encoder": "64-D wrist encoder output; wrists averaged within activity and activities mean-pooled only for disease/shift comparison",
+    "bilateral_activity": "258-D bilateral fusion output before activity identity embedding",
+    "activity_context": "258-D activity representation after activity embedding plus LayerNorm",
+    "subject_aggregation": "258-D learned attention-weighted subject embedding",
+    "classifier_logits": "2-D frozen classifier logits"
+  },
+  "activity_subject_metrics_note": "Activity probe and cross-activity subject retrieval are undefined after subject aggregation and recorded as NaN."
+}

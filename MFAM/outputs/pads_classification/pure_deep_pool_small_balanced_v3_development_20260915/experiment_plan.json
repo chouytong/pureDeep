@@ -1,0 +1,13 @@
+{
+  "hypothesis": "Attention+mean+std pooling over learned temporal feature maps preserves global DD information better than fixed-band Hard Top-K MIL.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": [
+    "M0",
+    "R1"
+  ],
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Reject if BA gain <0.01 or BA/AUROC/DD-recall do not improve coherently"
+}

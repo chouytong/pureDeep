@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "experiment_version": "v3_nested_cv",
+  "pads_dataset_version": "1.0.0",
+  "pads_doi": "10.13026/m0w9-zx22",
+  "class_names": [
+    "PD",
+    "DD"
+  ],
+  "label_mapping": {
+    "Parkinson's": "PD",
+    "Other Movement Disorders": "DD",
+    "Essential Tremor": "DD",
+    "Atypical Parkinsonism": "DD",
+    "Multiple Sclerosis": "DD",
+    "Healthy": "excluded"
+  },
+  "activity_order": [
+    "CrossArms",
+    "DrinkGlas",
+    "Entrainment",
+    "HoldWeight",
+    "LiftHold",
+    "PointFinger",
+    "Relaxed",
+    "RelaxedTask",
+    "StretchHold",
+    "TouchIndex",
+    "TouchNose"
+  ],
+  "wrist_order": [
+    "left",
+    "right"
+  ],
+  "sensor_mode": "acc_gyro",
+  "channel_order": [
+    "AccX",
+    "AccY",
+    "AccZ",
+    "GyroX",
+    "GyroY",
+    "GyroZ"
+  ],
+  "config_sha256": "2f6990af326fff28d49ecc97a3ee919d8c091bf13aa935580404f3c1fd9544ea",
+  "split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+  "manifest_sha256": {
+    "CrossArms": "1eea02a477ce8173d6e994ba98bebe2a66fb43eab20e963770d1cf7be2afab9a",
+    "DrinkGlas": "c38c8b5d4c58294113c0d07f2f8ba5f0081e9b62d959bb463997b43465929226",
+    "Entrainment": "190d64629e498f32cc81bbfce9471de15a800d0e800bb0c02bf1ac1598963cc8",
+    "HoldWeight": "9c61df9c943f58f11b8ce665ee1c728efdf00d07f9ded42e551f79a176261508",
+    "LiftHold": "a8fe303c0dda666ba74633180098274b687b6abf00848e16715795224d773061",
+    "PointFinger": "e5c1a79626cc24b841bbb5d3ad168d87db4510bed731acb3e68f69f7d4a287ca",
+    "Relaxed": "2b171a9527fb1a79b9bad644577ef3e7631e3410ffca3f47cf23f6283e327397",
+    "RelaxedTask": "53debd2fefe2ba79e585902d04556b5d471551a53ef8b43d3af8ef1b02535423",
+    "StretchHold": "e37ef75cdf47c9adb70b186ac3d50609d521f9b17692ce3cf0c421d4c378333d",
+    "TouchIndex": "d214e2dc1310d2e5c3863ba707f7682bc25b315fc5dfc8baa84fd2afaab8c8e2",
+    "TouchNose": "2fe5600010eb05124f29648ce41653a016d35c301750861a16a21a23c243fd11"
+  },
+  "preprocessing_sha256": {
+    "data/processed/pads_multi_activity/v2_l1_full_length/audit.json": "bb0b012a46944e32e093914172565c31e31d583286d1be5e559b05f35c44738c",
+    "data/processed/pads_multi_activity/v2_l1_full_length/processing_config.json": "1ced7052705192511da4d89d1a066589cede62b658bb852ff5769d20551bbe6c",
+    "data/processed/pads_multi_activity/v2_l1_full_length/quality_summary.json": "61ee103f8658b59858dd5f907e9b9ae425d7436036981eb3d516a0e280efc2f6",
+    "data/processed/pads_multi_activity/v2_l1_full_length/solver_audit.json": "4407369f118e24f5b0ef0695f69b15167afdca3da1d657f01f22383498346f5a"
+  },
+  "source_tree_sha256": "fae112dcf6d05de5f94bdbe0c7e2b3748d79d343200f441762f4dd8db82f6617",
+  "normalization_sha256": "dd4c6d23cf2f3c3d4ea09da34d51f22b6b40ec5f6b2b8fc182af2f8977c7f452"
+}

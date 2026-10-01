@@ -1,0 +1,66 @@
+{
+  "status": "smoke_complete",
+  "run_directory": "/home/zyt/MFAM/outputs/pads_classification/pure_deep_pool_v1_smoke_train",
+  "outer_test_loader_created": false,
+  "outer_test_evaluated": false,
+  "summary": {
+    "fold_id": "outer_0/inner_0",
+    "best_epoch": 1,
+    "best_metric": 0.5,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.75,
+      "balanced_accuracy": 0.5,
+      "macro_precision": 0.375,
+      "macro_recall": 0.5,
+      "macro_f1": 0.42857142857142855,
+      "weighted_precision": 0.5625,
+      "weighted_recall": 0.75,
+      "weighted_f1": 0.6428571428571428,
+      "per_class_precision": [
+        0.75,
+        0.0
+      ],
+      "per_class_recall": [
+        1.0,
+        0.0
+      ],
+      "per_class_f1": [
+        0.8571428571428571,
+        0.0
+      ],
+      "support": [
+        6,
+        2
+      ],
+      "confusion_matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "sample_count": 8,
+      "macro_auroc": 0.0,
+      "per_class_auroc": [
+        0.0,
+        0.0
+      ],
+      "brier_score": 0.4687378637051516,
+      "negative_log_likelihood": 0.6622035665297625,
+      "loss": 0.6622035503387451,
+      "classification_loss": 0.6622035503387451,
+      "duration_seconds": 0.03852533455938101,
+      "batches": 1,
+      "pd_recall": 1.0,
+      "dd_recall": 0.0
+    },
+    "train_subject_ids_sha256": "2914d1030506d8cc32a1ca8fa38037df5c1e3c7f5395b624c7e3204b912f2b62",
+    "normalization_sha256": "a7bd58abaf6206fd326ac97cc2e8a1ba778f83ef8d82cd678a209717326b2f35",
+    "checkpoint_sha256": "317ab251f1d3755961949f6158ab493b43e48473bff6e34bcf033afba7c09989",
+    "smoke": true
+  }
+}

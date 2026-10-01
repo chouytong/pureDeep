@@ -1,0 +1,16 @@
+{
+  "scope": "fixed inner-development train/validation only",
+  "outer_test_accessed": false,
+  "architecture_modified": false,
+  "model_retrained": false,
+  "training_recipe_modified": false,
+  "components": {
+    "left": "64-D",
+    "right": "64-D",
+    "mean": "64-D",
+    "absdiff": "64-D"
+  },
+  "primary_independent_splits": 15,
+  "seed_aggregation": "mean of seeds 42/43/44 within identical outer/inner split",
+  "causal_boundary": "Passive probes quantify information and shift; they do not establish causal contribution to frozen-head performance."
+}

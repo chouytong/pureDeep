@@ -1,0 +1,22 @@
+{
+  "allowed_categorical": [
+    "gender",
+    "handedness"
+  ],
+  "allowed_numeric": [
+    "age",
+    "height",
+    "weight"
+  ],
+  "excluded_leakage": [
+    "age_at_diagnosis",
+    "condition",
+    "disease_comment"
+  ],
+  "excluded_uncertain": [
+    "appearance_in_first_grade_kinship",
+    "appearance_in_kinship",
+    "effect_of_alcohol_on_tremor"
+  ],
+  "principle": "Only basic pre-diagnostic demographics are allowed; uncertain fields are excluded."
+}

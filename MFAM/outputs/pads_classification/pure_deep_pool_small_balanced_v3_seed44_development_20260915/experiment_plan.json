@@ -1,0 +1,14 @@
+{
+  "hypothesis": "If balanced-v3 learns a stable representation rather than benefiting from a favorable initialization, its improvement over R1 should persist with seed 44.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": [
+    "R1",
+    "PureDeepPool-balanced-v3-seed42",
+    "PureDeepPool-balanced-v3-seed43"
+  ],
+  "seed": 44,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Do not retain balanced-v3 as a stable candidate if the three-seed mean BA regresses to R1 or seed dispersion is too large for a reliable backbone."
+}

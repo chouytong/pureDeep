@@ -1,0 +1,24 @@
+{
+  "model": "STR-01",
+  "seed": 43,
+  "outer_fold": 3,
+  "threshold": {
+    "source": "inner_oof_only",
+    "positive_class": "DD",
+    "decision_rule": "predict DD when p(DD) >= threshold",
+    "metric": "balanced_accuracy",
+    "threshold": 0.46295878291130066,
+    "balanced_accuracy": 0.6862581152862484,
+    "sample_count": 313
+  },
+  "final_epoch": {
+    "strategy": "median_inner_best_epoch",
+    "inner_best_epochs": [
+      16,
+      8,
+      8
+    ],
+    "selected_epoch_count": 8
+  },
+  "lock_sha256": "124d091122153ddceced6fb90d59b51611fa9b32ac2c90f5d2087501415eb64b"
+}

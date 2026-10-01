@@ -1,0 +1,99 @@
+{
+  "prediction_files": [
+    "/home/zyt/MFAM/outputs/pads_classification/formal_v2_full_length_seed42_20260821/test_final/predictions.csv",
+    "/home/zyt/MFAM/outputs/pads_classification/formal_v2_full_length_seed43_20260821/test_final/predictions.csv",
+    "/home/zyt/MFAM/outputs/pads_classification/formal_v2_full_length_seed44_20260821/test_final/predictions.csv"
+  ],
+  "ensemble": "arithmetic_mean_of_dd_probabilities",
+  "threshold_source": "fixed_cli_value",
+  "selected_threshold": 0.2778912236293157,
+  "metrics": {
+    "threshold": 0.2778912236293157,
+    "sample_count": 79,
+    "accuracy": 0.6708860759493671,
+    "balanced_accuracy": 0.6013198757763976,
+    "macro_precision": 0.6013198757763976,
+    "macro_recall": 0.6013198757763976,
+    "macro_f1": 0.6013198757763976,
+    "confusion_matrix": [
+      [
+        43,
+        13
+      ],
+      [
+        13,
+        10
+      ]
+    ],
+    "brier_score": 0.19933916796854798,
+    "negative_log_likelihood": 0.5887616344536001,
+    "auroc": 0.6203416149068323
+  },
+  "default_threshold_metrics": {
+    "threshold": 0.5,
+    "sample_count": 79,
+    "accuracy": 0.7088607594936709,
+    "balanced_accuracy": 0.5512422360248448,
+    "macro_precision": 0.6161971830985915,
+    "macro_recall": 0.5512422360248448,
+    "macro_f1": 0.538481076962154,
+    "confusion_matrix": [
+      [
+        52,
+        4
+      ],
+      [
+        19,
+        4
+      ]
+    ],
+    "brier_score": 0.19933916796854798,
+    "negative_log_likelihood": 0.5887616344536001,
+    "auroc": 0.6203416149068323
+  },
+  "per_model_probability_correlation": [
+    [
+      1.0,
+      0.8043826542581548,
+      0.6424349354486428
+    ],
+    [
+      0.8043826542581549,
+      1.0,
+      0.5523508504226111
+    ],
+    [
+      0.6424349354486429,
+      0.5523508504226112,
+      1.0
+    ]
+  ],
+  "bootstrap": {
+    "method": "stratified_subject_bootstrap_percentile",
+    "resamples": 5000,
+    "seed": 20260821,
+    "confidence_level": 0.95,
+    "intervals": {
+      "accuracy": [
+        0.569620253164557,
+        0.7721518987341772
+      ],
+      "balanced_accuracy": [
+        0.48757763975155277,
+        0.7239906832298137
+      ],
+      "macro_f1": [
+        0.4840348330914369,
+        0.7189664856768396
+      ],
+      "auroc": [
+        0.4720496894409938,
+        0.7655473602484469
+      ],
+      "brier_score": [
+        0.16564803240613707,
+        0.23201836408831172
+      ]
+    }
+  }
+}

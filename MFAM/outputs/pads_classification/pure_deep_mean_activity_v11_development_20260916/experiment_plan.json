@@ -1,0 +1,10 @@
+{
+  "hypothesis": "Learned activity attention is a high-variance component at n=390. Uniform masked averaging should retain the multi-activity evidence while improving fold stability and reducing parameters.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "pure_deep_normfree_moments_v8_seed42",
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Retain only if BA improves by at least 0.01 or is within 0.005 while fold variance, AUROC and calibration improve. Otherwise retain v8 learned activity attention and stop internal architecture search."
+}

@@ -1,0 +1,68 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_3/inner_1",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-09-21T09:17:04.603134+00:00",
+  "summary": {
+    "fold_id": "outer_3/inner_1",
+    "best_epoch": 25,
+    "best_metric": 0.6608544027898866,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.7333333333333333,
+      "balanced_accuracy": 0.6608544027898866,
+      "macro_precision": 0.6752136752136753,
+      "macro_recall": 0.6608544027898866,
+      "macro_f1": 0.6665154264972777,
+      "weighted_precision": 0.7242165242165243,
+      "weighted_recall": 0.7333333333333334,
+      "weighted_f1": 0.7276467029643073,
+      "per_class_precision": [
+        0.7948717948717948,
+        0.5555555555555556
+      ],
+      "per_class_recall": [
+        0.8378378378378378,
+        0.4838709677419355
+      ],
+      "per_class_f1": [
+        0.8157894736842105,
+        0.5172413793103449
+      ],
+      "support": [
+        74,
+        31
+      ],
+      "confusion_matrix": [
+        [
+          62,
+          12
+        ],
+        [
+          16,
+          15
+        ]
+      ],
+      "sample_count": 105,
+      "macro_auroc": 0.5963382737576286,
+      "per_class_auroc": [
+        0.5963382737576286,
+        0.5963382737576286
+      ],
+      "brier_score": 0.49632313351759805,
+      "negative_log_likelihood": 0.9799590336392342,
+      "loss": 1.22952561344774,
+      "classification_loss": 1.22952561344774,
+      "duration_seconds": 0.11436451500048861,
+      "batches": 14,
+      "pd_recall": 0.8378378378378378,
+      "dd_recall": 0.4838709677419355
+    },
+    "train_subject_ids_sha256": "fbbc1bde07313b98342428286630c698d7cdfef7fa31aaa44900f15d21ba8bf2",
+    "normalization_sha256": "f4ae046e1a2c86aef8fb380dc0a1045ac1ec2cd7b6d96de8dac6177fb0c70553",
+    "checkpoint_sha256": "37e67e4ae63ea9a9f4fc6e62b5ae6f56c612eee5f61c081d9bcd03e9641ca23b",
+    "pretraining": null,
+    "smoke": false
+  }
+}

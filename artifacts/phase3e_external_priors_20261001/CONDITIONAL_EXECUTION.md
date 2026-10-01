@@ -1,0 +1,4 @@
+# Conditional execution decisions
+After all45 BioPM residual runs completed (analysis_e2_complete.log), BA vs STR−0.0048,AUROC+0.0005,CIcrosszero; vs retainedHarNet10 BA−0.0272,AUROC−0.0414. Joint value and retention fail. E3 executed under the previously recorded any-primary-positive control clarification, even though the smallAUROC change is not stable evidence of benefit. This permits a capacity-control comparison without retaining a failed candidate.
+
+E4 external-prior disease complementarity is NOT RUN: BioPM fails the preset valuable-vsSTR joint gate. E5 fixed dual-prior is NOT RUN: BioPM is not stably near/better thanHarNet10 (bothmean differences negative withCIwell below−.01), and E4clearcomplementarity is not established. Their effects remain unmeasured; do not call them measured negative outcomes. No attention/gate/dimension/weight search follows.

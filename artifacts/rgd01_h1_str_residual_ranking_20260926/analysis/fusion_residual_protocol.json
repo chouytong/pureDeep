@@ -1,0 +1,10 @@
+{
+  "scope": "inner-development only",
+  "outer_information_used": false,
+  "H1_train_scores": "fixed formal H1 pipeline refit on inner-train, validation reproduction max 1.1e-16; train scores are in-sample",
+  "STR_train_scores": "frozen checkpoint on its own train subjects, in-sample",
+  "fusion": "C=1 logistic on train-only standardized STR DD logit margin and H1 DD logit; diagnostic only",
+  "residual_target": "H1 train-z-logit minus STR train-z-logit; both train standardizations applied to validation",
+  "residual_probe": "Ridge alpha=1 with train-only feature scaling, STR score covariate in all stages",
+  "warning": "in-sample base-model train scores versus out-of-sample validation score distribution; negative residual-probe result cannot prove information absence"
+}

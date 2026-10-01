@@ -1,0 +1,60 @@
+_base_: pads_multi_activity_v3_nested_cv.yaml
+
+experiment:
+  name: pads_pure_deep_masked_pretrain_v12
+  output_root: outputs/pads_classification/pure_deep_masked_pretrain_v12
+  seed: 42
+  deterministic: true
+
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  pure_deep:
+    feature_dim: 64
+    dropout: 0.1
+    pooling: attention_mean_std
+    stem_mode: shared
+    spectral:
+      enabled: false
+    moment_branch:
+      enabled: true
+      feature_dim: 32
+      kernels: [1, 15, 63]
+  activity_fusion:
+    attention_dim: 64
+    dropout: 0.1
+    classifier_dropout: 0.2
+
+loss:
+  label_smoothing: 0.0
+  class_weights: train_balanced
+
+training:
+  mixed_precision: false
+
+self_supervised:
+  enabled: true
+  method: masked_sequence_reconstruction
+  epochs: 10
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  mask_ratio: 0.30
+  span_length: 25
+  gradient_clip_norm: 1.0
+  labels_used: false
+  validation_subjects_used: false
+
+development:
+  hypothesis: >-
+    Fold-train-only masked sequence reconstruction will initialize V8's learned
+    temporal and normalization-free moment filters with motion structure before
+    supervised fine-tuning, reducing small-sample overfitting without adding any
+    handcrafted signal feature or changing the downstream architecture.
+  comparison: pure_deep_normfree_moments_v8_seed42
+  stop_rule: >-
+    Use seed 42 as the preregistered discovery run. Replicate with seeds 43 and
+    44 only if mean balanced accuracy improves by at least 0.01, at least 9 of
+    15 matched folds improve, and AUROC does not regress by more than 0.01.
+    Retain only if the gain then remains coherent across the three seeds.

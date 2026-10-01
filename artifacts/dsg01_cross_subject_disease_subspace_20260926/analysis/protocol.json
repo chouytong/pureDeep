@@ -1,0 +1,14 @@
+{
+  "scope": "inner-development only",
+  "outer_information_used": false,
+  "model_training": false,
+  "linear_CKA_subjects": "shared train subjects only",
+  "alignment": "unlabeled Orthogonal Procrustes on shared train subjects after fixed train-only PCA16",
+  "alignment_min_common_train": 32,
+  "probe": "train-only balanced logistic C=1",
+  "transfer": "target validation subjects absent source probe train; min 20, min 5/class; NA otherwise",
+  "primary_unit": "15 split means after 3-seed aggregation",
+  "stable_error_primary": "seed-first four validation appearances, >=0.75 error",
+  "stable_error_sensitivity": "12 individual seed-fold appearances",
+  "raw_cosine": "descriptive only"
+}

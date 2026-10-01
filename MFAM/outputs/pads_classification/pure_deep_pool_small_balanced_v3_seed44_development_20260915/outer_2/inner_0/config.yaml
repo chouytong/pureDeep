@@ -1,0 +1,228 @@
+task:
+  type: pads_classification
+  name: pd_vs_dd_subject_multi_activity_full_length_l1
+experiment:
+  name: pads_pure_deep_pool_small_balanced_v3_seed44
+  output_root: /home/zyt/MFAM/outputs/pads_classification/pure_deep_pool_small_balanced_v3_seed44
+  seed: 44
+  deterministic: true
+data:
+  type: pads
+  unit: subject
+  root: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length
+  activities:
+  - CrossArms
+  - DrinkGlas
+  - Entrainment
+  - HoldWeight
+  - LiftHold
+  - PointFinger
+  - Relaxed
+  - RelaxedTask
+  - StretchHold
+  - TouchIndex
+  - TouchNose
+  activity_manifests:
+    CrossArms: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/CrossArms.csv
+    DrinkGlas: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/DrinkGlas.csv
+    Entrainment: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Entrainment.csv
+    HoldWeight: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/HoldWeight.csv
+    LiftHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/LiftHold.csv
+    PointFinger: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/PointFinger.csv
+    Relaxed: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Relaxed.csv
+    RelaxedTask: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/RelaxedTask.csv
+    StretchHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/StretchHold.csv
+    TouchIndex: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchIndex.csv
+    TouchNose: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchNose.csv
+  wrist_mode: bilateral
+  sensor_mode: acc_gyro
+  wrist_order:
+  - left
+  - right
+  channel_names:
+  - AccX
+  - AccY
+  - AccZ
+  - GyroX
+  - GyroY
+  - GyroZ
+  invalid_pair_policy: error
+  labels:
+  - PD
+  - DD
+  raw_input_channels: 6
+  sample_rate: 100.0
+  sequence_length: null
+  train_crop: full
+  eval_crop: full
+  eval_crop_count: 1
+  inference_crop: full
+  pad_value: 0.0
+  delimiter: ','
+  drop_time_column: false
+  minimum_samples_per_class: 10
+  standardize: true
+  normalization_scope: activity_wrist_channel
+  normalization_epsilon: 1.0e-06
+  num_workers: 4
+  pin_memory: true
+  fold:
+    num_folds: 5
+    test_fold: 0
+    validation_fraction: 0.15
+    stratified: true
+    manifest_fold_column: null
+    split_file: null
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  frequency:
+    bands:
+    - - 0.5
+      - 3.0
+    - - 3.0
+      - 7.0
+    - - 7.0
+      - 12.0
+    boundary: half_open
+    include_last_high: true
+    include_original: false
+  encoder:
+    branch_channels: 64
+    hidden_dim: 128
+    kernel_size: 3
+    dilations:
+    - 1
+    - 2
+    - 4
+    channel_reduction: 8
+    conv_bias: false
+    dropout: 0.0
+  mil:
+    window_seconds: 1.0
+    overlap: 0.5
+    attention_dim: null
+    retention_ratio: 0.3
+    epsilon: 1.0e-08
+    hard_gating: true
+    hard_gating_train_only: false
+    attention_type: tanh
+  activity_fusion:
+    attention_dim: 64
+    dropout: 0.1
+    classifier_dropout: 0.2
+  pure_deep:
+    feature_dim: 64
+    dropout: 0.1
+    pooling: attention_mean_std
+loss:
+  label_smoothing: 0.0
+  class_weights:
+  - 0.7040816326530612
+  - 1.725
+  class_weight_source: current_fold_train_subject_labels_only
+  class_weight_train_counts:
+    PD: 147
+    DD: 60
+training:
+  epochs: 50
+  batch_size: 8
+  optimizer: adamw
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  adam_betas:
+  - 0.9
+  - 0.999
+  scheduler:
+    type: cosine
+    minimum_lr: 1.0e-06
+  mixed_precision: false
+  gradient_clip_norm: 5.0
+  early_stopping:
+    enabled: true
+    patience: 12
+    metric: balanced_accuracy
+    mode: max
+    minimum_delta: 0.0
+  checkpoint:
+    resume: null
+    save_every: 0
+  overfit_batches: 0
+evaluation:
+  batch_size: 8
+  zero_division: 0.0
+  save_predictions: true
+  report_per_class: true
+  run_test_after_training: false
+distributed:
+  enabled: false
+  backend: auto
+nested_cv:
+  split_file: splits/pads_classification/v3_nested_cv/seed42/nested_cv_splits.json
+  outer_folds: 5
+  inner_folds: 3
+  seed: 42
+  split_unit: subject
+  stratification:
+  - PD
+  - Other
+  - ET
+  - Atypical
+  - MS
+  outer_test_access: final_evaluation_only
+model_selection:
+  primary_metric: balanced_accuracy
+  secondary_metrics:
+  - macro_f1
+  - accuracy
+  - macro_auroc
+  - dd_recall
+  - pd_recall
+  - negative_log_likelihood
+  - brier_score
+  threshold:
+    source: inner_oof_only
+    metric: balanced_accuracy
+    positive_class: DD
+  final_epoch:
+    strategy: median_inner_best_epoch
+  reuse_v2_threshold: false
+provenance:
+  strict_checkpoint_validation: true
+  experiment_version: v3_nested_cv
+  pads_dataset_version: 1.0.0
+  pads_doi: 10.13026/m0w9-zx22
+  label_mapping:
+    Parkinson's: PD
+    Other Movement Disorders: DD
+    Essential Tremor: DD
+    Atypical Parkinsonism: DD
+    Multiple Sclerosis: DD
+    Healthy: excluded
+  preprocessing_artifacts:
+  - data/processed/pads_multi_activity/v2_l1_full_length/processing_config.json
+  - data/processed/pads_multi_activity/v2_l1_full_length/audit.json
+  - data/processed/pads_multi_activity/v2_l1_full_length/quality_summary.json
+  - data/processed/pads_multi_activity/v2_l1_full_length/solver_audit.json
+development:
+  hypothesis: If balanced-v3 learns a stable representation rather than benefiting
+    from a favorable initialization, its improvement over R1 should persist with seed
+    44.
+  comparison:
+  - R1
+  - PureDeepPool-balanced-v3-seed42
+  - PureDeepPool-balanced-v3-seed43
+  stop_rule: Do not retain balanced-v3 as a stable candidate if the three-seed mean
+    BA regresses to R1 or seed dispersion is too large for a reliable backbone.
+nested_runtime:
+  phase: inner_training
+  fold_id: outer_2/inner_0
+  train_subject_ids_sha256: 1152df1026522f6686786800b56c0631e77c10df1307cac5ac2ad6a52bbf2858
+  validation_subject_ids_sha256: d8c2b9bf7026c4d365fd8355a7c64f970131ed18f44c8c0f1b5b1d3802352c21
+  test_subject_ids_sha256: 3a3aeeb0a797307700bd59b16d0bd18e6c3460f7c55bfe7b6afd8ae53535796f
+  train_subject_count: 207
+  validation_subject_count: 105
+  test_subject_count: 78
+  smoke_execution_limiter: false

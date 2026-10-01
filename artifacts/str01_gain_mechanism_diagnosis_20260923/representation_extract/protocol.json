@@ -1,0 +1,14 @@
+{
+  "scope": "fixed inner-development train/validation only",
+  "outer_information_used": false,
+  "models_retrained": false,
+  "architecture_modified": false,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "embedding_files": 45,
+  "activity_margin_definition": "exact additive DD-minus-PD logit contribution; activity attention times original classifier projection for base path, and fixed head weight block times ordered token for residual path",
+  "biases": "reported separately and excluded from per-activity contributions"
+}

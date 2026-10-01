@@ -1,0 +1,47 @@
+{
+  "candidate_parameters": {
+    "C": 1.0,
+    "class_weight": "balanced",
+    "scope": "secondary_sensitivity",
+    "solver": "liblinear"
+  },
+  "feature_schema_sha256": "bdb83aae1c31b66c659a63f7a723f74b2cc82bfc99725621f6a41ba736389312",
+  "inner_fold": 2,
+  "metrics": {
+    "accuracy": 0.7572815533980582,
+    "auroc": 0.7570776255707762,
+    "balanced_accuracy": 0.7011415525114155,
+    "binary_dd_brier": 0.19822105584821134,
+    "confusion_matrix": [
+      [
+        61,
+        12
+      ],
+      [
+        13,
+        17
+      ]
+    ],
+    "dd_pr_auc": 0.6079416339262417,
+    "dd_recall": 0.5666666666666667,
+    "dd_support": 30,
+    "macro_f1": 0.7031015796148968,
+    "negative_log_likelihood": 1.1293154556786285,
+    "pd_recall": 0.8356164383561644,
+    "pd_support": 73,
+    "sample_count": 103
+  },
+  "model_artifact_sha256": "98d5291d9e5644cb47e382861108bcfc24d2c2b15a1f93345ce16d84270d66cc",
+  "model_name": "H1b_handcrafted_logistic_balanced",
+  "outer_context": 1,
+  "outer_test_accessed": false,
+  "representation": "deterministic_handcrafted_processed_v2",
+  "runtime_seconds": 0.18425587005913258,
+  "scope": "development_inner_cv",
+  "seed": 42,
+  "status": "complete",
+  "train_subject_count": 209,
+  "train_subject_ids_sha256": "c3dd98f7191473da4957be552bead36b06233043b1e7c969920f72893205c460",
+  "validation_subject_count": 103,
+  "validation_subject_ids_sha256": "ddc965169ad9cd89eea343de4dcbf1de44927670de48db87edd84e44b1ef7e15"
+}

@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+  "variants": {
+    "baseline": {
+      "overrides": {},
+      "description": "exact STR-01 reproduction"
+    },
+    "lr_1e4": {
+      "overrides": {
+        "training.learning_rate": 0.0001
+      },
+      "family": "hyperparameter",
+      "description": "STR-only LR 1e-4 versus baseline 2e-4"
+    },
+    "wd_1e3": {
+      "overrides": {
+        "training.weight_decay": 0.001
+      },
+      "family": "hyperparameter",
+      "description": "STR-only WD 1e-3 versus baseline 1e-4"
+    },
+    "smooth_005": {
+      "overrides": {
+        "loss.label_smoothing": 0.05
+      },
+      "family": "hyperparameter",
+      "description": "label smoothing 0.05, balanced CE retained"
+    },
+    "ce_unweighted": {
+      "overrides": {
+        "loss.class_weights": null
+      },
+      "family": "imbalance_loss",
+      "description": "unweighted CE control"
+    },
+    "ce_sqrtweighted": {
+      "overrides": {},
+      "loss_kind": "sqrt_weighted",
+      "family": "imbalance_loss",
+      "description": "train-only sqrt inverse-frequency weighted CE"
+    },
+    "focal_balanced": {
+      "overrides": {},
+      "loss_kind": "focal",
+      "family": "imbalance_loss",
+      "description": "balanced weighted focal gamma=2"
+    },
+    "ce_effective099": {
+      "overrides": {},
+      "loss_kind": "class_balanced",
+      "family": "imbalance_loss",
+      "description": "train-only effective-number CE beta=0.99"
+    },
+    "balanced_sampler": {
+      "overrides": {},
+      "sampling": "balanced",
+      "family": "imbalance_sampling",
+      "description": "train-only class-balanced subject exposure, no augmentation"
+    },
+    "jitter_equal": {
+      "overrides": {},
+      "augmentation": "jitter",
+      "strategy": "equal",
+      "family": "augmentation",
+      "description": "single mild jitter; equal train-only perturbation"
+    },
+    "jitter_dd_only": {
+      "overrides": {},
+      "augmentation": "jitter",
+      "strategy": "dd_only",
+      "family": "augmentation",
+      "description": "single mild jitter; dd_only train-only perturbation"
+    },
+    "scaling_equal": {
+      "overrides": {},
+      "augmentation": "scaling",
+      "strategy": "equal",
+      "family": "augmentation",
+      "description": "single mild scaling; equal train-only perturbation"
+    },
+    "scaling_dd_only": {
+      "overrides": {},
+      "augmentation": "scaling",
+      "strategy": "dd_only",
+      "family": "augmentation",
+      "description": "single mild scaling; dd_only train-only perturbation"
+    },
+    "temporal_equal": {
+      "overrides": {},
+      "augmentation": "temporal",
+      "strategy": "equal",
+      "family": "augmentation",
+      "description": "single mild temporal; equal train-only perturbation"
+    },
+    "temporal_dd_only": {
+      "overrides": {},
+      "augmentation": "temporal",
+      "strategy": "dd_only",
+      "family": "augmentation",
+      "description": "single mild temporal; dd_only train-only perturbation"
+    },
+    "mixup_equal": {
+      "overrides": {},
+      "augmentation": "mixup",
+      "strategy": "equal",
+      "family": "augmentation",
+      "description": "single mild mixup; equal train-only perturbation"
+    },
+    "mixup_dd_only": {
+      "overrides": {},
+      "augmentation": "mixup",
+      "strategy": "dd_only",
+      "family": "augmentation",
+      "description": "single mild mixup; dd_only train-only perturbation"
+    }
+  }
+}

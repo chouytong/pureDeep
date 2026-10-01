@@ -1,0 +1,13 @@
+{
+  "hypothesis": "The one-second effective receptive field of balanced-v3 under-represents full-activity periodicity. A differentiable global rFFT log-magnitude branch with learnable frequency convolutions should recover complementary information without handcrafted bands, peaks or energy features.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": [
+    "PureDeepPool-balanced-v3",
+    "R1"
+  ],
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Reject the spectral branch if BA gain versus balanced-v3 is below 0.01 or if BA, AUROC, macro-F1 and DD recall do not improve coherently across folds."
+}

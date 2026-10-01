@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "baseline": "V3 SubjectMFAM",
+  "protocol": "5_outer_x_3_inner_nested_subject_cv",
+  "base_config_sha256": "c6cb1b8488c081d5d1708c16dbced047c1959054975b534829369ebb5969aa55",
+  "split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+  "source_tree_sha256": "bf3acf630f506c49b9d3495f7be86d8cc765c13eafac76de219a639cc55c7c08",
+  "primary_metric": "balanced_accuracy",
+  "threshold": {
+    "source": "inner_oof_only",
+    "metric": "balanced_accuracy",
+    "positive_class": "DD"
+  },
+  "final_epoch": {
+    "strategy": "median_inner_best_epoch"
+  },
+  "baseline_hyperparameters_unchanged": true,
+  "device": "cuda:0",
+  "started_at_utc": "2026-08-27T14:59:55.499091+00:00"
+}

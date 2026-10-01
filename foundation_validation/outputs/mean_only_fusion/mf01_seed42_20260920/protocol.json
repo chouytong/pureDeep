@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "baseline": "pads_v8_gn_mean_only_mf01_seed42",
+  "protocol": "5_outer_x_3_inner_nested_subject_cv",
+  "base_config_sha256": "34fae898403e928f6eb9bf44b63385a990bba5112be30b825ce56602f5666bdd",
+  "split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+  "source_tree_sha256": "1e574c19ffbd9066918e1d3ce103a571cff5fa83fc57092231e53b462a290d14",
+  "primary_metric": "balanced_accuracy",
+  "threshold": {
+    "source": "inner_oof_only",
+    "metric": "balanced_accuracy",
+    "positive_class": "DD"
+  },
+  "final_epoch": {
+    "strategy": "median_inner_best_epoch"
+  },
+  "model_frozen_before_outer_test": true,
+  "outer_test_policy": "evaluate_each_subject_once_after_inner_selection",
+  "device": "cuda:0",
+  "started_at_utc": "2026-09-20T15:24:51.754414+00:00"
+}

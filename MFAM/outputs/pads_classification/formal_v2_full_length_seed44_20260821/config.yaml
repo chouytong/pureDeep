@@ -1,0 +1,160 @@
+task:
+  type: pads_classification
+  name: pd_vs_dd_subject_multi_activity_full_length_l1
+experiment:
+  name: pads_pd_vs_dd_subject_mfam_v2
+  output_root: /home/zyt/MFAM/outputs/pads_classification
+  seed: 44
+  deterministic: true
+data:
+  type: pads
+  unit: subject
+  root: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length
+  activities:
+  - CrossArms
+  - DrinkGlas
+  - Entrainment
+  - HoldWeight
+  - LiftHold
+  - PointFinger
+  - Relaxed
+  - RelaxedTask
+  - StretchHold
+  - TouchIndex
+  - TouchNose
+  activity_manifests:
+    CrossArms: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/CrossArms.csv
+    DrinkGlas: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/DrinkGlas.csv
+    Entrainment: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Entrainment.csv
+    HoldWeight: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/HoldWeight.csv
+    LiftHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/LiftHold.csv
+    PointFinger: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/PointFinger.csv
+    Relaxed: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Relaxed.csv
+    RelaxedTask: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/RelaxedTask.csv
+    StretchHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/StretchHold.csv
+    TouchIndex: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchIndex.csv
+    TouchNose: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchNose.csv
+  wrist_mode: bilateral
+  sensor_mode: acc_gyro
+  wrist_order:
+  - left
+  - right
+  channel_names:
+  - AccX
+  - AccY
+  - AccZ
+  - GyroX
+  - GyroY
+  - GyroZ
+  invalid_pair_policy: error
+  labels:
+  - PD
+  - DD
+  raw_input_channels: 6
+  sample_rate: 100.0
+  sequence_length: null
+  train_crop: full
+  eval_crop: full
+  eval_crop_count: 1
+  inference_crop: full
+  pad_value: 0.0
+  delimiter: ','
+  drop_time_column: false
+  minimum_samples_per_class: 10
+  standardize: true
+  normalization_scope: activity_wrist_channel
+  normalization_epsilon: 1.0e-06
+  num_workers: 4
+  pin_memory: true
+  fold:
+    num_folds: 5
+    test_fold: 0
+    validation_fraction: 0.15
+    stratified: true
+    manifest_fold_column: null
+    split_file: /home/zyt/MFAM/splits/pads_classification/pd_vs_dd_crossarms_seed42.json
+model:
+  name: subject_mfam
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  cnn:
+    channels:
+    - 64
+    - 128
+    - 256
+    kernel_size: 7
+    dropout: 0.2
+  frequency:
+    bands:
+    - - 0.5
+      - 3.0
+    - - 3.0
+      - 7.0
+    - - 7.0
+      - 12.0
+    boundary: half_open
+    include_last_high: true
+    include_original: false
+  encoder:
+    branch_channels: 64
+    hidden_dim: 128
+    kernel_size: 3
+    dilations:
+    - 1
+    - 2
+    - 4
+    channel_reduction: 8
+    conv_bias: false
+    dropout: 0.0
+  mil:
+    window_seconds: 1.0
+    overlap: 0.5
+    attention_dim: null
+    retention_ratio: 0.3
+    epsilon: 1.0e-08
+    hard_gating: true
+    hard_gating_train_only: false
+    attention_type: tanh
+  classifier:
+    dropout: 0.2
+  activity_fusion:
+    attention_dim: 128
+    dropout: 0.1
+    classifier_dropout: 0.2
+loss:
+  label_smoothing: 0.0
+  class_weights: null
+training:
+  epochs: 50
+  batch_size: 8
+  optimizer: adamw
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  adam_betas:
+  - 0.9
+  - 0.999
+  scheduler:
+    type: cosine
+    minimum_lr: 1.0e-06
+  mixed_precision: true
+  gradient_clip_norm: 5.0
+  early_stopping:
+    enabled: true
+    patience: 12
+    metric: macro_f1
+    mode: max
+    minimum_delta: 0.0
+  checkpoint:
+    resume: null
+    save_every: 0
+  overfit_batches: 0
+evaluation:
+  batch_size: 8
+  zero_division: 0.0
+  save_predictions: true
+  report_per_class: true
+  run_test_after_training: false
+distributed:
+  enabled: false
+  backend: auto

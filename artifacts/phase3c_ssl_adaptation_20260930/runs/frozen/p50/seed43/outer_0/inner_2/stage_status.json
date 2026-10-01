@@ -1,0 +1,68 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_0/inner_2",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-09-30T16:29:03.850475+00:00",
+  "summary": {
+    "fold_id": "outer_0/inner_2",
+    "best_epoch": 6,
+    "best_metric": 0.6384034010392065,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.7352941176470589,
+      "balanced_accuracy": 0.6384034010392065,
+      "macro_precision": 0.6664772727272728,
+      "macro_recall": 0.6384034010392065,
+      "macro_f1": 0.6470588235294117,
+      "weighted_precision": 0.7186831550802139,
+      "weighted_recall": 0.7352941176470589,
+      "weighted_f1": 0.7231833910034602,
+      "per_class_precision": [
+        0.7875,
+        0.5454545454545454
+      ],
+      "per_class_recall": [
+        0.863013698630137,
+        0.41379310344827586
+      ],
+      "per_class_f1": [
+        0.8235294117647058,
+        0.47058823529411764
+      ],
+      "support": [
+        73,
+        29
+      ],
+      "confusion_matrix": [
+        [
+          63,
+          10
+        ],
+        [
+          17,
+          12
+        ]
+      ],
+      "sample_count": 102,
+      "macro_auroc": 0.6811525743977327,
+      "per_class_auroc": [
+        0.6811525743977327,
+        0.6811525743977327
+      ],
+      "brier_score": 0.4050122278484118,
+      "negative_log_likelihood": 0.5953556138459818,
+      "loss": 0.6444275753170836,
+      "classification_loss": 0.6444275753170836,
+      "duration_seconds": 0.12431199511047453,
+      "batches": 13,
+      "pd_recall": 0.863013698630137,
+      "dd_recall": 0.41379310344827586
+    },
+    "train_subject_ids_sha256": "b6c3197ebfbaecfc7294c98685ef965a9fd0e4228b7b02f24700cc395b94a078",
+    "normalization_sha256": "f1cc96034a06abaf61913b3141beaf6818c7c28105553751b195838555e65057",
+    "checkpoint_sha256": "3efffb5b68d547dc4938eb8c25ee14c4947df6df4d1202cf693c122ec745bdea",
+    "pretraining": null,
+    "smoke": false
+  }
+}

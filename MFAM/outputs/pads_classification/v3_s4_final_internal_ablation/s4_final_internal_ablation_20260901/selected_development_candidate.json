@@ -1,0 +1,43 @@
+{
+  "criteria": {
+    "ba_nonnegative_folds_ge_9": {
+      "observed": 3,
+      "pass": false,
+      "threshold": 9
+    },
+    "mean_delta_auroc_ge_0_010": {
+      "observed": 0.005133139600355826,
+      "pass": false,
+      "threshold": 0.01
+    },
+    "mean_delta_ba_ge_0_015": {
+      "observed": -0.01718073582748182,
+      "pass": false,
+      "threshold": 0.015
+    },
+    "mean_delta_dd_recall_ge_minus_0_02": {
+      "observed": -0.0675837350142133,
+      "pass": false,
+      "threshold": -0.02
+    },
+    "zero_nonfinite_and_skipped": {
+      "observed": {
+        "nonfinite_gradient_batches": 0,
+        "nonfinite_loss_batches": 0,
+        "skipped_optimizer_steps": 0
+      },
+      "pass": true,
+      "threshold": 0
+    }
+  },
+  "decision": "S4_rejected_S1_remains_selected",
+  "freeze_scope": "development_candidate_specification_only",
+  "not_a_final_outer_model": true,
+  "outer_test_accessed": false,
+  "previous_development_candidate": "S1",
+  "retraining_or_tuning_after_decision": false,
+  "rule_was_mechanically_applied": true,
+  "s4_passes_all_core_criteria": false,
+  "selected_development_candidate": "S1",
+  "thresholds_were_not_changed": true
+}

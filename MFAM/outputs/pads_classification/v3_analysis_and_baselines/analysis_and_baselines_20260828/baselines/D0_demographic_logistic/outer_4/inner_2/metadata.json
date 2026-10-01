@@ -1,0 +1,54 @@
+{
+  "candidate_parameters": {
+    "C": 1.0,
+    "categorical": [
+      "gender",
+      "handedness"
+    ],
+    "class_weight": null,
+    "numeric": [
+      "age",
+      "height",
+      "weight"
+    ]
+  },
+  "feature_schema_sha256": null,
+  "inner_fold": 2,
+  "metrics": {
+    "accuracy": 0.6990291262135923,
+    "auroc": 0.5872146118721461,
+    "balanced_accuracy": 0.5029680365296804,
+    "binary_dd_brier": 0.2042946198017401,
+    "confusion_matrix": [
+      [
+        71,
+        2
+      ],
+      [
+        29,
+        1
+      ]
+    ],
+    "dd_pr_auc": 0.4069485387047893,
+    "dd_recall": 0.03333333333333333,
+    "dd_support": 30,
+    "macro_f1": 0.440707654580487,
+    "negative_log_likelihood": 0.5991271585897665,
+    "pd_recall": 0.9726027397260274,
+    "pd_support": 73,
+    "sample_count": 103
+  },
+  "model_artifact_sha256": "75a09bbf07b1afaf88e01f40cd77f4d0f5c765d7c4165f4fe529bd74b681752e",
+  "model_name": "D0_demographic_logistic",
+  "outer_context": 4,
+  "outer_test_accessed": false,
+  "representation": "allowed_basic_demographics_only",
+  "runtime_seconds": 0.004735596943646669,
+  "scope": "development_inner_cv",
+  "seed": 42,
+  "status": "complete",
+  "train_subject_count": 210,
+  "train_subject_ids_sha256": "4bea9098c991eca6c8a21c47a75d53c90d936ebc3fa3f4ffcfbba0f608bef609",
+  "validation_subject_count": 103,
+  "validation_subject_ids_sha256": "5aa9bdde6dd9a117893eb7932c4477933aa796b984af9e8ce3c630b7d0bd8e36"
+}

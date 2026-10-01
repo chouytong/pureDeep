@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "baseline": "pads_pure_deep_normfree_moments_v8",
+  "protocol": "5_outer_x_3_inner_nested_subject_cv",
+  "base_config_sha256": "b78bccf9c0e0c11e904647a774851f2203accbef22aec6b0bac4bafd97a90b9a",
+  "split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+  "source_tree_sha256": "3f08832ee12c7b28c24f9b18c6248e892cbcc944429351d7fe2aad62d15336b6",
+  "primary_metric": "balanced_accuracy",
+  "threshold": {
+    "source": "inner_oof_only",
+    "metric": "balanced_accuracy",
+    "positive_class": "DD"
+  },
+  "final_epoch": {
+    "strategy": "median_inner_best_epoch"
+  },
+  "model_frozen_before_outer_test": true,
+  "outer_test_policy": "evaluate_each_subject_once_after_inner_selection",
+  "device": "cuda:0",
+  "started_at_utc": "2026-09-16T08:01:48.695999+00:00"
+}

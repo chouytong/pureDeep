@@ -1,0 +1,68 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_0/inner_1",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-09-28T12:51:21.118764+00:00",
+  "summary": {
+    "fold_id": "outer_0/inner_1",
+    "best_epoch": 8,
+    "best_metric": 0.66324200913242,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.5922330097087378,
+      "balanced_accuracy": 0.66324200913242,
+      "macro_precision": 0.6406372934697089,
+      "macro_recall": 0.66324200913242,
+      "macro_f1": 0.5875286041189931,
+      "weighted_precision": 0.7397508268850305,
+      "weighted_recall": 0.5922330097087378,
+      "weighted_f1": 0.6059185532425406,
+      "per_class_precision": [
+        0.8780487804878049,
+        0.4032258064516129
+      ],
+      "per_class_recall": [
+        0.4931506849315068,
+        0.8333333333333334
+      ],
+      "per_class_f1": [
+        0.631578947368421,
+        0.5434782608695652
+      ],
+      "support": [
+        73,
+        30
+      ],
+      "confusion_matrix": [
+        [
+          36,
+          37
+        ],
+        [
+          5,
+          25
+        ]
+      ],
+      "sample_count": 103,
+      "macro_auroc": 0.6885844748858447,
+      "per_class_auroc": [
+        0.6885844748858447,
+        0.6885844748858447
+      ],
+      "brier_score": 0.567669416731132,
+      "negative_log_likelihood": 0.8153760241274782,
+      "loss": 0.7313871678796787,
+      "classification_loss": 0.7313871678796787,
+      "duration_seconds": 0.10675216605886817,
+      "batches": 13,
+      "pd_recall": 0.4931506849315068,
+      "dd_recall": 0.8333333333333334
+    },
+    "train_subject_ids_sha256": "7c2e19e86f01c25e88b5def67b36ed6a6165fbef74cc692ea19eb6248938ef1a",
+    "normalization_sha256": "4b08facd1b9e0127d1efb99a091d8bb107c7d0af07aa414130baf4a15858c371",
+    "checkpoint_sha256": "0999d5da90f3c1ff07f9919be6de8e5db83860d12f959bf22650a4fa9d2e2d4a",
+    "pretraining": null,
+    "smoke": false
+  }
+}

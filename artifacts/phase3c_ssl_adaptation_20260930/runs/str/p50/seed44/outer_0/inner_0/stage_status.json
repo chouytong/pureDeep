@@ -1,0 +1,68 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_0/inner_0",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-09-30T16:24:28.063765+00:00",
+  "summary": {
+    "fold_id": "outer_0/inner_0",
+    "best_epoch": 12,
+    "best_metric": 0.6582388840453357,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.7428571428571429,
+      "balanced_accuracy": 0.6582388840453357,
+      "macro_precision": 0.6867283950617284,
+      "macro_recall": 0.6582388840453357,
+      "macro_f1": 0.6674486803519062,
+      "weighted_precision": 0.7290711346266903,
+      "weighted_recall": 0.7428571428571429,
+      "weighted_f1": 0.7322999581064097,
+      "per_class_precision": [
+        0.7901234567901234,
+        0.5833333333333334
+      ],
+      "per_class_recall": [
+        0.8648648648648649,
+        0.45161290322580644
+      ],
+      "per_class_f1": [
+        0.8258064516129032,
+        0.509090909090909
+      ],
+      "support": [
+        74,
+        31
+      ],
+      "confusion_matrix": [
+        [
+          64,
+          10
+        ],
+        [
+          17,
+          14
+        ]
+      ],
+      "sample_count": 105,
+      "macro_auroc": 0.6325196163905842,
+      "per_class_auroc": [
+        0.6325196163905842,
+        0.6325196163905842
+      ],
+      "brier_score": 0.39669808096268705,
+      "negative_log_likelihood": 0.5843768164237866,
+      "loss": 0.6586029274123055,
+      "classification_loss": 0.6586029274123055,
+      "duration_seconds": 0.11112829996272922,
+      "batches": 14,
+      "pd_recall": 0.8648648648648649,
+      "dd_recall": 0.45161290322580644
+    },
+    "train_subject_ids_sha256": "cde6f15b74c0775e4cd29180f9185954c93786d2fb85aa4b4d003e237df9530b",
+    "normalization_sha256": "e72d833ca8c2edc26be0dbcb4da96acc266c81d7069500daa4bf872d372d7e10",
+    "checkpoint_sha256": "d099ee0cd9d5d8d7e6c8455bc2801f79e70d53ae5d8ec8b2a1559b1dbd682fc6",
+    "pretraining": null,
+    "smoke": false
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "hypothesis": "V8's approximately one-second TCN receptive field may miss full 10-20 second activity dynamics. Expanding only the temporal dilation schedule to an approximately 25.7-second theoretical receptive field should improve subject-level discrimination if long-range dynamics are limiting.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "pads_pure_deep_normfree_moments_v8_same_seed",
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Retain only after seeds 42/43/44 if mean BA improves by at least 0.01, at least 9 of 15 seed-averaged matched folds improve, and AUROC/Macro-F1 do not materially regress. Outer-test data are prohibited."
+}

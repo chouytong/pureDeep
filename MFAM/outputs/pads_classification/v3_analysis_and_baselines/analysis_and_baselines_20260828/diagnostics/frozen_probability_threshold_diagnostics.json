@@ -1,0 +1,78 @@
+{
+  "conclusion_guardrail": "Retrospective threshold result is diagnostic only and cannot be used for model selection.",
+  "dd_probability_dd": {
+    "iqr": 0.14861542731523514,
+    "maximum": 0.9733928442001343,
+    "mean": 0.3010583166359809,
+    "median": 0.20254600048065186,
+    "minimum": 0.023153411224484444,
+    "n": 114,
+    "q25": 0.1683959811925888,
+    "q75": 0.31701140850782394,
+    "std": 0.22935862846672575
+  },
+  "diagnostic_global_threshold": {
+    "balanced_accuracy": 0.6047864225781846,
+    "candidate_count": 386,
+    "scope": "diagnostic_only_not_for_model_selection",
+    "threshold": 0.25192368030548096
+  },
+  "frozen_selected_threshold_metrics": {
+    "accuracy": 0.7051282051282052,
+    "auroc": 0.6016240783117214,
+    "balanced_accuracy": 0.5934401220442411,
+    "binary_dd_brier": 0.2043194118689004,
+    "confusion_matrix": [
+      [
+        238,
+        38
+      ],
+      [
+        77,
+        37
+      ]
+    ],
+    "dd_pr_auc": 0.4286159312924983,
+    "dd_recall": 0.32456140350877194,
+    "dd_support": 114,
+    "macro_f1": 0.5984744715709183,
+    "negative_log_likelihood": 0.619258531119416,
+    "pd_recall": 0.8623188405797102,
+    "pd_support": 276,
+    "sample_count": 390
+  },
+  "pd_probability_dd": {
+    "iqr": 0.061873260885477066,
+    "maximum": 0.9829546809196472,
+    "mean": 0.21556866885773648,
+    "median": 0.18258947879076004,
+    "minimum": 0.0030101987067610025,
+    "n": 276,
+    "q25": 0.16071069613099098,
+    "q75": 0.22258395701646805,
+    "std": 0.13781757923099147
+  },
+  "reliability": {
+    "binary_dd_brier": 0.2043194118689004,
+    "ece_equal_width_10": 0.08720356905056785,
+    "negative_log_likelihood": 0.619258531119416
+  },
+  "thresholds": {
+    "iqr": 0.026846706867218018,
+    "maximum": 0.35158929228782654,
+    "mean": 0.27876363694667816,
+    "median": 0.2689414322376251,
+    "minimum": 0.24079690873622894,
+    "n": 5,
+    "q25": 0.2528219223022461,
+    "q75": 0.2796686291694641,
+    "std": 0.043345460551933356,
+    "values": [
+      0.35158929228782654,
+      0.24079690873622894,
+      0.2689414322376251,
+      0.2528219223022461,
+      0.2796686291694641
+    ]
+  }
+}

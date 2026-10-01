@@ -1,0 +1,47 @@
+{
+  "scope": "fixed inner-development only",
+  "outer_information_used": false,
+  "formal_STR_frozen": true,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "split_count": 15,
+  "primary_unit": "15 splits after mean across 3 seeds",
+  "disease_positive_class": "DD=1",
+  "STR_score": "final_logits[:,1]-final_logits[:,0]",
+  "stages": [
+    "activity_raw",
+    "activity_context",
+    "subject_embedding",
+    "structured_embedding",
+    "decision_input"
+  ],
+  "score_baseline": "STR final DD-PD logit as covariate",
+  "primary_pca_components": 16,
+  "sensitivity_pca_components": [
+    8,
+    32
+  ],
+  "disease_probe": "train-only LogisticRegression C=1 liblinear, standardized score+train-only standardized PCA features",
+  "increment_signal": "inner-train 5-fold subject-level cross-fitted disease logit(activity_raw+score)-disease logit(score-only)",
+  "signal_predictor": "train-only Ridge alpha=1 on standardized score+fixed PCA features",
+  "ambiguity": "abs(5-fold OOF final-score-only disease logit) tertiles from inner-train; validation scored by full-train model",
+  "conditional_permutation": "shuffle representation PC rows among inner-train subjects within STR-score deciles only",
+  "stable_error": "DSG-01 primary status sensitivity only, never defines ambiguity",
+  "PCA_k_fixed_grid": [
+    8,
+    16,
+    32
+  ],
+  "permutations_per_split_seed_stage": 10,
+  "conditional_permutation_bins": "inner-train STR final-score deciles, within-bin representation PCA rows shuffled",
+  "ambiguity_thresholds": "33.3% and 66.7% quantiles of abs(inner-train 5-fold OOF final-score-only disease logit); high=small absolute margin",
+  "ambiguity_pair_rule": "highest ambiguity of either PD or DD member",
+  "ambiguity_validation_application": "full inner-train score-only probe logit, no validation fit or threshold selection",
+  "score_only_validation_AUROC_equals_frozen_STR_formal": true,
+  "deep_model_train_score_exposure": "frozen STR train representations/scores were produced by checkpoints trained on these same inner-train subjects; probe cross-fitting does not remove that prior model exposure",
+  "H1_used": false,
+  "ALLOW_NEW_TRAINING": "NO"
+}

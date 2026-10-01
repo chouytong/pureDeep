@@ -1,0 +1,66 @@
+_base_: pads_multi_activity_v3_nested_cv.yaml
+
+experiment:
+  name: pads_pure_deep_longrange_lr01_seed42
+  output_root: outputs/foundation_validation/longrange_lr01_seed42
+  seed: 42
+  deterministic: true
+
+data:
+  root: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length
+  activity_manifests:
+    CrossArms: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/CrossArms.csv
+    DrinkGlas: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/DrinkGlas.csv
+    Entrainment: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Entrainment.csv
+    HoldWeight: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/HoldWeight.csv
+    LiftHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/LiftHold.csv
+    PointFinger: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/PointFinger.csv
+    Relaxed: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Relaxed.csv
+    RelaxedTask: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/RelaxedTask.csv
+    StretchHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/StretchHold.csv
+    TouchIndex: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchIndex.csv
+    TouchNose: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchNose.csv
+
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  pure_deep:
+    feature_dim: 64
+    dropout: 0.1
+    pooling: attention_mean_std
+    stem_mode: shared
+    temporal:
+      kernel_size: 7
+      dilations: [1, 4, 16, 64, 128]
+    spectral:
+      enabled: false
+    moment_branch:
+      enabled: true
+      feature_dim: 32
+      kernels: [1, 15, 63]
+  activity_fusion:
+    mode: attention
+    attention_dim: 64
+    dropout: 0.1
+    classifier_dropout: 0.2
+
+loss:
+  label_smoothing: 0.0
+  class_weights: train_balanced
+
+training:
+  mixed_precision: false
+
+development:
+  hypothesis: >-
+    V8's approximately one-second TCN receptive field may miss full 10-20 second
+    activity dynamics. Expanding only the temporal dilation schedule to an
+    approximately 25.7-second theoretical receptive field should improve
+    subject-level discrimination if long-range dynamics are limiting.
+  comparison: pads_pure_deep_normfree_moments_v8_same_seed
+  stop_rule: >-
+    Retain only after seeds 42/43/44 if mean BA improves by at least 0.01,
+    at least 9 of 15 seed-averaged matched folds improve, and AUROC/Macro-F1 do
+    not materially regress. Outer-test data are prohibited.

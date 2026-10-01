@@ -1,0 +1,45 @@
+_base_: pads_multi_activity_v3_nested_cv.yaml
+
+experiment:
+  name: pads_pure_deep_mean_activity_v11
+  output_root: outputs/pads_classification/pure_deep_mean_activity_v11
+  seed: 42
+  deterministic: true
+
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  pure_deep:
+    feature_dim: 64
+    dropout: 0.1
+    pooling: attention_mean_std
+    stem_mode: shared
+    spectral:
+      enabled: false
+    moment_branch:
+      enabled: true
+      feature_dim: 32
+      kernels: [1, 15, 63]
+  activity_fusion:
+    mode: masked_mean
+    classifier_dropout: 0.2
+
+loss:
+  label_smoothing: 0.0
+  class_weights: train_balanced
+
+training:
+  mixed_precision: false
+
+development:
+  hypothesis: >-
+    Learned activity attention is a high-variance component at n=390. Uniform
+    masked averaging should retain the multi-activity evidence while improving
+    fold stability and reducing parameters.
+  comparison: pure_deep_normfree_moments_v8_seed42
+  stop_rule: >-
+    Retain only if BA improves by at least 0.01 or is within 0.005 while fold
+    variance, AUROC and calibration improve. Otherwise retain v8 learned activity
+    attention and stop internal architecture search.

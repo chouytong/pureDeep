@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/></marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b6463a"/></marker>
+  <style>
+    .heading { font: 700 34px Arial, Helvetica, sans-serif; fill: #172033; }
+    .subtitle { font: 400 19px Arial, Helvetica, sans-serif; fill: #536174; }
+    .title { font: 700 19px Arial, Helvetica, sans-serif; fill: #172033; }
+    .body { font: 400 15px Arial, Helvetica, sans-serif; fill: #172033; }
+    .label { font: 400 14px Arial, Helvetica, sans-serif; fill: #536174; }
+    .note { font: 400 16px Arial, Helvetica, sans-serif; fill: #536174; }
+  </style>
+</defs>
+<rect width="1600" height="1000" fill="white"/>
+<text x="800" y="52" class="heading" text-anchor="middle">STR-01 Architecture</text>
+<text x="800" y="84" class="subtitle" text-anchor="middle">V8-GN main path + Structured Token Residual Readout · 75,524 parameters (+4,498)</text>
+<rect x="35" y="370" width="205" height="235" rx="18" fill="#dcebf9" stroke="#334155" stroke-width="2.5"/>
+<text x="137.5" y="405" class="title" text-anchor="middle">Subject input</text>
+<text x="137.5" y="438.0" class="body" text-anchor="middle">11 fixed activities</text>
+<text x="137.5" y="467.0" class="body" text-anchor="middle">Left + right wrist</text>
+<text x="137.5" y="496.0" class="body" text-anchor="middle">Acc XYZ + Gyro XYZ</text>
+<text x="137.5" y="525.0" class="body" text-anchor="middle">[B, 11, 2, 6, Tₐ]</text>
+<rect x="285" y="145" width="300" height="315" rx="18" fill="#e9e1f7" stroke="#334155" stroke-width="2.5"/>
+<text x="435.0" y="180" class="title" text-anchor="middle">Temporal path (shared)</text>
+<text x="435.0" y="213.0" class="body" text-anchor="middle">Conv1D 6→64, k=15, s=2</text>
+<text x="435.0" y="242.0" class="body" text-anchor="middle">GroupNorm(8) + GELU</text>
+<text x="435.0" y="271.0" class="body" text-anchor="middle">3× separable residual blocks</text>
+<text x="435.0" y="300.0" class="body" text-anchor="middle">k=7; dilation 1 / 2 / 4</text>
+<text x="435.0" y="329.0" class="body" text-anchor="middle">GN + GELU + dropout 0.1</text>
+<text x="435.0" y="358.0" class="body" text-anchor="middle">attention + mean + std pooling</text>
+<text x="435.0" y="387.0" class="body" text-anchor="middle">Linear 192→64 + LN + GELU</text>
+<rect x="285" y="535" width="300" height="315" rx="18" fill="#e9e1f7" stroke="#334155" stroke-width="2.5"/>
+<text x="435.0" y="570" class="title" text-anchor="middle">Learned moment path (shared)</text>
+<text x="435.0" y="603.0" class="body" text-anchor="middle">Parallel learned Conv1D</text>
+<text x="435.0" y="632.0" class="body" text-anchor="middle">kernels 1 / 15 / 63</text>
+<text x="435.0" y="661.0" class="body" text-anchor="middle">concat → Conv1D 48→32, k=1</text>
+<text x="435.0" y="690.0" class="body" text-anchor="middle">no pre-pooling normalization</text>
+<text x="435.0" y="719.0" class="body" text-anchor="middle">global mean + std</text>
+<text x="435.0" y="748.0" class="body" text-anchor="middle">Linear 64→32 + LN + GELU</text>
+<text x="435.0" y="777.0" class="body" text-anchor="middle">no handcrafted statistics</text>
+<rect x="635" y="370" width="245" height="235" rx="18" fill="#ddf1e5" stroke="#334155" stroke-width="2.5"/>
+<text x="757.5" y="405" class="title" text-anchor="middle">Wrist embedding</text>
+<text x="757.5" y="438.0" class="body" text-anchor="middle">concat temporal 64</text>
+<text x="757.5" y="465.0" class="body" text-anchor="middle">+ moment 32</text>
+<text x="757.5" y="491.9" class="body" text-anchor="middle">Linear 96→64</text>
+<text x="757.5" y="518.9" class="body" text-anchor="middle">+ LN + GELU</text>
+<text x="757.5" y="545.8" class="body" text-anchor="middle">64D per wrist</text>
+<text x="757.5" y="572.8" class="body" text-anchor="middle">shared L/R weights</text>
+<rect x="930" y="345" width="250" height="285" rx="18" fill="#ddf1e5" stroke="#334155" stroke-width="2.5"/>
+<text x="1055.0" y="380" class="title" text-anchor="middle">Full bilateral fusion</text>
+<text x="1055.0" y="413.0" class="body" text-anchor="middle">left 64D</text>
+<text x="1055.0" y="442.0" class="body" text-anchor="middle">right 64D</text>
+<text x="1055.0" y="471.0" class="body" text-anchor="middle">masked mean 64D</text>
+<text x="1055.0" y="500.0" class="body" text-anchor="middle">|left − right| 64D</text>
+<text x="1055.0" y="529.0" class="body" text-anchor="middle">wrist-valid mask 2D</text>
+<text x="1055.0" y="558.0" class="body" text-anchor="middle">→ 258D per activity</text>
+<path d="M 240 455 L 285 300" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="190.5" y="350.5" width="144" height="24" rx="5" fill="white" opacity="0.94"/>
+<text x="262.5" y="367.5" class="label" text-anchor="middle">each wrist</text>
+<path d="M 240 535 L 285 690" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 585 300 L 635 445" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="538.0" y="345.5" width="144" height="24" rx="5" fill="white" opacity="0.94"/>
+<text x="610.0" y="362.5" class="label" text-anchor="middle">64D</text>
+<path d="M 585 690 L 635 545" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="538.0" y="590.5" width="144" height="24" rx="5" fill="white" opacity="0.94"/>
+<text x="610.0" y="607.5" class="label" text-anchor="middle">32D</text>
+<path d="M 880 487 L 930 487" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="833.0" y="460.0" width="144" height="24" rx="5" fill="white" opacity="0.94"/>
+<text x="905.0" y="477.0" class="label" text-anchor="middle">L/R × 64D</text>
+<rect x="1225" y="130" width="340" height="315" rx="18" fill="#fceacf" stroke="#334155" stroke-width="2.5"/>
+<text x="1395.0" y="165" class="title" text-anchor="middle">Original V8 main path</text>
+<text x="1395.0" y="198.0" class="body" text-anchor="middle">11 × 258D activity tokens</text>
+<text x="1395.0" y="227.0" class="body" text-anchor="middle">+ activity-ID embedding + LN</text>
+<text x="1395.0" y="256.0" class="body" text-anchor="middle">Activity Attention 258→64→1</text>
+<text x="1395.0" y="285.0" class="body" text-anchor="middle">masked weighted sum</text>
+<text x="1395.0" y="314.0" class="body" text-anchor="middle">subject embedding 258D</text>
+<text x="1395.0" y="343.0" class="body" text-anchor="middle">Dropout 0.2 + Linear 258→2</text>
+<text x="1395.0" y="372.0" class="body" text-anchor="middle">base logits</text>
+<rect x="1225" y="505" width="340" height="330" rx="18" fill="#faddd8" stroke="#b6463a" stroke-width="4"/>
+<text x="1395.0" y="540" class="title" text-anchor="middle">STR residual path</text>
+<text x="1395.0" y="573.0" class="body" text-anchor="middle">from pre-aggregation activity tokens</text>
+<text x="1395.0" y="602.0" class="body" text-anchor="middle">shared Linear 258→16 + GELU</text>
+<text x="1395.0" y="631.0" class="body" text-anchor="middle">mask unavailable activities</text>
+<text x="1395.0" y="660.0" class="body" text-anchor="middle">keep fixed activity identity/order</text>
+<text x="1395.0" y="689.0" class="body" text-anchor="middle">11 × 16 → flatten 176D</text>
+<text x="1395.0" y="718.0" class="body" text-anchor="middle">Linear 176→2 (zero-initialized)</text>
+<text x="1395.0" y="747.0" class="body" text-anchor="middle">residual logits</text>
+<rect x="835" y="730" width="320" height="145" rx="18" fill="#dde8f4" stroke="#334155" stroke-width="2.5"/>
+<text x="995.0" y="765" class="title" text-anchor="middle">Residual decision</text>
+<text x="995.0" y="798.0" class="body" text-anchor="middle">final logits = base logits + residual logits</text>
+<text x="995.0" y="827.0" class="body" text-anchor="middle">softmax → PD / DD probability</text>
+<path d="M 1180 455 L 1225 300" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 1180 520 L 1225 650" fill="none" stroke="#b6463a" stroke-width="3" marker-end="url(#arrow-red)"/>
+<path d="M 1225 405 Q 1097.5 567.5 1080 730" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 1225 720 L 1155 795" fill="none" stroke="#b6463a" stroke-width="3" marker-end="url(#arrow-red)"/>
+<text x="800" y="925" class="note" text-anchor="middle">The original Activity Attention, subject embedding, and classifier remain unchanged; only the red path is added.</text><text x="800" y="954" class="note" text-anchor="middle">The residual path consumes learned 258D activity representations—not H1 features—and is trained end to end.</text>
+</svg>

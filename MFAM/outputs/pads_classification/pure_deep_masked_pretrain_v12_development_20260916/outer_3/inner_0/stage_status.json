@@ -1,0 +1,96 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_3/inner_0",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-09-16T07:43:43.450687+00:00",
+  "summary": {
+    "fold_id": "outer_3/inner_0",
+    "best_epoch": 14,
+    "best_metric": 0.6702266782911944,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.7333333333333333,
+      "balanced_accuracy": 0.6702266782911944,
+      "macro_precision": 0.6771778584392014,
+      "macro_recall": 0.6702266782911944,
+      "macro_f1": 0.6733333333333333,
+      "weighted_precision": 0.7285541439806413,
+      "weighted_recall": 0.7333333333333334,
+      "weighted_f1": 0.7306666666666668,
+      "per_class_precision": [
+        0.8026315789473685,
+        0.5517241379310345
+      ],
+      "per_class_recall": [
+        0.8243243243243243,
+        0.5161290322580645
+      ],
+      "per_class_f1": [
+        0.8133333333333335,
+        0.5333333333333333
+      ],
+      "support": [
+        74,
+        31
+      ],
+      "confusion_matrix": [
+        [
+          61,
+          13
+        ],
+        [
+          15,
+          16
+        ]
+      ],
+      "sample_count": 105,
+      "macro_auroc": 0.6377506538796861,
+      "per_class_auroc": [
+        0.6377506538796861,
+        0.6377506538796861
+      ],
+      "brier_score": 0.4281712271770244,
+      "negative_log_likelihood": 0.6443594194190542,
+      "loss": 0.7544590629992031,
+      "classification_loss": 0.7544590629992031,
+      "duration_seconds": 0.10804039519280195,
+      "batches": 14,
+      "pd_recall": 0.8243243243243243,
+      "dd_recall": 0.5161290322580645
+    },
+    "train_subject_ids_sha256": "7f84a3d8569376eebc6182b73775da06bb8c7277a8ec9a9a4f1e02268ed1dabc",
+    "normalization_sha256": "2b2ba4a8f8da6c33f2148d1159e7d6bbc2dde936ccced556daf8399cd9ba9556",
+    "checkpoint_sha256": "02125aa235e5dbac408def3e73c1f7e8e6ea1682450f9e37bf1715ace263d917",
+    "pretraining": {
+      "objective": "masked_sequence_reconstruction",
+      "labels_used": false,
+      "validation_subjects_used": false,
+      "outer_test_loader_created": false,
+      "outer_test_signal_accessed": false,
+      "train_subject_ids_sha256": "7f84a3d8569376eebc6182b73775da06bb8c7277a8ec9a9a4f1e02268ed1dabc",
+      "train_subject_count": 208,
+      "mask_ratio": 0.3,
+      "span_length": 25,
+      "epochs": 10,
+      "initial_masked_mse": 0.9677660868151591,
+      "final_masked_mse": 0.7157480942118394,
+      "epoch_losses": [
+        0.9677660868151591,
+        0.8789951017429045,
+        0.8492327181139437,
+        0.8147796723007295,
+        0.7858362306451906,
+        0.7697558628192173,
+        0.7543983161124884,
+        0.7611526664489922,
+        0.7483482032279639,
+        0.7157480942118394
+      ],
+      "decoder_discarded_before_supervised_training": true,
+      "supervised_optimizer_reinitialized": true,
+      "wrist_encoder_checkpoint_sha256": "0731376f7630da3d39e3d9a71594664e31ec79f141855507c0264a4a834da9c8"
+    },
+    "smoke": false
+  }
+}

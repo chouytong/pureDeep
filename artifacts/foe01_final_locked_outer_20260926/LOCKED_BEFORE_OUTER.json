@@ -1,0 +1,1329 @@
+{
+  "schema_version": 1,
+  "status": "LOCKED_BEFORE_OUTER_ACCESS",
+  "created_at_utc": "2026-09-26T11:49:33.757809+00:00",
+  "outer_information_accessed_for_this_protocol": false,
+  "historical_outer_artifacts": "isolated; never used for this protocol or model selection",
+  "source_and_asset_sha256": {
+    "/home/zyt/deep_final/foundation_validation/configs/str01_seed42.yaml": "c37ae179c04db01f11939c6b76af29a6738451c1625ef33e25ce1251812f475c",
+    "/home/zyt/deep_final/foundation_validation/configs/str01_seed43.yaml": "adcd518dbdd4f2b4afdf1cdbf76ab4ad457bb87472a72fc2a543098fffbd09cb",
+    "/home/zyt/deep_final/foundation_validation/configs/str01_seed44.yaml": "6d846238bd51dd4bf6786ee2fc56da1b58b78914c19cc4da5fec1f8ae5ae363d",
+    "/home/zyt/deep_final/foundation_validation/configs/nr01_seed42.yaml": "94589f38c29bc8f6572a5d33704f7254eba809375b741cea731550227a8452b1",
+    "/home/zyt/deep_final/foundation_validation/configs/nr01_seed43.yaml": "236a15642f6acdd3197a87403ad6326df87e420f7eabbef20da174ab56d8705a",
+    "/home/zyt/deep_final/foundation_validation/configs/nr01_seed44.yaml": "5803793dba9515c589e9c95529077105b72993e29eb3316db57186206b4424cc",
+    "/home/zyt/deep_final/foundation_validation/src/engine/nested_training.py": "1773270f7c13b1ece661e032fcd3191dad9ee92b73e9dea01dfd5db26fcab165",
+    "/home/zyt/deep_final/foundation_validation/src/metrics/threshold.py": "a52d1b0fd1dd8234427d0043b3db84e8465e6da34123b1956f98a8467bf31c37",
+    "/home/zyt/deep_final/foundation_validation/src/analysis/baselines.py": "da20671904246dd63806c0589668f330eb7eb3c1139e2123ef7798fdb0f2ca76",
+    "/home/zyt/deep_final/foundation_validation/src/models/pure_deep.py": "ccd49a99e3f68a4b6100f854dd7fd0adaa2570a4a87d27899e721c1008b36c56",
+    "/home/zyt/deep_final/foundation_validation/src/datasets/folds.py": "cb20e23f6fa7d1f80128b60207fdda68b3e0f908710759306dcc0d734fe26085",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_multi_activity_v3_nested_cv.yaml": "3bb1d8dbeea729775d300123b874752c85cce84f7760f4294e560249de472080",
+    "/home/zyt/deep_final/foundation_validation/splits/pads_classification/v3_nested_cv/seed42/nested_cv_splits.json": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+    "/home/zyt/deep_final/foundation_validation/scripts/run_nested_cv.py": "b921635faa7a8615ff4eb2977be5bfa16f0f54ef85439df6322903074224a88a",
+    "/home/zyt/MFAM/outputs/pads_classification/v3_analysis_and_baselines/analysis_and_baselines_20260828/features/handcrafted_features.npz": "d7b465b251892abbe602539369989c133fce4c4da15e3bee3cb308d07e0f4da5",
+    "/home/zyt/MFAM/outputs/pads_classification/v3_analysis_and_baselines/analysis_and_baselines_20260828/features/feature_schema.json": "071ccdf12059496617e9c27e7337d2f3c67787c4be77ff38491f36df6ee21c79"
+  },
+  "split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+  "task": "PADS PD=0 versus DD=1; 390 subjects, 5 outer folds each tested once",
+  "model_roles": {
+    "STR-01": "primary",
+    "V8-GN": "matched deep reference",
+    "H1": "handcrafted statistical reference"
+  },
+  "deep_models": {
+    "STR-01": {
+      "42": {
+        "config": "/home/zyt/deep_final/foundation_validation/configs/str01_seed42.yaml",
+        "config_sha256": "c37ae179c04db01f11939c6b76af29a6738451c1625ef33e25ce1251812f475c",
+        "params": 75524,
+        "development_inner_root": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921",
+        "selection": [
+          {
+            "outer_fold": 0,
+            "outer_train_n": 310,
+            "outer_test_n": 80,
+            "inner_epochs": [
+              11,
+              22,
+              14
+            ],
+            "selected_epoch_count": 14,
+            "threshold": 0.5148651301860809,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 310,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "0cf171d5777a2470da6427522d61a47b0ec0157501bed1f70320d9cfc3c27163",
+                "best_checkpoint_sha256": "71d2fb450ac7990a2c609f7ae8d7bd54f9afa1a9e669da0c5f7b3b1b74b7ab03",
+                "best_epoch": 11,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "3c45e963e08cb9e4d3348b81fe2342f332955302159a0514883526e18584fa78",
+                "best_checkpoint_sha256": "fdc1c72d4b2d90bf325444c715f4de88ee2168d2fe8d0671e494a4c37bf0d9b2",
+                "best_epoch": 22,
+                "validation_n": 103
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "ae94e494336f7eaa576a6a7158e112e789ea2a4343c6022d86d513543127515d",
+                "best_checkpoint_sha256": "7a5dcee65adea6d7a9c9d28b5ab9c4b97f5ff184c208ae7200c47fe4c4cbf877",
+                "best_epoch": 14,
+                "validation_n": 102
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.7126262626262626
+          },
+          {
+            "outer_fold": 1,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              9,
+              9,
+              12
+            ],
+            "selected_epoch_count": 9,
+            "threshold": 0.5125584304332733,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "b1bb105407d0b57de0f27e8b1f545d3f9d42aa787acfebecaac232faf91aa14f",
+                "best_checkpoint_sha256": "1246af6e524e9ad973ec6a1b9382eea683db734a7c5e82edacc60491b069354b",
+                "best_epoch": 9,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "fedd13e44fa50de60fe031547489502449944ee9b3de1e6b99df497d1659efe1",
+                "best_checkpoint_sha256": "24c7fda4d756b9a863cc1fee8e38a928a13fa199506e399d1699228a1b0d4701",
+                "best_epoch": 9,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "b8bac637e0d9c69c3bd642434fd7d43e502229318850f25a850a1b758ad0e3e8",
+                "best_checkpoint_sha256": "68e9c53e89c6beb1f14fb7a45884808b381ca4370162e7e85bfb9c8a66e7bb68",
+                "best_epoch": 12,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6881060116354234
+          },
+          {
+            "outer_fold": 2,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              31,
+              21,
+              15
+            ],
+            "selected_epoch_count": 21,
+            "threshold": 0.502356082201004,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "0d584bb96f5013330afba9c95adcd90fac0fce580b97d5e54d80a519f4188a56",
+                "best_checkpoint_sha256": "298f9561b12e3f7d096c7f5a1eee06dcbbde7da8ca84146c662f7b10a1333477",
+                "best_epoch": 31,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "2fdb23e2c256d0a7b543f33d342d237deb09e17e691c3c945bf5339ecfd2b6e0",
+                "best_checkpoint_sha256": "7b1d7b3ee8f9b64dc0ea1f1ac9706258bdfc90acbd6eb4c8436aaba4aa705abd",
+                "best_epoch": 21,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "24abf4591cef18b9c4c626261f3d64a93474c32e1f683efa7058d6ebbd6d3cdc",
+                "best_checkpoint_sha256": "00e9cf96a08841332fb83c7ebd5f9663f1a068e5f81a0987d4a798b6f49515ee",
+                "best_epoch": 15,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6913380736910149
+          },
+          {
+            "outer_fold": 3,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              19,
+              7,
+              28
+            ],
+            "selected_epoch_count": 19,
+            "threshold": 0.5,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "b33d582773c72961614f0a2cd6fb657734671317e37e876acf256a1d3f3dc433",
+                "best_checkpoint_sha256": "762a1653dd525808bda5776f766d0bbf55e44c35c75cb41aa99f507f80a7765f",
+                "best_epoch": 19,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "d6042a19a95ec689a92cc3cc96c82b80eed74e328b688cb82399cbddc7bc2fd4",
+                "best_checkpoint_sha256": "32627f909c9bd28035c5cb81aac84ebe6f08f7fd6760131b2c171b463c5cea24",
+                "best_epoch": 7,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "651c38627c7e1c770f78a2842613c66e5a96556df73fc048edd6ab692ae9cefc",
+                "best_checkpoint_sha256": "2bb4e082b5ff350bee6deacf4915c746bf5bf2e5c2cd60138075e53b473dce95",
+                "best_epoch": 28,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.7242770017706079
+          },
+          {
+            "outer_fold": 4,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              19,
+              26,
+              21
+            ],
+            "selected_epoch_count": 21,
+            "threshold": 0.4812023639678955,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "1b0236f0ab304fc176cd9e7f733c85e4222f3ecfe003a779c56ef080480ce53b",
+                "best_checkpoint_sha256": "c44224613b9dd93d5567d64b1b7efc9ada4e976d82a2053ad7418aba532fd228",
+                "best_epoch": 19,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "5c18ad84d94af754f936ed5dc4f7cf5abbae645b768dcb2f6a449d65cf11657e",
+                "best_checkpoint_sha256": "a1ca01c4dea295caa319947487c34c019384c1977b029cbc44668f1d0f01ee1b",
+                "best_epoch": 26,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "add7aca4cfbb0193cabccf40051212920862e3061597a4e9081186674b59d734",
+                "best_checkpoint_sha256": "88d328f2f0399bda45aa4eb45fedc6f9cacdf01811940e64aba2396c876c93bd",
+                "best_epoch": 21,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.7319988195947276
+          }
+        ]
+      },
+      "43": {
+        "config": "/home/zyt/deep_final/foundation_validation/configs/str01_seed43.yaml",
+        "config_sha256": "adcd518dbdd4f2b4afdf1cdbf76ab4ad457bb87472a72fc2a543098fffbd09cb",
+        "params": 75524,
+        "development_inner_root": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921",
+        "selection": [
+          {
+            "outer_fold": 0,
+            "outer_train_n": 310,
+            "outer_test_n": 80,
+            "inner_epochs": [
+              11,
+              12,
+              9
+            ],
+            "selected_epoch_count": 11,
+            "threshold": 0.499376505613327,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 310,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "766e681aa545d1fc0972a189bbc3a1654ec9d052e778c013cf8e854898a58e58",
+                "best_checkpoint_sha256": "55b6801e0a1a7a9679056a374e06446161c4b94f78c5211b73a2a02afc90cdb4",
+                "best_epoch": 11,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "12d780cbecef22f877c485fd69b565fc6d0f1c70b5bb7c794b4dfeda01a70eaa",
+                "best_checkpoint_sha256": "84e6e721a7c02a2cb61ba43ab15c6c74173160bfc8285d35d1ed9c0142507ff5",
+                "best_epoch": 12,
+                "validation_n": 103
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "ad3361fea70e50588d4aa06f8d5c9f5dbc4f959a65f49585aa6e67df5fb653c2",
+                "best_checkpoint_sha256": "312f4b5be8a70c18b205609d089177288e12cd74964f72dd6e820f745737ca59",
+                "best_epoch": 9,
+                "validation_n": 102
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.7229797979797981
+          },
+          {
+            "outer_fold": 1,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              12,
+              11,
+              9
+            ],
+            "selected_epoch_count": 11,
+            "threshold": 0.4859429895877838,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "bec707d6432ad58521308e7a2755d94242bdca688cffca95660d8696c260cb0e",
+                "best_checkpoint_sha256": "8c6570299da3e35bb00038bcfb031f00199d02bd0cbd577f258f515444222d8c",
+                "best_epoch": 12,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "5bfba1955e1ddfc1fed5a4b9702eb89892bdc8b2db6bfb5965c70e23db52d5fc",
+                "best_checkpoint_sha256": "11b40656f570b20af71ad8f94dc519617292e62615610864d0996479518158f3",
+                "best_epoch": 11,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "8fbddcb2f4fcbb82f245b50646119dc6f8add8ef8fd2875dfe5a15acd72c6b46",
+                "best_checkpoint_sha256": "b895c19f5d240582cd27a448e46e37c67d0b36279c9d654912a747e67636e362",
+                "best_epoch": 9,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6719457013574661
+          },
+          {
+            "outer_fold": 2,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              14,
+              19,
+              12
+            ],
+            "selected_epoch_count": 14,
+            "threshold": 0.5,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "771046d1013bd115b1a4c5bb1e5cdf09f6dc97de1010edf8d88eaf26949ed2df",
+                "best_checkpoint_sha256": "8375f6fc073a479fa891d268bab12488e6c6a9d43c548eae396d455e9ae96d66",
+                "best_epoch": 14,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "041de7b1eda19ea207dc02d978b42a8749c918a2b00727902e225827ec13eaa7",
+                "best_checkpoint_sha256": "b4d5b3601a4b93094b4591c2e472439baaf134eae37f94ebbc919e39edc8f651",
+                "best_epoch": 19,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "ab4d11692709675b5408d6c1e226004a6f38121c789b848dbeedd110fa4634cb",
+                "best_checkpoint_sha256": "dba4b347afa91159576b29ea017a27e8fadb3d53fb9a6bf1678fe4188e3f1aea",
+                "best_epoch": 12,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.71590174531351
+          },
+          {
+            "outer_fold": 3,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              16,
+              8,
+              8
+            ],
+            "selected_epoch_count": 8,
+            "threshold": 0.46295878291130066,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "2878e85a0a42f07a624853c89cff1711cd47f94a6a2aeb24fc8d1d0a6ec702e4",
+                "best_checkpoint_sha256": "b0d4fd1e4b6029ea0b7508be16ac66dbd66e9acb49c2602a8ecfc9f6d2b684b6",
+                "best_epoch": 16,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "6e11c737755946985001d66b04747aee161eb177feb7e74bbe00756ecbf3e8db",
+                "best_checkpoint_sha256": "265ce52f4ab5022ceaaef75376d8739ef7a6d11990c38b83369b1db619e192b6",
+                "best_epoch": 8,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "31b5d0989605903b930642051b11c88e6ef9642115e0230be5bd041750c08ba0",
+                "best_checkpoint_sha256": "409027a19f5445322c9e536b0e1f4bb8210f427cf8a51dc202f9ec8d3ec0923f",
+                "best_epoch": 8,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6862581152862484
+          },
+          {
+            "outer_fold": 4,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              12,
+              15,
+              10
+            ],
+            "selected_epoch_count": 12,
+            "threshold": 0.4704674184322357,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "dcb471f8e017e6797f7731ea5fe0934acdc93eb31299ea1af88f9cab492d9585",
+                "best_checkpoint_sha256": "bc09693dd9c6afd17beeef6a7536db65ec458aca64500ee585d3af2e639e2843",
+                "best_epoch": 12,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "391f7cff1f7101c3482d6a2ef030e27d750fdfa35fbd06a0af93d023bc9da740",
+                "best_checkpoint_sha256": "231c9ee57c7aa2a7367d8b688d7fafeaa57a515f1fb6616ce0e653d6ac3d0bb9",
+                "best_epoch": 15,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "f54b844d9be186cb4b51210750758f0096dea0db475aed3636064ce490b76ab5",
+                "best_checkpoint_sha256": "02ad58c733fced9c9b1c960663e41d804a02fce2739af85082de6112f7661b1f",
+                "best_epoch": 10,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.7243015935471179
+          }
+        ]
+      },
+      "44": {
+        "config": "/home/zyt/deep_final/foundation_validation/configs/str01_seed44.yaml",
+        "config_sha256": "6d846238bd51dd4bf6786ee2fc56da1b58b78914c19cc4da5fec1f8ae5ae363d",
+        "params": 75524,
+        "development_inner_root": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921",
+        "selection": [
+          {
+            "outer_fold": 0,
+            "outer_train_n": 310,
+            "outer_test_n": 80,
+            "inner_epochs": [
+              12,
+              11,
+              7
+            ],
+            "selected_epoch_count": 11,
+            "threshold": 0.4857916831970215,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 310,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "355f705c0bd46292d585534ea570a7bf50e1c3e1f5e36e1259ada7569f1e61ab",
+                "best_checkpoint_sha256": "3e3c79c4cc5ae7eae07b599f701b0a9267512fe350add793c753162def091443",
+                "best_epoch": 12,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "8b56f244651e648eaec83af5003763763bda7d660f114d7f3a7024c3cfb268a0",
+                "best_checkpoint_sha256": "d8153787efd0d5940aa42510e9287363ff99153c1cf1d5c7d011077462654b4c",
+                "best_epoch": 11,
+                "validation_n": 103
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "cb49afbded5811e993821bbe0d7efcd4067ad37500680bcd799316da9beb2e66",
+                "best_checkpoint_sha256": "9875983d0b56a93c00660c1c1b4b68b34e927e773c7b94caa6e998da2aa71d63",
+                "best_epoch": 7,
+                "validation_n": 102
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.672979797979798
+          },
+          {
+            "outer_fold": 1,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              19,
+              16,
+              13
+            ],
+            "selected_epoch_count": 16,
+            "threshold": 0.5508582592010498,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "d389353785e21665d82245cdcb30b07bd675496b4ce7889013c6956cef5d7d50",
+                "best_checkpoint_sha256": "b1e8f0ce4bfb3c8715f9c20275cf90e578c5c048801a63d939d9f694aebb8588",
+                "best_epoch": 19,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "a4ca794618bc2c7bd6f94d669d6a13796cf100800e231c570bfc3be98f2905b8",
+                "best_checkpoint_sha256": "bc4b43777f6ef68116c977da79090df63b49ae1f310d111123fbae5a339410ac",
+                "best_epoch": 16,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "80cee7a47635e7f7223a293f0d1c1813d3cc534e42e86337274e999a5b758a97",
+                "best_checkpoint_sha256": "d499966df366fec5e86f32426e6423138c8c084ce26aab73e7c67873467bd97c",
+                "best_epoch": 13,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6826115061409179
+          },
+          {
+            "outer_fold": 2,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              7,
+              6,
+              6
+            ],
+            "selected_epoch_count": 6,
+            "threshold": 0.5044334232807159,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "41371cec17b03b69784e9124ac2081046c4ef5414da7f848f3c029ee81c079a9",
+                "best_checkpoint_sha256": "db2955bf00a8e4c9245c1d4c54c1fc28f020f6eeb71a91dbf1168a30aff4a732",
+                "best_epoch": 7,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "cd2c3c8cf5f7ca4a4b729a8266714baf7cfab422402cc7101159e9aa5976a131",
+                "best_checkpoint_sha256": "9c7137cee0e1cf1477a90f4dcdf853eb2271ebca9bedf5a4932ad956a6b7b165",
+                "best_epoch": 6,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "f43f97bb51527c2b26ecd9005aee8c857cfc587eecebc633d78e69162c9806ad",
+                "best_checkpoint_sha256": "ebb50c8c78561ddb1f45eef4f6742e430b964d130d77c2a22122b50dd9eaa42c",
+                "best_epoch": 6,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6874595992243051
+          },
+          {
+            "outer_fold": 3,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              18,
+              8,
+              11
+            ],
+            "selected_epoch_count": 11,
+            "threshold": 0.5,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "8a7772450c51f9cc72c87f03b8c4a177cce17f079fd1500a8158d2a96c98c8d5",
+                "best_checkpoint_sha256": "e99cc6f4632ccf04e851602adaecda22bdcee167f226ba582af24e1908784fc2",
+                "best_epoch": 18,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "5a7fe45c97afb44c618e9d01b5da19686ebd98d8293168bcb3f9c73c514f0381",
+                "best_checkpoint_sha256": "d8f6d8a9b603b86e83c9ef7dce3ac75d3129014302eb4e54ef2e51e06134cf73",
+                "best_epoch": 8,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "fbfa406399fe6b156d1d9f0af15d4a7b4f22fa45c5eefebc5360b340dfbdd44d",
+                "best_checkpoint_sha256": "0c275e3ac9fe4edc21eca705d33b4146f1e1d880ad564ab2e99f1e5e48f1a244",
+                "best_epoch": 11,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.7147845760377729
+          },
+          {
+            "outer_fold": 4,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              9,
+              9,
+              13
+            ],
+            "selected_epoch_count": 9,
+            "threshold": 0.48260369896888733,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "dcf809a65b41b5aec2b8cb05a0c6387aea0ff5179e9e2c64453e9b0b42a288bf",
+                "best_checkpoint_sha256": "93f208f6ec1b54826457dae5af7ebeb8472fa6b1d56f309788530134920a805c",
+                "best_epoch": 9,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "f62bf534fc8bfb05717959fb10db54a251468efa451a1b5ac8f02948fabf04e4",
+                "best_checkpoint_sha256": "8dea7bad3bf38a1806d62c7336dfaf77393d1d782172eb457680f69eb0839e6a",
+                "best_epoch": 9,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "fb1513454a2e9453e81848c4d52328d6363fdaecd8c917cadd5ad86f50de8269",
+                "best_checkpoint_sha256": "dbcfce5d8906a8d08bc5830412ee72da8d97ce81e922dfc78569aaba1814b56c",
+                "best_epoch": 13,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6907584103875664
+          }
+        ]
+      }
+    },
+    "V8-GN": {
+      "42": {
+        "config": "/home/zyt/deep_final/foundation_validation/configs/nr01_seed42.yaml",
+        "config_sha256": "94589f38c29bc8f6572a5d33704f7254eba809375b741cea731550227a8452b1",
+        "params": 71026,
+        "development_inner_root": "/home/zyt/deep_final/foundation_validation/outputs/foundation_validation/groupnorm_nr01_seed42_20260917",
+        "selection": [
+          {
+            "outer_fold": 0,
+            "outer_train_n": 310,
+            "outer_test_n": 80,
+            "inner_epochs": [
+              22,
+              28,
+              14
+            ],
+            "selected_epoch_count": 22,
+            "threshold": 0.49113747477531433,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 310,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "ae824778592d16c430c85d1778ab1d27e66e77724a96941fd4e0a2739e78f141",
+                "best_checkpoint_sha256": "9400440c75659b2f40a9d00de272d52b61627408847148c6bf46377d9f3d7654",
+                "best_epoch": 22,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "1bc6c12b37ff30083b5326ac776e81f57eeee33434e05efee29ad77712c25a57",
+                "best_checkpoint_sha256": "d15f2c3a1d11e48699d7ae5db2087a20d1e7c241f0e688806de57593530dbfec",
+                "best_epoch": 28,
+                "validation_n": 103
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "e706310320fabe2a3d6d6b555f3b5df6b712aba34b5ceb4fa8e499c6cc237d81",
+                "best_checkpoint_sha256": "b91c776657db37331a121a64f7dd1fc0bdfe717b8a6e261cfe13ec38f80b34c3",
+                "best_epoch": 14,
+                "validation_n": 102
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.7121212121212122
+          },
+          {
+            "outer_fold": 1,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              7,
+              8,
+              2
+            ],
+            "selected_epoch_count": 7,
+            "threshold": 0.5,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "d090fc6555ab10d75dbd4d1701454c81ad2e5c9d9a106fe7c7865b2aa67a81dc",
+                "best_checkpoint_sha256": "bcf0d14c89e3628bbf65a17012fe9bba7400d033ef014d0753ff32588edb0bfe",
+                "best_epoch": 7,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "418aa56f29aedee26803d9b7153e4557fb6bf6c85adc70b08c6e806640b8f1ab",
+                "best_checkpoint_sha256": "659244ca6a5cc5ae1271f6c2644ad78888a737ee69a1ba26aa2d6f7a200774b9",
+                "best_epoch": 8,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "2510d4294c11c46e03bfcc452e005ec826e0192e62d97ed2746dfe36c8d106e5",
+                "best_checkpoint_sha256": "f159b0ba80fc38d614ca8d39ecc43d0372667d0dfdc2c818be23aaf24514a285",
+                "best_epoch": 2,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6522301228183581
+          },
+          {
+            "outer_fold": 2,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              18,
+              5,
+              16
+            ],
+            "selected_epoch_count": 16,
+            "threshold": 0.43250322341918945,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "8082c14c52171e0d07ee531958533f45cf091020336f1d68b2cbf1f10e932f0a",
+                "best_checkpoint_sha256": "f146f43c1b83e949bc7e7ea7051efac92808e16b712284f669714cba7d4cb619",
+                "best_epoch": 18,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "27d46d98038e6e5bb693e3205ddcc2873bcb05de472e6c7b9bdbc3bb68e0afbf",
+                "best_checkpoint_sha256": "c7aa7d9ac2342ebe75920643126cdedd597549318a620adb12deeb350d3f16fa",
+                "best_epoch": 5,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "7b70a4dc2cf0803a515bc4c1f24ea6c332d41c593f6e21ee6fb04d069aaa65bf",
+                "best_checkpoint_sha256": "16337e74adde3ae7969a951b8143f66ab351808675b8dbe1107d0382f4e0da94",
+                "best_epoch": 16,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6745313510019393
+          },
+          {
+            "outer_fold": 3,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              24,
+              10,
+              7
+            ],
+            "selected_epoch_count": 10,
+            "threshold": 0.5174136161804199,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "dcdb1d717d54bd3dc71796676dc304d60cb70a17335a53cf52fdeb5ca86a2d78",
+                "best_checkpoint_sha256": "b7c0c93407f76118d9389a2bb627d254cbc2bf4647e5bf25bc3e2291d29d4b49",
+                "best_epoch": 24,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "5895aa1cc16dfcb25b23613cfd836d3fcf429bb44e2c4b21e4c21102280cd1b4",
+                "best_checkpoint_sha256": "d1bc912ee77e27fa68549be6f4c6a2a1609c49c143a02bf4952b7b83fd8eb66c",
+                "best_epoch": 10,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "0028b7623fa9771ef711e5cf54194b13aeb62bfb6e0b72e963a9224ee89d6d2f",
+                "best_checkpoint_sha256": "9bd683ffc915fd8d25eb46330123a5278efdf8c0f0e761291639f6987a86ad36",
+                "best_epoch": 7,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6952832972653944
+          },
+          {
+            "outer_fold": 4,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              12,
+              3,
+              11
+            ],
+            "selected_epoch_count": 11,
+            "threshold": 0.5131932199001312,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "c8781cf6dd38f450533a8fcb10580901451895ce032f0612b021a011a1bd2bc9",
+                "best_checkpoint_sha256": "13cc7101f1f877d03cf60ba889a7d620768853b4a1a2b5d8ab5796183821bf65",
+                "best_epoch": 12,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "ae3368ab826744c3d21c31de8f54c55ecbd2ab4cba73e8f656a3f90379a045b6",
+                "best_checkpoint_sha256": "dffb5d5a6f36fc802b627939d6d8ee0af563f91688fe907997918a3dfbfa5d57",
+                "best_epoch": 3,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "fd50c44865831a7f75bd6aa9dd5af2544f7322442bac5d5e3f612661200543b6",
+                "best_checkpoint_sha256": "e92737fa1227b588cb4399672b24af99bdf7b92279954c0d8d44cbe43711ca5d",
+                "best_epoch": 11,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6880287231949636
+          }
+        ]
+      },
+      "43": {
+        "config": "/home/zyt/deep_final/foundation_validation/configs/nr01_seed43.yaml",
+        "config_sha256": "236a15642f6acdd3197a87403ad6326df87e420f7eabbef20da174ab56d8705a",
+        "params": 71026,
+        "development_inner_root": "/home/zyt/deep_final/foundation_validation/outputs/foundation_validation/groupnorm_nr01_seed43_20260917",
+        "selection": [
+          {
+            "outer_fold": 0,
+            "outer_train_n": 310,
+            "outer_test_n": 80,
+            "inner_epochs": [
+              18,
+              16,
+              9
+            ],
+            "selected_epoch_count": 16,
+            "threshold": 0.499152272939682,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 310,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "c943e12fa9d0889b68496568a1237f777b5ebae4bd0416d428fe07ca3f7277ce",
+                "best_checkpoint_sha256": "688c8d68fb1390f658b84beb685779cc4e70d39c5b5641f92c42c362f2f8fc94",
+                "best_epoch": 18,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "de856d686203887cc432558cb029b65e60d5d4976f984927c8369c1f3154ddf0",
+                "best_checkpoint_sha256": "1ff29aa90dba394317d22de8a7a7368885f3656a5b200e9de29f7bd57e2153ef",
+                "best_epoch": 16,
+                "validation_n": 103
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "aa25d778d11a7de1aaa23250f0106eac90d7fee1fb0bd9044e8a18b13f48d36f",
+                "best_checkpoint_sha256": "8382f55cd50744698a2ecf5a8fe2bcf2d8f006ff0dc647ea1f95113c08a39320",
+                "best_epoch": 9,
+                "validation_n": 102
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6861111111111111
+          },
+          {
+            "outer_fold": 1,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              20,
+              11,
+              16
+            ],
+            "selected_epoch_count": 16,
+            "threshold": 0.5554726123809814,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "ba0979b946f5de8107cc2ef0b7a48fcd0476897cc4151bd0f01787e69f7bc599",
+                "best_checkpoint_sha256": "ab892e1f69cbadf6140f5caed9d7236922453bcbe7b704bdd241d3e2eff95369",
+                "best_epoch": 20,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "16ca8c71f1abf5b6e2595b2b6254048d33adaaaba4744667a0115b0a44106c75",
+                "best_checkpoint_sha256": "7dfd6b2b3208499aa914c5f27777cdf4a3fb957b9cafd0b72574707e64a8b1c0",
+                "best_epoch": 11,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "b70b8aeb7ead171f6075cf0b3a053bd177319584f68deb884be61c3a0975d2a4",
+                "best_checkpoint_sha256": "242925842b3c0ad265c95c98c9d8463b591fdce709d108c2b777395e1e060a5f",
+                "best_epoch": 16,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6625727213962508
+          },
+          {
+            "outer_fold": 2,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              3,
+              9,
+              11
+            ],
+            "selected_epoch_count": 9,
+            "threshold": 0.4900062680244446,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "5373a21fe2d1fef4bf77284b12ed9742f9e962a03a374868e592c21de2176fc7",
+                "best_checkpoint_sha256": "891620f2f1be283ea59805f2195aa685af58dbc60e3773b6d6b94d59d7652c7b",
+                "best_epoch": 3,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "997e27bde9798133234be27cc0b5d7489ec37b0d4bbc2eeba82198dd5f70ff31",
+                "best_checkpoint_sha256": "5decb2308b84fd584bbb34253a7ffb6e511244a4d9b1606566c42a43dba8f1d6",
+                "best_epoch": 9,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "7941bc8ac3bca12387067bdeab0f3bab221304eb614cecfb0c1e7bd98d3d9aaf",
+                "best_checkpoint_sha256": "a40e0a28e02048299c9e28431449948edb2784ff3cee2cb0fd6d12f78f42d0fb",
+                "best_epoch": 11,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6664511958629606
+          },
+          {
+            "outer_fold": 3,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              27,
+              4,
+              10
+            ],
+            "selected_epoch_count": 10,
+            "threshold": 0.5,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "4bc63abedd64cf094f020dfa54a3d97b4b91af7f82b98395f71e3541a75bdfed",
+                "best_checkpoint_sha256": "c2af498e70f8cd6972adb9d110a3b7689eec8df8788c957ed48c64e606e47a8f",
+                "best_epoch": 27,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "8c81425d9cf546f9a9870b37776ef8141e520a478f5e9a385e304d517103327b",
+                "best_checkpoint_sha256": "bfa2d362beabce4682e1b1a51f9d868bd8c31eaac2738b7a2e6dab21cab40997",
+                "best_epoch": 4,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "f8e4c06532e5f6b303e148f2cbc1b87a58e5e0935999464756a6a47f35d78763",
+                "best_checkpoint_sha256": "3d29a4cd6f937a8092c5cd761ff8b59a2e8559a2160ab59c58993d5be4495bd4",
+                "best_epoch": 10,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6345907928388747
+          },
+          {
+            "outer_fold": 4,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              9,
+              12,
+              15
+            ],
+            "selected_epoch_count": 12,
+            "threshold": 0.5042577683925629,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "b1935d11ab4102f376e2d3b8d5969fa4c7302d4d2eaa2f8900de952e4c707343",
+                "best_checkpoint_sha256": "791d5e90d048e6f10d925b9712fae9789921c6d515eddea14116b9a3fdffab2f",
+                "best_epoch": 9,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "a85149fbb99b8dadefba5faacd7233a3408dbef30e33d4159e3676dbddb3f232",
+                "best_checkpoint_sha256": "d4a9b136247176bea24ed5f7ae19f35705a6fcb9bc434be09200542590c65760",
+                "best_epoch": 12,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "79fc53d0c436f03d30556ff6f693d5e830fb917c15d58e46c2d440245b0108c0",
+                "best_checkpoint_sha256": "6aea534c8a46f70a85f46c0570913ba2b7c74c27027ce46d5373c7d039f691cf",
+                "best_epoch": 15,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6894304544560299
+          }
+        ]
+      },
+      "44": {
+        "config": "/home/zyt/deep_final/foundation_validation/configs/nr01_seed44.yaml",
+        "config_sha256": "5803793dba9515c589e9c95529077105b72993e29eb3316db57186206b4424cc",
+        "params": 71026,
+        "development_inner_root": "/home/zyt/deep_final/foundation_validation/outputs/foundation_validation/groupnorm_nr01_seed44_20260917",
+        "selection": [
+          {
+            "outer_fold": 0,
+            "outer_train_n": 310,
+            "outer_test_n": 80,
+            "inner_epochs": [
+              12,
+              10,
+              12
+            ],
+            "selected_epoch_count": 12,
+            "threshold": 0.5,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 310,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "869deb12afd66dd99eb805cb51335fc416e81f10495e7bc297440abda858da0f",
+                "best_checkpoint_sha256": "40a63e9f50cff11e2a2229b2212d130230623ef1a6a72998b2b3a7089f85ac41",
+                "best_epoch": 12,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "d1546c96bf0cd502f1996d857ba8b47cef1584b88a93cf7767f972c31c4df2a0",
+                "best_checkpoint_sha256": "3eb03e50032562946e95e3a00801387678acaa500aac5e389feeb0218a158149",
+                "best_epoch": 10,
+                "validation_n": 103
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "5c7d4703ebb051eedc54ecce4d0094354ee5991033b1af14babef5bbbf72b2bc",
+                "best_checkpoint_sha256": "f7345aeadb70c3513e07520f0702424475e434af3e33e0289183bf0851d9ebdb",
+                "best_epoch": 12,
+                "validation_n": 102
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6515151515151515
+          },
+          {
+            "outer_fold": 1,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              11,
+              5,
+              20
+            ],
+            "selected_epoch_count": 11,
+            "threshold": 0.5016763508319855,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "1af6e7bf288f9bd1ae9cea578fc3e1d4a52f3e20b00ec209de806ed821e9c91e",
+                "best_checkpoint_sha256": "edd7225c2c124cc920c4276ae0388ab660d65105a0d19fb4a9be4fb7dccb3792",
+                "best_epoch": 11,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "0a101f4ccd716df1a3f8b7b024c1a520cde49efac5e01af0e1edac52a45e4110",
+                "best_checkpoint_sha256": "195149d6d6fb8b95a6f4106655a3383b2202da2648426c0e62ba6bce193e1a7f",
+                "best_epoch": 5,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "ce28d8eeed37eb950b948fe549c128ec47718d507efc6f3a444a5fa92b3dfb82",
+                "best_checkpoint_sha256": "da7749605f3a9bf902e3147c004f184ca45927dbeb7ea64323cca3ccac7b613c",
+                "best_epoch": 20,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6712992889463478
+          },
+          {
+            "outer_fold": 2,
+            "outer_train_n": 312,
+            "outer_test_n": 78,
+            "inner_epochs": [
+              15,
+              6,
+              25
+            ],
+            "selected_epoch_count": 15,
+            "threshold": 0.48579829931259155,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 312,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "bfa9a31b6e10260ff9771ed99b9a88a22088858e2790e17550279ace0dd8bb8b",
+                "best_checkpoint_sha256": "2c905e59a234c484842665b66cdc89af89531e0b89b4acb93e72307595679584",
+                "best_epoch": 15,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "449df86201d3201bfcf1b119ac56b0ce3ae613b90409021f6b76da0e6861a975",
+                "best_checkpoint_sha256": "125a1a3f0bf1ac964764276a1af6859433c51e4b24b53c975ad1eee1380f84ae",
+                "best_epoch": 6,
+                "validation_n": 104
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "1ca844dab67a8a1fe4704ececef40d4d767fd875edda20855470fce4283be016",
+                "best_checkpoint_sha256": "11927b0e44232cbbf19077c4769890297cdbab22ee81786a576e99093d8c72b6",
+                "best_epoch": 25,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6926308985132514
+          },
+          {
+            "outer_fold": 3,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              9,
+              8,
+              11
+            ],
+            "selected_epoch_count": 9,
+            "threshold": 0.4854409992694855,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "749e8c73265154911c785b43b0ea68900a21538fac856a5e934e3811cc521411",
+                "best_checkpoint_sha256": "d0fbc1dcd7549f95352228fa9f448832f82d91ccbd274f97b7dc76af89a4a8da",
+                "best_epoch": 9,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "f77f8d2d3425fee57931e95aaa89cc067f6a6e605a82123360bd3d33a26f1469",
+                "best_checkpoint_sha256": "a0f8ab2ad19da649081a1cfd8ea80a254b0c6ca2c54779cd4c5e03ef4b85e9c2",
+                "best_epoch": 8,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "b03f8c6b35966ccbcf5a35df8c04197456dab8288553b3b4f6850da4cea944dc",
+                "best_checkpoint_sha256": "986f221cd3def9cf3ad74e77ef3aed0c0cb9e51414cfc1064b38733255c52179",
+                "best_epoch": 11,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6898485146566988
+          },
+          {
+            "outer_fold": 4,
+            "outer_train_n": 313,
+            "outer_test_n": 77,
+            "inner_epochs": [
+              5,
+              8,
+              14
+            ],
+            "selected_epoch_count": 8,
+            "threshold": 0.5100034177303314,
+            "threshold_source": "inner_oof_only",
+            "threshold_selection_metric": "balanced_accuracy",
+            "inner_oof_n": 313,
+            "inner_oof_prediction_files": [
+              {
+                "inner": 0,
+                "prediction_sha256": "6cf26388dcc426b4ca941690889b4feb820bf867693c67f8fd93e24cb576a319",
+                "best_checkpoint_sha256": "8177349c9fe5b7c84d0f5d3d55390266165a47dfdd82689e991826d31671acb1",
+                "best_epoch": 5,
+                "validation_n": 105
+              },
+              {
+                "inner": 1,
+                "prediction_sha256": "7a2ce02fd36f8a0c54732f55da4327ef673276fe376762b6290d3ca1d5a5aa3f",
+                "best_checkpoint_sha256": "cf72f0668db8bebf74c1307a3661fdade32a08f13b214125f0111192093d4819",
+                "best_epoch": 8,
+                "validation_n": 105
+              },
+              {
+                "inner": 2,
+                "prediction_sha256": "210114238a84a2cc5bf7296ffb7bf6870de84f02ce12191189006b2a8032890b",
+                "best_checkpoint_sha256": "7886b74dc5163212ef88826a880011fbf94cac68ca22259fc822b5dfdce88a8c",
+                "best_epoch": 14,
+                "validation_n": 103
+              }
+            ],
+            "inner_oof_ba_at_selected_threshold": 0.6912256541412551
+          }
+        ]
+      }
+    }
+  },
+  "architecture": {
+    "STR-01_params": 75524,
+    "V8-GN_params": 71026,
+    "STR_change": "shared Linear(258,16)+GELU on each of 11 bilateral activity tokens, ordered flatten 176D, Linear(176,2) residual logits added to V8-GN base logits; zero initialization of residual head"
+  },
+  "recipe": {
+    "full_bilateral": true,
+    "activity_order": [
+      "CrossArms",
+      "DrinkGlas",
+      "Entrainment",
+      "HoldWeight",
+      "LiftHold",
+      "PointFinger",
+      "Relaxed",
+      "RelaxedTask",
+      "StretchHold",
+      "TouchIndex",
+      "TouchNose"
+    ],
+    "wrist_order": [
+      "left",
+      "right"
+    ],
+    "input_channels": [
+      "AccX",
+      "AccY",
+      "AccZ",
+      "GyroX",
+      "GyroY",
+      "GyroZ"
+    ],
+    "train_only_normalization": "per activity/wrist/channel mean+std fitted on corresponding outer-train subjects, epsilon 1e-6",
+    "loss": "train-balanced cross entropy, label smoothing 0",
+    "optimizer": "AdamW lr 2e-4, weight decay 1e-4, betas 0.9/0.999",
+    "scheduler": "cosine minimum lr 1e-6",
+    "batch_size": 8,
+    "maximum_inner_epochs": 50,
+    "inner_early_stopping": "validation balanced accuracy, patience 12, minimum delta 0, best checkpoint",
+    "outer_final_refit": "all corresponding outer-train subjects; train-only normalization and class weights; no validation/test early stopping; fixed epochs = rounded-up median of three inner best one-based epochs; final checkpoint only",
+    "deep_seeds": [
+      42,
+      43,
+      44
+    ],
+    "deterministic": true
+  },
+  "decision_rule": {
+    "deep": "per model/seed/outer fold DD probability >= threshold maximizing inner OOF BA; exact candidate/tie rules in frozen src/metrics/threshold.py; no outer threshold fitting",
+    "H1": "DD probability >= 0.5",
+    "secondary_deep": "default argmax/0.5 for descriptive matched development comparison only"
+  },
+  "H1_pipeline": {
+    "features": "frozen 4928D label-independent handcrafted matrix with fixed schema",
+    "fit": "outer-train only median imputer -> zero-variance filter -> StandardScaler -> LogisticRegression(C=1,class_weight=None,solver=liblinear,max_iter=5000,random_state=42)",
+    "test": "outer-test once after full train fit"
+  },
+  "metrics": {
+    "primary": "balanced_accuracy",
+    "secondary": [
+      "accuracy",
+      "auroc",
+      "macro_f1",
+      "pd_recall",
+      "dd_recall",
+      "confusion_matrix"
+    ],
+    "primary_aggregation": "per outer fold metric, average 3 deep seed metrics inside fold; then 5 outer folds as paired statistical units",
+    "confidence_interval": "paired bootstrap resampling the 5 outer folds, 10000 replicates, fixed RNG seed 20260926; report wide intervals and no claim of independent seeds/subject pairs",
+    "pooled_390": "descriptive only; each outer subject tested once per seed; no seed probability ensemble"
+  },
+  "comparison": "STR-01 minus V8-GN and STR-01 minus H1 on matched five folds; development vs outer descriptive, with default-0.5 secondary to match development decision",
+  "prohibited": "No outer-based model selection, hyperparameter/threshold/epoch/recipe change, diagnostic probes, fusion, correction, activity or mechanism search"
+}

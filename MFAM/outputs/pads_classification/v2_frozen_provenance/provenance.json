@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "experiment_version": "v2_frozen_historical_baseline",
+  "created_at_utc": "2026-08-27T11:41:08.079845+00:00",
+  "project_root": "/home/zyt/MFAM",
+  "pads_dataset": {
+    "name": "PADS - Parkinsons Disease Smartwatch dataset",
+    "version": "1.0.0",
+    "doi": "10.13026/m0w9-zx22",
+    "project_raw_subset_subjects": 390
+  },
+  "task": {
+    "class_names": [
+      "PD",
+      "DD"
+    ],
+    "label_mapping": {
+      "Parkinson's": "PD",
+      "Other Movement Disorders": "DD",
+      "Essential Tremor": "DD",
+      "Atypical Parkinsonism": "DD",
+      "Multiple Sclerosis": "DD",
+      "Healthy": "excluded"
+    },
+    "activity_order": [
+      "CrossArms",
+      "DrinkGlas",
+      "Entrainment",
+      "HoldWeight",
+      "LiftHold",
+      "PointFinger",
+      "Relaxed",
+      "RelaxedTask",
+      "StretchHold",
+      "TouchIndex",
+      "TouchNose"
+    ],
+    "wrist_order": [
+      "left",
+      "right"
+    ],
+    "sensor_mode": "acc_gyro",
+    "channel_order": [
+      "AccX",
+      "AccY",
+      "AccZ",
+      "GyroX",
+      "GyroY",
+      "GyroZ"
+    ]
+  },
+  "canonical_config": {
+    "path": "configs/pads_multi_activity_v2.yaml",
+    "sha256": "186a67a918507f5ad01d860d8e5d40e077022b99ed6c8164655e1f7fff01cb45"
+  },
+  "frozen_split": {
+    "path": "splits/pads_classification/pd_vs_dd_crossarms_seed42.json",
+    "sha256": "62fe2451c9b4071ec7b563e064142e4815d8fd7fee5a130bc19aa836cfdeb207"
+  },
+  "manifest_sha256": {
+    "CrossArms": "5978e2a20707079557bf51525ed480ebd7535855ae8fc4b0ecfce5e29cec77ce",
+    "DrinkGlas": "ce6dfb243f76bb30d3ed060d010b23be56761acf57144fb8fc7b3793fc413e57",
+    "Entrainment": "aebfa03b176c78ca166aadb6e967e82bfb89a03d806cfbf6947d8232fb372a73",
+    "HoldWeight": "80b7681c8faf48f7429863bd59098780ba48bc32a3297e7cba48ae74a94653a2",
+    "LiftHold": "335bace2987de35b1c2ad475ae70cbe66e2ba5ed5612fc6e3a3108153a70c87e",
+    "PointFinger": "dc5aad8d1f5375aff133c8e859b64cf36dee8d45372c3a94e9a9c3eaccb8e2ce",
+    "Relaxed": "73fc0681dafa996e4735e7fe543d94a2385c38bfa86c72b7cdffc71cea058d0d",
+    "RelaxedTask": "c03ab643aaa3ec3e7007c664be8494f9274127d1be76f46ef68e89cfa81cd60b",
+    "StretchHold": "b2cc8ba280d6cf676d789076e89c72cbd80bb79904b604eee68f5f243d8f0f2e",
+    "TouchIndex": "163e927f99544a076547e87327534b2812edaaef16502d3e6710fd14d2b84453",
+    "TouchNose": "7b294bb6aecc0de5d06e7f58519dc8fcc9e4144b1b4cf7f7bcff02dec0c8cf50"
+  },
+  "preprocessing_artifact_sha256": {
+    "data/processed/pads_multi_activity/v2_l1_full_length/processing_config.json": "1ced7052705192511da4d89d1a066589cede62b658bb852ff5769d20551bbe6c",
+    "data/processed/pads_multi_activity/v2_l1_full_length/audit.json": "bb0b012a46944e32e093914172565c31e31d583286d1be5e559b05f35c44738c",
+    "data/processed/pads_multi_activity/v2_l1_full_length/quality_summary.json": "61ee103f8658b59858dd5f907e9b9ae425d7436036981eb3d516a0e280efc2f6"
+  },
+  "normalization_artifact_sha256": {
+    "42": "f72e6000dd67c7ae50946224fc4c560ee6b85fd35cc7649aa8442ccb3a5db557",
+    "43": "f72e6000dd67c7ae50946224fc4c560ee6b85fd35cc7649aa8442ccb3a5db557",
+    "44": "f72e6000dd67c7ae50946224fc4c560ee6b85fd35cc7649aa8442ccb3a5db557"
+  },
+  "checkpoint_sha256": {
+    "42": {
+      "best": "99c1b7d08c49f513576d1ca41aec6bf28baf42bd2c7170e405b988dc06f47dc0",
+      "last": "1b48a172d1a9928be4e8b734ba95fdddf3a396a32a89bfe3a712013332c3bd9b"
+    },
+    "43": {
+      "best": "0b223cdc9f477d128ef26f72decab8738a4379e0be994edc4fa551726f57d82c",
+      "last": "4fb727b68a9b05d175431318f9908d806542b48c3e92562ae3c65f66af1d9933"
+    },
+    "44": {
+      "best": "8f3a9dc3ad1ac4574d4011681829dac08782d47c4fd218e84eb2e69b1c6e5fdd",
+      "last": "980d368bc8b8e1ac282f2b9850f0e21bdafb93cd4145a46dc60ee1b649402667"
+    }
+  },
+  "formal_artifact_sha256": {
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/checkpoints/best.pt": "99c1b7d08c49f513576d1ca41aec6bf28baf42bd2c7170e405b988dc06f47dc0",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/checkpoints/last.pt": "1b48a172d1a9928be4e8b734ba95fdddf3a396a32a89bfe3a712013332c3bd9b",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/config.yaml": "ee6d303d21937d92175440a659f64c845408f7d21b65ff1634a1187930f46d7e",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/environment.json": "8fa69fe35369146e8a5fdf5da527ac137474e31f224ae9926676fc82f433c58f",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/logs/epochs.jsonl": "1e1aa5c98d67c5a67f9a3a7f76c8b7f8c62acd02f9db07dbaa6eaabff7b08753",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/metrics.json": "61a4f7de178a6247cb4f64b3aaa26daac78c48e5a012b4431374f0eed64112b1",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/model.json": "de6a481f8b1ff7557c985b3bf1fc80468486fa95fde6bb3b02ebe9a6e8720109",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/normalization.json": "f72e6000dd67c7ae50946224fc4c560ee6b85fd35cc7649aa8442ccb3a5db557",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/split.json": "5368be063818336f9b6d3be43ffb357024cd8f5153240e79f26ff93210bbe02a",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/test_final/metrics.json": "6645c595ccc88665a3038225a00ab50a850cc13639997b2be5a6bc986931c709",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/test_final/predictions.csv": "f6af2ae15f65e76bc3b741796032b4915dabd296383461dcdcf4ba3d3056b778",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/test_fixed_threshold/metrics.json": "1ed7c906abe50ee58126a6a83836b07353726a5272c7e2bdec5986de10004463",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/test_fixed_threshold/predictions.csv": "b5156fcd30af802f49aeacaffa72021062915a491b322220363bf42cba2eac82",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/validation_final/metrics.json": "578ad86a7947e5c462a21051f6dcb79aad7074b428833c0a79905252e8f34b92",
+    "outputs/pads_classification/formal_v2_full_length_seed42_20260821/validation_final/predictions.csv": "005e5611d2406d08d354c9624134dd8a4ad943f40cc56073fd92e9844b8ab7de",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/checkpoints/best.pt": "0b223cdc9f477d128ef26f72decab8738a4379e0be994edc4fa551726f57d82c",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/checkpoints/last.pt": "4fb727b68a9b05d175431318f9908d806542b48c3e92562ae3c65f66af1d9933",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/config.yaml": "31565f7c6e2eeaa63529afacba9cb70a00a1e3737611c0c1b564be05ffc964b7",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/environment.json": "8fa69fe35369146e8a5fdf5da527ac137474e31f224ae9926676fc82f433c58f",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/logs/epochs.jsonl": "24590a35237daf393675c296245954e7fa488b51baad20c4dfc9495ba4c4b857",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/metrics.json": "5aad3f13875214bc1a20558bc2f7168d2b27d576f881427ad1ef5a7a1a2e8fab",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/model.json": "de6a481f8b1ff7557c985b3bf1fc80468486fa95fde6bb3b02ebe9a6e8720109",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/normalization.json": "f72e6000dd67c7ae50946224fc4c560ee6b85fd35cc7649aa8442ccb3a5db557",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/split.json": "5368be063818336f9b6d3be43ffb357024cd8f5153240e79f26ff93210bbe02a",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/test_final/metrics.json": "8b957c98a3d14478b09f296c8377f200e4b1e034db3d32a9b123f6109fff99ba",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/test_final/predictions.csv": "f99d7dc387c4d53e09fd06bb305bd0ee250a244ef3d0de11f826e2e99cc1560f",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/test_fixed_threshold/metrics.json": "d4f084c670649d80b3dfbab537a606ccf15fc4f1946d7d059260dafaded2cf99",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/test_fixed_threshold/predictions.csv": "3c97213ae25fd664ad4f4d3e8baff69a5002e6cbd6405561d3212ac8078988e4",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/validation_final/metrics.json": "4607894c866e2862f1ccdfe60c269b432549b83fa8321546326e3b99175bad3c",
+    "outputs/pads_classification/formal_v2_full_length_seed43_20260821/validation_final/predictions.csv": "0ea0585e917c67d9c40967dfba126d2407827e047d1727168bbdf6173af365f8",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/checkpoints/best.pt": "8f3a9dc3ad1ac4574d4011681829dac08782d47c4fd218e84eb2e69b1c6e5fdd",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/checkpoints/last.pt": "980d368bc8b8e1ac282f2b9850f0e21bdafb93cd4145a46dc60ee1b649402667",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/config.yaml": "f1501624b46eccee208492f35c22d082d820280ecbdf5f78461ffc0f78e1900c",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/environment.json": "8fa69fe35369146e8a5fdf5da527ac137474e31f224ae9926676fc82f433c58f",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/logs/epochs.jsonl": "571c89c54a01d71fb6224ae9817b96d076453bc186bac0c1d1174c8f9950ada3",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/metrics.json": "b2665b55d6ec26023fd92a185080068558c0adf54a92193239ab62414dbcfc61",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/model.json": "de6a481f8b1ff7557c985b3bf1fc80468486fa95fde6bb3b02ebe9a6e8720109",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/normalization.json": "f72e6000dd67c7ae50946224fc4c560ee6b85fd35cc7649aa8442ccb3a5db557",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/split.json": "5368be063818336f9b6d3be43ffb357024cd8f5153240e79f26ff93210bbe02a",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/test_final/metrics.json": "f9095f888a1a2730d48dc2dbabc9057ad38906064196689bbf73af65c892f83e",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/test_final/predictions.csv": "a2f1bbdfdadaa1dbc6cdc9992c7fce490daa35c1d3e557fb173e6523ace368ad",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/test_fixed_threshold/metrics.json": "b43284362ee663b28f5948b1c746ac837808a0d4cfd4edc77b6f0ccbc4b00a6c",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/test_fixed_threshold/predictions.csv": "ab3d99cb508647785ac82552b3be2a8f4ae8f3a4556251ac51ab34be08470a9d",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/validation_final/metrics.json": "cdbb054e447e3c8e92abbf245cce8378901839cb12fee11d951bed343584ba3d",
+    "outputs/pads_classification/formal_v2_full_length_seed44_20260821/validation_final/predictions.csv": "9e7c66c33ff850e491e3af8f2846d740d934dfb567c7d824321a0e4fd49df4f4",
+    "outputs/pads_classification/formal_v2_full_length_ensemble_20260821/test_final/metrics.json": "b951fc94162b32ac563cfcccf1b9e578dc4b85e70628f4df547366a35e313c6d",
+    "outputs/pads_classification/formal_v2_full_length_ensemble_20260821/test_final/predictions.csv": "6a9cfc7b6d86117f44e60bc2c5b81d09cacc6e5627fe0e151cc9bfe48c16a968",
+    "outputs/pads_classification/formal_v2_full_length_ensemble_20260821/validation_threshold/metrics.json": "bd2b9577f8b13a3831bd1612858a22fc4830d72e59c09466cb8db7b0ff3d6217",
+    "outputs/pads_classification/formal_v2_full_length_ensemble_20260821/validation_threshold/predictions.csv": "795d307bce8ba6d49ad6c8ac3171a4895299f89b5aee46da3e48856ce5773c02"
+  },
+  "source_manifest": {
+    "path": "outputs/pads_classification/v2_frozen_provenance/source_files.sha256",
+    "file_count": 57,
+    "sha256": "3572c8dfcb8beea5334821f4782f04209954e8928703e06cc15e34bf22cff875",
+    "source_tree_sha256": "3572c8dfcb8beea5334821f4782f04209954e8928703e06cc15e34bf22cff875",
+    "ordering": "relative_path_ascending",
+    "line_format": "sha256 two-spaces relative_path"
+  },
+  "immutability": {
+    "existing_v2_artifacts_modified": false,
+    "checkpoint_bytes_rewritten": false,
+    "verification_mode": "checkpoint_sha256 plus frozen provenance sidecar"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "scope": "fixed inner-development only",
+  "outer_information_used": false,
+  "backbone_trained_or_modified": false,
+  "h1_hyperparameter_search": false,
+  "h1_pipeline": "original fixed H1 logistic: median imputation, variance filter, train-only scaling, C=1 liblinear",
+  "recoverability_probe": "fixed Ridge(alpha=1.0), train-only X and target scaling",
+  "seed_handling": "V8 seed 42/43/44 probe metrics averaged within identical split before inference",
+  "independent_statistical_unit": "15 fixed development splits",
+  "feature_families": {
+    "time_location_scale": [
+      "iqr",
+      "mad",
+      "maximum",
+      "mean",
+      "median",
+      "minimum",
+      "peak_to_peak",
+      "rms",
+      "signal_energy",
+      "std",
+      "variance"
+    ],
+    "time_shape": [
+      "kurtosis_excess",
+      "skewness",
+      "zero_crossing_rate_centered"
+    ],
+    "derivative": [
+      "derivative_rms",
+      "derivative_std"
+    ],
+    "spectral_global": [
+      "dominant_frequency_hz_0p5_20",
+      "dominant_power_0p5_20",
+      "spectral_entropy_0p5_20",
+      "total_power_0p5_20"
+    ],
+    "band_absolute": [
+      "band_power_0p5_3",
+      "band_power_12_20",
+      "band_power_3_7",
+      "band_power_7_12"
+    ],
+    "band_fraction": [
+      "band_fraction_0p5_3",
+      "band_fraction_12_20",
+      "band_fraction_3_7",
+      "band_fraction_7_12"
+    ]
+  },
+  "feature_count": 4928,
+  "embedding_files": 45,
+  "validation_rows": 1560,
+  "unique_subjects": 390
+}

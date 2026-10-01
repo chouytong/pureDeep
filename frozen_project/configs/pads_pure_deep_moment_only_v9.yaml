@@ -1,0 +1,41 @@
+_base_: pads_multi_activity_v3_nested_cv.yaml
+
+experiment:
+  name: pads_pure_deep_moment_only_v9
+  output_root: outputs/pads_classification/pure_deep_moment_only_v9
+  seed: 42
+  deterministic: true
+
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  pure_deep:
+    feature_dim: 64
+    encoder_mode: moment_only
+    moment_branch:
+      enabled: true
+      kernels: [1, 15, 63]
+  activity_fusion:
+    attention_dim: 64
+    dropout: 0.1
+    classifier_dropout: 0.2
+
+loss:
+  label_smoothing: 0.0
+  class_weights: train_balanced
+
+training:
+  mixed_precision: false
+
+development:
+  hypothesis: >-
+    V8 gains come primarily from normalization-free global moments of learned
+    feature maps, while the BatchNorm TCN contributes small-sample variance.
+    Removing the TCN should preserve or improve BA with fewer parameters.
+  comparison: pure_deep_normfree_moments_v8_seed42
+  stop_rule: >-
+    Retain only if BA is within 0.005 of V8 with clearly lower seed/fold variance,
+    or improves by at least 0.01. Otherwise retain the time-plus-moment V8 and
+    conclude the temporal and global branches are complementary.

@@ -1,0 +1,133 @@
+{
+  "artifact_file_count": 1076,
+  "artifact_tree_sha256": "d46afeb3b62045d427c2b455cdddb71606910a56424af5eeca5aa9d86fa8aa5c",
+  "base_config_sha256": "3bb1d8dbeea729775d300123b874752c85cce84f7760f4294e560249de472080",
+  "completed_at_utc": "2026-08-31T17:19:12.058561+00:00",
+  "created_at_utc": "2026-08-31T16:28:38.693790+00:00",
+  "expected_folds_per_model": 15,
+  "feature_cache_sha256": "d7b465b251892abbe602539369989c133fce4c4da15e3bee3cb308d07e0f4da5",
+  "feature_schema_sha256": "bdb83aae1c31b66c659a63f7a723f74b2cc82bfc99725621f6a41ba736389312",
+  "frozen_v3_manifest_sha256": "af5fdda01ceed8f90944f9a25e3a630b09ad17e07ece5f1d32dfe3d147271321",
+  "inner_folds": 3,
+  "outer_contexts": 5,
+  "outer_test_loader_created": false,
+  "outer_test_predictions_accessed": false,
+  "outer_test_signal_accessed": false,
+  "plan_sha256": "e662a059ac3a6ea19088c59d7385ba27b61ef2cba3275eca9b63340d6c224800",
+  "s0_artifact_tree_sha256": "528be416bfac771a9fe4477330030bfa917be411d0bc0f31fd0ee15f0224b535",
+  "schema_version": 1,
+  "scope": "r2_stabilization_development_inner_cv_only",
+  "source_hashes_final": {
+    "scripts/run_v3_r2_stabilization.py": "d42512130533b922649d8da0952fe6353731e533417272d14e2a7473424a7842",
+    "src/r2_stabilization/__init__.py": "c8df75f5378aecf5e3802958a37042cbeb686ef5464f85edac16ad541fbfc9aa",
+    "src/r2_stabilization/analysis.py": "ed036e5f52cfdae8273b097b1a943db35298513b28f570ff3147d39cb53c1d44",
+    "src/r2_stabilization/models.py": "5ac17aa9ea766c9411e89694153a621d26368b0b83b14d129d243cdc3cabcb23",
+    "src/r2_stabilization/training.py": "d6eeed97a584263493461ccbc242a8b8c17af91482c8d2602e25cd73c904d602",
+    "tests/test_r2_stabilization.py": "edaff9acfac3d07db142a38d9d4edd7abde7fe8e16a3462c061886a24ecb2c26"
+  },
+  "source_hashes_initial": {
+    "scripts/run_v3_r2_stabilization.py": "c90649c67f1a4b4b5c57104fca314b8443ee2bdacf70f5fc03458aaf3e83b481",
+    "src/r2_stabilization/__init__.py": "c8df75f5378aecf5e3802958a37042cbeb686ef5464f85edac16ad541fbfc9aa",
+    "src/r2_stabilization/analysis.py": "ed036e5f52cfdae8273b097b1a943db35298513b28f570ff3147d39cb53c1d44",
+    "src/r2_stabilization/models.py": "5ac17aa9ea766c9411e89694153a621d26368b0b83b14d129d243cdc3cabcb23",
+    "src/r2_stabilization/training.py": "d6eeed97a584263493461ccbc242a8b8c17af91482c8d2602e25cd73c904d602",
+    "tests/test_r2_stabilization.py": "edaff9acfac3d07db142a38d9d4edd7abde7fe8e16a3462c061886a24ecb2c26"
+  },
+  "split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+  "stages": {
+    "analyze": {
+      "completed_at_utc": "2026-08-31T17:04:59.484109+00:00",
+      "status": "complete",
+      "summary": {
+        "models": [
+          "M0",
+          "H1",
+          "S0",
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "outer_test_accessed": false,
+        "selected_candidate": "S1"
+      }
+    },
+    "diagnose_s0": {
+      "completed_at_utc": "2026-08-31T16:30:02.869337+00:00",
+      "status": "complete",
+      "summary": {
+        "activations": {
+          "fold_count": 15,
+          "outer_test_accessed": false,
+          "rows": 75,
+          "status": "complete"
+        },
+        "amp": {
+          "fold_count": 15,
+          "outer_test_accessed": false,
+          "overflow_event_count": 72,
+          "status": "complete",
+          "total_nonfinite_gradient_batches": 72,
+          "total_skipped_optimizer_steps": 72
+        }
+      }
+    },
+    "finalize": {
+      "completed_at_utc": "2026-08-31T17:19:12.058863+00:00",
+      "status": "complete",
+      "summary": {
+        "artifact_file_count": 1076,
+        "artifact_tree_sha256": "d46afeb3b62045d427c2b455cdddb71606910a56424af5eeca5aa9d86fa8aa5c"
+      }
+    },
+    "initialize": {
+      "completed_at_utc": "2026-08-31T16:28:38.694171+00:00",
+      "status": "complete",
+      "summary": {
+        "created_at_utc": "2026-08-31T16:28:38.515357+00:00",
+        "cuda_available": true,
+        "cuda_version": "12.8",
+        "gpu": "NVIDIA GeForce RTX 5090 D v2",
+        "platform": "Linux-6.8.0-40-generic-x86_64-with-glibc2.35",
+        "python": "3.10.16",
+        "torch": "2.8.0+cu128"
+      }
+    },
+    "run_S1": {
+      "completed_at_utc": "2026-08-31T16:40:41.128147+00:00",
+      "status": "complete",
+      "summary": {
+        "failed_fold_count": 0,
+        "fold_count": 15,
+        "status": "complete"
+      }
+    },
+    "run_S2": {
+      "completed_at_utc": "2026-08-31T16:48:31.477031+00:00",
+      "status": "complete",
+      "summary": {
+        "failed_fold_count": 0,
+        "fold_count": 15,
+        "status": "complete"
+      }
+    },
+    "run_S3": {
+      "completed_at_utc": "2026-08-31T16:55:50.809763+00:00",
+      "status": "complete",
+      "summary": {
+        "failed_fold_count": 0,
+        "fold_count": 15,
+        "status": "complete"
+      }
+    },
+    "smoke": {
+      "completed_at_utc": "2026-08-31T16:31:13.903480+00:00",
+      "status": "complete",
+      "summary": {
+        "S1": "complete",
+        "S2": "complete",
+        "S3": "complete"
+      }
+    }
+  },
+  "status": "complete"
+}

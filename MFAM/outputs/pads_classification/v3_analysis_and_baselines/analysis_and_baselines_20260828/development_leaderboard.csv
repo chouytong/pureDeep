@@ -1,0 +1,10 @@
+model,representation,balanced_accuracy,macro_f1,auroc,pd_recall,dd_recall,params,notes
+H1b_handcrafted_logistic_balanced,"Handcrafted, balanced sensitivity",0.694670525127654,0.6859796964751875,0.75079227992983,0.7817968653585093,0.6075441848967988,N/A,Development inner-CV estimate — not a new outer-test result
+H1_handcrafted_logistic,Processed handcrafted time/frequency,0.6917758717469201,0.6857860362254536,0.7515230327772422,0.7935702826113785,0.5899814608824621,N/A,Development inner-CV estimate — not a new outer-test result
+H2_handcrafted_linear_svm,Processed handcrafted time/frequency,0.6875169552962228,0.6819830781213593,0.7446197893079511,0.7917191163766506,0.5833147942157952,N/A,Development inner-CV estimate — not a new outer-test result
+MR1_minirocket_multivariate_ridge,Subject-level multivariate MiniRocket,0.6556475606451987,0.6664066924523104,0.7393043152101162,0.8859311366160681,0.4253639846743295,N/A,Development inner-CV estimate — not a new outer-test result
+M0_subject_mfam_frozen_inner_reference,Frozen SubjectMFAM inner validation,0.5896771049929049,0.5852275421733025,0.6130694109319524,0.9220905837344194,0.25726362625139043,N/A,Development inner-CV estimate — not a new outer-test result
+D0_demographic_logistic,Basic demographics only,0.5247006521660247,0.47285261315755134,0.6049465115686334,0.9728372207824264,0.07656408354962305,N/A,Development inner-CV estimate — not a new outer-test result
+N1a_simple_cnn_lr1e4_drop0p2,Simple shared Conv1D,0.5,0.41442146108447664,0.42188039091249663,1.0,0.0,24290,Development inner-CV estimate — not a new outer-test result
+N1b_simple_cnn_lr2e4_drop0p4,Simple shared Conv1D,0.5,0.41442146108447664,0.41830667548710426,1.0,0.0,24290,Development inner-CV estimate — not a new outer-test result
+predict_all_PD,majority baseline,0.5,0.4144144144144144,0.5,1.0,0.0,0,Accuracy=276/390=0.7077

@@ -1,0 +1,10 @@
+{
+  "hypothesis": "The BatchNorm-heavy temporal encoder under-retains between-subject amplitude and distribution cues that explain much of H1's advantage. A small normalization-free learnable convolution bank followed only by mean/std pooling of its learned feature maps will improve stable inner-CV performance.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "pure_deep_pool_small_balanced_v3_seed42",
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Retain only if mean balanced accuracy improves by at least 0.01, improves in at least 9 of 15 matched folds, and AUROC and calibration do not materially regress. Otherwise reject this branch and stop moment-branch expansion."
+}

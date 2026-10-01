@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-16",
+  "source_project": "/home/zyt/MFAM",
+  "bundle_path": "/home/zyt/deep_final",
+  "selected_model": "pads_pure_deep_normfree_moments_v8",
+  "model_family": "PureDeepSubjectModel",
+  "parameter_count": 71026,
+  "class_names": ["PD", "DD"],
+  "subject_count": 390,
+  "selection_basis": {
+    "development_protocol": "fixed 5 outer contexts x 3 inner validation folds",
+    "predefined_seeds": [42, 43, 44],
+    "balanced_accuracy_mean": 0.6572,
+    "balanced_accuracy_sample_std": 0.0123,
+    "matched_fold_delta_vs_balanced_v3": 0.0144,
+    "matched_fold_wins": "11/15",
+    "single_seed_or_single_fold_selection": false
+  },
+  "final_evaluation": {
+    "protocol": "one-time 5x3 nested subject-level CV outer test",
+    "accuracy": 0.6615384615384615,
+    "balanced_accuracy": 0.6115560640732265,
+    "macro_precision": 0.6038461538461539,
+    "macro_recall": 0.6115560640732265,
+    "macro_f1": 0.6063738683631025,
+    "auroc": 0.6346618357487923,
+    "pd_recall": 0.7318840579710145,
+    "dd_recall": 0.4912280701754386,
+    "negative_log_likelihood": 0.6755843462286859,
+    "two_class_brier": 0.4629989034716281,
+    "confusion_matrix": [[202, 74], [58, 56]]
+  },
+  "outer_model_count": 5,
+  "outer_models": [
+    {"fold": 0, "directory": "models/outer_0", "checkpoint_sha256": "04aaa299de7e5ea5bc7cbb254711adda4ed96aa086f66d2492534680588625e6"},
+    {"fold": 1, "directory": "models/outer_1", "checkpoint_sha256": "123ce4c994f313102fe598e2ddceb530e8dcabd28363d63c8c93cfe66d2c4813"},
+    {"fold": 2, "directory": "models/outer_2", "checkpoint_sha256": "ef966eb38b024fabda75294b52d2fa2af1ad97c3205eb8bda393b742de54c45a"},
+    {"fold": 3, "directory": "models/outer_3", "checkpoint_sha256": "46a55ebf6f97e06af192dd9dd6a3c2d4e2ccfb8d50271a5bee14e66b0e780f4f"},
+    {"fold": 4, "directory": "models/outer_4", "checkpoint_sha256": "0dd3445546015288599753b8039f481d6e31cdf6e8c5eec716cab9dfebae62e0"}
+  ],
+  "provenance": {
+    "split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+    "final_artifact_manifest_sha256": "1d91164f30cf82aeabea58d413d5561edb6ef61a079a939106c7af9ff5e9a6cc",
+    "pooled_prediction_sha256": "f3c8d7e8dcff5197cd7cc8aecc7ec1a77453d781b0b357291e2d0941d8a948c2",
+    "source_git_commit": "301feb36e90b599081aa76119b363096167a3b65",
+    "training_or_model_search_during_export": false,
+    "original_project_modified": false
+  }
+}

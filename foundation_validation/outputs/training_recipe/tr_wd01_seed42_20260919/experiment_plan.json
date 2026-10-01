@@ -1,0 +1,10 @@
+{
+  "hypothesis": "Stronger decoupled weight decay may reduce the remaining rapid overfitting observed for the frozen V8-GN backbone at the provisional 1e-4 LR.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "v8_gn_lr1e-4_batch8_seed42",
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Retain only after seeds 42/43/44 if mean BA improves by at least 0.01, or is within 0.005 with lower variance and coherent AUROC/F1/calibration gains; at least 9 of 15 seed-averaged matched folds must improve."
+}

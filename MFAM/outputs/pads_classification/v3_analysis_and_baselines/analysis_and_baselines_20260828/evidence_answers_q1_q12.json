@@ -1,0 +1,56 @@
+{
+  "Q10_quality": {
+    "answer": "There is no evidence that the four timestamp-gap records, sampling-rate deviation, or robust-outlier warning burden explains frozen errors. Outlier flags are warnings and may reflect pathological motion."
+  },
+  "Q11_training": {
+    "answer": "Best epochs and train-validation gaps are variable, consistent with optimization/overfitting instability, but gap magnitude has no clear monotonic association with validation BA in 15 folds."
+  },
+  "Q12_next_steps": {
+    "answer": "Prioritize representation and aggregation ablations; treat normalization stability and subtype-aware evaluation as secondary; do not prioritize resampling, class weighting, activity dropout, or new bands without a new preregistered inner-CV ablation."
+  },
+  "Q1_primary_bottleneck": {
+    "answer": "The evidence points primarily to representation/aggregation limitations interacting with heterogeneous DD phenotypes, not to a single threshold, demographic, timestamp-gap, or robust-outlier problem.",
+    "evidence": {
+      "H1_minus_M0_balanced_accuracy": 0.10209876675401519,
+      "MR1_minus_M0_balanced_accuracy": 0.06597045565229376,
+      "frozen_outer_auroc": 0.6016240783117214,
+      "retrospective_threshold_ba_gain_diagnostic_only": 0.011346300533943476
+    }
+  },
+  "Q2_demographics": {
+    "answer": "Basic demographics contain some ranking signal but weak thresholded discrimination; they are a confounding audit, not a competitive sensor model.",
+    "auroc": 0.6049465115686334,
+    "balanced_accuracy": 0.5247006521660247,
+    "dd_recall": 0.07656408354962305
+  },
+  "Q3_handcrafted": {
+    "H1_balanced_accuracy": 0.6917758717469201,
+    "H2_balanced_accuracy": 0.6875169552962228,
+    "M0_balanced_accuracy": 0.5896771049929049,
+    "answer": "Both simple linear handcrafted baselines materially exceed frozen SubjectMFAM on development inner-CV."
+  },
+  "Q4_minirocket": {
+    "MR1_auroc": 0.7393043152101162,
+    "MR1_balanced_accuracy": 0.6556475606451987,
+    "answer": "MiniRocket exceeds SubjectMFAM but remains below H1, supporting a representation bottleneck without establishing MiniRocket as final generalization performance."
+  },
+  "Q5_simple_cnn": {
+    "N1a_balanced_accuracy": 0.5,
+    "N1b_balanced_accuracy": 0.5,
+    "answer": "Neither preregistered simple CNN candidate learned useful discrimination; both collapsed to all-PD predictions. This is a protocol-specific negative result, not proof that every CNN must fail."
+  },
+  "Q6_subtypes": {
+    "answer": "ET is consistently easiest for useful sensor models. Frozen SubjectMFAM is especially weak on Atypical Parkinsonism and MS; H1-family models substantially recover Atypical cases and shift the hardest group toward MS. Small subtype counts make this exploratory."
+  },
+  "Q7_activities": {
+    "answer": "LiftHold and TouchNose are the strongest single-activity development estimates, while multi-activity H1 is better than every single activity. Leave-one-out results suggest redundancy/complementarity but are exploratory."
+  },
+  "Q8_sensors": {
+    "answer": "Accelerometer-only and gyroscope-only are similar; their combination is better, indicating complementary information.",
+    "combined_ba": 0.6917758717469201
+  },
+  "Q9_wrists": {
+    "answer": "Bilateral input is best; left-only is slightly better than right-only, and neither unilateral variant matches bilateral development performance."
+  },
+  "scope": "Evidence-based answers; all model comparisons are development inner-CV estimates. Frozen outer-test predictions are descriptive only."
+}

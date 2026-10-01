@@ -1,0 +1,59 @@
+_base_: pads_multi_activity_v3_nested_cv.yaml
+
+experiment:
+  name: pads_pure_deep_mean_attention_residual_agg02_seed44
+  output_root: outputs/foundation_validation/mean_attention_residual_agg02_seed44
+  seed: 44
+
+data:
+  root: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length
+  activity_manifests:
+    CrossArms: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/CrossArms.csv
+    DrinkGlas: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/DrinkGlas.csv
+    Entrainment: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Entrainment.csv
+    HoldWeight: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/HoldWeight.csv
+    LiftHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/LiftHold.csv
+    PointFinger: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/PointFinger.csv
+    Relaxed: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Relaxed.csv
+    RelaxedTask: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/RelaxedTask.csv
+    StretchHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/StretchHold.csv
+    TouchIndex: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchIndex.csv
+    TouchNose: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchNose.csv
+
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  pure_deep:
+    feature_dim: 64
+    dropout: 0.1
+    pooling: attention_mean_std
+    stem_mode: shared
+    temporal:
+      kernel_size: 7
+      dilations: [1, 2, 4]
+    spectral:
+      enabled: false
+    moment_branch:
+      enabled: true
+      feature_dim: 32
+      kernels: [1, 15, 63]
+  activity_fusion:
+    mode: mean_attention_residual
+    attention_dim: 64
+    dropout: 0.1
+    initial_attention_weight: 0.25
+    classifier_dropout: 0.2
+
+loss:
+  label_smoothing: 0.0
+  class_weights: train_balanced
+
+training:
+  mixed_precision: false
+
+development:
+  hypothesis: mean plus gated attention residual stability seed 44
+  comparison: pads_pure_deep_normfree_moments_v8_seed44
+  stop_rule: report all predefined seeds without selecting the best seed

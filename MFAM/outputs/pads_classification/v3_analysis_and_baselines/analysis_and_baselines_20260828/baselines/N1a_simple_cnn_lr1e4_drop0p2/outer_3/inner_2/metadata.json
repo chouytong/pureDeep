@@ -1,0 +1,45 @@
+{
+  "best_epoch": 1,
+  "checkpoint_sha256": "4a40796c4b3645ab5cdd451cd02e916a758f55171824c67ebd3e1574c9c3b880",
+  "epochs_run": 9,
+  "forbidden_mfam_components_present": false,
+  "inner_fold": 2,
+  "metrics": {
+    "accuracy": 0.7087378640776699,
+    "auroc": 0.49452054794520545,
+    "balanced_accuracy": 0.5,
+    "binary_dd_brier": 0.23543691801546737,
+    "confusion_matrix": [
+      [
+        73,
+        0
+      ],
+      [
+        30,
+        0
+      ]
+    ],
+    "dd_pr_auc": 0.31363694576603124,
+    "dd_recall": 0.0,
+    "dd_support": 30,
+    "macro_f1": 0.4147727272727273,
+    "negative_log_likelihood": 0.6639559606688438,
+    "pd_recall": 1.0,
+    "pd_support": 73,
+    "sample_count": 103
+  },
+  "model_name": "N1a_simple_cnn_lr1e4_drop0p2",
+  "normalization_sha256": "f63f960394050270738ceaa0090550308334001c7151f5f5456586261d791196",
+  "outer_context": 3,
+  "outer_test_accessed": false,
+  "parameter_count": 24290,
+  "representation": "shared simple Conv1D, masked temporal mean, wrist concatenate, activity masked mean",
+  "runtime_seconds": 7.039586431812495,
+  "scope": "development_inner_cv",
+  "seed": 42,
+  "status": "complete",
+  "train_subject_count": 210,
+  "train_subject_ids_sha256": "6af8a92a2d0e00d7e08ca81950ddb4329b82664f2d77c268efb214529b7d2b0f",
+  "validation_subject_count": 103,
+  "validation_subject_ids_sha256": "e21eb67565101357be90f70218cdc8b0f1aedae105004255be94c557bd1f7af7"
+}

@@ -1,0 +1,96 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_1/inner_0",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-09-16T07:41:36.924551+00:00",
+  "summary": {
+    "fold_id": "outer_1/inner_0",
+    "best_epoch": 5,
+    "best_metric": 0.6405841325196164,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.7047619047619048,
+      "balanced_accuracy": 0.6405841325196164,
+      "macro_precision": 0.6433333333333333,
+      "macro_recall": 0.6405841325196164,
+      "macro_f1": 0.6418747937066783,
+      "weighted_precision": 0.7020317460317461,
+      "weighted_recall": 0.7047619047619048,
+      "weighted_f1": 0.7033326522379222,
+      "per_class_precision": [
+        0.7866666666666666,
+        0.5
+      ],
+      "per_class_recall": [
+        0.7972972972972973,
+        0.4838709677419355
+      ],
+      "per_class_f1": [
+        0.7919463087248321,
+        0.4918032786885246
+      ],
+      "support": [
+        74,
+        31
+      ],
+      "confusion_matrix": [
+        [
+          59,
+          15
+        ],
+        [
+          16,
+          15
+        ]
+      ],
+      "sample_count": 105,
+      "macro_auroc": 0.6543156059285091,
+      "per_class_auroc": [
+        0.6543156059285091,
+        0.6543156059285091
+      ],
+      "brier_score": 0.4361759500767708,
+      "negative_log_likelihood": 0.6276606325408314,
+      "loss": 0.6496714257058643,
+      "classification_loss": 0.6496714257058643,
+      "duration_seconds": 0.11172105744481087,
+      "batches": 14,
+      "pd_recall": 0.7972972972972973,
+      "dd_recall": 0.4838709677419355
+    },
+    "train_subject_ids_sha256": "53c6600aa2644d88cda13b01567a05aa9fc65341f82b23714b81b8b87520650e",
+    "normalization_sha256": "0af43193b9131cca93e1c4ca6a4978d93e3aaa405cf1b39585054c40310290ce",
+    "checkpoint_sha256": "39720bac2686c67e4c3b1d0e49f5ffb51ac8beb01ca1f749c7d108d1ad9a3a0f",
+    "pretraining": {
+      "objective": "masked_sequence_reconstruction",
+      "labels_used": false,
+      "validation_subjects_used": false,
+      "outer_test_loader_created": false,
+      "outer_test_signal_accessed": false,
+      "train_subject_ids_sha256": "53c6600aa2644d88cda13b01567a05aa9fc65341f82b23714b81b8b87520650e",
+      "train_subject_count": 207,
+      "mask_ratio": 0.3,
+      "span_length": 25,
+      "epochs": 10,
+      "initial_masked_mse": 0.9586454706720502,
+      "final_masked_mse": 0.7552401800395602,
+      "epoch_losses": [
+        0.9586454706720502,
+        0.8960319788805692,
+        0.8624471024851035,
+        0.8132880262954142,
+        0.8201993899652272,
+        0.8008147193619765,
+        0.7774381160080889,
+        0.7665883634325805,
+        0.7540068205032964,
+        0.7552401800395602
+      ],
+      "decoder_discarded_before_supervised_training": true,
+      "supervised_optimizer_reinitialized": true,
+      "wrist_encoder_checkpoint_sha256": "136b02904a0f5956bba6abc1da128afb52b27f588ea2ee6763660051203ed587"
+    },
+    "smoke": false
+  }
+}

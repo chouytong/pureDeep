@@ -1,0 +1,10 @@
+{
+  "hypothesis": "A masked-mean anchor plus a gated learned-attention residual may preserve stable multi-activity evidence while retaining activity-specific weighting.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "pads_pure_deep_normfree_moments_v8_same_seed",
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Retain only after seeds 42/43/44 if mean BA improves by at least 0.01, or is within 0.005 with lower variance and coherent AUROC/F1/calibration gains; at least 9 of 15 seed-averaged matched folds must improve."
+}

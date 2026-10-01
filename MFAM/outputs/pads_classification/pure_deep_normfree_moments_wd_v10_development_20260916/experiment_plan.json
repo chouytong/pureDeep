@@ -1,0 +1,10 @@
+{
+  "hypothesis": "V8's learned-moment branch improves representation but still overfits and is seed-sensitive. Increasing AdamW weight decay from 1e-4 to 1e-3 should reduce fold/seed variance without changing architecture or information access.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "pure_deep_normfree_moments_v8_seed42",
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Retain only if BA improves by at least 0.01 or is within 0.005 while fold standard deviation, NLL and Brier all improve. Otherwise keep v8 settings and stop weight-decay tuning rather than searching a validation grid."
+}

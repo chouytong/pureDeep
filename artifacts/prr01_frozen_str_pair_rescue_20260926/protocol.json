@@ -1,0 +1,27 @@
+{
+  "scope": "fixed inner-development only",
+  "outer_information_used": false,
+  "STR_seeds": [
+    42,
+    43,
+    44
+  ],
+  "H1_deterministic_per_split": true,
+  "primary_statistical_unit": "15 splits; 3 STR seeds aggregated within split",
+  "stable_error_primary": "three seeds aggregated first within each of four validation appearances; error rate >=0.75 stable-error, <=0.25 stable-correct",
+  "score_orientation": "DD positive; STR score=final_logits[1]-final_logits[0]; H1 probability_dd logit",
+  "residual_target": "H1 train-z-logit minus STR train-z-logit; train-only means and scales",
+  "representation": "activity_raw flatten, subject_embedding, structured_embedding, concatenated subject+structured; score-only baseline",
+  "readout": "train-only StandardScaler, fixed PCA-16 randomized SVD seed 0, Ridge alpha=1",
+  "negative_control": "class-conditional permutation of train residual target only",
+  "formal_model_changed": false,
+  "H1_pair_category_source": "unclipped formal H1 probability_dd; exact RGD-01 category match verified for all 100695 seed-pair instances",
+  "H1_residual_target_source": "train-only H1 probability clipped to [1e-8,1-1e-8] before logit, matching RGD-01",
+  "corrected_score": "STR_train_mean + STR_train_sd * (STR_train_z_score + predicted_residual)",
+  "BA_threshold": "corrected score >= 0 on STR original DD-minus-PD logit scale; descriptive, no validation threshold tuning",
+  "all_pair_net_gain": "all originally STR-wrong pairs recovered minus all originally STR-correct pairs newly broken; exactly equals AUROC delta times pair count",
+  "targeted_net_gain": "recovered H1-rescue pairs minus all originally STR-correct pairs newly broken",
+  "permutations_per_split_seed_stage": 10,
+  "negative_control_targets": "within inner-train PD and DD groups independently permuted; validation unchanged",
+  "pair_level_independence": "pairs are decomposition only; 3 seeds averaged within split, 15 splits primary"
+}

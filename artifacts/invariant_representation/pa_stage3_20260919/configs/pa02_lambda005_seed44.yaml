@@ -1,0 +1,20 @@
+_base_: nr01_seed44.yaml
+
+experiment:
+  name: pads_v8_gn_pa02_lambda005_seed44
+  output_root: outputs/invariant_representation/pa02_lambda005_seed44
+
+loss:
+  prototype_alignment_weight: 0.05
+  prototype_margin: 0.2
+  prototype_separation_weight: 1.0
+
+development:
+  hypothesis: >-
+    A moderately stronger activity-conditioned prototype constraint may produce
+    measurable invariance while classification loss preserves PD/DD separation.
+  comparison: frozen_v8_gn_same_seed_and_splits
+  stop_rule: >-
+    Retain only if seed-aggregated 15-split disease performance does not
+    materially decline and subject retrieval or unseen-subject shift declines
+    consistently; never select from one seed or one fold.

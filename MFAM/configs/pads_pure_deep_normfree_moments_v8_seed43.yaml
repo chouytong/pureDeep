@@ -1,0 +1,40 @@
+_base_: pads_multi_activity_v3_nested_cv.yaml
+
+experiment:
+  name: pads_pure_deep_normfree_moments_v8_seed43
+  output_root: outputs/pads_classification/pure_deep_normfree_moments_v8_seed43
+  seed: 43
+  deterministic: true
+
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  pure_deep:
+    feature_dim: 64
+    dropout: 0.1
+    pooling: attention_mean_std
+    stem_mode: shared
+    spectral:
+      enabled: false
+    moment_branch:
+      enabled: true
+      feature_dim: 32
+      kernels: [1, 15, 63]
+  activity_fusion:
+    attention_dim: 64
+    dropout: 0.1
+    classifier_dropout: 0.2
+
+loss:
+  label_smoothing: 0.0
+  class_weights: train_balanced
+
+training:
+  mixed_precision: false
+
+development:
+  hypothesis: seed stability of the retained normalization-free learned-moment branch
+  comparison: pure_deep_normfree_moments_v8_seed42
+  stop_rule: report all predefined seeds without choosing the best seed

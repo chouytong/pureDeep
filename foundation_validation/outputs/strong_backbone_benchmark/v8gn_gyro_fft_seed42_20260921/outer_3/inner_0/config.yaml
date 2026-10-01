@@ -1,0 +1,256 @@
+task:
+  type: pads_classification
+  name: pd_vs_dd_subject_multi_activity_full_length_l1
+experiment:
+  name: pads_v8gn_gyro_fft_seed42
+  output_root: /home/zyt/deep_final/foundation_validation/outputs/strong_backbone_benchmark/v8gn_gyro_fft_seed42
+  seed: 42
+  deterministic: true
+data:
+  type: pads
+  unit: subject
+  root: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length
+  activities:
+  - CrossArms
+  - DrinkGlas
+  - Entrainment
+  - HoldWeight
+  - LiftHold
+  - PointFinger
+  - Relaxed
+  - RelaxedTask
+  - StretchHold
+  - TouchIndex
+  - TouchNose
+  activity_manifests:
+    CrossArms: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/CrossArms.csv
+    DrinkGlas: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/DrinkGlas.csv
+    Entrainment: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Entrainment.csv
+    HoldWeight: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/HoldWeight.csv
+    LiftHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/LiftHold.csv
+    PointFinger: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/PointFinger.csv
+    Relaxed: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Relaxed.csv
+    RelaxedTask: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/RelaxedTask.csv
+    StretchHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/StretchHold.csv
+    TouchIndex: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchIndex.csv
+    TouchNose: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchNose.csv
+  wrist_mode: bilateral
+  sensor_mode: acc_gyro
+  wrist_order:
+  - left
+  - right
+  channel_names:
+  - AccX
+  - AccY
+  - AccZ
+  - GyroX
+  - GyroY
+  - GyroZ
+  invalid_pair_policy: error
+  labels:
+  - PD
+  - DD
+  raw_input_channels: 6
+  sample_rate: 100.0
+  sequence_length: null
+  train_crop: full
+  eval_crop: full
+  eval_crop_count: 1
+  inference_crop: full
+  pad_value: 0.0
+  delimiter: ','
+  drop_time_column: false
+  minimum_samples_per_class: 10
+  standardize: true
+  normalization_scope: activity_wrist_channel
+  normalization_epsilon: 1.0e-06
+  num_workers: 4
+  pin_memory: true
+  fold:
+    num_folds: 5
+    test_fold: 0
+    validation_fraction: 0.15
+    stratified: true
+    manifest_fold_column: null
+    split_file: null
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  frequency:
+    bands:
+    - - 0.5
+      - 3.0
+    - - 3.0
+      - 7.0
+    - - 7.0
+      - 12.0
+    boundary: half_open
+    include_last_high: true
+    include_original: false
+  encoder:
+    branch_channels: 64
+    hidden_dim: 128
+    kernel_size: 3
+    dilations:
+    - 1
+    - 2
+    - 4
+    channel_reduction: 8
+    conv_bias: false
+    dropout: 0.0
+  mil:
+    window_seconds: 1.0
+    overlap: 0.5
+    attention_dim: null
+    retention_ratio: 0.3
+    epsilon: 1.0e-08
+    hard_gating: true
+    hard_gating_train_only: false
+    attention_type: tanh
+  activity_fusion:
+    attention_dim: 64
+    dropout: 0.1
+    classifier_dropout: 0.2
+    mode: attention
+  pure_deep:
+    encoder_mode: time
+    feature_dim: 64
+    dropout: 0.1
+    pooling: attention_mean_std
+    stem_mode: shared
+    temporal:
+      kernel_size: 7
+      dilations:
+      - 1
+      - 2
+      - 4
+      normalization: group_norm
+      normalization_groups: 8
+    spectral:
+      enabled: false
+    moment_branch:
+      enabled: true
+      feature_dim: 32
+      kernels:
+      - 1
+      - 15
+      - 63
+    gyro_frequency_branch:
+      enabled: true
+      representation: rfft_log_magnitude
+      frequency_bins: 128
+      maximum_hz: 12.0
+      hidden_dim: 24
+      embedding_dim: 16
+      normalization_groups: 8
+      dropout: 0.1
+  bilateral_fusion:
+    mode: full
+loss:
+  label_smoothing: 0.0
+  class_weights:
+  - 0.7074829931972789
+  - 1.7049180327868851
+  class_weight_source: current_fold_train_subject_labels_only
+  class_weight_train_counts:
+    PD: 147
+    DD: 61
+training:
+  epochs: 50
+  batch_size: 8
+  optimizer: adamw
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  adam_betas:
+  - 0.9
+  - 0.999
+  scheduler:
+    type: cosine
+    minimum_lr: 1.0e-06
+  mixed_precision: false
+  gradient_clip_norm: 5.0
+  early_stopping:
+    enabled: true
+    patience: 12
+    metric: balanced_accuracy
+    mode: max
+    minimum_delta: 0.0
+  checkpoint:
+    resume: null
+    save_every: 0
+  overfit_batches: 0
+evaluation:
+  batch_size: 8
+  zero_division: 0.0
+  save_predictions: true
+  report_per_class: true
+  run_test_after_training: false
+distributed:
+  enabled: false
+  backend: auto
+nested_cv:
+  split_file: splits/pads_classification/v3_nested_cv/seed42/nested_cv_splits.json
+  outer_folds: 5
+  inner_folds: 3
+  seed: 42
+  split_unit: subject
+  stratification:
+  - PD
+  - Other
+  - ET
+  - Atypical
+  - MS
+  outer_test_access: final_evaluation_only
+model_selection:
+  primary_metric: balanced_accuracy
+  secondary_metrics:
+  - macro_f1
+  - accuracy
+  - macro_auroc
+  - dd_recall
+  - pd_recall
+  - negative_log_likelihood
+  - brier_score
+  threshold:
+    source: inner_oof_only
+    metric: balanced_accuracy
+    positive_class: DD
+  final_epoch:
+    strategy: median_inner_best_epoch
+  reuse_v2_threshold: false
+provenance:
+  strict_checkpoint_validation: true
+  experiment_version: v3_nested_cv
+  pads_dataset_version: 1.0.0
+  pads_doi: 10.13026/m0w9-zx22
+  label_mapping:
+    Parkinson's: PD
+    Other Movement Disorders: DD
+    Essential Tremor: DD
+    Atypical Parkinsonism: DD
+    Multiple Sclerosis: DD
+    Healthy: excluded
+  preprocessing_artifacts:
+  - data/processed/pads_multi_activity/v2_l1_full_length/processing_config.json
+  - data/processed/pads_multi_activity/v2_l1_full_length/audit.json
+  - data/processed/pads_multi_activity/v2_l1_full_length/quality_summary.json
+  - data/processed/pads_multi_activity/v2_l1_full_length/solver_audit.json
+development:
+  hypothesis: A single lightweight Gyro-only learnable rFFT branch focused on 0-12
+    Hz captures stable low-frequency and 3-7 Hz structure not fully used by V8-GN.
+  comparison: pads_pure_deep_groupnorm_nr01_same_seed
+  stop_rule: Retain only if BA improves by 0.01-0.015, AUROC by at least 0.015, Macro-F1
+    does not decline, DD recall does not materially decline, about 10/15 seed-averaged
+    matched splits improve, and seed stability is preserved.
+nested_runtime:
+  phase: inner_training
+  fold_id: outer_3/inner_0
+  train_subject_ids_sha256: 7f84a3d8569376eebc6182b73775da06bb8c7277a8ec9a9a4f1e02268ed1dabc
+  validation_subject_ids_sha256: e6d14e21fc4a6ed455157a6d9324300da4817d6a1756a71e8071bfccec1f80f7
+  test_subject_ids_sha256: c2fead6635f67099998d2a816dc9270c35eca4a5d4ae56a018155a97f989e3c9
+  train_subject_count: 208
+  validation_subject_count: 105
+  test_subject_count: 77
+  smoke_execution_limiter: false

@@ -1,0 +1,386 @@
+{
+  "demographic_audit": {
+    "allowed_categorical": [
+      "gender",
+      "handedness"
+    ],
+    "allowed_numeric": [
+      "age",
+      "height",
+      "weight"
+    ],
+    "excluded_leakage": [
+      "age_at_diagnosis",
+      "condition",
+      "disease_comment"
+    ],
+    "excluded_uncertain": [
+      "appearance_in_first_grade_kinship",
+      "appearance_in_kinship",
+      "effect_of_alcohol_on_tremor"
+    ],
+    "principle": "Only basic pre-diagnostic demographics are allowed; uncertain fields are excluded."
+  },
+  "frozen_metrics_recomputed": {
+    "accuracy": 0.7051282051282052,
+    "auroc": 0.6016240783117214,
+    "balanced_accuracy": 0.5934401220442411,
+    "binary_dd_brier": 0.2043194118689004,
+    "confusion_matrix": [
+      [
+        238,
+        38
+      ],
+      [
+        77,
+        37
+      ]
+    ],
+    "dd_pr_auc": 0.4286159312924983,
+    "dd_recall": 0.32456140350877194,
+    "dd_support": 114,
+    "macro_f1": 0.5984744715709183,
+    "negative_log_likelihood": 0.619258531119416,
+    "pd_recall": 0.8623188405797102,
+    "pd_support": 276,
+    "sample_count": 390
+  },
+  "frozen_subject_count": 390,
+  "probability_threshold": {
+    "conclusion_guardrail": "Retrospective threshold result is diagnostic only and cannot be used for model selection.",
+    "dd_probability_dd": {
+      "iqr": 0.14861542731523514,
+      "maximum": 0.9733928442001343,
+      "mean": 0.3010583166359809,
+      "median": 0.20254600048065186,
+      "minimum": 0.023153411224484444,
+      "n": 114,
+      "q25": 0.1683959811925888,
+      "q75": 0.31701140850782394,
+      "std": 0.22935862846672575
+    },
+    "diagnostic_global_threshold": {
+      "balanced_accuracy": 0.6047864225781846,
+      "candidate_count": 386,
+      "scope": "diagnostic_only_not_for_model_selection",
+      "threshold": 0.25192368030548096
+    },
+    "frozen_selected_threshold_metrics": {
+      "accuracy": 0.7051282051282052,
+      "auroc": 0.6016240783117214,
+      "balanced_accuracy": 0.5934401220442411,
+      "binary_dd_brier": 0.2043194118689004,
+      "confusion_matrix": [
+        [
+          238,
+          38
+        ],
+        [
+          77,
+          37
+        ]
+      ],
+      "dd_pr_auc": 0.4286159312924983,
+      "dd_recall": 0.32456140350877194,
+      "dd_support": 114,
+      "macro_f1": 0.5984744715709183,
+      "negative_log_likelihood": 0.619258531119416,
+      "pd_recall": 0.8623188405797102,
+      "pd_support": 276,
+      "sample_count": 390
+    },
+    "pd_probability_dd": {
+      "iqr": 0.061873260885477066,
+      "maximum": 0.9829546809196472,
+      "mean": 0.21556866885773648,
+      "median": 0.18258947879076004,
+      "minimum": 0.0030101987067610025,
+      "n": 276,
+      "q25": 0.16071069613099098,
+      "q75": 0.22258395701646805,
+      "std": 0.13781757923099147
+    },
+    "reliability": {
+      "binary_dd_brier": 0.2043194118689004,
+      "ece_equal_width_10": 0.08720356905056785,
+      "negative_log_likelihood": 0.619258531119416
+    },
+    "thresholds": {
+      "iqr": 0.026846706867218018,
+      "maximum": 0.35158929228782654,
+      "mean": 0.27876363694667816,
+      "median": 0.2689414322376251,
+      "minimum": 0.24079690873622894,
+      "n": 5,
+      "q25": 0.2528219223022461,
+      "q75": 0.2796686291694641,
+      "std": 0.043345460551933356,
+      "values": [
+        0.35158929228782654,
+        0.24079690873622894,
+        0.2689414322376251,
+        0.2528219223022461,
+        0.2796686291694641
+      ]
+    }
+  },
+  "quality": {
+    "error_association": [
+      {
+        "bootstrap_95ci_high": 0.4155098814229249,
+        "bootstrap_95ci_low": -0.70705533596838,
+        "correct_mean": 5.410909090909091,
+        "correct_n": 275,
+        "hedges_g_incorrect_vs_correct": -0.05507966596682173,
+        "incorrect_mean": 5.278260869565218,
+        "incorrect_minus_correct": -0.13264822134387355,
+        "incorrect_n": 115,
+        "metric": "outlier_record_count",
+        "scope": "frozen_outer_descriptive_not_for_tuning"
+      },
+      {
+        "bootstrap_95ci_high": 1.6471857707509887,
+        "bootstrap_95ci_low": -2.200023715415021,
+        "correct_mean": 14.821818181818182,
+        "correct_n": 275,
+        "hedges_g_incorrect_vs_correct": -0.027394657490900687,
+        "incorrect_mean": 14.591304347826087,
+        "incorrect_minus_correct": -0.23051383399209513,
+        "incorrect_n": 115,
+        "metric": "outlier_channel_count",
+        "scope": "frozen_outer_descriptive_not_for_tuning"
+      },
+      {
+        "bootstrap_95ci_high": -7.551470355731307,
+        "bootstrap_95ci_low": -206.2976679841897,
+        "correct_mean": 615.1781818181818,
+        "correct_n": 275,
+        "hedges_g_incorrect_vs_correct": -0.22968981355202428,
+        "incorrect_mean": 510.9478260869565,
+        "incorrect_minus_correct": -104.23035573122525,
+        "incorrect_n": 115,
+        "metric": "outlier_point_count",
+        "scope": "frozen_outer_descriptive_not_for_tuning"
+      },
+      {
+        "bootstrap_95ci_high": 0.022450592885375494,
+        "bootstrap_95ci_low": -0.02181818181818182,
+        "correct_mean": 0.01090909090909091,
+        "correct_n": 275,
+        "hedges_g_incorrect_vs_correct": -0.02187121825823,
+        "incorrect_mean": 0.008695652173913044,
+        "incorrect_minus_correct": -0.0022134387351778664,
+        "incorrect_n": 115,
+        "metric": "gap_record_count",
+        "scope": "frozen_outer_descriptive_not_for_tuning"
+      },
+      {
+        "bootstrap_95ci_high": 0.014435375395475387,
+        "bootstrap_95ci_low": -0.0058529387279577655,
+        "correct_mean": 0.6964016238737324,
+        "correct_n": 275,
+        "hedges_g_incorrect_vs_correct": 0.10927273659922793,
+        "incorrect_mean": 0.701259705122109,
+        "incorrect_minus_correct": 0.004858081248376611,
+        "incorrect_n": 115,
+        "metric": "max_absolute_fs_deviation_hz",
+        "scope": "frozen_outer_descriptive_not_for_tuning"
+      },
+      {
+        "bootstrap_95ci_high": 0.03363913262900639,
+        "bootstrap_95ci_low": -0.004927507501773896,
+        "correct_mean": 0.3839695280059847,
+        "correct_n": 275,
+        "hedges_g_incorrect_vs_correct": 0.1688691772400813,
+        "incorrect_mean": 0.39793170841606745,
+        "incorrect_minus_correct": 0.013962180410082736,
+        "incorrect_n": 115,
+        "metric": "mean_absolute_fs_deviation_hz",
+        "scope": "frozen_outer_descriptive_not_for_tuning"
+      }
+    ],
+    "gap_records": 4,
+    "gap_sensitivity": {
+      "classification_rule": "median absolute relative change <1%=negligible, 1-5%=small, >=5%=potentially material",
+      "comparison_rows": 672,
+      "gap_record_count": 4,
+      "groups": {
+        "control": {
+          "classification": "small",
+          "median_absolute_relative_change": 0.010140172875779493,
+          "q75": 0.0258579678663325
+        },
+        "gap": {
+          "classification": "small",
+          "median_absolute_relative_change": 0.03566954933601023,
+          "q75": 0.08274981236210727
+        }
+      },
+      "matched_control_count": 12
+    },
+    "record_count": 8580,
+    "robust_outlier": {
+      "channel_rows": 51480,
+      "interpretation": "A flag is not automatically data corruption; it may indicate acquisition artifact or pathological motion.",
+      "record_count": 8580,
+      "records_flagged": 2095,
+      "tremor_related_activity_definition": [
+        "HoldWeight",
+        "Relaxed",
+        "RelaxedTask",
+        "StretchHold"
+      ],
+      "warning_definition": "abs(x-median)/(1.4826*MAD) > 20 per processed channel; zero-MAD channels are not flagged"
+    },
+    "sampling_rate_range_hz": [
+      99.2065470289272,
+      100.80765276860764
+    ]
+  },
+  "scope": "frozen_outer_descriptive_diagnostics_only",
+  "subtype_summary": [
+    {
+      "confidence_histogram": "[{\"lower\":0.0,\"upper\":0.1,\"count\":0},{\"lower\":0.1,\"upper\":0.2,\"count\":0},{\"lower\":0.2,\"upper\":0.30000000000000004,\"count\":0},{\"lower\":0.30000000000000004,\"upper\":0.4,\"count\":0},{\"lower\":0.4,\"upper\":0.5,\"count\":0},{\"lower\":0.5,\"upper\":0.6000000000000001,\"count\":0},{\"lower\":0.6000000000000001,\"upper\":0.7000000000000001,\"count\":1},{\"lower\":0.7000000000000001,\"upper\":0.8,\"count\":5},{\"lower\":0.8,\"upper\":0.9,\"count\":9},{\"lower\":0.9,\"upper\":1.0,\"count\":0}]",
+      "confidence_mean": 0.8056518296400706,
+      "confidence_median": 0.813275471329689,
+      "confidence_q25": 0.7923901453614235,
+      "confidence_q75": 0.8366194665431976,
+      "correct_rate": 0.13333333333333333,
+      "group": "Atypical Parkinsonism",
+      "interpretation_scope": "descriptive_exploratory",
+      "iqr_probability_dd": 0.04422932118177414,
+      "mean_probability_dd": 0.1943481703599294,
+      "median_probability_dd": 0.18672452867031097,
+      "n": 15,
+      "predicted_as_dd_proportion": 0.13333333333333333,
+      "q25_probability_dd": 0.16338053345680237,
+      "q75_probability_dd": 0.2076098546385765,
+      "std_probability_dd": 0.05000108882637869,
+      "unique_subjects": 15
+    },
+    {
+      "confidence_histogram": "[{\"lower\":0.0,\"upper\":0.1,\"count\":0},{\"lower\":0.1,\"upper\":0.2,\"count\":0},{\"lower\":0.2,\"upper\":0.30000000000000004,\"count\":0},{\"lower\":0.30000000000000004,\"upper\":0.4,\"count\":0},{\"lower\":0.4,\"upper\":0.5,\"count\":0},{\"lower\":0.5,\"upper\":0.6000000000000001,\"count\":2},{\"lower\":0.6000000000000001,\"upper\":0.7000000000000001,\"count\":3},{\"lower\":0.7000000000000001,\"upper\":0.8,\"count\":9},{\"lower\":0.8,\"upper\":0.9,\"count\":10},{\"lower\":0.9,\"upper\":1.0,\"count\":4}]",
+      "confidence_mean": 0.7838209263448205,
+      "confidence_median": 0.7977842167019844,
+      "confidence_q25": 0.7240879237651825,
+      "confidence_q75": 0.8415486700832844,
+      "correct_rate": 0.5,
+      "group": "Essential Tremor",
+      "interpretation_scope": "descriptive_exploratory",
+      "iqr_probability_dd": 0.5550457648932934,
+      "mean_probability_dd": 0.4129372970866306,
+      "median_probability_dd": 0.28701598942279816,
+      "n": 28,
+      "predicted_as_dd_proportion": 0.5,
+      "q25_probability_dd": 0.1740117408335209,
+      "q75_probability_dd": 0.7290575057268143,
+      "std_probability_dd": 0.29608249695210276,
+      "unique_subjects": 28
+    },
+    {
+      "confidence_histogram": "[{\"lower\":0.0,\"upper\":0.1,\"count\":0},{\"lower\":0.1,\"upper\":0.2,\"count\":0},{\"lower\":0.2,\"upper\":0.30000000000000004,\"count\":0},{\"lower\":0.30000000000000004,\"upper\":0.4,\"count\":0},{\"lower\":0.4,\"upper\":0.5,\"count\":0},{\"lower\":0.5,\"upper\":0.6000000000000001,\"count\":0},{\"lower\":0.6000000000000001,\"upper\":0.7000000000000001,\"count\":0},{\"lower\":0.7000000000000001,\"upper\":0.8,\"count\":4},{\"lower\":0.8,\"upper\":0.9,\"count\":7},{\"lower\":0.9,\"upper\":1.0,\"count\":0}]",
+      "confidence_mean": 0.8051531707698648,
+      "confidence_median": 0.812793031334877,
+      "confidence_q25": 0.7633813619613647,
+      "confidence_q75": 0.8455752953886986,
+      "correct_rate": 0.2727272727272727,
+      "group": "Multiple Sclerosis",
+      "interpretation_scope": "descriptive_exploratory",
+      "iqr_probability_dd": 0.08219393342733383,
+      "mean_probability_dd": 0.23701876266436142,
+      "median_probability_dd": 0.18720696866512299,
+      "n": 11,
+      "predicted_as_dd_proportion": 0.2727272727272727,
+      "q25_probability_dd": 0.15442470461130142,
+      "q75_probability_dd": 0.23661863803863525,
+      "std_probability_dd": 0.17026690803248226,
+      "unique_subjects": 11
+    },
+    {
+      "confidence_histogram": "[{\"lower\":0.0,\"upper\":0.1,\"count\":0},{\"lower\":0.1,\"upper\":0.2,\"count\":0},{\"lower\":0.2,\"upper\":0.30000000000000004,\"count\":0},{\"lower\":0.30000000000000004,\"upper\":0.4,\"count\":0},{\"lower\":0.4,\"upper\":0.5,\"count\":0},{\"lower\":0.5,\"upper\":0.6000000000000001,\"count\":4},{\"lower\":0.6000000000000001,\"upper\":0.7000000000000001,\"count\":8},{\"lower\":0.7000000000000001,\"upper\":0.8,\"count\":15},{\"lower\":0.8,\"upper\":0.9,\"count\":29},{\"lower\":0.9,\"upper\":1.0,\"count\":4}]",
+      "confidence_mean": 0.7836057734986146,
+      "confidence_median": 0.8124241232872009,
+      "confidence_q25": 0.735286258161068,
+      "confidence_q75": 0.8330368436872959,
+      "correct_rate": 0.3,
+      "group": "Other Movement Disorders",
+      "interpretation_scope": "descriptive_exploratory",
+      "iqr_probability_dd": 0.14366541430354118,
+      "mean_probability_dd": 0.2872662472228209,
+      "median_probability_dd": 0.19895798712968826,
+      "n": 60,
+      "predicted_as_dd_proportion": 0.3,
+      "q25_probability_dd": 0.17249179258942604,
+      "q75_probability_dd": 0.3161572068929672,
+      "std_probability_dd": 0.2129193078158734,
+      "unique_subjects": 60
+    },
+    {
+      "confidence_histogram": "[{\"lower\":0.0,\"upper\":0.1,\"count\":0},{\"lower\":0.1,\"upper\":0.2,\"count\":0},{\"lower\":0.2,\"upper\":0.30000000000000004,\"count\":0},{\"lower\":0.30000000000000004,\"upper\":0.4,\"count\":0},{\"lower\":0.4,\"upper\":0.5,\"count\":0},{\"lower\":0.5,\"upper\":0.6000000000000001,\"count\":9},{\"lower\":0.6000000000000001,\"upper\":0.7000000000000001,\"count\":9},{\"lower\":0.7000000000000001,\"upper\":0.8,\"count\":71},{\"lower\":0.8,\"upper\":0.9,\"count\":170},{\"lower\":0.9,\"upper\":1.0,\"count\":17}]",
+      "confidence_mean": 0.8078216791171513,
+      "confidence_median": 0.8179928287863731,
+      "confidence_q25": 0.781221080571413,
+      "confidence_q75": 0.8408723287284374,
+      "correct_rate": 0.8623188405797102,
+      "group": "Parkinson's",
+      "interpretation_scope": "descriptive_exploratory",
+      "iqr_probability_dd": 0.061873260885477066,
+      "mean_probability_dd": 0.21556866885773648,
+      "median_probability_dd": 0.18258947879076004,
+      "n": 276,
+      "predicted_as_dd_proportion": 0.13768115942028986,
+      "q25_probability_dd": 0.16071069613099098,
+      "q75_probability_dd": 0.22258395701646805,
+      "std_probability_dd": 0.13781757923099147,
+      "unique_subjects": 276
+    }
+  ],
+  "training_dynamics": {
+    "best_epoch": {
+      "iqr": 13.0,
+      "maximum": 41.0,
+      "mean": 18.0,
+      "median": 14.0,
+      "minimum": 4.0,
+      "n": 15,
+      "q25": 11.0,
+      "q75": 24.0,
+      "std": 10.8496214548843
+    },
+    "best_validation_balanced_accuracy": {
+      "iqr": 0.06471607489062192,
+      "maximum": 0.6558558558558558,
+      "mean": 0.5896771049929049,
+      "median": 0.5926329555361813,
+      "minimum": 0.5363013698630137,
+      "n": 15,
+      "q25": 0.5575226021425757,
+      "q75": 0.6222386770331976,
+      "std": 0.03811428144157597
+    },
+    "fold_count": 15,
+    "outer_final_epoch_medians": [
+      26,
+      13,
+      17,
+      10,
+      22
+    ],
+    "scope": "frozen_training_log_diagnostic_no_model_change",
+    "spearman_gap_vs_validation_performance": {
+      "pvalue_exploratory": 0.30828445682005556,
+      "rho": 0.2821428571428571
+    },
+    "train_validation_balanced_accuracy_gap": {
+      "iqr": 0.1025482138330081,
+      "maximum": 0.29873464643049896,
+      "mean": 0.1247821229923718,
+      "median": 0.1370095902353966,
+      "minimum": -0.03305724593780801,
+      "n": 15,
+      "q25": 0.06742657073233421,
+      "q75": 0.16997478456534232,
+      "std": 0.09884091229752774
+    }
+  }
+}

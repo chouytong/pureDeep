@@ -1,0 +1,24 @@
+{
+  "model": "V8-GN",
+  "seed": 43,
+  "outer_fold": 3,
+  "threshold": {
+    "source": "inner_oof_only",
+    "positive_class": "DD",
+    "decision_rule": "predict DD when p(DD) >= threshold",
+    "metric": "balanced_accuracy",
+    "threshold": 0.5,
+    "balanced_accuracy": 0.6345907928388747,
+    "sample_count": 313
+  },
+  "final_epoch": {
+    "strategy": "median_inner_best_epoch",
+    "inner_best_epochs": [
+      27,
+      4,
+      10
+    ],
+    "selected_epoch_count": 10
+  },
+  "lock_sha256": "124d091122153ddceced6fb90d59b51611fa9b32ac2c90f5d2087501415eb64b"
+}

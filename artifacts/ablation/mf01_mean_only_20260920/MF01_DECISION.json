@@ -1,0 +1,46 @@
+{
+  "experiment": "MF-01_mean_only_bilateral_fusion",
+  "date": "2026-09-20",
+  "decision": "reject_mean_only_keep_v8_gn_full_fusion",
+  "statistical_unit": "15 seed-aggregated fixed inner-development splits",
+  "seeds": [42, 43, 44],
+  "outer_test_used_for_selection": false,
+  "baseline": {
+    "parameters": 71026,
+    "accuracy": 0.7153648569,
+    "balanced_accuracy": 0.6706608838,
+    "macro_precision": 0.6746343625,
+    "macro_f1": 0.6630746408,
+    "auroc": 0.6799655724,
+    "pd_recall": 0.7782426262,
+    "dd_recall": 0.5630791414
+  },
+  "mean_only": {
+    "parameters": 55700,
+    "parameter_reduction_fraction": 0.2157805604,
+    "accuracy": 0.6939337263,
+    "balanced_accuracy": 0.6493969771,
+    "macro_precision": 0.6587476132,
+    "macro_f1": 0.6366904457,
+    "auroc": 0.6670722227,
+    "pd_recall": 0.7570652845,
+    "dd_recall": 0.5417286697,
+    "ba_seed_sample_std": 0.0074640850
+  },
+  "paired_15_split": {
+    "balanced_accuracy_delta": -0.0212639067,
+    "balanced_accuracy_wins": 4,
+    "balanced_accuracy_wilcoxon_p": 0.0553588867,
+    "macro_f1_delta": -0.0263841951,
+    "macro_f1_wins": 3,
+    "macro_f1_wilcoxon_p": 0.0353393555,
+    "auroc_delta": -0.0128933497,
+    "auroc_wins": 6,
+    "auroc_wilcoxon_p": 0.3591308594
+  },
+  "protocol_incident": {
+    "seed": 42,
+    "description": "The generic nested runner automatically produced outer-final/test artifacts after inner development.",
+    "mitigation": "All outer artifacts were excluded. Seed-42 development metrics were rebuilt only from the 15 completed inner checkpoints. Seeds 43 and 44 used the development-only runner."
+  }
+}

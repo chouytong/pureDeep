@@ -1,0 +1,10 @@
+{
+  "hypothesis": "H1 diagnostics show that relative spectral fractions help while absolute band power hurts, and the prior unrestricted full-spectrum branch failed. A small shared end-to-end learnable temporal filter bank with within-channel relative energy normalization will capture complementary scale-invariant periodic cues without any handcrafted band-power input or fixed band aggregation.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "pure_deep_normfree_moments_v8_seed42",
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Use seed 42 as the preregistered discovery run. Replicate with seeds 43 and 44 only if mean balanced accuracy improves by at least 0.01, at least 9 of 15 matched folds improve, AUROC does not regress by more than 0.01, and no numerical instability occurs. Otherwise reject and do not tune filter count, kernel size, or initialization frequencies on these development folds."
+}

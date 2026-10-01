@@ -1,0 +1,10 @@
+{
+  "hypothesis": "V8 gains come primarily from normalization-free global moments of learned feature maps, while the BatchNorm TCN contributes small-sample variance. Removing the TCN should preserve or improve BA with fewer parameters.",
+  "pure_deep": true,
+  "handcrafted_features": false,
+  "primary_metric": "balanced_accuracy",
+  "comparison": "pure_deep_normfree_moments_v8_seed42",
+  "seed": 42,
+  "folds": "fixed 5 outer contexts x 3 inner validation folds",
+  "stop_rule": "Retain only if BA is within 0.005 of V8 with clearly lower seed/fold variance, or improves by at least 0.01. Otherwise retain the time-plus-moment V8 and conclude the temporal and global branches are complementary."
+}

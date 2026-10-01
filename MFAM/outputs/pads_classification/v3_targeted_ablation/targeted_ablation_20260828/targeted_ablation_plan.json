@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-08-28T00:00:00+00:00",
+  "project_root": "/home/zyt/MFAM",
+  "experiment_name": "v3_subject_mfam_targeted_ablation_development",
+  "scope": "development_inner_cv_only",
+  "completion_rule": "Run all five preregistered single-factor candidates, then at most two preregistered eligible combinations, write the final report, and stop without outer-test evaluation.",
+  "immutable_references": {
+    "frozen_v3_directory": "/home/zyt/MFAM/outputs/pads_classification/v3_nested_cv/formal_subject_mfam_seed42_20260827",
+    "frozen_v3_manifest_sha256": "af5fdda01ceed8f90944f9a25e3a630b09ad17e07ece5f1d32dfe3d147271321",
+    "frozen_v3_artifact_tree_sha256": "b168b86b4a9cf9acba2d165c5230bb1b4aae7020234e70b983d91549f123d103",
+    "frozen_split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+    "base_config_sha256": "3bb1d8dbeea729775d300123b874752c85cce84f7760f4294e560249de472080",
+    "handcrafted_feature_cache_sha256": "d7b465b251892abbe602539369989c133fce4c4da15e3bee3cb308d07e0f4da5",
+    "handcrafted_feature_schema_sha256": "bdb83aae1c31b66c659a63f7a723f74b2cc82bfc99725621f6a41ba736389312",
+    "previous_analysis_directory": "/home/zyt/MFAM/outputs/pads_classification/v3_analysis_and_baselines/analysis_and_baselines_20260828"
+  },
+  "evaluation_units": {
+    "subjects": 390,
+    "outer_contexts": 5,
+    "inner_folds_per_outer": 3,
+    "development_folds": 15,
+    "expected_validation_rows": 1560,
+    "warning": "The 1560 validation rows are repeated observations of 390 subjects and are never treated as independent subjects."
+  },
+  "training": {
+    "seed": 42,
+    "deterministic": true,
+    "epochs": 50,
+    "batch_size": 8,
+    "optimizer": "adamw",
+    "learning_rate": 0.0002,
+    "weight_decay": 0.0001,
+    "adam_betas": [0.9, 0.999],
+    "scheduler": "cosine",
+    "minimum_lr": 0.000001,
+    "mixed_precision": true,
+    "gradient_clip_norm": 5.0,
+    "early_stopping_metric": "balanced_accuracy",
+    "early_stopping_mode": "max",
+    "early_stopping_patience": 12,
+    "early_stopping_minimum_delta": 0.0,
+    "loss": "unweighted_cross_entropy",
+    "label_smoothing": 0.0,
+    "no_candidate_specific_optimizer_or_lr_changes": true
+  },
+  "reference_models": {
+    "M0": {
+      "action": "read_existing_frozen_inner_predictions_and_metrics",
+      "retrain": false,
+      "description": "Frozen current SubjectMFAM"
+    },
+    "H1": {
+      "action": "read_existing_development_summary",
+      "retrain": false,
+      "balanced_accuracy": 0.6917758717469201,
+      "auroc": 0.7515230327772422
+    },
+    "MiniRocket": {
+      "action": "read_existing_development_summary",
+      "retrain": false,
+      "balanced_accuracy": 0.6556475606451987,
+      "auroc": 0.7393043152101162
+    }
+  },
+  "single_factor_candidates": {
+    "R1": {
+      "modification": "M0 plus parallel full-band temporal branch",
+      "frequency_branch": "unchanged M0 three FFT bands",
+      "full_band_input": "same fold-normalized processed detrended Acc and current Gyro tensor supplied to M0, without FFT masking",
+      "full_band_encoder": {
+        "style": "same multiscale Conv1D channel-attention encoder",
+        "branch_channels": 32,
+        "hidden_dim": 128,
+        "kernel_size": 3,
+        "dilations": [1, 2, 4],
+        "normalization": "BatchNorm1d",
+        "mil": "same M0 AttentionMIL and Hard Top-K 30 percent"
+      },
+      "branch_fusion": "concatenate frequency and full-band 128-dimensional wrist bags, then one Linear(256,128) projection before unchanged bilateral fusion",
+      "other_modules": "unchanged"
+    },
+    "R2": {
+      "modification": "M0 plus handcrafted statistical residual",
+      "feature_source": "frozen label-independent H1 4928-dimensional feature cache",
+      "fold_preprocessing": "inner-train StandardScaler then inner-train PCA",
+      "pca_components": 32,
+      "pca_whiten": false,
+      "pca_svd_solver": "full",
+      "pca_random_state": 42,
+      "fusion": "concatenate 32 PCA components to the 514-dimensional M0 subject embedding, then one dropout plus Linear(546,2) classifier",
+      "other_modules": "unchanged"
+    },
+    "A1": {
+      "modification": "M0 without Hard Top-K",
+      "attention_scorer": "unchanged",
+      "pooling": "softmax attention weighted pooling over all valid MIL instances",
+      "hard_gating": false,
+      "other_modules": "unchanged"
+    },
+    "A2": {
+      "modification": "replace learned activity attention with masked arithmetic mean",
+      "pooling": "mean of raw per-activity bilateral fusion embeddings over valid activities",
+      "activity_embedding_parameters": false,
+      "activity_attention_parameters": false,
+      "other_modules": "unchanged"
+    },
+    "N1": {
+      "modification": "replace temporal encoder BatchNorm1d with GroupNorm only",
+      "group_rule": "use 8 groups when output channels are divisible by 8; otherwise use the largest divisor not exceeding 8",
+      "expected_groups_for_64_and_128_channels": 8,
+      "other_modules": "unchanged"
+    }
+  },
+  "threshold_protocol": {
+    "primary_metrics": "default probability_dd threshold 0.5",
+    "cross_fitted_threshold_metrics": "For each held inner fold, optimize balanced accuracy using only predictions from the other two disjoint inner validation folds in the same outer context, then apply that threshold to the held fold.",
+    "outer_test_used": false,
+    "model_selection_not_based_only_on_thresholded_metric": true
+  },
+  "paired_comparison": {
+    "fold_level": "15 paired candidate-minus-M0 differences",
+    "subject_cluster_bootstrap": {
+      "enabled": true,
+      "clusters": "subject_id",
+      "iterations": 2000,
+      "seed": 20260828,
+      "interval": "percentile_95",
+      "preserve_all_validation_context_rows_for_sampled_subject": true,
+      "no_independent_row_inference": true
+    }
+  },
+  "subtype_analysis": {
+    "groups": ["Other Movement Disorders", "Essential Tremor", "Atypical Parkinsonism", "Multiple Sclerosis"],
+    "metrics": ["unique_subjects", "prediction_rows", "predicted_dd_fraction", "mean_probability_dd", "subject_cluster_bootstrap_95_interval"],
+    "interpretation": "exploratory"
+  },
+  "combination_rule": {
+    "frozen_before_single_factor_training": true,
+    "representation_pool": ["R1", "R2"],
+    "complementary_pool": ["A1", "A2", "N1"],
+    "eligibility": {
+      "mean_balanced_accuracy_delta_vs_M0_minimum": 0.015,
+      "mean_auroc_delta_vs_M0_minimum": -0.01,
+      "folds_with_balanced_accuracy_delta_ge_0_minimum": 9
+    },
+    "ranking": "highest mean default-threshold balanced accuracy, then highest AUROC, then lexicographic model id",
+    "C1": "best eligible representation plus best eligible complementary modification",
+    "C2": "best eligible representation plus second-best eligible complementary modification",
+    "maximum_combination_models": 2,
+    "maximum_modifications_per_combination": 2,
+    "if_no_eligible_representation_or_complementary_candidate": "run_no_combinations",
+    "thresholds_must_not_be_relaxed": true
+  },
+  "diagnostics": {
+    "attention_entropy": "normalized Shannon entropy of raw MIL attention over valid instances",
+    "instance_utilization": "fraction of MIL instances retained after gating",
+    "R1_branch_diagnostics": ["frequency_bag_l2", "full_band_bag_l2", "frequency_full_band_cosine", "frequency_only_inference", "full_band_only_inference"],
+    "training_stability": ["best_epoch", "train_validation_balanced_accuracy_gap", "fold_variance", "failed_runs", "nonfinite_loss", "nonfinite_gradient", "gradient_norm_before_clipping"]
+  },
+  "forbidden_experiments": [
+    "focal_loss", "weighted_cross_entropy_as_primary", "balanced_sampler", "activity_dropout",
+    "activity_selection", "wrist_removal", "sensor_removal", "global_timestamp_resampling",
+    "new_fft_bands", "deeper_cnn", "transformer", "lstm", "larger_classifier", "automl", "optuna"
+  ],
+  "outer_test_policy": {
+    "outer_final_training": false,
+    "outer_test_loader_creation": false,
+    "outer_test_signal_access": false,
+    "outer_test_prediction_access_for_selection": false
+  }
+}

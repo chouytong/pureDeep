@@ -1,0 +1,20 @@
+_base_: nr01_seed43.yaml
+
+experiment:
+  name: pads_v8_gn_pa01_lambda001_seed43
+  output_root: outputs/invariant_representation/pa01_lambda001_seed43
+
+loss:
+  prototype_alignment_weight: 0.01
+  prototype_margin: 0.2
+  prototype_separation_weight: 1.0
+
+development:
+  hypothesis: >-
+    Train-fold-only activity-conditioned disease prototypes may reduce
+    subject-specific variation without erasing PD/DD separation.
+  comparison: frozen_v8_gn_same_seed_and_splits
+  stop_rule: >-
+    Retain only if seed-aggregated 15-split disease performance does not
+    materially decline and subject retrieval or unseen-subject shift declines
+    consistently; never select from one seed or one fold.

@@ -1,0 +1,74 @@
+_base_: pads_multi_activity_v3_nested_cv.yaml
+
+experiment:
+  name: pads_wsr01_seed44
+  output_root: outputs/wrist_structured_residual/wsr01_seed44_20260922
+  seed: 44
+  deterministic: true
+
+data:
+  root: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length
+  activity_manifests:
+    CrossArms: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/CrossArms.csv
+    DrinkGlas: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/DrinkGlas.csv
+    Entrainment: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Entrainment.csv
+    HoldWeight: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/HoldWeight.csv
+    LiftHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/LiftHold.csv
+    PointFinger: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/PointFinger.csv
+    Relaxed: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Relaxed.csv
+    RelaxedTask: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/RelaxedTask.csv
+    StretchHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/StretchHold.csv
+    TouchIndex: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchIndex.csv
+    TouchNose: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchNose.csv
+
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  pure_deep:
+    feature_dim: 64
+    dropout: 0.1
+    pooling: attention_mean_std
+    stem_mode: shared
+    temporal:
+      kernel_size: 7
+      dilations: [1, 2, 4]
+      normalization: group_norm
+      normalization_groups: 8
+    spectral:
+      enabled: false
+    moment_branch:
+      enabled: true
+      feature_dim: 32
+      kernels: [1, 15, 63]
+  activity_fusion:
+    mode: attention
+    attention_dim: 64
+    dropout: 0.1
+    classifier_dropout: 0.2
+  structured_token_residual:
+    enabled: true
+    projection_dim: 16
+  wrist_structured_residual:
+    enabled: true
+    projection_dim: 4
+
+loss:
+  label_smoothing: 0.0
+  class_weights: train_balanced
+
+training:
+  mixed_precision: false
+
+development:
+  hypothesis: >-
+    Explicitly preserving the fixed 11-activity by 2-wrist structure from
+    pre-fusion wrist embeddings until the decision stage may add discriminative
+    information beyond the frozen STR-01 activity-structured path.
+  comparison: pads_str01_seed44
+  stop_rule: >-
+    Retain only if BA improves by at least 0.01, AUROC by at least 0.015,
+    Macro-F1 does not decrease, neither class recall is materially sacrificed,
+    about 10 of 15 matched splits improve, all three seeds agree in direction,
+    and seed stability does not materially worsen.

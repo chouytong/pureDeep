@@ -1,0 +1,57 @@
+_base_: pads_multi_activity_v3_nested_cv.yaml
+
+experiment:
+  name: pads_pure_deep_relative_energy_v13
+  output_root: outputs/pads_classification/pure_deep_relative_energy_v13
+  seed: 42
+  deterministic: true
+
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  pure_deep:
+    feature_dim: 64
+    dropout: 0.1
+    pooling: attention_mean_std
+    stem_mode: shared
+    spectral:
+      enabled: false
+    moment_branch:
+      enabled: true
+      feature_dim: 32
+      kernels: [1, 15, 63]
+    relative_energy_branch:
+      enabled: true
+      feature_dim: 32
+      filter_count: 8
+      kernel_size: 101
+      initial_minimum_hz: 0.5
+      initial_maximum_hz: 20.0
+  activity_fusion:
+    attention_dim: 64
+    dropout: 0.1
+    classifier_dropout: 0.2
+
+loss:
+  label_smoothing: 0.0
+  class_weights: train_balanced
+
+training:
+  mixed_precision: false
+
+development:
+  hypothesis: >-
+    H1 diagnostics show that relative spectral fractions help while absolute band
+    power hurts, and the prior unrestricted full-spectrum branch failed. A small
+    shared end-to-end learnable temporal filter bank with within-channel relative
+    energy normalization will capture complementary scale-invariant periodic cues
+    without any handcrafted band-power input or fixed band aggregation.
+  comparison: pure_deep_normfree_moments_v8_seed42
+  stop_rule: >-
+    Use seed 42 as the preregistered discovery run. Replicate with seeds 43 and
+    44 only if mean balanced accuracy improves by at least 0.01, at least 9 of
+    15 matched folds improve, AUROC does not regress by more than 0.01, and no
+    numerical instability occurs. Otherwise reject and do not tune filter count,
+    kernel size, or initialization frequencies on these development folds.

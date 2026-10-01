@@ -1,0 +1,110 @@
+{
+  "epoch": 20,
+  "train": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "macro_f1": 1.0,
+    "weighted_precision": 1.0,
+    "weighted_recall": 1.0,
+    "weighted_f1": 1.0,
+    "per_class_precision": [
+      1.0,
+      1.0
+    ],
+    "per_class_recall": [
+      1.0,
+      1.0
+    ],
+    "per_class_f1": [
+      1.0,
+      1.0
+    ],
+    "support": [
+      148,
+      61
+    ],
+    "confusion_matrix": [
+      [
+        148,
+        0
+      ],
+      [
+        0,
+        61
+      ]
+    ],
+    "sample_count": 209,
+    "loss": 0.02935530117414357,
+    "classification_loss": 0.02935530117414357,
+    "duration_seconds": 1.1852254790137522,
+    "batches": 27,
+    "learning_rate": 0.00013124719094030724,
+    "phase2_exposure": {
+      "pd_exposures": 148,
+      "dd_exposures": 61,
+      "augmented_pd_exposures": 66,
+      "augmented_dd_exposures": 37
+    },
+    "phase2_augmented_original_ratio": 0.9716981132075472
+  },
+  "validation": {
+    "accuracy": 0.6796116504854369,
+    "balanced_accuracy": 0.5874429223744292,
+    "macro_precision": 0.5982051282051282,
+    "macro_recall": 0.5874429223744292,
+    "macro_f1": 0.590728476821192,
+    "weighted_precision": 0.664251929300473,
+    "weighted_recall": 0.6796116504854368,
+    "weighted_f1": 0.6703529865620781,
+    "per_class_precision": [
+      0.7564102564102564,
+      0.44
+    ],
+    "per_class_recall": [
+      0.8082191780821918,
+      0.36666666666666664
+    ],
+    "per_class_f1": [
+      0.781456953642384,
+      0.4
+    ],
+    "support": [
+      73,
+      30
+    ],
+    "confusion_matrix": [
+      [
+        59,
+        14
+      ],
+      [
+        19,
+        11
+      ]
+    ],
+    "sample_count": 103,
+    "macro_auroc": 0.6762557077625571,
+    "per_class_auroc": [
+      0.6762557077625571,
+      0.6762557077625571
+    ],
+    "brier_score": 0.49759814575205374,
+    "negative_log_likelihood": 0.8612344269959089,
+    "loss": 1.0798604863071906,
+    "classification_loss": 1.0798604863071906,
+    "duration_seconds": 0.24890763696748763,
+    "batches": 13,
+    "pd_recall": 0.8082191780821918,
+    "dd_recall": 0.36666666666666664
+  },
+  "selection_metric": "balanced_accuracy",
+  "selection_value": 0.5874429223744292,
+  "improved": false,
+  "best_metric": 0.6621004566210045,
+  "best_epoch": 9,
+  "patience_count": 12,
+  "gpu_peak_memory_bytes": 945383936,
+  "timestamp": 1790429851.091711
+}

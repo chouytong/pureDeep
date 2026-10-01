@@ -1,0 +1,95 @@
+{
+  "protocol": {
+    "scope": "fixed inner-development train/validation only",
+    "outer_test_accessed": false,
+    "model_retrained": false,
+    "model_parameters_updated": false,
+    "probe_fit": "separate train-only logistic probe per activity and wrist/component",
+    "raw_seed_fold_rows": 45,
+    "primary_independent_splits": 15,
+    "seed_aggregation": "mean across seeds 42/43/44 within identical split",
+    "multiple_comparison_control": "BH-FDR within subject-level and activity-level test families",
+    "stability_group_source": "/home/zyt/deep_final/foundation_validation/outputs/representation_diagnostics/v8_gn_frozen_20260919/subject_error_stability.csv",
+    "historical_outer_runner_incident_retained": true
+  },
+  "stable_error_minus_stable_correct": {
+    "activity_true_margin_mean": {
+      "mean_delta": -2.0286523981297755,
+      "positive_splits": 0,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "activity_true_margin_min": {
+      "mean_delta": -3.3350708584628928,
+      "positive_splits": 0,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "activity_wrong_fraction": {
+      "mean_delta": 0.3356216628527841,
+      "positive_splits": 1,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "activity_conflict_rate": {
+      "mean_delta": 0.052895083558699096,
+      "positive_splits": 1,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "activity_margin_std": {
+      "mean_delta": 0.304385032484908,
+      "positive_splits": 1,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "activity_margin_iqr": {
+      "mean_delta": 0.022554122037354407,
+      "positive_splits": 1,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "activity_abs_margin_mean": {
+      "mean_delta": 9.716992015729176e-05,
+      "positive_splits": 1,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "wrist_conflict_rate": {
+      "mean_delta": 0.11067193675889331,
+      "positive_splits": 1,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "wrist_disagreement_mean": {
+      "mean_delta": 0.4126376949538799,
+      "positive_splits": 1,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "wrist_disagreement_max": {
+      "mean_delta": -0.3549794324962612,
+      "positive_splits": 0,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "left_true_margin_mean": {
+      "mean_delta": -1.3773439855156924,
+      "positive_splits": 0,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "right_true_margin_mean": {
+      "mean_delta": -1.4685260185261249,
+      "positive_splits": 0,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    },
+    "bilateral_true_margin_mean": {
+      "mean_delta": -1.4229350020209086,
+      "positive_splits": 0,
+      "wilcoxon_p": 1.0,
+      "bh_fdr_q": 1.0
+    }
+  }
+}

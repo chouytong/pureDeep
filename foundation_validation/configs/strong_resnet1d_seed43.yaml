@@ -1,0 +1,52 @@
+_base_: pads_multi_activity_v3_nested_cv.yaml
+
+experiment:
+  name: strong_resnet1d_seed43
+  seed: 43
+
+data:
+  root: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length
+  activity_manifests:
+    CrossArms: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/CrossArms.csv
+    DrinkGlas: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/DrinkGlas.csv
+    Entrainment: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Entrainment.csv
+    HoldWeight: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/HoldWeight.csv
+    LiftHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/LiftHold.csv
+    PointFinger: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/PointFinger.csv
+    Relaxed: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Relaxed.csv
+    RelaxedTask: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/RelaxedTask.csv
+    StretchHold: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/StretchHold.csv
+    TouchIndex: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchIndex.csv
+    TouchNose: /home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchNose.csv
+
+model:
+  name: pure_deep_subject
+  input_channels: 6
+  num_classes: 2
+  sample_rate: 100.0
+  pure_deep:
+    encoder_mode: resnet1d
+    feature_dim: 64
+    dropout: 0.1
+    moment_branch: {enabled: false}
+    gyro_frequency_branch: {enabled: false}
+    resnet1d:
+      stage_channels: [32, 64, 64]
+      blocks_per_stage: [2, 2, 2]
+      stem_kernel_size: 15
+      kernel_size: 7
+      normalization_groups: 8
+  bilateral_fusion: {mode: full}
+  activity_fusion:
+    mode: attention
+    attention_dim: 64
+    dropout: 0.1
+    classifier_dropout: 0.2
+
+loss: {label_smoothing: 0.0, class_weights: train_balanced}
+training: {mixed_precision: false}
+
+development:
+  hypothesis: Same as strong_resnet1d_seed42 under seed 43.
+  comparison: V8-GN same-seed fixed inner-development folds
+  stop_rule: Same preregistered three-seed replacement rule as seed 42.

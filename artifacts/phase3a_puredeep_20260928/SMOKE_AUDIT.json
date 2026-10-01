@@ -1,0 +1,61 @@
+{
+  "e1_phase2_double_compensation": true,
+  "smoke": {
+    "e1_balanced_unweighted": {
+      "complete": true,
+      "no_outer_test_loader": true,
+      "same_train_subjects": true,
+      "same_validation_subjects": true,
+      "same_normalization_sha": true,
+      "resolved_class_weights": null
+    },
+    "e3_sam_rho005": {
+      "complete": true,
+      "no_outer_test_loader": true,
+      "same_train_subjects": true,
+      "same_validation_subjects": true,
+      "same_normalization_sha": true,
+      "resolved_class_weights": [
+        0.702054794520548,
+        1.7372881355932204
+      ]
+    },
+    "e4_aux_lambda01": {
+      "complete": true,
+      "no_outer_test_loader": true,
+      "same_train_subjects": true,
+      "same_validation_subjects": true,
+      "same_normalization_sha": true,
+      "resolved_class_weights": [
+        0.702054794520548,
+        1.7372881355932204
+      ]
+    },
+    "e4_aux_lambda03": {
+      "complete": true,
+      "no_outer_test_loader": true,
+      "same_train_subjects": true,
+      "same_validation_subjects": true,
+      "same_normalization_sha": true,
+      "resolved_class_weights": [
+        0.702054794520548,
+        1.7372881355932204
+      ]
+    }
+  },
+  "logits_consistency": {
+    "checkpoint": "Phase-2 exact STR baseline seed42 outer0 inner0",
+    "max_abs_final_logit_delta": 0.0,
+    "bitwise_equal": true,
+    "base_parameters": 75524,
+    "aux_parameters": 8354,
+    "no_batchnorm": true,
+    "aux_disabled_in_eval": true
+  },
+  "e2_alignment_and_threshold": {
+    "seed_subject_label_alignment": true,
+    "baseline_threshold_mismatches": 0,
+    "exact_probability_ties": 0,
+    "subject_seed_records": 4680
+  }
+}

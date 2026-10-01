@@ -1,0 +1,13 @@
+{
+  "scope": "fixed inner-development train/validation only",
+  "outer_test_accessed": false,
+  "model_retrained": false,
+  "model_parameters_updated": false,
+  "probe_fit": "separate train-only logistic probe per activity and wrist/component",
+  "raw_seed_fold_rows": 45,
+  "primary_independent_splits": 15,
+  "seed_aggregation": "mean across seeds 42/43/44 within identical split",
+  "multiple_comparison_control": "BH-FDR within subject-level and activity-level test families",
+  "stability_group_source": "/home/zyt/deep_final/foundation_validation/outputs/representation_diagnostics/v8_gn_frozen_20260919/subject_error_stability.csv",
+  "historical_outer_runner_incident_retained": true
+}
