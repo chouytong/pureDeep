@@ -2029,3 +2029,19 @@ Model-copy closure hazard fixed in isolated independent wrapper. All 45 checkpoi
 ### WSSL EMA item 04: fixed comparison point verified
 
 45 ordinary/EMA checkpoint pairs use exactly the original ordinary BA-selected epoch. Strict EMA checkpoint provenance checks PASS. No EMA timepoint/max selection; inherited best_metric denotes ordinary selection BA. Core protocol/source hashes unchanged. [Fixed-point audit](artifacts/wssl_ema_20261002/ITEM04_FIXED_COMPARISON.md). No outer evaluation or further training.
+
+
+## WSSL single EMA — final negative result (2026-10-03)
+
+**REJECT EMA; original frozen WSSL-STR remains retained best.** Model-copy independence corrected; all45 old checkpoints exact logits. Existing logs/90 best-last checkpoint eval diagnose late fitting. 45 same-trajectory EMA controls, one-epoch half-life, ordinary BA selects matched epoch, all ordinary numerical trajectories/weights/predictions exactly reproduce archive. No outer use.
+
+|Metric|Ordinary WSSL|EMA|Delta EMA−ordinary|
+|---|---:|---:|---:|
+|Accuracy|0.745604|0.737090|-0.008513|
+|BA|0.719644|0.683824|-0.035820|
+|AUROC|0.759553|0.754912|-0.004642|
+|Macro-F1|0.706589|0.682623|-0.023966|
+|PD Recall|0.782344|0.812271|+0.029927|
+|DD Recall|0.656945|0.555377|-0.101568|
+
+BA delta -.035820, 95%CI[-.044770,-.027454],0/15 improved; AUROC -.004642,CI[-.007912,-.001495],4/15 improved; DD Recall -.101568,CI[-.127289,-.076559],0/15 improved. PD Recall+.029927 trades against DD. BA within-split seed SD .021603→.028945; unanimity improves but performance does not.15 overlapping splits are descriptive paired units after seed averaging, not45 independent runs. **Stop EMA decay/start/combination/stopping-rule sensitivity searches; no other candidate.** Correctness interface retained, formal model/recipe/threshold and archived artifacts unchanged. Development-only result; no outer conclusion. [Full report](artifacts/wssl_ema_20261002/FINAL_REPORT.md); [paired results](artifacts/wssl_ema_20261002/analysis/ema_paired.csv).

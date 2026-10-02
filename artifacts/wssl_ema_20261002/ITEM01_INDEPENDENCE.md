@@ -5,3 +5,5 @@ New independent_wssl.py removes method closures, preserves old state keys, and p
 All 45 frozen best checkpoints: real 8-subject development batches have bit-identical old/new logits. Maximum difference from archived probabilities 1.11e-16. Separate parameter storage and cache mutation isolation, safe deepcopy of new wrapper, fresh checkpoint reload, RNG preservation and finite gradient update passed. Classifier has 143172 trainable parameters and no buffers. HarNet remains frozen cached representation.
 
 Old wrapper deepcopy demonstrably captures the original wrapper in its method closure. This identifies a hazardous copy operation; historical experiments constructed separate instances and are not invalidated merely by its existence. No full training or new performance candidate has run at this step. See analysis/independence_test.json and independence_45checkpoints.csv.
+
+Scope clarification: independently instantiated construction paths were reviewed for the archived Phase3B baseline and Phase4 variants. This item does not claim a blanket audit of every historical experiment.

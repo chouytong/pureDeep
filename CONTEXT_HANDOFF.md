@@ -379,3 +379,8 @@ Latest formal record: `artifacts/phase4_window_dynamics_20261002/FINAL_REPORT.md
 ## 2026-10-02 WSSL single EMA control in progress
 
 User authorized exactly one candidate (EMA) and copy fix/trajectory diagnosis. Item 01 PASS all 45 old checkpoints exact logits; new independent wrapper avoids captured closure. Best remains original frozen WSSL. Protocol artifacts/wssl_ema_20261002/PROTOCOL.md; no outer access, no other candidates.
+
+
+## 2026-10-03 Latest verified record: WSSL single EMA COMPLETE / REJECT
+
+All5 requested items complete. Isolated copy-independent WSSL interface passes45 old-checkpoint exact logits/caches/reload/RNG; architecture unchanged.45 same-trajectory EMA controls with fixed one-epoch half-life alpha2**(-1/S),S26/27. Ordinary BA chooses common checkpoint epoch; all ordinary weights/epoch metrics/predictions exact archive. EMA BA .683824 vs .719644,AUROC .754912 vs .759553,DDRecall .555377 vs .656945;BA/DD lower15/15;BA seed SD worsens.**REJECT; STOP EMA coefficient/start/combination and stop-rule search.** No further training running or recommended automatically. Retained best remains original frozen WSSL-STR (Acc.745604,BA.719644,AUC.759553,F1.706589,PD.782344,DD.656945). No outer use and no new mechanism/module search. Correctness interface is available at artifacts/wssl_ema_20261002/scripts/independent_wssl.py; report FINAL_REPORT.md. Prior in-progress sections are superseded by this complete record.
