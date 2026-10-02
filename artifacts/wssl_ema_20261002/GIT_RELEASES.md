@@ -11,3 +11,5 @@ Current public repository: https://github.com/chouytong/pureDeep
 |05 final negative result|ema-item05-final-reject-20261002|Resolve the annotated tag; self-referential commit hash is kept in an external publication receipt.|
 
 Task directory/tag suffix records the 2026-10-02 protocol/start date; completion is 2026-10-03 Asia/Shanghai. Each completed item was committed, pushed and its peeled tag SHA checked before the next item. Public selection excludes datasets, subject-level tables, frozen feature caches, checkpoint weights, vendor/runtime caches and raw logs; aggregate diagnostics/results and code are retained. No force push or history replacement.
+
+Item05 final result commit:4ef637d54c9beff6065997db7a35bdcfe49872b4. A publication-only supplement (ema-item05-aggregate-export-20261002) includes the six-row aggregate error table using an explicit count header; all five primary item tags remain unchanged.

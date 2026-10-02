@@ -64,3 +64,5 @@ Only15 fixed overlapping development splits are paired units, after seed averagi
 ## Files and version control
 
 Code: independent_wssl.py, test_independence.py, diagnose_trajectory.py, ema_hooks.py, run_ema.py, test_ema_recurrence.py, audit_completed.py, analyze_ema.py, analyze_errors.py, write_final_report.py. Protocol and source/alpha lock, ITEM01–04 reports, fixed-point aggregate metrics/paired CI/seed agreement/error summaries, and FINAL_REPORT.md in artifacts/wssl_ema_20261002. Root README and CONTEXT_HANDOFF updated. Normalization values, per-subject predictions, raw logs, datasets/features and weights stay outside public Git selection. Git commits/pushes and annotated tags for all five items; see GIT_RELEASES.md.
+
+Publication supplement: analysis/error_group_counts_public.csv contains only six group/class aggregate rows. The count column is named subject_count to distinguish it from ID-list headers; no per-subject table is published. Export helper export_group_counts.py changes no metric, result, protocol or frozen core code.
