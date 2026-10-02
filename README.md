@@ -2024,3 +2024,8 @@ Model-copy closure hazard fixed in isolated independent wrapper. All 45 checkpoi
 ### WSSL EMA item 03: 45 same-trajectory controls complete
 
 45 ordinary+EMA runs, 26722 updates, fixed one-epoch half-life. All ordinary weights, numerical epoch trajectories and validation predictions exactly reproduce archived WSSL. HarNet frozen; architecture/recipe/normalization/threshold unchanged. No outer access. No retention conclusion yet. [Training audit](artifacts/wssl_ema_20261002/ITEM03_SINGLE_EMA.md); [best-neighborhood logs](artifacts/wssl_ema_20261002/ITEM02_NEIGHBORHOOD.md).
+
+
+### WSSL EMA item 04: fixed comparison point verified
+
+45 ordinary/EMA checkpoint pairs use exactly the original ordinary BA-selected epoch. Strict EMA checkpoint provenance checks PASS. No EMA timepoint/max selection; inherited best_metric denotes ordinary selection BA. Core protocol/source hashes unchanged. [Fixed-point audit](artifacts/wssl_ema_20261002/ITEM04_FIXED_COMPARISON.md). No outer evaluation or further training.

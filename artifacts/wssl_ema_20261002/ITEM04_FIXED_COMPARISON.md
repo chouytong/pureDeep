@@ -1,0 +1,7 @@
+# Item 04 — ordinary-selected fixed comparison (PASS)
+
+45 checkpoint pairs share the exact original ordinary BA-selected epoch. Selected updates=best_epoch×S; completed updates=stop_epoch×S. Best/stop epoch, normalization tensors, model state keys and ordinary weights exactly match archive. EMA checkpoints pass all 45 strict provenance/compatibility checks, invoked from the foundation project root (serialized checkpoint config omits transient project-root metadata).
+
+No EMA validation is used in early stopping, threshold selection or epoch selection. Only ema_at_ordinary_best.pt is evaluated. Ordinary best.pt is selected by original validation BA and strict improvement, patience12/max50. Each EMA output labels ordinary_selected_epoch=true. Its inherited best_metric is the ordinary selection BA; validation_metrics are the measured EMA metrics, not an EMA-selected best. EMA logs are a copy of ordinary history used for epoch provenance, not EMA training/validation trajectories. Neither a maximum over EMA and ordinary nor a maximum over multiple EMA times is computed.
+
+All subjects are joined by subject ID and label; paired result units will be 15 splits after three-seed averaging. No outer inputs, predictions/performance or test loader enter training/evaluation. Protocol/core code hashes have remained unchanged since the pretraining freeze. analysis/item04_audit.json, item04_45run_audit.csv and ema_checkpoint_provenance.json document these checks. No additional training at this step.
