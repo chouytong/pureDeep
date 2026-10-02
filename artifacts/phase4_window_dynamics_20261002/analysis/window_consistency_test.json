@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "checkpoints_tested": 45,
+  "real_validation_batches": 45,
+  "mean_cache_exact": true,
+  "logits_exact_for_all_checkpoints": true,
+  "maximum_archived_probability_difference": 1.1102230246251565e-16,
+  "explicit_subject_lookup": true,
+  "short_window_no_fake_back": true,
+  "smoke": {
+    "masked_wrist_activity_invariance": true,
+    "real_batch_shape": [
+      8,
+      11,
+      2,
+      6,
+      2000
+    ],
+    "projection_gradient_finite_nonzero": true,
+    "frozen_features_requires_grad": false,
+    "one_batch_update": true,
+    "checkpoint_reload_exact": true,
+    "smoke_loss_finite": true
+  },
+  "outer_artifacts_accessed": false
+}
