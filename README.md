@@ -2019,3 +2019,8 @@ Model-copy closure hazard fixed in isolated independent wrapper. All 45 checkpoi
 ### WSSL EMA item 02: existing training trajectories
 
 45 archived runs, 90 actual best/last checkpoints evaluated in eval mode. Best/stop medians 10/22. Best train/validation BA .913406/.719644, last .999546/.658764; last-minus-best validation AUROC -.014419 and CE +.420458. Late fitting does not improve validation. Online dropout train metrics are distinguished from checkpoint eval. No intermediate weights/full historical EMA exist. [Report](artifacts/wssl_ema_20261002/ITEM02_TRAJECTORY.md). No outer access.
+
+
+### WSSL EMA item 03: 45 same-trajectory controls complete
+
+45 ordinary+EMA runs, 26722 updates, fixed one-epoch half-life. All ordinary weights, numerical epoch trajectories and validation predictions exactly reproduce archived WSSL. HarNet frozen; architecture/recipe/normalization/threshold unchanged. No outer access. No retention conclusion yet. [Training audit](artifacts/wssl_ema_20261002/ITEM03_SINGLE_EMA.md); [best-neighborhood logs](artifacts/wssl_ema_20261002/ITEM02_NEIGHBORHOOD.md).

@@ -64,7 +64,7 @@ def main():
    metrics,preds=nt.evaluate_epoch(ema,nt._loader(bundle.validation,ck['config'],train=False,seed_offset=1),nt.build_loss(ck['config']).to(device),device,max_batches=1 if args.smoke else 0)
    dest=H/('smoke' if args.smoke else 'runs')/'ema'/f'seed{args.seed}/outer_{oi}/inner_{ii}';dest.mkdir(parents=True)
    nt._write_predictions(dest/'predictions/validation.csv',preds,bundle.class_names)
-   (dest/'stage_status.json').write_text(json.dumps(dict(status='complete',phase='inner',outer_test_loader_created=False,summary=dict(**summary,validation_metrics=nt._named_metrics(metrics),checkpoint_sha256=sha(stage/'checkpoints/ema_at_ordinary_best.pt'),ordinary_selected_epoch=True)),indent=2)+'\n')
+   (dest/'stage_status.json').write_text(json.dumps(dict(status='complete',phase='inner',outer_test_loader_created=False,summary={**summary,'validation_metrics':nt._named_metrics(metrics),'checkpoint_sha256':sha(stage/'checkpoints/ema_at_ordinary_best.pt'),'ordinary_selected_epoch':True}),indent=2)+'\n')
    (dest/'logs').mkdir();(dest/'logs/epochs.jsonl').write_text((stage/'logs/epochs.jsonl').read_text())  # Ordinary selection history, NOT EMA history.
    print(json.dumps(dict(status='PASS',**audit)),flush=True)
    for st in states.values():st.handle.remove()

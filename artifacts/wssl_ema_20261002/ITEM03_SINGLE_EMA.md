@@ -1,0 +1,7 @@
+# Item 03 — single ordinary + EMA training control (PASS)
+
+All 45 development runs complete, 15 fixed splits × seeds42/43/44. Same ordinary training run carries a fresh independent EMA model; 26722 optimizer updates total. S=26 or27, alpha=0.9736927206974342 or0.9746546091224311; initialized from ordinary initial parameters, updated from step1. One-epoch half-life recurrence unit test PASS (float32 max error2.86e-6); no gradient feedback. Smoke test PASS after fixing duplicate dictionary keyword serialization; first failed smoke output preserved, no formal run affected.
+
+All ordinary checkpoint weights, every logged numerical epoch metric, selected epoch, stopping epoch and validation probabilities are bit/exact identical to archived WSSL. Normalization and subject-ID alignment match. Frozen source, split, SSL cache and original checkpoints/predictions fingerprints unchanged. HarNet is never placed in train mode; only original classifier parameters are optimized. 143172 trainable classifier parameters, 10457408 frozen HarNet parameters, total10600580, unchanged. EMA shadow requires_grad=False; it adds no deployable model parameters.
+
+Technical evidence: analysis/item03_audit.json, item03_45run_audit.csv, ema_recurrence_test.json, ema_prefixed_alpha_45runs.csv. EMA has no epoch-wise validation trajectory; copies of ordinary logs under EMA output are explicitly selection provenance only. EMA fixed-point validation is evaluated only after ordinary training. No outer information accessed. No other candidate trained.
