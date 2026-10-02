@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "variant": "c1_dd_aux",
+  "input_shape": [
+    8,
+    11,
+    2,
+    6,
+    2000
+  ],
+  "auxiliary_shape": [
+    8,
+    4
+  ],
+  "original_inference_exact_for_45_checkpoints": true,
+  "pd_only_auxiliary_loss_zero": true,
+  "pd_only_auxiliary_gradient_none_and_no_update": true,
+  "dd_auxiliary_gradient_finite_nonzero": true,
+  "local_encoder_gradient_nonzero": true,
+  "single_batch_training": true,
+  "checkpoint_reload_exact_without_labels": true,
+  "validation_auxiliary_loss_zero": true,
+  "invalid_mask_no_leakage": true,
+  "trainable_parameters": 144208,
+  "additional_parameters": 1036,
+  "auxiliary_weight": 0.1,
+  "frozen_ssl_requires_grad": false,
+  "outer_artifacts_accessed": false
+}

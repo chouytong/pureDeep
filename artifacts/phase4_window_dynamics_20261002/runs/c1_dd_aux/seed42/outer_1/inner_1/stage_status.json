@@ -1,0 +1,69 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_1/inner_1",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-10-02T14:53:45.558562+00:00",
+  "summary": {
+    "fold_id": "outer_1/inner_1",
+    "best_epoch": 10,
+    "best_metric": 0.7225225225225225,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.7884615384615384,
+      "balanced_accuracy": 0.7225225225225225,
+      "macro_precision": 0.7435897435897436,
+      "macro_recall": 0.7225225225225225,
+      "macro_f1": 0.731203007518797,
+      "weighted_precision": 0.7815581854043392,
+      "weighted_recall": 0.7884615384615384,
+      "weighted_f1": 0.78368999421631,
+      "per_class_precision": [
+        0.8333333333333334,
+        0.6538461538461539
+      ],
+      "per_class_recall": [
+        0.8783783783783784,
+        0.5666666666666667
+      ],
+      "per_class_f1": [
+        0.855263157894737,
+        0.6071428571428571
+      ],
+      "support": [
+        74,
+        30
+      ],
+      "confusion_matrix": [
+        [
+          65,
+          9
+        ],
+        [
+          13,
+          17
+        ]
+      ],
+      "sample_count": 104,
+      "macro_auroc": 0.7711711711711712,
+      "per_class_auroc": [
+        0.7711711711711712,
+        0.7711711711711712
+      ],
+      "brier_score": 0.31749739953501127,
+      "negative_log_likelihood": 0.49351064679403717,
+      "loss": 0.5920810195115896,
+      "classification_loss": 0.5920810195115896,
+      "dd_aux_loss": 0.0,
+      "duration_seconds": 0.11159155797213316,
+      "batches": 13,
+      "pd_recall": 0.8783783783783784,
+      "dd_recall": 0.5666666666666667
+    },
+    "train_subject_ids_sha256": "6e3d002dc92324c59bddbd1245d33b4c315c1fdd5e950dc37ebd8043b14e645d",
+    "normalization_sha256": "8b3cd95ac8f11f892eed92dfc2eacd826efef998fcad1aee8e1f4520610a2b7c",
+    "checkpoint_sha256": "d6621354ac1457ea7acbfee9596c580be18df232e92275e5c95114804ad1cc03",
+    "pretraining": null,
+    "smoke": false
+  }
+}
