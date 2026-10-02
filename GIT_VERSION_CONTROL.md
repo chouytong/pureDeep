@@ -4,7 +4,7 @@ Established: 2026-10-01 (Asia/Shanghai), explicitly requested by the project own
 
 ## Repository mapping
 
-- GitHub: https://github.com/useanything0520-ux/pureDeep.git, branch main.
+- GitHub: https://github.com/chouytong/pureDeep.git, branch main.
 - Development/archive source: /home/zyt/deep_final, published at repository root.
 - Original source: /home/zyt/MFAM, published under MFAM/; its existing Git remote is preserved.
 - Independent Git publishing mirror: /home/zyt/pureDeep-github-upload.
@@ -39,3 +39,7 @@ Git runs on the server through the existing Mac SSH reverse SOCKS tunnel at sock
 If authentication expires or permission is unavailable, retain the verified local commit and restore authentication before pushing. If GitHub contains new commits, inspect and merge/reconcile them first, then align the source tree with the agreed content before rerunning the publisher. Do not overwrite remote edits with an unchecked source sync.
 
 Mirror-local pre-commit/pre-push policy hooks are installed separately and are not automatically installed by cloning. Run the publisher audit explicitly on a new mirror.
+
+## Account migration — 2026-10-02
+
+At the owner's request, the active public repository is now https://github.com/chouytong/pureDeep. Existing Git history is retained; the previous-account remote remains an archival reference. New-account credentials are stored separately under /home/zyt/github-puredeep-chouytong-credentials, outside source/mirror. Publication filtering and frozen experiment results are unchanged. Verify unauthenticated access after pushing.

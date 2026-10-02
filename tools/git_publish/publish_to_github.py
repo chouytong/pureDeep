@@ -17,7 +17,7 @@ import sys
 PRIMARY = Path('/home/zyt/deep_final')
 SECONDARY = Path('/home/zyt/MFAM')
 UPLOAD = Path('/home/zyt/pureDeep-github-upload')
-REMOTE = 'https://github.com/useanything0520-ux/pureDeep.git'
+REMOTE = 'https://github.com/chouytong/pureDeep.git'
 MAX_BYTES = 5 * 1024 * 1024
 ALLOWED = {'.py', '.sh', '.md', '.rst', '.txt', '.yaml', '.yml', '.toml',
            '.json', '.csv', '.tsv', '.png', '.svg', '.pdf', '.sha256'}

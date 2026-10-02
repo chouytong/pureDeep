@@ -1678,4 +1678,7 @@ STR architecture、双腕/activity order、structured path、balanced CE、原 t
 
 ## GitHub archive and ongoing version control (2026-10-01)
 
-Code, reports and aggregate results are published to [pureDeep](https://github.com/useanything0520-ux/pureDeep). See [GIT_VERSION_CONTROL.md](GIT_VERSION_CONTROL.md) for repository mapping, exclusions and the required commit/push workflow after every code change. Data, weights, fitted arrays, per-subject predictions and credentials remain outside Git. Publication does not change any frozen model, result or development/outer evidence boundary.
+Code, reports and aggregate results are published to [pureDeep](https://github.com/chouytong/pureDeep). See [GIT_VERSION_CONTROL.md](GIT_VERSION_CONTROL.md) for repository mapping, exclusions and the required commit/push workflow after every code change. Data, weights, fitted arrays, per-subject predictions and credentials remain outside Git. Publication does not change any frozen model, result or development/outer evidence boundary.
+
+
+GitHub publication target updated on 2026-10-02 to [chouytong/pureDeep](https://github.com/chouytong/pureDeep), at the owner's request. Existing code, reports and aggregate results are preserved with Git history.
