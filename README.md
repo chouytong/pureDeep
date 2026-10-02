@@ -2009,3 +2009,8 @@ Original source/checkpoint/cache/normalization/prediction/split hashes verified 
 
 Three seeds average within 15 fixed overlapping development splits. The 180 executions are not independent statistical samples; split-bootstrap and exploratory BH describe repeated development robustness. Current WSSL errors use one record per independent subject after seed/context aggregation, with model-training overlap acknowledged. Quality measures are descriptive and do not establish bad recordings or justify deletion. Original FOE-01 outer results were not used in this study, and these results provide no new external validation. No new best configuration or automatic follow-on search is supported.
 
+
+
+## WSSL EMA single control — 2026-10-02, item 01
+
+Model-copy closure hazard fixed in isolated independent wrapper. All 45 checkpoints yield identical logits; parameters/caches/reload/RNG isolation PASS. Architecture and frozen baseline unchanged. One candidate only: epoch-half-life EMA, ordinary BA selects the shared comparison epoch. No outer access. [Protocol](artifacts/wssl_ema_20261002/PROTOCOL.md); [item 01 report](artifacts/wssl_ema_20261002/ITEM01_INDEPENDENCE.md).

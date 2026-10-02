@@ -374,3 +374,8 @@ Authoritative new independent study: `artifacts/phase4_window_dynamics_20261002/
 ## 2026-10-02 final ordered WSSL study — all items resolved
 
 Latest formal record: `artifacts/phase4_window_dynamics_20261002/FINAL_REPORT.md`, reports ITEM01–ITEM08. All180 new training runs complete. A1 mean, A2 delta, B1 raw Acc and fixed-weight C1 DD source-category auxiliary all rejected. Retain original frozen WSSL-STR: Acc .745604, BA .719644, AUROC .759553, F1 .706589, PD .782344, DD .656945. Item08 skipped due no retained candidate; no stopping-rule change or extra refit. Updated WSSL primary stable-error groups PD14/DD24; strict all-seed unanimity remains separate sensitivity. No outer information used, no active experiment and no automatically recommended additional model search. All numbered items committed/pushed/tagged on chouytong/pureDeep; final item08 push/tag follows this closure record.
+
+
+## 2026-10-02 WSSL single EMA control in progress
+
+User authorized exactly one candidate (EMA) and copy fix/trajectory diagnosis. Item 01 PASS all 45 old checkpoints exact logits; new independent wrapper avoids captured closure. Best remains original frozen WSSL. Protocol artifacts/wssl_ema_20261002/PROTOCOL.md; no outer access, no other candidates.
