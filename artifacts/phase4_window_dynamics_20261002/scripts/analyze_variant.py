@@ -19,8 +19,8 @@ def metrics(y,p):
 
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--variant',choices=['a1_mean','a2_delta'],required=True);args=ap.parse_args()
-    references=['baseline'] if args.variant=='a1_mean' else ['baseline','a1_mean']
+    ap=argparse.ArgumentParser();ap.add_argument('--variant',choices=['a1_mean','a2_delta','b1_raw'],required=True);args=ap.parse_args()
+    references=['baseline','a1_mean'] if args.variant=='a2_delta' else ['baseline']
     roots={'baseline':OLD/'runs/b_str_pretrained',args.variant:HERE/'runs'/args.variant}
     if args.variant=='a2_delta':roots['a1_mean']=HERE/'runs/a1_mean'
     raw,agreement,aligned=[],[],{}
@@ -46,7 +46,12 @@ def main():
                     best=hist[summary['best_epoch']-1]
                     if name!='baseline':
                         old=json.loads((roots['baseline']/f'seed{seed}/outer_{oi}/inner_{ii}/stage_status.json').read_text())['summary']
-                        assert summary['normalization_sha256']==old['normalization_sha256']
+                        if args.variant=='b1_raw':
+                            assert summary['normalization_sha256']!=old['normalization_sha256']
+                            an=json.loads((stage/'normalization.json').read_text());bn=json.loads((roots['baseline']/f'seed{seed}/outer_{oi}/inner_{ii}/normalization.json').read_text())
+                            for k in ('mean','std'):assert np.array_equal(np.asarray(an[k])[:,:,3:],np.asarray(bn[k])[:,:,3:])
+                        else:
+                            assert summary['normalization_sha256']==old['normalization_sha256']
                         assert summary['train_subject_ids_sha256']==old['train_subject_ids_sha256']
                     raw.append(dict(variant=name,context=oi,inner=ii,seed=seed,n=len(y),best_epoch=summary['best_epoch'],epochs_run=len(hist),train_loss=best['train']['loss'],validation_loss=best['validation']['loss'],**metrics(y,p)))
                 probs=np.stack(probs)
@@ -72,7 +77,7 @@ def main():
     gate=dict(ba_mean_positive=bool(pb.loc['ba','mean_delta']>0),ba_improved_10_of_15=bool(pb.loc['ba','improved_splits']>=10),ba_ci_low_positive=bool(pb.loc['ba','ci95_low']>0),auroc_mean_positive=bool(pb.loc['auroc','mean_delta']>0),auroc_improved_10_of_15=bool(pb.loc['auroc','improved_splits']>=10),macro_f1_non_decrease=bool(c.macro_f1>=b.macro_f1),pd_recall_drop_at_most_001=bool(c.pd_recall>=b.pd_recall-.01),dd_recall_drop_at_most_001=bool(c.dd_recall>=b.dd_recall-.01))
     for m in ('ba','auroc'):gate[m+'_within_split_seed_sd_at_most_125x']=bool(c[m+'_within_split_seed_sd']<=1.25*max(b[m+'_within_split_seed_sd'],.001))
     retained=all(gate.values());decision='RETAIN' if retained else 'REJECT'
-    result=dict(variant=args.variant,status='complete',required_runs=45,completed_runs=45,statistical_units=15,overlapping_split_inference='repeated-development descriptive robustness only',gate=gate,decision=decision,parameters=151948,additional_parameters=8776)
+    result=dict(variant=args.variant,status='complete',required_runs=45,completed_runs=45,statistical_units=15,overlapping_split_inference='repeated-development descriptive robustness only',gate=gate,decision=decision,parameters=143172 if args.variant=='b1_raw' else 151948,additional_parameters=0 if args.variant=='b1_raw' else 8776)
     if args.variant=='a2_delta':
         pa=pairs[pairs.reference=='a1_mean'].set_index('metric')
         result['dynamic_specific_mean_advantage']=bool(pa.loc['ba','mean_delta']>0 and pa.loc['auroc','mean_delta']>0)
