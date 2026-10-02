@@ -2014,3 +2014,8 @@ Three seeds average within 15 fixed overlapping development splits. The 180 exec
 ## WSSL EMA single control — 2026-10-02, item 01
 
 Model-copy closure hazard fixed in isolated independent wrapper. All 45 checkpoints yield identical logits; parameters/caches/reload/RNG isolation PASS. Architecture and frozen baseline unchanged. One candidate only: epoch-half-life EMA, ordinary BA selects the shared comparison epoch. No outer access. [Protocol](artifacts/wssl_ema_20261002/PROTOCOL.md); [item 01 report](artifacts/wssl_ema_20261002/ITEM01_INDEPENDENCE.md).
+
+
+### WSSL EMA item 02: existing training trajectories
+
+45 archived runs, 90 actual best/last checkpoints evaluated in eval mode. Best/stop medians 10/22. Best train/validation BA .913406/.719644, last .999546/.658764; last-minus-best validation AUROC -.014419 and CE +.420458. Late fitting does not improve validation. Online dropout train metrics are distinguished from checkpoint eval. No intermediate weights/full historical EMA exist. [Report](artifacts/wssl_ema_20261002/ITEM02_TRAJECTORY.md). No outer access.
