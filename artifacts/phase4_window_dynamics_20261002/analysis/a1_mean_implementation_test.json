@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "variant": "a1_mean",
+  "real_inner_train_batch_shape": [
+    8,
+    11,
+    2,
+    6,
+    2000
+  ],
+  "zero_branch_frozen_checkpoint_tests": 45,
+  "max_zero_branch_logit_difference": 0.0,
+  "mask_no_invalid_record_leakage": true,
+  "output_gradient_finite_nonzero": true,
+  "hidden_gradient_zero_then_nonzero": true,
+  "one_batch_training_updates": 2,
+  "checkpoint_reload_exact": true,
+  "trainable_parameters": 151948,
+  "additional_parameters": 8776,
+  "frozen_ssl_requires_grad": false,
+  "normalization": "parameter-free LayerNorm1024 epsilon1e-5",
+  "outer_artifacts_accessed": false
+}

@@ -1,0 +1,68 @@
+{
+  "status": "complete",
+  "phase": "inner",
+  "fold_id": "outer_0/inner_1",
+  "outer_test_loader_created": false,
+  "completed_at_utc": "2026-10-02T13:55:05.038860+00:00",
+  "summary": {
+    "fold_id": "outer_0/inner_1",
+    "best_epoch": 24,
+    "best_metric": 0.6853881278538813,
+    "selection_metric": "balanced_accuracy",
+    "validation_metrics": {
+      "accuracy": 0.7766990291262136,
+      "balanced_accuracy": 0.6853881278538813,
+      "macro_precision": 0.7357723577235773,
+      "macro_recall": 0.6853881278538813,
+      "macro_f1": 0.700316255534472,
+      "weighted_precision": 0.764622306417239,
+      "weighted_recall": 0.7766990291262135,
+      "weighted_f1": 0.7634789336968738,
+      "per_class_precision": [
+        0.8048780487804879,
+        0.6666666666666666
+      ],
+      "per_class_recall": [
+        0.9041095890410958,
+        0.4666666666666667
+      ],
+      "per_class_f1": [
+        0.8516129032258065,
+        0.5490196078431373
+      ],
+      "support": [
+        73,
+        30
+      ],
+      "confusion_matrix": [
+        [
+          66,
+          7
+        ],
+        [
+          16,
+          14
+        ]
+      ],
+      "sample_count": 103,
+      "macro_auroc": 0.728310502283105,
+      "per_class_auroc": [
+        0.728310502283105,
+        0.728310502283105
+      ],
+      "brier_score": 0.41226120023342366,
+      "negative_log_likelihood": 0.940446852566897,
+      "loss": 1.224764608931773,
+      "classification_loss": 1.224764608931773,
+      "duration_seconds": 0.12351752002723515,
+      "batches": 13,
+      "pd_recall": 0.9041095890410958,
+      "dd_recall": 0.4666666666666667
+    },
+    "train_subject_ids_sha256": "7c2e19e86f01c25e88b5def67b36ed6a6165fbef74cc692ea19eb6248938ef1a",
+    "normalization_sha256": "4b08facd1b9e0127d1efb99a091d8bb107c7d0af07aa414130baf4a15858c371",
+    "checkpoint_sha256": "31b9207b50069ab98ccfcd7aa0669b007f62b8500f5e02f0e028bdd7d52383d4",
+    "pretraining": null,
+    "smoke": false
+  }
+}
