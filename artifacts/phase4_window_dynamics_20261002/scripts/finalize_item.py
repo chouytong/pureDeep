@@ -53,7 +53,10 @@ for name in summary.index:
     r=summary.loc[name]; a=agreement[agreement.variant==name].mean_pair_agreement.mean()
     report+=f'| {name} | {r.ba_seed_sd:.6f} | {r.auroc_seed_sd:.6f} | {r.ba_within_split_seed_sd:.6f} | {r.auroc_within_split_seed_sd:.6f} | {a:.6f} | {r.selected_epoch_median:.0f} |\n'
 report+='\nGate results: '+', '.join(f'{k}={v}' for k,v in decision['gate'].items())+'.\n\n'
-if variant=='a2_delta':report+=f'Dynamics-specific positive mean BA and AUROC advantage over A1: **{decision["dynamic_specific_mean_advantage"]}**. A numerical advantage alone does not establish robust dynamics-specific benefit; use paired CIs/counts above.\n\n'
+if variant=='a2_delta':
+    report+=f'Dynamics-specific positive mean BA and AUROC advantage over A1: **{decision["dynamic_specific_mean_advantage"]}**. A numerical advantage alone does not establish robust dynamics-specific benefit; use paired CIs/counts above.\n\n'
+    assert test['a1_a2_exact_initialization_all_seeds'] is True
+    report+='A1/A2 initialization matches exactly for seeds 42/43/44 (full state hashes in implementation test). Effective eligibility audit: double windows occur in Entrainment, Relaxed and RelaxedTask (780 wrist records each); remaining eight activities have single windows and zero new residual. This experiment therefore tests long-record dynamics in those three fixed activities; no activity selection occurred. See analysis/window_branch_eligibility.csv.\n\n'
 report+='Three seed metrics are averaged within each split before paired analysis. The 15 splits share subjects; bootstrap intervals, Cohen dz, Wilcoxon and BH results describe repeated development robustness, not 15 independent population samples or external validation. No 45-run or subject-pair inflation. Allowed average PD/DD recall drop remains 0.01, fixed before results. No threshold/recipe/dimension search or candidate combinations.\n'
 (HERE/f'ITEM{item}_REPORT.md').write_text(report)
 readme=Path('/home/zyt/deep_final/README.md');marker=f'## 2026-10-02 — WSSL window dynamics, item {item}'

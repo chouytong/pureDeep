@@ -1,5 +1,6 @@
 """Window branch shape/mask/gradient/reload/train tests, no performance selection."""
 import argparse
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -30,6 +31,21 @@ def main():
     torch.set_num_threads(4)
     cfg = load_config(str(F / 'configs/str01_seed42.yaml'))
     cache = WindowCache()
+    matched_initialization = {}
+    if args.variant == 'a2_delta':
+        for seed in (42,43,44):
+            seed_everything(seed,True)
+            capacity = WindowResidualSubject(build_model(cfg),'mean')
+            seed_everything(seed,True)
+            dynamics = WindowResidualSubject(build_model(cfg),'delta')
+            a,b = capacity.state_dict(),dynamics.state_dict()
+            assert a.keys()==b.keys() and all(torch.equal(a[k],b[k]) for k in a)
+            h=hashlib.sha256()
+            for k in sorted(a):
+                h.update(k.encode());h.update(a[k].numpy().tobytes())
+            matched_initialization[str(seed)]=h.hexdigest()
+            del capacity,dynamics
+        seed_everything(42,True)
     allrecords = load_configured_records(cfg['data'], ['PD', 'DD'])
     split = json.loads((F / 'splits/pads_classification/v3_nested_cv/seed42/nested_cv_splits.json').read_text())
     ids = sorted(split['outer'][0]['inner_folds'][0]['train_subjects'])[:8]
@@ -103,6 +119,9 @@ def main():
     with torch.no_grad(): actual=reloaded(*inputs)['logits']
     assert torch.equal(expected,actual)
     result=dict(status='PASS',variant=args.variant,real_inner_train_batch_shape=list(inputs[0].shape),zero_branch_frozen_checkpoint_tests=45,max_zero_branch_logit_difference=maxdiff,mask_no_invalid_record_leakage=True,output_gradient_finite_nonzero=True,hidden_gradient_zero_then_nonzero=True,one_batch_training_updates=2,checkpoint_reload_exact=True,trainable_parameters=151948,additional_parameters=8776,frozen_ssl_requires_grad=False,normalization='parameter-free LayerNorm1024 epsilon1e-5',outer_artifacts_accessed=False)
+    if matched_initialization:
+        result['a1_a2_exact_initialization_all_seeds']=True
+        result['a1_a2_initialization_sha256']=matched_initialization
     (HERE/f'analysis/{args.variant}_implementation_test.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2),flush=True)
 

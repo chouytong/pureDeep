@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "variant": "a2_delta",
+  "real_inner_train_batch_shape": [
+    8,
+    11,
+    2,
+    6,
+    2000
+  ],
+  "zero_branch_frozen_checkpoint_tests": 45,
+  "max_zero_branch_logit_difference": 0.0,
+  "mask_no_invalid_record_leakage": true,
+  "output_gradient_finite_nonzero": true,
+  "hidden_gradient_zero_then_nonzero": true,
+  "one_batch_training_updates": 2,
+  "checkpoint_reload_exact": true,
+  "trainable_parameters": 151948,
+  "additional_parameters": 8776,
+  "frozen_ssl_requires_grad": false,
+  "normalization": "parameter-free LayerNorm1024 epsilon1e-5",
+  "outer_artifacts_accessed": false,
+  "a1_a2_exact_initialization_all_seeds": true,
+  "a1_a2_initialization_sha256": {
+    "42": "1fcc1f731e822137a50e03480b8da063a75b8f4f97a21af13a0500b06bd3fd04",
+    "43": "217ab8e71b6c24e464a7c456866ccafd70155ffedeb9df4ccbf4d5d878104fea",
+    "44": "48ebf302eb0f07f16d0a9a021c6aabd4ac2eb1a34de42d740b7493a391123117"
+  }
+}

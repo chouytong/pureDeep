@@ -1,0 +1,24 @@
+{
+  "variant": "a2_delta",
+  "status": "complete",
+  "required_runs": 45,
+  "completed_runs": 45,
+  "statistical_units": 15,
+  "overlapping_split_inference": "repeated-development descriptive robustness only",
+  "gate": {
+    "ba_mean_positive": false,
+    "ba_improved_10_of_15": false,
+    "ba_ci_low_positive": false,
+    "auroc_mean_positive": true,
+    "auroc_improved_10_of_15": true,
+    "macro_f1_non_decrease": false,
+    "pd_recall_drop_at_most_001": true,
+    "dd_recall_drop_at_most_001": true,
+    "ba_within_split_seed_sd_at_most_125x": true,
+    "auroc_within_split_seed_sd_at_most_125x": true
+  },
+  "decision": "REJECT",
+  "parameters": 151948,
+  "additional_parameters": 8776,
+  "dynamic_specific_mean_advantage": false
+}

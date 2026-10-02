@@ -364,3 +364,8 @@ The user explicitly authorized Phase-3D despite the earlier Phase-3C CASE D. It 
 8. **当前不支持新机制或 dual-prior training。** 保留现有模型，停止本次 5s / Bio-PM acc-only integration 变体。External-prior 路线整体未被否定，后续只考虑有官方资产和明确依据的单一 prior 验证，并规划真正独立的验证数据。不得重开已停止的 HarNet adapter/gate/domain/layer 或 STR architecture/loss/sampling/augmentation 搜索；不会自动启动另一个 encoder。
 
 完整记录：artifacts/phase3e_external_priors_20261001/PHASE3E_REPORT.md。以上 supersede 历史 next-step 列表；旧 FOE-01 不得用于本阶段选择或独立验证。
+
+
+## 2026-10-02 latest window experiment progress: items 01–04
+
+Authoritative new independent study: `artifacts/phase4_window_dynamics_20261002/PROTOCOL.md`, `ITEM01_REPORT.md` through `ITEM04_REPORT.md`. Item01 audited/reused 45 frozen WSSL stages. Item02 extracted true front/back features and masks: mean cache/logits exact. Item03 A1 mean capacity control and item04 A2 back−front control both completed 45 runs and were rejected by preregistered gates. Retained best remains original Phase3B frozen WSSL-STR (BA .719644/AUROC .759553). No outer results accessed. Next numbered task: B1 local raw Acc input control, independently from original WSSL baseline; then updated WSSL errors, conditional subtype auxiliary, and candidate sensitivity only if eligible. No candidate stacking or additional encoder search. Each completed item is Git committed, pushed, tagged; items01–03 tags already verified, item04 publishing follows this record.
