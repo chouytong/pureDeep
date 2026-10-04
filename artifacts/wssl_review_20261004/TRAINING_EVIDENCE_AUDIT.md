@@ -120,6 +120,8 @@ This identifies an evidence gap; it is **not a claim that lower LR will improve*
 
 ## 9. Remaining verification scope
 
+Root runtime follow-up (2026-10-04): current original source/cache/split/checkpoint/prediction SHA,45 ID/label/recipe checks and15 real train-only normalization recomputations all PASS in `analysis/assets_normalization_audit.json`; mean/std are bit-exact across45 frozen checkpoints. `analysis/preprocessing_contract.json` and `fusion_properties.json` alsoPASS. The bullets below retain the original subtask evidence boundary; this follow-up resolves the current assets/input/interface entry gate, not global recipe optimality or the pending LR performance control.
+
 - The root audit must still verify current canonical code/config/asset identity against actual server checkpoints and normalization; local CSV rows alone are insufficient for those binary/input claims.
 - A new fixed-architecture correctness or LR test must supply actual smoke/run/output evidence before being described as complete.
 - The strongest supported statement today is reproducible retained WSSL within the examined candidates; **global or near-global recipe optimality is unproven**.

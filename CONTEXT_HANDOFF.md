@@ -391,3 +391,8 @@ All5 requested items complete. Isolated copy-independent WSSL interface passes45
 Latest record artifacts/wssl_review_20261004/AUDIT_REPORT.md:15train-only normalization refits/45ckpts exact; full390metadata/8580wrists/SSL-input/cache contract PASS;45frozen-checkpoint sampled forward/ID/reload tests PASS. No newly demonstrated model/data-path bug. Original frozen WSSL remains retained(BA.719644,AUC.759553,DD.656945). Original45ordinary trajectories already exactly reproduced in completed EMA. Late overfitting, no50epoch cap hits. Uniform-index sampling/time gap/clock limitations documented; no data modifications.
 
 Current active user goal is review existing model then controlled tests, not new models. Only justified new contrast: same frozen WSSL classifierLR1e-4 vs inherited2e-4,15splits×3seeds, all other rules unchanged; protocol LR_CONTROL_PROTOCOL.md fixed before results. Prior STR-only LR negative is not a WSSL-specific result. No candidate trained/result yet in this record. All rejected EMA/architecture/loss/augmentation/etc routes remain stopped;FOE01outer excluded. Prior no-active-experiment note superseded only by this authorized review/control.
+
+
+## 2026-10-04 LR single control entry PASS
+
+Original frozen WSSL audit passed; initialization exact and original-engine LR1e-4 smoke passed. Pre-formal full source/protocol/runner/analysis/launcher hash lock set; only LR1e-4 is allowed for45development stages, frozen2e-4 reference reused. Full results pending; no retention decision. User-authorized current-model review/testing, no newarchitecture/outer use/failed-route reopening. SMOKE_REPORT.md documents pre-formal audit-only修正.

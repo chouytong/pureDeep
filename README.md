@@ -2056,3 +2056,8 @@ Archived best/last eval and45logs support late overfitting, not epoch-cap undert
 A real coverage gap is classifier LR specifically for frozen WSSL: Phase2 LR was STR-only, whereas SSL-block tuning is another variable. Current user-authorized audit/testing therefore fixes exactly one existing-model LR contrast,2e-4 vs1e-4, with unchanged architecture/loss/data/threshold/BA stop rule; no LR grid, modules, EMA, loss or augmentation reopening. Protocol/gate are frozen before candidate results. [Audit report](artifacts/wssl_review_20261004/AUDIT_REPORT.md); [single LR protocol](artifacts/wssl_review_20261004/LR_CONTROL_PROTOCOL.md). No candidate result yet; original best stays frozen.
 
 All evidence is development-only,15overlapping seed-first splits; no claim of global optimality or new outer validation. Code/reports/aggregate diagnostics are Git-published; weights, caches, signals, individual predictions stay server-only.
+
+
+### 2026-10-04 existing WSSL LR control — protocol and smoke frozen
+
+Initialization state/logits exact original2e-4 versus independent-interface1e-4 on eight training subjects; original engine smoke PASS. Generic single-class smoke AUROC None audit edge fixed and smoke repeated successfully; initial smoke preserved separately, no forward/recipe/gate change. Full current source hash lock includes actual metrics/loss modules. Exactly oneLR1e-4 candidate follows fixed LR_CONTROL_PROTOCOL.md; all45runs pending, no new performance conclusion. [Entry report](artifacts/wssl_review_20261004/SMOKE_REPORT.md). No outer/EMA/encoder/architecture changes; retained originalWSSL until full fixed gate evaluated.

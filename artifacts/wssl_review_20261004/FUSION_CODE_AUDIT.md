@@ -1,6 +1,12 @@
 # WSSL-STR fusion and reproducibility review — 2026-10-04
 
-Status: local artifacts and newly supplied current server foundation snapshot reviewed; live property-test execution pending. This note does not report a new performance experiment. Historical source, checkpoints, reports and predictions are unchanged.
+Status: current server property tests executed and PASS; see section below. Earlier coverage tables describe archived tests, not the expanded scope of this execution. This note does not report a new performance experiment. Historical source, checkpoints, reports and predictions are unchanged.
+
+## Executed current-state verification
+
+`analysis/fusion_properties.json` and `fusion_properties_45checkpoints.csv` record actual server PASS on all45 frozen checkpoints, one real eight-validation-subject batch per checkpoint. Old/new logits and fresh reload outputs are bit-identical; probability error versus archive max1.11e-16; complete-subject input/cache reordering logit error0 (prespecified tolerance1e-5). Explicit SSL beats stale NaN bridge storage; missing/wrong-shaped inputs are rejected. Large finite masked-wrist/activity feature perturbations do not affect output; retained valid SSL features have an observable nonzero effect in every checkpoint. Cache is finite and original source/cache/checkpoint/prediction guards pass.
+
+First checkpoint copy test directly verifies distinct parameter/cache storage, mutation isolation and Python/NumPy/CPU/CUDA RNG preservation. A fresh two-step, training-only scratch check confirms finite/nonzero backbone, projection and structured gradients, zero LayerNorm gradient at exact zero projection then positive gradient after one update; frozen cache has no gradients. No performance or trained checkpoint is retained from scratch. These tests do not cover all validation subjects or prove clinical/generalization optimality. Companion preprocessing and15 normalization refit tests also PASS; no outer dataset/results accessed.
 
 ## Authoritative evidence and stale local assets
 
@@ -59,12 +65,12 @@ This hazard does **not** automatically invalidate earlier reported experiments. 
 
 ## Remaining useful checks on the current model
 
-These checks are implemented in `scripts/test_fusion_properties.py` for existing frozen checkpoints plus a disposable two-step inner-training smoke instance; execution results remain pending. They do not select a new model.
+These checks were executed in `scripts/test_fusion_properties.py` for existing frozen checkpoints plus a disposable two-step inner-training instance; actual PASS coverage is stated in the first section. They do not select a new model.
 
 - Explicit SSL input must take precedence over stale instance-local bridge features. The compatibility bridge intentionally remains for the existing loader; direct callers must supply features or attach them for **every** batch.
 - Permuting subjects, their local tensors and ID-looked-up SSL features together must permute outputs correspondingly, within an appropriately fixed numeric tolerance. Cache identity must be based on subject ID, not array position.
 - Large finite changes to SSL features of invalid wrists/activities must leave logits unchanged; perturbing valid features of a learned nonzero projection must affect the fusion path.
-- Confirm original activity/wrist order and configuration against the current server source; checkpoint keys/counts alone do not prove order semantics. The new script checks the cache/config ordered activity lists and labeled records by subject ID; a broader preprocessing audit is still needed for raw channel/wrist ordering.
+- Confirm original activity/wrist order and configuration against the current server source; checkpoint keys/counts alone do not prove order semantics. The new script checks the cache/config ordered activity lists and labeled records by subject ID; the executed companion preprocessing audit checks full raw metadata/channel/wrist ordering.
 - Inspect projection, normalization and backbone gradients in a scratch instance. With exactly zero projection initialization, the projection should receive a gradient while LayerNorm initially receives zero gradient; after a projection update, normalization can receive a gradient.
 - Confirm copied instances do not share parameter/cache storage, preserve RNG states, and reload the same checkpoint with the current wrapper/config.
 
@@ -77,4 +83,4 @@ These checks are implemented in `scripts/test_fusion_properties.py` for existing
 
 ## Review conclusion so far
 
-No newly demonstrated bug in the retained data path follows from the locally visible code. The already repaired closure-copy defect is concrete. The next action is verification of the current source/cache/properties, not a new gating, attention, SSL encoder, fine-tuning or augmentation search. Failed Phase-3E/Phase-4/EMA variants remain rejected unless a specific independently verified implementation defect invalidates their comparison.
+Current source/cache/property checks PASS within their stated scope, with no newly demonstrated retained data-path bug. The already repaired closure-copy defect is concrete. A separately frozen single classifier-LR contrast addresses inherited recipe coverage; it changes no fusion/encoder computation. Failed Phase-3E/Phase-4/EMA variants remain rejected; no gating, attention, SSL encoder, fine-tuning or augmentation search is reopened.
