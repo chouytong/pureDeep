@@ -396,3 +396,14 @@ Current active user goal is review existing model then controlled tests, not new
 ## 2026-10-04 LR single control entry PASS
 
 Original frozen WSSL audit passed; initialization exact and original-engine LR1e-4 smoke passed. Pre-formal full source/protocol/runner/analysis/launcher hash lock set; only LR1e-4 is allowed for45development stages, frozen2e-4 reference reused. Full results pending; no retention decision. User-authorized current-model review/testing, no newarchitecture/outer use/failed-route reopening. SMOKE_REPORT.md documents pre-formal audit-only修正.
+
+
+## 2026-10-04 LATEST VERIFIED CLOSURE: current-model audit + single LR COMPLETE / REJECT
+
+Supersedes earlier20261004 pending/running records. Allfour audit areas complete: preprocessing/contracts, train-only normalization/recipe, actual architecture and ID-safe fusion/copy/reload.15normrefits exact45ckpts;390metadata/8580wrists/10920windows PASS;45sampled logits/reload PASS. Prior45ordinary full exact reproduction reused. Best/last actual eval supports late overfit, not maxepoch undertraining. No new current implementation bug warrants formal-model changes.
+
+Single frozen-WSSL classifierLR1e-4 contrast complete45/45; frozen2e-4reference reused; initialization/engine smoke/allstage/finalsource-artifact integrity PASS. BA.725133(+.005489),DD.685352(+.028408),butAUROC.758559(-.000994),F1.706159(-.000431),PD.764914(-.017430);BA9/15,AUC6/15,jointgateREJECT. Positives/uncertainty retained;BA bootstrap-positive≠primaryBHsignificance;DDnot6-metricFDR-confirmed. No global/near-global recipe optimality claim.
+
+Retained official best remains Phase3B frozen WSSL-STR LR2e-4:Acc.745604,BA.719644,AUC.759553,F1.706589,PD.782344,DD.656945;143172trainable/10457408frozen. No newmodel,encoder,loss,augmentation,EMA,threshold or stop-rule. Originalformal/checkpoint/cache/split/prediction/norm hashes unchanged, GPU no training process at closure.
+
+Stop this LR extension and compensatoryWD/epoch/patience/optimizer/scheduler/combination searches;other prior rejected routes remain closed. Next legitimate work: consolidate manuscript and plan genuinely independent validation, without revisitingFOE01outer or claiming it as WSSL confirmation. Allthisstage evidence development-only,15seed-firstoverlapping splits;no45seed-runs/subjects/pairs pseudoreplication. Latestformal report artifacts/wssl_review_20261004/FINAL_REPORT.md,pairedCSV/lr_decision.json/final_integrity_audit.json. READMEincludes allpositive/negative/limitations. Gitfinalclosurepush/tag follows;datasets/weights/individualoutputs excluded.

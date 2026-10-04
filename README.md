@@ -2061,3 +2061,27 @@ All evidence is development-only,15overlapping seed-first splits; no claim of gl
 ### 2026-10-04 existing WSSL LR control — protocol and smoke frozen
 
 Initialization state/logits exact original2e-4 versus independent-interface1e-4 on eight training subjects; original engine smoke PASS. Generic single-class smoke AUROC None audit edge fixed and smoke repeated successfully; initial smoke preserved separately, no forward/recipe/gate change. Full current source hash lock includes actual metrics/loss modules. Exactly oneLR1e-4 candidate follows fixed LR_CONTROL_PROTOCOL.md; all45runs pending, no new performance conclusion. [Entry report](artifacts/wssl_review_20261004/SMOKE_REPORT.md). No outer/EMA/encoder/architecture changes; retained originalWSSL until full fixed gate evaluated.
+
+
+## 2026-10-04 current WSSL review + single LR control — COMPLETE / REJECT
+
+**Retain original frozen WSSL-STR, classifier LR2e-4.** Current input/normalization/model/fusion/recipe audit PASS:15train-only normalization refits match45frozen checkpoints exactly;390metadata/8580wrists/10920SSL input/hash contracts PASS;45sampled checkpoint forward/reload/ID tests PASS. Existing45ordinary exact training reproduction was reused, not repeated. Existing best/last eval supports late overfitting, not max50 undertraining. All original formal hashes, weights/results, official frozen HarNet/cache/splits remain unchanged.
+
+Exactly one current-model training contrast completed45fixed development units: same WSSL initial classifier LR1e-4 versus locked2e-4 reference; initialization/engine smoke, all45stage audits and final integrity PASS. No architecture/loss/augmentation/encoder/EMA/threshold/stop-rule changes, no outer access. Three seeds average first within15overlapping splits.
+
+|Metric|Retained2e-4|LR1e-4|Delta|
+|---|---:|---:|---:|
+|Accuracy|.745604|.741614|-.003990|
+|BA|.719644|.725133|+.005489|
+|AUROC|.759553|.758559|-.000994|
+|Macro-F1|.706589|.706159|-.000431|
+|PD Recall|.782344|.764914|-.017430|
+|DD Recall|.656945|.685352|+.028408|
+
+**Positive findings preserved:** BA+.005489,9/15improve,95%paired bootstrapCI[+.000352,+.011512];DDRecall+.028408,11/15improve/1tie,CI[+.006280,+.049196]. **Joint retention fails:** BA9<10improving splits;AUROCnegative/6of15;F1tiny negative;PDdrop1.743pp exceeds1pp limit. BA bootstrap-positive does not mean primaryBH passes(q.1892);DDrawp.0278/all6BHq.1669 is not FDR-confirmed. AUROC/F1/PD CIs span0, no claim of significant harm. No post-hoc gate change.
+
+Within-split seedSD BA.021603→.022919,AUROC.021741→.022825 (both pass fixed1.25ratio but not improved). Best/stop medians10/22→12/24;0/45cap hits in both. Candidate online train losses are not train eval; weighted validation loss lowers without joint ranking/classification retention. Per-unit seed-averaged errors: PDnet corrected-1.289,DD+.867;not independent people. See full SD/epochs/loss/agreement/effect/BH/error tables.
+
+**STOP this LR extension/WD compensation/extraepoch/patience/scheduler/optimizer or combination search.** Previous rejected modules/EMA/loss/sampling/augmentation remain stopped. Current recipe is retained under tested joint criteria, not proven global/near-global optimum. Data-quality gaps/clock offsets and finite/solver evidence do not prove phenotype preservation; no signal exclusions/corrections were selected.
+
+All results are DEVELOPMENT-ONLY, reused15splits/subjects and sequential selection optimism;no new external evidence or new mechanistic attribution. FOE01/quarantined outer not used or reinterpreted as WSSL validation. [Full final report](artifacts/wssl_review_20261004/FINAL_REPORT.md); [paired results](artifacts/wssl_review_20261004/analysis/lr_paired.csv); [decision](artifacts/wssl_review_20261004/analysis/lr_decision.json). Code/reports/small aggregate outputs are published with completion tag;datasets/cache/checkpoints/individual predictions/raw logs stay server-only.

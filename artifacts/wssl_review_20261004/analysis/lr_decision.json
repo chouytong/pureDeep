@@ -1,0 +1,29 @@
+{
+  "status": "complete",
+  "candidate": "lr_1e4",
+  "required_candidate_runs": 45,
+  "completed_candidate_runs": 45,
+  "primary_statistical_units": 15,
+  "seeds_averaged_before_split_comparison": true,
+  "overlapping_splits": "Descriptive repeated-development robustness, not independent external inference",
+  "gate": {
+    "ba_mean_positive": true,
+    "ba_improved_10_of_15": false,
+    "ba_ci_low_positive": true,
+    "auroc_mean_positive": false,
+    "auroc_improved_10_of_15": false,
+    "macro_f1_non_decrease": false,
+    "pd_recall_drop_at_most_001": false,
+    "dd_recall_drop_at_most_001": true,
+    "ba_within_split_seed_sd_at_most_125x": true,
+    "auroc_within_split_seed_sd_at_most_125x": true
+  },
+  "decision": "REJECT",
+  "retained_learning_rate": 0.0002,
+  "outer_access": false,
+  "no_architecture_change": true,
+  "no_other_candidate": true,
+  "training_loss_scope": "Online dropout-active; not eval-mode train performance",
+  "protocol_sha256": "fabb1b2d5dc3dfc6832911520749bfc70b944084cc60af99643a53de4c97502b",
+  "analysis_sha256": "8a7c504402e61abffcd4094588dd8c2c1fcdc13b357df2be140e9fe56635ba05"
+}
