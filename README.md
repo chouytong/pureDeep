@@ -2045,3 +2045,14 @@ Model-copy closure hazard fixed in isolated independent wrapper. All 45 checkpoi
 |DD Recall|0.656945|0.555377|-0.101568|
 
 BA delta -.035820, 95%CI[-.044770,-.027454],0/15 improved; AUROC -.004642,CI[-.007912,-.001495],4/15 improved; DD Recall -.101568,CI[-.127289,-.076559],0/15 improved. PD Recall+.029927 trades against DD. BA within-split seed SD .021603→.028945; unanimity improves but performance does not.15 overlapping splits are descriptive paired units after seed averaging, not45 independent runs. **Stop EMA decay/start/combination/stopping-rule sensitivity searches; no other candidate.** Correctness interface retained, formal model/recipe/threshold and archived artifacts unchanged. Development-only result; no outer conclusion. [Full report](artifacts/wssl_ema_20261002/FINAL_REPORT.md); [paired results](artifacts/wssl_ema_20261002/analysis/ema_paired.csv).
+
+
+## 2026-10-04 WSSL current-model audit — PASS
+
+Current source/assets, preprocessing, recipe/design and fusion reviewed without outer access or model changes.15 train-only normalization refits match all45 archived checkpoints bit-for-bit;390metadata/8580wrists/10920SSL window-input contract/hash checks PASS.45checkpoint one-eight-subject-batch forward/ID-reordering/reload tests PASS; independent copy/RNG/cache and scratch gradient checks PASS. Full ordinary45-run reproduction was already established in the completed EMA study. Retained WSSL metrics remain BA.719644/AUROC.759553/DDRecall.656945.
+
+Archived best/last eval and45logs support late overfitting, not epoch-cap undertraining. Generic config AMP/OOF declarations are distinguished from actual FP32/argmax-.5 inference. Uniform-index resampling,4timestamp-gap records and wrist clock offsets are limitations, not demonstrated phenotype/performance bugs; no input correction/exclusion applied. The stale local foundation copy is not authoritative.
+
+A real coverage gap is classifier LR specifically for frozen WSSL: Phase2 LR was STR-only, whereas SSL-block tuning is another variable. Current user-authorized audit/testing therefore fixes exactly one existing-model LR contrast,2e-4 vs1e-4, with unchanged architecture/loss/data/threshold/BA stop rule; no LR grid, modules, EMA, loss or augmentation reopening. Protocol/gate are frozen before candidate results. [Audit report](artifacts/wssl_review_20261004/AUDIT_REPORT.md); [single LR protocol](artifacts/wssl_review_20261004/LR_CONTROL_PROTOCOL.md). No candidate result yet; original best stays frozen.
+
+All evidence is development-only,15overlapping seed-first splits; no claim of global optimality or new outer validation. Code/reports/aggregate diagnostics are Git-published; weights, caches, signals, individual predictions stay server-only.

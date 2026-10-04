@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "outer_predictions_or_outcomes_accessed": false,
+  "models_trained": false,
+  "formal_inputs_modified": false,
+  "subject_count": 390,
+  "activity_records": 4290,
+  "wrist_records": 8580,
+  "raw_gyro_exact_after_48_sample_trim": true,
+  "all_cached_window_inputs_sha_exact": true,
+  "cache_subject_ids_and_activity_order_exact": true,
+  "cache_independently_maps_subjects_no_fold_fit": true,
+  "cached_feature_values_verified_by_sha_not_new_HarNet_inference": true,
+  "cache_sha256": "f87829558938c3e50f78e53fe2f54156fc0f3768be3f73f97b089c0587c25376",
+  "resampled_window_sha256": "7f77341dafe0225910cc736d80898b33fe8f098e8b9649693e1eaa78e353b0fe",
+  "unit_metadata_observations": 390,
+  "unit_metadata_wrist_records": 8580,
+  "physical_units": [
+    "s",
+    "g",
+    "g",
+    "g",
+    "rad/s",
+    "rad/s",
+    "rad/s"
+  ],
+  "metadata_nominal_sampling_rate_hz": 100.0,
+  "post_trim_length_counts": {
+    "976": 6240,
+    "2000": 2340
+  },
+  "window_count": 10920,
+  "clipped_values": 2044,
+  "raw_acc_values": 32310720,
+  "clipping_fraction": 6.326073823176951e-05,
+  "effective_sampling_rate_hz": [
+    99.2065470289272,
+    100.80765276860764
+  ],
+  "timestamp_gap_gt_10_median_records": 4,
+  "maximum_gap_over_median": 64.40744781522599,
+  "maximum_wrist_clock_offset_seconds": 0.7313709259000012,
+  "actual_resampling_is_uniform_index_polyphase_not_timestamp_interpolation": true,
+  "real_normalization_recomputation": "companion root audit; not duplicated here",
+  "synthetic_contract": {
+    "status": "PASS",
+    "train_only_normalization": true,
+    "id_order_activity_order_wrist_mask_and_padding": true,
+    "gyro_unchanged_by_acc_detrending": true,
+    "fixtures_are_synthetic_not_clinical": true
+  },
+  "limitations": [
+    "No clinical proof that detrending, clipping, padding or resampling preserves every motor phenotype.",
+    "Timestamp gaps and wrist clock offsets are described; no signal correction or exclusion was applied.",
+    "Physical units are validated from metadata; this does not prove per-device calibration accuracy.",
+    "No HarNet encoder inference was repeated; frozen feature bytes and resampled inputs were checked against formal extraction provenance."
+  ]
+}

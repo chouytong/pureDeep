@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "frozen_checkpoints": 45,
+  "batches_per_checkpoint": 1,
+  "subjects_per_batch": 8,
+  "total_subject_evaluations": 360,
+  "repeated_records_are_not_independent_statistical_samples": true,
+  "evaluation_scope": "First eight validation subjects by ID per frozen checkpoint; not full validation",
+  "all_old_new_logits_exact": true,
+  "explicit_ssl_input_priority": true,
+  "subject_id_reorder_test": true,
+  "subject_reorder_logit_tolerance": 1e-05,
+  "max_subject_reorder_error": 0.0,
+  "max_archived_probability_error": 1.1102230246251565e-16,
+  "finite_masked_ssl_no_leak": true,
+  "every_retained_checkpoint_ssl_has_observable_effect": true,
+  "all_checkpoint_reloads_exact": true,
+  "retained_cache_finite": true,
+  "classifier_buffers": [],
+  "classifier_parameters": 143172,
+  "isolation": {
+    "scope": "First frozen checkpoint, one real eight-subject batch",
+    "parameters_separate": true,
+    "cache_separate": true,
+    "copied_mutation_does_not_change_original": true,
+    "python_numpy_cpu_cuda_rng_preserved": true
+  },
+  "gradient_smoke": {
+    "scope": "One fresh scratch model, one real inner-training batch, two optimizer steps; no performance evaluation",
+    "checkpoint_weights_modified": false,
+    "score_reported": false,
+    "steps": [
+      {
+        "step": 1,
+        "ssl_projection_gradient_l1": 664.4309692382812,
+        "ssl_norm_gradient_l1": 0.0,
+        "wrist_encoder_gradient_l1": 424.4272058160568,
+        "structured_head_gradient_l1": 16.139461517333984,
+        "finite_gradients": true,
+        "frozen_features_no_gradient": true
+      },
+      {
+        "step": 2,
+        "ssl_projection_gradient_l1": 341.69342041015625,
+        "ssl_norm_gradient_l1": 0.050750732421875,
+        "wrist_encoder_gradient_l1": 194.60862486067344,
+        "structured_head_gradient_l1": 6.8087687492370605,
+        "finite_gradients": true,
+        "frozen_features_no_gradient": true
+      }
+    ]
+  },
+  "frozen_source_cache_checkpoint_prediction_guards": true,
+  "outer_test_loaders_created": false,
+  "outer_performance_accessed": false,
+  "new_performance_candidate": false,
+  "scratch_performance_reported": false,
+  "script_sha256": "7609fca2a1fcd3c959df34eeaed1e449adac593592f86d05cf696ff0efc3ca30"
+}
