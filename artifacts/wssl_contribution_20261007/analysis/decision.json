@@ -1,0 +1,44 @@
+{
+  "status": "complete",
+  "case": "A",
+  "decision": "PROCEED",
+  "phase_B_eligibility": true,
+  "phase_B_started": false,
+  "phase_C_started": false,
+  "diagnostic_gate": {
+    "mean_BA_spread_at_least_005": true,
+    "spread_bootstrap_lower_above_0025": true,
+    "seed_profile_all_positive_median_at_least_05": true,
+    "LOSO_median_at_least_03_and_10_positive": true,
+    "at_least_two_activities_positive_10splits": true
+  },
+  "BA_activity_profile_spread": 0.05881142849159058,
+  "spread_bootstrap_CI": [
+    0.04704316338448248,
+    0.07610118311585691
+  ],
+  "seed_profile_spearman_median": 0.7818181818181819,
+  "LOSO_profile_spearman_median": 0.7000000000000001,
+  "LOSO_profile_positive_count": 15,
+  "activities_positive_at_least10splits": 7,
+  "primary_group_definition": "DSG/RGD/PRR/PAG: four seed-mean validation appearances, error>=.75 / <=.25; STR-defined primary groups",
+  "historical_EMA_strict4_definition_is_sensitivity": true,
+  "primary_STR_group_counts": {
+    "stable_correct": 284,
+    "stable_error": 74,
+    "unstable": 32
+  },
+  "formal_logits_archived": false,
+  "probabilities_reproduced": true,
+  "training": false,
+  "optimizer_steps": 0,
+  "outer_access": false,
+  "threshold_changed": false,
+  "activity_or_wrist_selected": false,
+  "no_multiple_testing_selection": true,
+  "diagnostic_CI_not_external_inference": true,
+  "causal_WSSL_gain_decomposition_claimed": false,
+  "interpretation": "Counterfactual reliance in a co-adapted fixed model; not additive attribution of independently trained STR-to-WSSL gain",
+  "protocol_sha256": "c024676342e4791ad92b9833fdaa6b646bf4c3601b6930d20a7977de9d798879",
+  "diagnostic_lock_sha256": "00ca79438f8eb302df8ca22838ae7926fbee156747f863378342bd8b38e78272"
+}

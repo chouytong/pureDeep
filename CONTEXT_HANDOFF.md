@@ -464,3 +464,61 @@ All evidence is DEVELOPMENT-ONLY: 15 overlapping split units after seed averagin
 用户授权仅先做冻结模型贡献诊断。45正式checkpoint全部validation probabilities/decisions/六指标重现（最大差异1.11e-16）；15 train-only norm refits逐位一致；历史forward/独立接口/复用parts logits全batch逐位相同。归档CSV没有logits，不伪称与归档logit比对。37条件首个8subject batch与projection-output hook精确一致，STR token保留、projection bias也被屏蔽。没有训练/optimizer/backward、HarNet/cache/正式权重修改或outer信息使用。当前正式masked contribution结果尚未产生，不能作activity选择或模型建议。
 
 Stable-error主定义固定为DSG/RGD/PRR/PAG的四次seed-first validation error≥.75/≤.25；后续EMA all4定义是另一口径，只列sensitivity。独立目录[复现报告](artifacts/wssl_contribution_20261007/REPRODUCTION_REPORT.md)，[运行前协议](artifacts/wssl_contribution_20261007/PROTOCOL.md)。诊断脚本/判定/图表已SHA冻结，下一步仅执行inference-only矩阵并报告CASE A/B/C；不自动进入Phase B/C。
+
+
+## 2026-10-07 LATEST VERIFIED CLOSURE：WSSL contribution Phase A COMPLETE / CASE A / PROCEED
+
+此前该目录的pending记录被本正式记录取代。**只完成Phase A，训练/optimizer steps=0；Phase B和Phase C均未启动。** 原Frozen WSSL-STR仍为retained best（Accuracy.745604/BA.719644/AUROC.759553/Macro-F1.706589/PD.782344/DD.656945），没有新候选被训练或保留。
+
+全部45checkpoint完整validation inference重现PASS：ID/label/split/cache/两概率列/固定.5决策/六指标一致；最大归档概率差异1.11e-16；15原inner-train normalization refit对45checkpoint逐位一致。归档CSV没有logits；原历史forward/独立显式SSL接口/复用parts forward全batch logits逐位一致，不能伪称对比归档logits。37条件首批8subject与projection输出hook逐位一致；仅删除Linear(LayerNorm(SSL))输出，包括bias，STR wrist/activity保留。零SSL输入不是zero-residual。全部正式源/cache/权重/预测/normalization/manifest/SHA冻结文件未变。
+
+45实例各执行11activity-off、left/right-off、22activity×wrist-off及一个预定all-off锚点：加full共37条件、1,665metric rows、555seed-first split-condition rows、173,160私有subject-condition rows。统计先均值三个seed的指标，以15重叠development splits为单位，bootstrap仅描述，不把condition/subject/seed/pair次数当独立样本。
+
+### Activity贡献（Full−仅关闭该activity的WSSL）
+
+|Activity|ΔAccuracy|ΔBA|ΔAUROC|ΔMacro-F1|ΔPD Recall|ΔDD Recall|BA正/零/负split|
+|---|---:|---:|---:|---:|---:|---:|---:|
+|CrossArms|+0.055152|+0.043440|+0.012101|+0.061268|+0.071710|+0.015171|12/0/3|
+|DrinkGlas|+0.007677|+0.010689|-0.000703|+0.011061|+0.003550|+0.017827|12/0/3|
+|Entrainment|+0.000853|+0.001901|+0.000034|+0.001552|-0.000592|+0.004395|8/2/5|
+|HoldWeight|+0.006392|+0.006611|+0.001248|+0.006967|+0.006031|+0.007191|9/1/5|
+|LiftHold|+0.010886|+0.005123|+0.000137|+0.008756|+0.019018|-0.008771|12/0/3|
+|PointFinger|+0.006888|+0.014985|+0.001794|+0.012584|-0.004472|+0.034441|12/0/3|
+|Relaxed|+0.003436|+0.003303|+0.000710|+0.003484|+0.003641|+0.002965|7/3/5|
+|RelaxedTask|+0.001508|+0.003021|+0.001330|+0.002336|-0.000601|+0.006643|7/4/4|
+|StretchHold|+0.005973|+0.004439|+0.000528|+0.005485|+0.008137|+0.000741|11/0/4|
+|TouchIndex|+0.006668|+0.020917|+0.006167|+0.015129|-0.013320|+0.055154|13/0/2|
+|TouchNose|+0.022929|+0.060713|+0.035089|+0.049834|-0.030026|+0.151451|15/0/0|
+
+TouchNose BA+.060713，15/15正，CI[+.046559,+.076195]，AUROC+.035089；CrossArms BA+.043440，12/15正，CI[+.025258,+.061283]；TouchIndex BA+.020917，13/15正。Relaxed/RelaxedTask平均BA仅+.0033/+.0030且中位数0；Entrainment近零，CI跨零。DrinkGlas平均AUROC微负，CI跨零。类方向不均匀：CrossArms主要PD，TouchNose/TouchIndex DD正而PD负。没有据图删活动或选“最佳活动”。
+
+Activity BA profile max−min.058811，描述性CI[.047043,.076101]；seed profile Spearman .7091/.7818/.9000；LOSO中位数.7000，15/15正；7activity在≥10split正贡献。运行前固定的CASE A五项gate全部通过。该闸门值不是临床界值或已知最优。
+
+### 两腕贡献
+
+|Wrist|ΔAccuracy|ΔBA|ΔAUROC|ΔMacro-F1|ΔPD Recall|ΔDD Recall|BA正/零/负split|
+|---|---:|---:|---:|---:|---:|---:|---:|
+|left|+0.031084|+0.065585|+0.025357|+0.058754|-0.016751|+0.147922|15/0/0|
+|right|+0.028054|+0.062313|+0.025063|+0.057316|-0.020231|+0.144858|15/0/0|
+
+两腕均重要，但没有稳定整体左右不对称证据：left−right BA+.003272，CI[−.015570,+.019864]；AUROC+.000294，CI[−.013418,+.013343]；seed BA差方向负/正/负。不选择腕，不设计wrist gate。22activity×wrist条件完整保存，不作大量显著性筛选。
+
+### Subject与独立纯STR联系
+
+严格ID/label/split/seed对齐后，正式WSSL−STR BA+.022455（11/15正，CI[+.009758,+.036112]），AUROC+.041922（15/15正，CI[+.030085,+.053994]），Macro-F1+.020522，DDRecall+.040430（11正/1零/3负），PD+.004480但不稳定。两类改善差距仅描述，不能由不同CI是否跨零推导类间显著差异。
+
+主stable-error定义与DSG/RGD/PRR/PAG一致：每subject四次validation，先均值3seed概率，错误率≥.75/≤.25；原STR主组74stable-error/284stable-correct/32unstable。本轮STR主组seed-mean决策净恢复：stable-error PD+36/DD+44 appearances，unstable+6/+3，stable-correct−51/−25。该分组由validation correctness选择，且其seed-mean决策不是正式单seed指标均值；PD合计−9、DD+22不能用于替换正式metric或证明临床机制。改善与harm并存，不是主要修复unstable。WSSL同口径仍68stable-error。
+
+EMA strict-all4是不同sensitivity：WSSL38stable-error、STR44；本轮strict-all12又是另一严格定义（WSSL12/STR11），不是DSG历史12-appearance sensitivity的人数表，不与primary混用。Protocol中“历史12”范围过宽已在最终报告解释，CASE只用固定activity profile，分组不参与选择。
+
+WSSL−STR概率变化覆盖较广：unique-subject平均absolute shift中位数.207432，top10%只承担17.46%幅度；PD raw DD概率均值−.027201，DD+.033143，不是常数轻微平移。TouchNose/CrossArms removal的top10%幅度份额22.01%/19.57%，prediction flip更多靠近.5，但不是只影响极少数boundary subjects。影响广度与净classification gain集中度是不同量。
+
+**删除依赖不是独立STR→WSSL净gain的可加分解。** all-WSSL-off BA.604457、AUROC.670865，低于独立训练STR BA.697189/AUC.717631；该差异与模型共同适配或大幅mask造成的分布偏移等解释相容，但本诊断不能分离这些原因。反事实profile支持异质性，不证明训练11scalar一定有效。不能声称某活动是唯一HarNet增益来源或进行因果临床解释。
+
+### 一次分流与停止点
+
+**CASE A / PROCEED：满足提出一个11-scalar activity-conditioned WSSL scaling对照的资格，但本轮不自动训练。** 所有g统一1，不能用贡献值初始化、删activity、选腕或扩展MLP/attention；不叠加Frequency/EMA/loss/augmentation。Phase B等用户下一步指示；Phase C independent loss numerical/gradient audit尚未执行，不能同时改loss。Frequency此前REJECT及其他停止结论保持，当前最佳模型不变。
+
+所有证据development-only；无outer signals/predictions/performance、阈值/recipe/HarNet/正式结构修改、重采样或validation-guided调参。未新增独立外部支持。重复splits、多阶段复用和分组选择效应限制因果与泛化解释。
+
+中文[完整Phase A报告](artifacts/wssl_contribution_20261007/PHASE_A_REPORT.md)包含Table1/2/3/4、全部负结果/CI/seed/profile/subject-group与纯STR联系；[BA图](artifacts/wssl_contribution_20261007/figures/activity_ba_contribution.png)、[AUROC图](artifacts/wssl_contribution_20261007/figures/activity_auroc_contribution.png)。独立脚本与小型汇总Git发布，数据/checkpoints/cache/features/逐subject预测不公开。最终completion tag `wssl-contribution-phase-a-case-a-20261007`；远端SHA/匿名公共访问/文件排除核验存外部publication receipt。
