@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "frozen_checkpoints": 45,
+  "candidate_cases": 90,
+  "sampled_validation_batch_size": 8,
+  "zero_init_logits_exact": true,
+  "reload_exact": true,
+  "fresh_initial_core_exact_all_seeds": true,
+  "cpu_rng_preserved": true,
+  "branch_tests": [
+    {
+      "condition": "F1",
+      "total_parameters": 78005,
+      "added_parameters": 2481,
+      "two_scratch_train_updates": true,
+      "upstream_gradients": [
+        0.0,
+        0.015462251991266385
+      ],
+      "updated_branch_tensors": 6,
+      "mask_padding_isolation_exact": true,
+      "valid_nonfinite_rejected": true,
+      "independent_copy_exact": true
+    },
+    {
+      "condition": "F2",
+      "total_parameters": 77998,
+      "added_parameters": 2474,
+      "two_scratch_train_updates": true,
+      "upstream_gradients": [
+        0.0,
+        0.008735570143585392
+      ],
+      "updated_branch_tensors": 19,
+      "mask_padding_isolation_exact": true,
+      "valid_nonfinite_rejected": true,
+      "independent_copy_exact": true
+    }
+  ],
+  "outer_access": false,
+  "performance_selection": false,
+  "scratch_models_saved": false,
+  "invalid_wrist_contract": "Finite placeholders required by original activity-level finite check; absent activity may contain nonfinite ignored values."
+}

@@ -4,6 +4,7 @@ from torch import nn
 from common import require
 from src.models import build_model as build_str
 from capacity_control import CapacityControl
+from frequency_branch import FrequencyPrior
 
 
 class PriorWrist(nn.Module):
@@ -16,7 +17,8 @@ class PriorWrist(nn.Module):
         # Base parameters and the post-factory RNG stream remain exactly original.
         with torch.random.fork_rng(devices=[]):
             if condition == 'F1':self.branch = CapacityControl()
-            else:raise ValueError('Only F1 is implemented in the capacity-control stage')
+            elif condition == 'F2':self.branch = FrequencyPrior()
+            else:raise ValueError('Only registered F1/F2 conditions are allowed')
 
     def forward(self, signal):
         original = self.original(signal)
@@ -28,7 +30,7 @@ def build_prior(config, condition):
     model = build_str(config)
     require(sum(p.numel() for p in model.parameters()) == 75524, 'Base model differs')
     model.wrist_encoder = PriorWrist(model.wrist_encoder, condition)
-    require(sum(p.numel() for p in model.parameters()) == 78005, 'F1 capacity differs')
+    require(sum(p.numel() for p in model.parameters()) == {'F1':78005,'F2':77998}[condition], 'Prior capacity differs')
     return model
 
 

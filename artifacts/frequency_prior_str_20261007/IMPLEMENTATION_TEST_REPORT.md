@@ -1,0 +1,9 @@
+# F1/F2 implementation and pre-training correctness
+
+2026-10-07. PASS. F1 wrist64→17→16→zero-init64 adds2,481parameters(total78,005). F2 current normalized6channel signal→five fixed time-domain band reconstructions→five depthwise6kernel15/pointwise6to8/GELU/temporalpool encoders→40to16/GELU→zero-init16to64 adds2,474(total77,998). Difference7parameters. Both inject separately before original bilateral fusion; all11activity identities and fixed STR paths remain. No modification to production model source.
+
+All45frozen STR checkpoints ×both candidates(90cases), each8validation subjects: zero-init logits exactly match original, and state save/reload exactly matches. Fresh original initial tensors and post-factory CPU RNG match for all3seeds; branch initialization uses fork_rng. Original base remains fully trainable in subsequent experiments. Two scratch training-only updates percondition verify finite/nonmissing gradients, zero upstream gradients at exact zero residual initialization, then nonzero upstream gradients after one projection update; all6F1/19F2branch state tensors update. Finite padding/invalid-wrist and NaN absent-activity perturbations leave logits exactly unchanged after updates. Valid nonfinite input is rejected. Deep-copied model parameters do not share storage or outputs after another copy is mutated.
+
+The inherited finite check requires finite placeholders for invalid wrists within a valid activity; this contract was not weakened. Whole absent activities can contain nonfinite values because they are excluded. Tests are sampled8subject batches for45checkpoints, not every possible input. Scratch models were not saved or reported as performance. No outer signal/outcome/loader, WSSL, loss/recipe/threshold change or tuning. Original-engine smoke and formal90runs remain outstanding.
+
+See analysis/model_tests.json and analysis/zero_init_90cases.csv.
