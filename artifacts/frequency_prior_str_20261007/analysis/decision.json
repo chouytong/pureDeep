@@ -1,0 +1,44 @@
+{
+  "status": "complete",
+  "decision": "REJECT",
+  "gate": {
+    "F2-F0": {
+      "ba_mean_positive": false,
+      "ba_improvement_at_least_10": false,
+      "ba_ci_low_positive": false,
+      "ba_primary_bh_pass": false,
+      "auroc_drop_at_most_005": true,
+      "f1_non_decrease": false,
+      "pd_recall_drop_at_most_01": true,
+      "dd_recall_drop_at_most_01": true,
+      "ba_within_seed_sd_at_most_125": true,
+      "auroc_within_seed_sd_at_most_125": true
+    },
+    "F2-F1": {
+      "ba_mean_positive": true,
+      "ba_improvement_at_least_10": true,
+      "ba_ci_low_positive": false,
+      "ba_primary_bh_pass": false,
+      "auroc_drop_at_most_005": true,
+      "f1_non_decrease": false,
+      "pd_recall_drop_at_most_01": false,
+      "dd_recall_drop_at_most_01": true,
+      "ba_within_seed_sd_at_most_125": true,
+      "auroc_within_seed_sd_at_most_125": true
+    }
+  },
+  "full_candidate_runs": 90,
+  "reused_f0_runs": 45,
+  "primary_units": 15,
+  "seeds_averaged_first": true,
+  "explanation_allowed": false,
+  "retained_formal_str_changed": false,
+  "outer_access": false,
+  "threshold_changed": false,
+  "recipe_changed": false,
+  "posthoc_tuning": false,
+  "source_guard_pass": true,
+  "statistical_boundary": "Overlapping fixed development splits, not independent external inference",
+  "control_boundary": "F1 matches capacity and injection, not raw temporal computation; no isolated causal frequency ablation",
+  "protocol_sha256": "9fe8a3c9a1d6cd011dde4f7513746040092c7979826a305e04dee19539649f91"
+}

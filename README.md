@@ -2102,3 +2102,36 @@ Fixed five-band synthetic numeric/edge/autograd tests PASS; F1/F2 additional2,48
 ### 2026-10-07 Frequency-Prior STR — original-engine smoke PASS / pre-result freeze
 
 F1/F2 original-engine one-epoch/batch smoke PASS, same fixed recipe and normalization; no scores used for design. Protocol/source/analysis/correctness gates SHA-frozen before formal results; full F1/F2 15splits×3seeds each planned, no other candidate. Frozen retention requires paired robust BA benefit versus both F0/F1 and preset AUROC/F1/recall/seed-variance guard; no post-hoc changes. [Smoke report](artifacts/frequency_prior_str_20261007/SMOKE_REPORT.md); [protocol](artifacts/frequency_prior_str_20261007/PROTOCOL.md). Outer outcomes not accessed; datasets/checkpoints/predictions excluded from publication.
+
+
+## 2026-10-07 LATEST VERIFIED CLOSURE: Frequency-Prior STR COMPLETE / REJECT
+
+Supersedes earlier pending Frequency-Prior records. Full F1 and F2 each completed 15 fixed development splits × seeds42/43/44 (90 new runs total); F0 reuses 45 existing matched baseline runs. All metrics average seeds first within each split. Original STR-01, overall retained frozen WSSL-STR, source/model/config/checkpoints/splits/normalization and official results remain unchanged.
+
+|Condition|Accuracy|BA|AUROC|Macro-F1|PD Recall|DD Recall|Total/trainable parameters|
+|---|---:|---:|---:|---:|---:|---:|---:|
+|F0 original STR|.730718|.697189|.717631|.686068|.777864|.616515|75,524|
+|F1 capacity residual|.729412|.692987|.718699|.683594|.780863|.605112|78,005|
+|F2 fixed five-band residual|.724912|.694125|.717512|.682089|.768485|.619764|77,998|
+
+F1/F2 add 2,481/2,474 parameters respectively (7 difference). Both inject a zero-init 16→64 residual before unchanged bilateral/activity/structured paths. F2 retains each activity/wrist and all five fixed bands; no handcrafted spectral statistics or fixed band-to-disease rule. Both candidates use the same seeded original random initialization, not trained-checkpoint warm starts. F1 is a capacity/injection control, not a raw-temporal computation-matched causal ablation.
+
+|BA paired comparison|Mean delta|Improvement/tie/loss over15splits|Paired bootstrap95%CI|Paired dz|Primary BH q|
+|---|---:|---|---|---:|---:|
+|F2−F0|−.003065|4/2/9|[−.006134,−.000270]|−.512|.224206|
+|F2−F1|+.001137|10/0/5|[−.001803,+.004778]|+.168|.803955|
+|F1−F0|−.004202|6/0/9|[−.008646,−.000257]|−.488|.227142|
+
+**REJECT F2 under the unchanged pre-result gate.** It fails positive BA/majority/CI/BH and Macro-F1 versus F0, and stable BA/CI/BH/F1/PD-recall criteria versus F1. F2−F0 AUROC−.000118, Macro-F1−.003978, PDRecall−.009379, DDRecall+.003250. Small DD point gain is unstable (CI[−.018591,+.024755],6wins/3ties/6losses); F2−F1 DD+.014652 accompanies PD−.012378, exceeding the frozen1pp guard. F1 AUROC+.001068 is likewise an uncertain point gain, not evidence of effective additional capacity. All18 exploratory BH q≥.3363; negative bootstrap intervals are not FDR-confirmed deterioration or equivalence evidence.
+
+Mean within-split seedSD BA/AUROC: F0 .030011/.032350, F1 .027343/.032809, F2 .030468/.029809. F2 passes the fixed1.25ratio guard but does not provide stable metric benefit. Across3seed-mean BA SD .011699/.013642/.015099 and AUROC SD .011980/.015552/.015991 are separately reported, not substituted into the gate. Best/stop epoch medians12/24 for all; F2 one cap hit versus0 for F0/F1. Online train CE includes Dropout and is not train eval. Agreement, full effects/CI/BH/variance/losses and PD/DD error changes are archived.
+
+Correctness: full45F0validation forwards and15train-only normalization refits PASS; synthetic filter edges/lengths/autograd PASS; all45checkpoints×two candidates90sampled zero-init/reload cases exact; fresh3seed/RNG, independent-copy, gradient updates and padding/wrist/activity isolation PASS; both original-engine smoke tests PASS; all90formal run audits and final source/artifact guards PASS. No additional explanatory activity/band/wrist/subtype analysis: prespecified positive-trend gate failed.
+
+**Source-provenance correction and timing limitation:** initial F0 audit omitted direct historic whole-tree SHA comparison. Original formal tree4fd74c... differs from current fae112...; all45 existing Phase2 matched F0 checkpoints carry the exact current fae112... source hash and match original recipe sections, selected weights, best epochs, normalization and ID-aligned predictions exactly. This verification was completed after the first F1/F2 analysis, not before formal training. A strictly current-source matched baseline already exists, so no redundant F0 training was launched; numerical comparisons and decision are unchanged. No candidate/gate/statistical method changed after results. A whole-tree mismatch alone does not identify altered active forward code; no historical per-file manifest is available to localize it. [Correction](artifacts/frequency_prior_str_20261007/SOURCE_PROVENANCE_COMPLETION.md), [45-run provenance audit](artifacts/frequency_prior_str_20261007/analysis/matched_f0_provenance_audit.json).
+
+**STOP this fixed configuration.** No band/dimension/filter/loss/recipe/threshold rescue search and no WSSL+Frequency experiment; its prerequisite was not met. Retain original STR for this comparison and original frozen WSSL as overall retained development best. Failure only concerns this implementation: no claim that frequency information is useless, absent, or caused uniquely by4–6Hz. Ideal noncausal masks/ringing, even-reflection boundaries, nominal100Hz and already L1-processed Acc limit interpretation; no clinical phenotype-preservation guarantee.
+
+All evidence is DEVELOPMENT-ONLY: 15 overlapping split units after seed averaging, not45independent runs, subject/pair/window multipliers or external generalization. Paired bootstrap10,000/Wilcoxon/BH/effect sizes are descriptive repeated-development evidence; sequential reuse/selection optimism remains. No outer signal/prediction/performance was accessed; canonical partition/provenance metadata only was audited. No recipe/loss/sampler/augmentation/threshold change or post-hoc tuning. Original FOE01 boundary remains intact.
+
+[Final report](artifacts/frequency_prior_str_20261007/FINAL_REPORT.md); [paired18comparisons](artifacts/frequency_prior_str_20261007/analysis/paired_comparisons.csv); [decision](artifacts/frequency_prior_str_20261007/analysis/decision.json); [final integrity](artifacts/frequency_prior_str_20261007/analysis/final_integrity_audit.json). Code, reports, protocol and small aggregate results are published under completion tag `frequency-prior-final-reject-20261007`; final commit/ref verification is kept in an external publication receipt. Datasets/checkpoints/caches/weights/individual predictions/raw logs stay server-only. No training is running or recommended automatically.
