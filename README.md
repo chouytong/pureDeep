@@ -2207,3 +2207,94 @@ WSSL−STR概率变化覆盖较广：unique-subject平均absolute shift中位数
 最新用户授权唯一11scalar候选（uniform1、same activity双腕共享、unconstrained），从相同seed原STR/projection随机初始化完整训练；不warm-start训练g。所有45baseline checkpoints×两个真实validation batch精确logits/reload PASS；三seed scratch参数/RNG、gradient/STR-projection update、mask/index/instance isolation、optimizer重载及原引擎smoke PASS。143172→143183trainable，HarNet冻结10457408。复用当前source下45ordinary matched精确复现baseline；没有EMA候选或第二候选。
 
 正式45run尚未启动/无性能结论。运行前冻结BA>0/≥10正/CI下界>0、AUROC/F1不下降、PD/DD mean下降≤.01、BA/AUC seedSD≤1.25倍联合门槛；不足则REJECT或INCONCLUSIVE不保留，不事后救援。所有boundary=NO。独立[协议](artifacts/wssl_activity_scaling_20261008/PROTOCOL.md)、[测试报告](artifacts/wssl_activity_scaling_20261008/ENTRY_REPORT.md)。Phase A CASE A只提供提出候选资格，不保证收益。其他失败方向保持停止；FOE01outer仍隔离。
+
+
+## 2026-10-08 LATEST VERIFIED CLOSURE：WSSL Activity Scaling COMPLETE / INCONCLUSIVE / DO NOT RETAIN
+
+取代本轮entry/pending记录。唯一11-unconstrained-scalar候选完整scratch训练15fixed development splits×seeds42/43/44（45runs）；同activity双腕共享，全部g=1初始化，原HarNet cache及STR path/recipe不变。复用已逐项重审的45ordinary matched精确baseline，不新增baseline训练。
+
+## B. Performance
+
+三seed的**指标**先在同split平均；15split为配对单位（不等于均值概率ensemble）。
+
+|Metric|WSSL baseline|Activity-Scaled|Δ|正/零/负 splits|paired bootstrap 95% CI|dz|
+|---|---|---|---|---|---|---|
+|Accuracy|0.745604|0.747319|+0.001716|8/3/4|[-0.002998, +0.005799]|+0.192|
+|BA|0.719644|0.721107|+0.001463|8/2/5|[-0.001351, +0.004273]|+0.255|
+|AUROC|0.759553|0.759957|+0.000404|10/0/5|[-0.003310, +0.003671]|+0.056|
+|Macro-F1|0.706589|0.707979|+0.001389|9/2/4|[-0.002203, +0.004613]|+0.198|
+|PD Recall|0.782344|0.784454|+0.002110|8/3/4|[-0.008544, +0.011527]|+0.105|
+|DD Recall|0.656945|0.657760|+0.000816|3/9/3|[-0.010992, +0.012545]|+0.035|
+
+
+均值、中位数、split差SD、dz、Wilcoxon及BH在 `scaling_paired.csv`；BH仅exploratory，不额外进入保留闸门。不把两个CI是否跨零当成方法/类间直接差异。
+
+## C. Stability
+
+|Metric|within-split seed SD 原→新|3 seed-mean SD 原→新|15split SD 原→新|
+|---|---|---|---|
+|Accuracy|0.031205 → 0.031572|0.008650 → 0.007750|0.041218 → 0.038884|
+|BA|0.021603 → 0.020449|0.006714 → 0.006975|0.034563 → 0.034361|
+|AUROC|0.021741 → 0.022296|0.001812 → 0.003615|0.043921 → 0.042596|
+|Macro-F1|0.025605 → 0.025180|0.004947 → 0.005065|0.039561 → 0.037563|
+|PD Recall|0.065659 → 0.070207|0.025591 → 0.022413|0.061379 → 0.059023|
+|DD Recall|0.078542 → 0.078828|0.035930 → 0.032682|0.058007 → 0.064101|
+
+
+原/新三seed全部prediction一致比例：0.732973 / 0.731186；三seed两两prediction agreement：0.821982 / 0.820791。同split/同seed两方法prediction agreement先seed-first后split平均为 0.970878。score Spearman完整保存；agreement不是正确率。
+
+最佳/停止epoch中位数：原10/22、新10/22；cap hits原0/45、新0/45。训练日志为dropout-active online loss，不冒充eval-mode train performance或不存在的完整EMA/intermediate checkpoints。
+
+错误变化（每split先平均3seed，不是独立新增人数）：
+
+|Disease|baseline errors/split|candidate errors/split|corrected|newly wrong|net|
+|---|---|---|---|---|---|
+|DD|10.444|10.422|0.467|0.444|0.022|
+|PD|16.022|15.867|1.133|0.978|0.156|
+
+
+## D. Learned activity scales
+
+以下只在完整正式性能分析后生成。主SD/range为15个seed-first split值；另列45run范围和三个seed各15split均值。全部run/split g表完整保存。
+
+|Activity|g整体均值|15split SD|15split范围|seed42/43/44 mean|45run范围|
+|---|---|---|---|---|---|
+|CrossArms|1.014659|0.006273|[1.005683,1.029784]|1.013899 / 1.014806 / 1.015273|[0.998031,1.039044]|
+|DrinkGlas|1.009340|0.007540|[0.999740,1.021052]|1.013809 / 1.008168 / 1.006042|[0.992593,1.038395]|
+|Entrainment|0.998922|0.002250|[0.994740,1.003335]|0.996630 / 0.998152 / 1.001985|[0.992592,1.014979]|
+|HoldWeight|1.006438|0.006753|[0.998572,1.022041]|1.007490 / 1.005385 / 1.006437|[0.995271,1.024460]|
+|LiftHold|1.003698|0.004435|[0.996331,1.011706]|1.004131 / 1.003748 / 1.003214|[0.993513,1.018909]|
+|PointFinger|1.009949|0.003926|[1.003077,1.018286]|1.007756 / 1.009908 / 1.012182|[0.999360,1.026531]|
+|Relaxed|1.007596|0.006179|[0.997508,1.018223]|1.008281 / 1.008417 / 1.006088|[0.996230,1.024380]|
+|RelaxedTask|1.008995|0.005012|[0.999051,1.019832]|1.007990 / 1.009995 / 1.008999|[0.997945,1.026494]|
+|StretchHold|1.002475|0.003657|[0.997152,1.009911]|0.999428 / 1.002795 / 1.005203|[0.993443,1.021004]|
+|TouchIndex|1.011100|0.004889|[1.001152,1.019114]|1.005014 / 1.015439 / 1.012847|[0.996882,1.028873]|
+|TouchNose|1.025430|0.008558|[1.005621,1.038657]|1.025868 / 1.020302 / 1.030120|[1.001663,1.060341]|
+
+
+|Posthoc比较|Spearman rho|描述p|
+|---|---|---|
+|Phase A activity profile / ba|+0.8545|0.00081|
+|Phase A activity profile / auroc|+0.7909|0.00375|
+|TouchNose / pd_recall|-0.1776|0.52663|
+|TouchNose / dd_recall|-0.0322|0.90921|
+|TouchIndex / pd_recall|-0.0126|0.96458|
+|TouchIndex / dd_recall|+0.3747|0.16879|
+
+
+这些相关是posthoc描述。11activity不是11独立性能样本；g随projection/后续训练共同适配，不能视为临床因果importance。TouchNose/TouchIndex g与类Recall相关不能证明类特异机制，更不能据此再调g、删活动或改成22gate/MLP。
+
+
+### 正式一次性分流
+
+INCONCLUSIVE / DO NOT RETAIN：BA+.001463，仅8正/2零/5负split、CI[−.001351,+.004273]，未达到≥10正及CI下界>0；AUROC+.000404、F1+.001389、PD+.002110、DD+.000816均为小幅点估计，全部六指标CI跨零。没有明显平均Recall trade-off，但不是稳定提升的证据。保留原Frozen WSSL-STR正式最佳：Acc.745604/BA.719644/AUROC.759553/F1.706589/PD.782344/DD.656945。
+
+BA/AUROC within-split seedSD满足固定1.25guard；BA下降至.020449、AUROC微升至.022296；AUROC三个seed-mean SD由.001812升至.003615，不能声称波动全面改善。原/新最佳/停止epoch中位数10/22，cap0/45。g与Phase A contribution rho=.8545/.7909仅posthoc描述，不弥补无稳健性能收益，不作临床因果意义。
+
+全部45checkpoint×两个真实batch g=1/reload精确；3seed scratch参数/RNG、11g非零梯度/原STR-projection update、mask/index/共享双腕、optimizer reload、原引擎smoke与最终45run资产完整性PASS。classifier143172→143183；HarNet10457408冻结；系统10600580→10600591。正常AdamW/clip继续作用全部trainable参数，未额外调整g正则。原正式模型/source/cache/权重/预测/split/norm与冻结协议未改。原CSV无logits，未声称对比不存在的归档logits。
+
+停止本scalar候选的LR/g范围/参数化/22scalar/wrist/MLP/attention及组合补救；不自动启动任何下一模型。Phase C numerical CE audit未启动：本次INCONCLUSIVE而非触发预设REJECT分支。没有loss候选训练。Phase A CASE A仍是删除依赖异质性诊断，不保证可训练scaling有收益。Frequency/EMA/其他拒绝方向仍停止。
+
+Boundary全部NO：outer data used、threshold changed、HarNet adapted、training recipe changed、additional hyperparameter search。全部evidence DEVELOPMENT-ONLY，15重叠seed-first单位/顺序多轮复用；bootstrap/Wilcoxon/BH仅描述探索，不把45runs/subjects/pairs或bootstrap重复当独立样本，未提供外部支持。六指标BH q最小.3731；无稳定提升也不证明模型严格等价或信息缺失。
+
+中文[完整A–E报告](artifacts/wssl_activity_scaling_20261008/FINAL_REPORT.md)、[固定协议](artifacts/wssl_activity_scaling_20261008/PROTOCOL.md)、[paired表](artifacts/wssl_activity_scaling_20261008/analysis/scaling_paired.csv)、[decision](artifacts/wssl_activity_scaling_20261008/analysis/scaling_decision.json)、[最终完整性](artifacts/wssl_activity_scaling_20261008/analysis/final_integrity_audit.json)。代码/报告/小型汇总Git发布并标记；数据/权重/cache/逐subject预测/原始日志不公开。原FOE01保持隔离，不作为本候选选择或解释证据。没有训练在运行；当前模型不变。

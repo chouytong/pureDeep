@@ -1,0 +1,28 @@
+{
+  "status": "complete",
+  "candidate": "activity_scaling",
+  "required_candidate_runs": 45,
+  "completed_candidate_runs": 45,
+  "primary_statistical_units": 15,
+  "seeds_averaged_before_split_comparison": true,
+  "overlapping_splits": "Descriptive repeated-development robustness, not independent external inference",
+  "gate": {
+    "ba_mean_positive": true,
+    "ba_improved_10_of_15": false,
+    "ba_ci_low_positive": false,
+    "auroc_mean_non_decrease": true,
+    "macro_f1_non_decrease": true,
+    "pd_recall_drop_at_most_001": true,
+    "dd_recall_drop_at_most_001": true,
+    "ba_within_split_seed_sd_at_most_125x": true,
+    "auroc_within_split_seed_sd_at_most_125x": true
+  },
+  "decision": "INCONCLUSIVE",
+  "retained_model": "FrozenWSSL",
+  "outer_access": false,
+  "only_architecture_change": "11 shared-wrist activity scalars",
+  "no_other_candidate": true,
+  "training_loss_scope": "Online dropout-active; not eval-mode train performance",
+  "protocol_sha256": "019766fd7cf7a322b039f68f8ea2cd4706e2c12bc83fd790398f2b4b3268ef47",
+  "analysis_sha256": "e358630fa6836895fcf3213b2d9b9b2d5bc624311a6f9eaa678b1482f85f39de"
+}

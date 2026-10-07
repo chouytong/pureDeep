@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "seed": 42,
+  "context": 3,
+  "inner": 2,
+  "learning_rate": 0.0002,
+  "smoke": false,
+  "best_epoch": 9,
+  "stop_epoch": 21,
+  "validation_subject_count": 103,
+  "normalization_exact_to_reference": true,
+  "input_backbone_loss_optimizer_scheduler_stopping_unchanged": true,
+  "added_parameters": 11,
+  "threshold": 0.5,
+  "threshold_selection_performed": false,
+  "decision_rule": "Original two-class probability argmax; exact tie PD",
+  "ema_instantiated": false,
+  "encoder_adaptation": false,
+  "outer_test_loader_created": false,
+  "protocol_sha256": "019766fd7cf7a322b039f68f8ea2cd4706e2c12bc83fd790398f2b4b3268ef47",
+  "runner_sha256": "d14dfc7b85a4fc9933428a76762d334c91bae142e8664c060d29cbe775bddc87",
+  "files_sha256": {
+    "checkpoints/best.pt": "f6ac42684aaaa8e5d0d76e31f39af5c9d862fe78f9805b405602a6f3fd3880c6",
+    "checkpoints/last.pt": "ec46cc723d1004178e6523f6eb971d13aa5efaf13d1d74a937878988db646e81",
+    "stage_status.json": "6d63cffe975f005d3fc10741d92c23647e0073ec67d781766f7fe74bcfae0888",
+    "logs/epochs.jsonl": "22d3483835613b1ab35f79a9fb1a428a54c4aef93f7268266be8ea1f6f397ae9",
+    "config.yaml": "f2abbd1c510815a676b17ac3aa20e256111433524c256307b2a52ac23974b3c2",
+    "split.json": "0277f758bd568ddc2c150cac4e242f6a0642d54873efbbbce5f59a847544e63d",
+    "normalization.json": "c935c249829ad079acd89da4a5be61ef573a3ccb5437097ef9c1a60ef748fec5",
+    "predictions/validation.csv": "a273e2da087400617144d314a574c472ebec0a18f8d7597dbb68bee0f3a5d62b"
+  }
+}
