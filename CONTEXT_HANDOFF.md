@@ -419,3 +419,8 @@ User explicitly authorized one bounded five-band Frequency-Prior path against or
 ### 2026-10-07 Frequency-Prior STR — filter and model tests PASS
 
 Fixed five-band synthetic numeric/edge/autograd tests PASS; F1/F2 additional2,481/2,474params, total78,005/77,998. All45STRcheckpoints×two candidates90sampled cases show exact zero-init logits and exact reload. Fresh3seed initial base/RNG match; two-step training-only scratch gradient, branch update, independent copy and padding/wrist/activity isolation PASS. Production source/STRweights unchanged. Full even reflection is a boundary assumption; ideal masks noncausal/ringing; no physiological guarantee. No performance selection or outer access. [Implementation tests](artifacts/frequency_prior_str_20261007/IMPLEMENTATION_TEST_REPORT.md). Engine smoke/formal90runs not complete yet.
+
+
+### 2026-10-07 Frequency-Prior STR — original-engine smoke PASS / pre-result freeze
+
+F1/F2 original-engine one-epoch/batch smoke PASS, same fixed recipe and normalization; no scores used for design. Protocol/source/analysis/correctness gates SHA-frozen before formal results; full F1/F2 15splits×3seeds each planned, no other candidate. Frozen retention requires paired robust BA benefit versus both F0/F1 and preset AUROC/F1/recall/seed-variance guard; no post-hoc changes. [Smoke report](artifacts/frequency_prior_str_20261007/SMOKE_REPORT.md); [protocol](artifacts/frequency_prior_str_20261007/PROTOCOL.md). Outer outcomes not accessed; datasets/checkpoints/predictions excluded from publication.
