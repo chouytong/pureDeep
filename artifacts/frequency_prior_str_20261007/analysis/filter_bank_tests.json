@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "actual_lengths": [
+    {
+      "length": 976,
+      "fft_length": 1952,
+      "resolution_hz": 0.05122950819672131,
+      "bins_per_band": [
+        49,
+        20,
+        39,
+        39,
+        78
+      ],
+      "synthetic_mapping_pass": true,
+      "boundary_membership_pass": true,
+      "gradient_finite_nonzero": true
+    },
+    {
+      "length": 2000,
+      "fft_length": 4000,
+      "resolution_hz": 0.025,
+      "bins_per_band": [
+        100,
+        40,
+        80,
+        80,
+        161
+      ],
+      "synthetic_mapping_pass": true,
+      "boundary_membership_pass": true,
+      "gradient_finite_nonzero": true
+    }
+  ],
+  "bands": [
+    [
+      0.5,
+      3.0
+    ],
+    [
+      3.0,
+      4.0
+    ],
+    [
+      4.0,
+      6.0
+    ],
+    [
+      6.0,
+      8.0
+    ],
+    [
+      8.0,
+      12.0
+    ]
+  ],
+  "nominal_sample_rate": 100.0,
+  "learned_parameters": 0,
+  "synthetic_only": true,
+  "shape": "N x 5 x 6 x L",
+  "boundary": "half-open, last high inclusive",
+  "extension": "full even reflection; inverse cropped to true length",
+  "limitations": "Finite-resolution ideal masks are noncausal with ringing; reflection assumes even boundary extension, not a physical continuation. No clinical phenotype guarantee.",
+  "performance_selection": false,
+  "outer_access": false
+}
