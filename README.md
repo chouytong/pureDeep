@@ -2085,3 +2085,10 @@ Within-split seedSD BA.021603→.022919,AUROC.021741→.022825 (both pass fixed1
 **STOP this LR extension/WD compensation/extraepoch/patience/scheduler/optimizer or combination search.** Previous rejected modules/EMA/loss/sampling/augmentation remain stopped. Current recipe is retained under tested joint criteria, not proven global/near-global optimum. Data-quality gaps/clock offsets and finite/solver evidence do not prove phenotype preservation; no signal exclusions/corrections were selected.
 
 All results are DEVELOPMENT-ONLY, reused15splits/subjects and sequential selection optimism;no new external evidence or new mechanistic attribution. FOE01/quarantined outer not used or reinterpreted as WSSL validation. [Full final report](artifacts/wssl_review_20261004/FINAL_REPORT.md); [paired results](artifacts/wssl_review_20261004/analysis/lr_paired.csv); [decision](artifacts/wssl_review_20261004/analysis/lr_decision.json). Code/reports/small aggregate outputs are published with completion tag;datasets/cache/checkpoints/individual predictions/raw logs stay server-only.
+
+
+## 2026-10-07 Frequency-Prior STR — F0 audit PASS / controlled protocol
+
+User explicitly authorized one bounded five-band Frequency-Prior path against original STR-01, with F1 near-capacity control and F0 archived reference. This does not reopen generic gyro-rFFT or WSSL/other searches. Same-seed random initialization training was confirmed; trained STR checkpoints are consistency references only. F0 all45 full validation probabilities/decisions and existing Phase2 reproduced states match (max probability diff1.11e-16);15train-only normalization refits match45formal checkpoints. Reuse F0, no retraining. Current STR BA.697189/AUROC.717631; overall retained WSSL best is not the baseline for this experiment. No outer outcomes/data accessed.
+
+[F0 audit](artifacts/frequency_prior_str_20261007/F0_AUDIT_REPORT.md); [pre-result protocol](artifacts/frequency_prior_str_20261007/PROTOCOL.md). New F1/F2 software/numeric/smoke gates and full development90runs have not yet completed. No new performance conclusion.

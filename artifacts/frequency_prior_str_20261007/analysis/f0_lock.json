@@ -1,0 +1,874 @@
+{
+  "source_sha256": {
+    "/home/zyt/deep_final/foundation_validation/src/__init__.py": "80b02f6fc85457acbfe681bd1bbcf1659126374831e8b3be375d18789dd889cf",
+    "/home/zyt/deep_final/foundation_validation/src/s4_final/models.py": "bfec3808f32d5d15e85873439bc1d3e06971fca4af6b6ef8182e33e348319fd8",
+    "/home/zyt/deep_final/foundation_validation/src/s4_final/analysis.py": "2815e3cc722ac0d1a3f027c47f4928a3772b59459b47a30ea04cebb9fc60fc10",
+    "/home/zyt/deep_final/foundation_validation/src/s4_final/training.py": "cf8dc6169ac64cc07dc7a060cf9ddd8c632b938e08cb6058ede877a7b3e2dd89",
+    "/home/zyt/deep_final/foundation_validation/src/s4_final/__init__.py": "39f5149940546cc183c98f5694f07bbc0ac2b542aa2f8bf3ccbb2b0bab40f9a3",
+    "/home/zyt/deep_final/foundation_validation/src/utils/seed.py": "63e3caee78618a64741c63910675301b0ed0a58877d862a7dee4e22d91021385",
+    "/home/zyt/deep_final/foundation_validation/src/utils/environment.py": "a3233102c9289035047ef3dfb91d2da2dc37767b65bf632ff5cdd7931c0b3cdd",
+    "/home/zyt/deep_final/foundation_validation/src/utils/device.py": "e78ba7dfb245178a46ff0eac7a6714b0e492b5a92db143d6d423152e3b3d4758",
+    "/home/zyt/deep_final/foundation_validation/src/utils/model_stats.py": "3dba9d81bb114be4e8df3c2f4ee6b0aeb27b1b808ef6ef665c0b429236fe890d",
+    "/home/zyt/deep_final/foundation_validation/src/utils/provenance.py": "470e1d5765e266cbe06cc591390a0d43a9aa33bad4916408b5a3edebf3349bd0",
+    "/home/zyt/deep_final/foundation_validation/src/utils/artifacts.py": "5450dad39659ef52033c72597f2cb27fac23cb009ef96919cd5ccee08d9ebf7e",
+    "/home/zyt/deep_final/foundation_validation/src/utils/__init__.py": "d51b3ef35ded869fb639244db9593d1d5df9556294d3e0bdae5f688084eda43f",
+    "/home/zyt/deep_final/foundation_validation/src/utils/._config.py": "07b37030d5f0e4a45b35340c5dd7eeb708b1a3cd1853ed2acd04420e3e0ae1e9",
+    "/home/zyt/deep_final/foundation_validation/src/utils/config.py": "181ae52ee00622f1004e00226fa01eea52145b2927a2aea61a62cebfa9a2b8f0",
+    "/home/zyt/deep_final/foundation_validation/src/targeted_ablation/data.py": "34464bfaf38dfd9382e94c623280b0bb5f6a16da55b2b9813ab7222c7989f920",
+    "/home/zyt/deep_final/foundation_validation/src/targeted_ablation/models.py": "25cfa869c8f67a9d658f09bc30017dc277b2d0be8ab6dbf374384f0bde12c1f5",
+    "/home/zyt/deep_final/foundation_validation/src/targeted_ablation/analysis.py": "5e57381cc4603578300c589afcb010077b186139d317e3b0aec08aa4e5415ec2",
+    "/home/zyt/deep_final/foundation_validation/src/targeted_ablation/training.py": "a9456782077a347cf97e31c4f292b069e1500d6479130d6cb805762be9e4300b",
+    "/home/zyt/deep_final/foundation_validation/src/targeted_ablation/__init__.py": "9a5cfd75fd8b62f2bf5820878e7a0b69a89641bfd851ad63918932e5630dcfc2",
+    "/home/zyt/deep_final/foundation_validation/src/analysis/simple_cnn.py": "c1179dbdf8098baacb5805b3fef9225d3d0b944f0592c7ad06cb6071f7f843b1",
+    "/home/zyt/deep_final/foundation_validation/src/analysis/features.py": "a35736a7728cafa05738e7ef06dc94cc53548acecbc4c8f8231038acaa7a6cc5",
+    "/home/zyt/deep_final/foundation_validation/src/analysis/baselines.py": "da20671904246dd63806c0589668f330eb7eb3c1139e2123ef7798fdb0f2ca76",
+    "/home/zyt/deep_final/foundation_validation/src/analysis/minirocket_baseline.py": "eb990a467112f1125a0648ef50de61bd5b83d4f79aa8a4076908f83d0990bed7",
+    "/home/zyt/deep_final/foundation_validation/src/analysis/__init__.py": "ee989c35ac8ab10e7626923be69775256df4bfc2da6f33f6fd621ab49a97c690",
+    "/home/zyt/deep_final/foundation_validation/src/analysis/common.py": "fefac2b848ed7efa295ac40ddb6f332322abeeb785111aee9358c0e6ec9c03bf",
+    "/home/zyt/deep_final/foundation_validation/src/analysis/diagnostics.py": "414f6a3f49750b6601f8543e0b42165535d67fc13d507960e926406481642c9a",
+    "/home/zyt/deep_final/foundation_validation/src/metrics/threshold.py": "a52d1b0fd1dd8234427d0043b3db84e8465e6da34123b1956f98a8467bf31c37",
+    "/home/zyt/deep_final/foundation_validation/src/metrics/classification.py": "7bf88703c7572bce60a65cdda6b9e97779f95dd3329dac294227cfea42e7354d",
+    "/home/zyt/deep_final/foundation_validation/src/metrics/__init__.py": "c92137d0b0bdc1a20b1cbaad49b43c039e6a65cad9914fe0af4ddc28c06e70e5",
+    "/home/zyt/deep_final/foundation_validation/src/r2_stabilization/models.py": "5ac17aa9ea766c9411e89694153a621d26368b0b83b14d129d243cdc3cabcb23",
+    "/home/zyt/deep_final/foundation_validation/src/r2_stabilization/analysis.py": "ed036e5f52cfdae8273b097b1a943db35298513b28f570ff3147d39cb53c1d44",
+    "/home/zyt/deep_final/foundation_validation/src/r2_stabilization/training.py": "d6eeed97a584263493461ccbc242a8b8c17af91482c8d2602e25cd73c904d602",
+    "/home/zyt/deep_final/foundation_validation/src/r2_stabilization/__init__.py": "c8df75f5378aecf5e3802958a37042cbeb686ef5464f85edac16ad541fbfc9aa",
+    "/home/zyt/deep_final/foundation_validation/src/models/pure_deep.py": "ccd49a99e3f68a4b6100f854dd7fd0adaa2570a4a87d27899e721c1008b36c56",
+    "/home/zyt/deep_final/foundation_validation/src/models/mil.py": "9c9f72209238e022cadf9d9c8f255eb51b7d64ba5c0d9d977e36090fee9415b6",
+    "/home/zyt/deep_final/foundation_validation/src/models/subject_mfam.py": "c65cd127f0e390b36227e0cfd012ce2ede74eab487e6af5e14872cb039f60550",
+    "/home/zyt/deep_final/foundation_validation/src/models/attention.py": "babd2a84b115b8e2bfffe1982537222f677d9bea1da196a9c63fe289c470fbe9",
+    "/home/zyt/deep_final/foundation_validation/src/models/mfam.py": "3dea82bb53daa2f4b7a27d2576bd9dc68886bba99cae7a7b2dc681b4ae224bf9",
+    "/home/zyt/deep_final/foundation_validation/src/models/encoder.py": "7aca6bdccf2356a9f290b08c7cd0147ecfc04780c3f9bddf0a09f8a3069038d6",
+    "/home/zyt/deep_final/foundation_validation/src/models/._mfam.py": "07b37030d5f0e4a45b35340c5dd7eeb708b1a3cd1853ed2acd04420e3e0ae1e9",
+    "/home/zyt/deep_final/foundation_validation/src/models/.___init__.py": "07b37030d5f0e4a45b35340c5dd7eeb708b1a3cd1853ed2acd04420e3e0ae1e9",
+    "/home/zyt/deep_final/foundation_validation/src/models/frequency.py": "8db04ecae3f028e40b6efece826575b0ba3bce7f00d23e970c3800d0be2f3fef",
+    "/home/zyt/deep_final/foundation_validation/src/models/activity_fusion.py": "589579635d253f9b86f6dcba9d00a89f510929375a6792a561ec733d471828ce",
+    "/home/zyt/deep_final/foundation_validation/src/models/bilateral.py": "ffa3a71d930fd5754b2bb4c50231171b9ab13ca96619deee56a264ec517f2f13",
+    "/home/zyt/deep_final/foundation_validation/src/models/__init__.py": "aeeef91d5a44a9400ff0ba005947877a7cf87486bb52071369f543961ea4a13e",
+    "/home/zyt/deep_final/foundation_validation/src/models/._pure_deep.py": "07b37030d5f0e4a45b35340c5dd7eeb708b1a3cd1853ed2acd04420e3e0ae1e9",
+    "/home/zyt/deep_final/foundation_validation/src/datasets/folds.py": "cb20e23f6fa7d1f80128b60207fdda68b3e0f908710759306dcc0d734fe26085",
+    "/home/zyt/deep_final/foundation_validation/src/datasets/subject_activity.py": "3db6193a2c02c551287ee67e958d02ec30ba3db01ee826682f3044432fd81f85",
+    "/home/zyt/deep_final/foundation_validation/src/datasets/nested_cv.py": "ac51c5291a180de2e7db5b09b35d403fb292da9c4b90d55c272a4efbc32bb6b1",
+    "/home/zyt/deep_final/foundation_validation/src/datasets/splits.py": "883e33738bc12fba573148b38c1a8c091e8d455094a70091027019059a487af3",
+    "/home/zyt/deep_final/foundation_validation/src/datasets/builders.py": "8516a97a7d39f799237dfe1b871b939845f56cad8d66573018ae48a617577877",
+    "/home/zyt/deep_final/foundation_validation/src/datasets/prepare_pads.py": "9183dd0db2195417ccf6b43ebcbb04d0c9a39c558c017f6a3a05ac90140247e4",
+    "/home/zyt/deep_final/foundation_validation/src/datasets/preprocessing.py": "b9dc9de2009cd71b0a91ca04b50c5db5599e110e7be5a98024810b53ec18cba9",
+    "/home/zyt/deep_final/foundation_validation/src/datasets/._subject_activity.py": "07b37030d5f0e4a45b35340c5dd7eeb708b1a3cd1853ed2acd04420e3e0ae1e9",
+    "/home/zyt/deep_final/foundation_validation/src/datasets/__init__.py": "4df37f2268aee12245c71f63d9831149282f18a1c5143c05f113a482a4f0b885",
+    "/home/zyt/deep_final/foundation_validation/src/datasets/manifest.py": "bc25e41522e1da6976506e9483cc488f11cbf7999d451547f051f25f36c36b80",
+    "/home/zyt/deep_final/foundation_validation/src/engine/runner.py": "705f395bd2f322c21de5511de0a5d905d0f1324d19d6020d63fcd08f5540a010",
+    "/home/zyt/deep_final/foundation_validation/src/engine/checkpoint.py": "996f89181cbf2319d49a769fcce288c18ae4af4500a562d34e8a770ac2ff634f",
+    "/home/zyt/deep_final/foundation_validation/src/engine/optim.py": "fb97444e0fe25a9736b23c993cceb985a4a97b0723f563ca29bd0e287967fa56",
+    "/home/zyt/deep_final/foundation_validation/src/engine/nested_training.py": "1773270f7c13b1ece661e032fcd3191dad9ee92b73e9dea01dfd5db26fcab165",
+    "/home/zyt/deep_final/foundation_validation/src/engine/self_supervised.py": "29d1be88a178fa51a4efe3b362ee48cc08ba0946d55836eeff4dfc642ee32d0e",
+    "/home/zyt/deep_final/foundation_validation/src/engine/__init__.py": "46ee6ca85726e8066423f4819e75707ab29ce0b322ac29a7490fc852f1bffcb9",
+    "/home/zyt/deep_final/foundation_validation/src/losses/mfam_loss.py": "af70ec2ab20b9a924d8033625f4dbefdf545fe677ef21ca6ce8a6bcd088230a8",
+    "/home/zyt/deep_final/foundation_validation/src/losses/__init__.py": "ae7458e158268f3cd919665594fcf0aff917cfe604053b4f82f2ca15fe929097",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_longrange_lr01_seed42.yaml": "5c42317e34459473c0bd9dd9c7b50f71ed32cf7087c525c225c3bcb8f81363e3",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_pool_small_balanced_v3.yaml": "95d457934c07487025403521e249933d89417c6a58fa2b2f896ec67884e6427e",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_normfree_moments_v8_seed43.yaml": "a9a4ec7d64e31557dfa7f267553aee0dcac4f404570bfbbf500da8d9be54d6b8",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_activity_dropout_v4.yaml": "814480c48df9082fa77743eb2f8e0fb6522d0f4ea481cfcb2344b4690867b47f",
+    "/home/zyt/deep_final/foundation_validation/configs/pa02_lambda005_seed42.yaml": "d09fd2f9a131b13f7e0dda1cc7d0b02ab254e8aaa6a54e8af7125310589d3e53",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_moment_only_v9.yaml": "ab02f852b40e2b9833f3a4d53c521b9c5ab8e21d1f4778f5790918aa62d206a2",
+    "/home/zyt/deep_final/foundation_validation/configs/strong_inception_time_seed43.yaml": "d19be9d9747537248597063e1c84e9f59a06992108404d2b03dd6a68cdf776a7",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_relative_energy_v13.yaml": "fe17fc5c2b338c00d3616809064e0485653dd02a88c14053811b92dfab9b829d",
+    "/home/zyt/deep_final/foundation_validation/configs/pa01_lambda001_seed42.yaml": "814de56bd077490782ed232e915de835bba35ae5ab2108df2e6909e489665817",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_rotation_v6.yaml": "0ca7cf6f110963fb838af0ea689e427a964780877a241e15eebac0cf514ce26e",
+    "/home/zyt/deep_final/foundation_validation/configs/strong_inception_time_seed44.yaml": "703d5b80c3ff057ac8e1874d4125538be5a8ec574d9c2852ee57be16a8cbf4d3",
+    "/home/zyt/deep_final/foundation_validation/configs/pa02_lambda005_seed44.yaml": "71c3ac0f2a571d09c794a4e43a181b8243e0f2d8ac5eaba20e09ca1e60935079",
+    "/home/zyt/deep_final/foundation_validation/configs/pa02_lambda005_seed43.yaml": "89941bdf5f2ccbcd0541d926c99450aea32497fbbe7d100cdbd777c585b12e5c",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_pool_small_v2.yaml": "a1832979b31e22025c2483d8fe4ad1c8d4f2fb9c7a26953c23668799d6743d6b",
+    "/home/zyt/deep_final/foundation_validation/configs/wsr01_seed44.yaml": "35ca357b6b9b8ee6f41206878f1259db3f8c72f8b2e74ef6327f10d4deae5010",
+    "/home/zyt/deep_final/foundation_validation/configs/str01_seed42.yaml": "c37ae179c04db01f11939c6b76af29a6738451c1625ef33e25ce1251812f475c",
+    "/home/zyt/deep_final/foundation_validation/configs/mf01_mean_only_seed43.yaml": "16023e2979118a9dda95582a5f338831a1bb677c6839c9d3fd3693f16ecc4c9f",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_time_spectrum_v7.yaml": "c5ab2ccb3b33c9af505e5657351b55bce17b8b62dcd2e2dbbc8686d3cd885056",
+    "/home/zyt/deep_final/foundation_validation/configs/tr_lr01_seed42.yaml": "ecd0971db0c1a9b52215fa6f3c25f5b5ecd5c2f4e8d35f72304695efadb89273",
+    "/home/zyt/deep_final/foundation_validation/configs/str01_seed43.yaml": "adcd518dbdd4f2b4afdf1cdbf76ab4ad457bb87472a72fc2a543098fffbd09cb",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_masked_mean_agg01_seed44.yaml": "3f0c14c087557e05435c0fa6cdffee69c1342a841c1dad6156aea1e6e57c027a",
+    "/home/zyt/deep_final/foundation_validation/configs/pa01_lambda001_seed43.yaml": "35cfc27d73755597fe370adbb074b597c16f54ec9c8357e4c088ddc306db30d0",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_mean_attention_residual_agg02_seed43.yaml": "04abad586434d784a4a656246b50d8f0abaec987bc3b48bc8d816618e82b9779",
+    "/home/zyt/deep_final/foundation_validation/configs/tr_final_seed44.yaml": "b388a1ddc94b8f832eade53a124f4acb561613aed20f9452e15749c248bc2c1f",
+    "/home/zyt/deep_final/foundation_validation/configs/wsr01_seed42.yaml": "7325cc3c2cbef80199f673c73f228114d6043e5e06127378d1c1b23d8793dc9e",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_pool_mean_v1.yaml": "2d3550d726ef1d6061402004be7b440cffb950f53c9d15b2b2d9ec96895778f7",
+    "/home/zyt/deep_final/foundation_validation/configs/tr_final_seed43.yaml": "3ed292cb147c7083948d1aa8f6e8d6ecc2b804b74c0134ad9f7c77a36eade92a",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_multi_activity_v2.yaml": "186a67a918507f5ad01d860d8e5d40e077022b99ed6c8164655e1f7fff01cb45",
+    "/home/zyt/deep_final/foundation_validation/configs/pa01_lambda001_seed44.yaml": "37104dd21c850735af88974d4fa10eca2b4e53c313538c28a0ca2c4fd02b29c8",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_pool_small_balanced_v3_seed43.yaml": "ab02e5b2354f5c4085436266a5cd4325ce39f728f97f6fd6d0b9efdab38d9453",
+    "/home/zyt/deep_final/foundation_validation/configs/nr01_seed43.yaml": "236a15642f6acdd3197a87403ad6326df87e420f7eabbef20da174ab56d8705a",
+    "/home/zyt/deep_final/foundation_validation/configs/mf01_mean_only_seed44.yaml": "28680be464fb577b938bd373cc002907d6f1510403e2a06af67181f8ed4474c8",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_longrange_lr01_seed44.yaml": "a77dc8996fd57bc2b52ece0c9e0122777326fcac83b46324939a565ffd828749",
+    "/home/zyt/deep_final/foundation_validation/configs/v8gn_gyro_fft_seed44.yaml": "d812bc2f80468da1d69f52cbbc5c4144e8baacb35f0021042658d2e3246f4121",
+    "/home/zyt/deep_final/foundation_validation/configs/wsr01_seed43.yaml": "cf771e737df7a054ba43fa087ab510b1d96d42f943d2aebb1b0aba80d73d74f9",
+    "/home/zyt/deep_final/foundation_validation/configs/str01_seed44.yaml": "6d846238bd51dd4bf6786ee2fc56da1b58b78914c19cc4da5fec1f8ae5ae363d",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_normfree_moments_wd_v10.yaml": "fc620d297debaa60575830f2bee6b80a186101c5f262e54de9b19f8fe3895c0a",
+    "/home/zyt/deep_final/foundation_validation/configs/._pads_pure_deep_activity_dropout_v4.yaml": "07b37030d5f0e4a45b35340c5dd7eeb708b1a3cd1853ed2acd04420e3e0ae1e9",
+    "/home/zyt/deep_final/foundation_validation/configs/nr01_seed44.yaml": "5803793dba9515c589e9c95529077105b72993e29eb3316db57186206b4424cc",
+    "/home/zyt/deep_final/foundation_validation/configs/strong_resnet1d_seed43.yaml": "42d0db91a92ffe0cd64c1ee2948ef08f6ce1212e8713249955df47ec7a01e006",
+    "/home/zyt/deep_final/foundation_validation/configs/strong_resnet1d_seed44.yaml": "afdbd35a6a76e6a8f015bf1a2f2caab7952ee7bedf5a67e77b56756c45910f8a",
+    "/home/zyt/deep_final/foundation_validation/configs/._pads_pure_deep_pool_v1.yaml": "07b37030d5f0e4a45b35340c5dd7eeb708b1a3cd1853ed2acd04420e3e0ae1e9",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_masked_pretrain_v12.yaml": "60e68abcd0785f28d9a74f01e79ed2a73e0d7a5b49fdabbe5a095fa7bb3f0cf8",
+    "/home/zyt/deep_final/foundation_validation/configs/nr01_seed42.yaml": "94589f38c29bc8f6572a5d33704f7254eba809375b741cea731550227a8452b1",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_masked_mean_agg01_seed43.yaml": "b379f72add104964b2569a6812f6fd7a87855b5b2418402f114cc587180e7f5d",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_multi_activity_v3_nested_cv.yaml": "3bb1d8dbeea729775d300123b874752c85cce84f7760f4294e560249de472080",
+    "/home/zyt/deep_final/foundation_validation/configs/strong_inception_time_seed42.yaml": "1990a48b2a4473417f3b3a02f3e967cc59aff5d1b288d23dd8243de6222ee11e",
+    "/home/zyt/deep_final/foundation_validation/configs/strong_resnet1d_seed42.yaml": "278d5d470f70ca3c5aca3c57d0a4b6f6e3b10796ed4eb6a9a914cb0847d7f149",
+    "/home/zyt/deep_final/foundation_validation/configs/v8gn_gyro_fft_seed43.yaml": "c9c7e32f90533d361a89650ab76c8bce202556b1a9b48e5d67e439943df2611b",
+    "/home/zyt/deep_final/foundation_validation/configs/tr_lr02_seed42.yaml": "e3af1c3caaf0dc8c5a736c1f61e1a3925947a669bdb3e98a70aa1976add9e5ef",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_pool_v1.yaml": "72ba48963126380a0f3207d99d4027150609cce104a02e84c167f7ee9d68d917",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_normfree_moments_v8_seed44.yaml": "a73f2825ff86c06d7cb0799bc28a99704d1a1fdb1ea418fd59a720b7c08241f4",
+    "/home/zyt/deep_final/foundation_validation/configs/mf01_mean_only_seed42.yaml": "3297aba6806e5bcc41d52494044d526f5cebffec82f0a8eac16a52d85bad0001",
+    "/home/zyt/deep_final/foundation_validation/configs/v8gn_gyro_fft_seed42.yaml": "789440ac1a900bf3995055887a1189af214b9e49842c15663f18d966097d9e16",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_mean_attention_residual_agg02_seed42.yaml": "c210524593288e74b3ffedb40b579a684b6b8710901a230d8b73f0c2ce66f724",
+    "/home/zyt/deep_final/foundation_validation/configs/tr_sc01_seed42.yaml": "006334d8c7f0b727721aadd98f4888d6f1a15a793c1590f61e6c85462a5c1037",
+    "/home/zyt/deep_final/foundation_validation/configs/tr_bs01_seed42.yaml": "57bc57e99d60ba5bcb60476df4eefdd787ceaf6911b1256e1e2d0a3b52d9dc9a",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_mean_attention_residual_agg02_seed44.yaml": "a5ded068e9876ef52922916c1ec9378a441bf02c281a0011ba8f9567960a6acc",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_mean_activity_v11.yaml": "f32a291aa559d64f59bd6363b596e599e05412ab8bd59f95fc00d592f5161bb6",
+    "/home/zyt/deep_final/foundation_validation/configs/tr_wd01_seed42.yaml": "67f5ab129d7b30c10859c451ae95437cf0038ca4fb94f965b2d4b6eb9a055f85",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_normfree_moments_v8.yaml": "dd68dfaf090f42af91a47973fc1540f57705624288ba8144db4068958f1b4eb4",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_longrange_lr01_seed43.yaml": "f407f60e1805f318d3bd34ad00750b603fe00d9b0c189b3b3c3566d8dc2cd5af",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_split_sensor_v5.yaml": "fa7b43518e5fcbc64e708e8ded166b462d2b4bbf306dc661063bbf08a9166c53",
+    "/home/zyt/deep_final/foundation_validation/configs/tr_do01_seed42.yaml": "d054d960f5fdba435ea2f833813391527e3d12abd049b824811b850bf04b8458",
+    "/home/zyt/deep_final/foundation_validation/configs/pads_pure_deep_pool_small_balanced_v3_seed44.yaml": "261d7f60437fe92e10869f68a4e2d09d850afbd62e39b33276443bb645346867",
+    "/home/zyt/deep_final/foundation_validation/splits/pads_classification/v3_nested_cv/seed42/nested_cv_splits.json": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/processing_config.json": "1ced7052705192511da4d89d1a066589cede62b658bb852ff5769d20551bbe6c",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/audit.json": "bb0b012a46944e32e093914172565c31e31d583286d1be5e559b05f35c44738c",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/quality_summary.json": "61ee103f8658b59858dd5f907e9b9ae425d7436036981eb3d516a0e280efc2f6",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/solver_audit.json": "4407369f118e24f5b0ef0695f69b15167afdca3da1d657f01f22383498346f5a",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/CrossArms.csv": "5978e2a20707079557bf51525ed480ebd7535855ae8fc4b0ecfce5e29cec77ce",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/DrinkGlas.csv": "ce6dfb243f76bb30d3ed060d010b23be56761acf57144fb8fc7b3793fc413e57",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Entrainment.csv": "aebfa03b176c78ca166aadb6e967e82bfb89a03d806cfbf6947d8232fb372a73",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/HoldWeight.csv": "80b7681c8faf48f7429863bd59098780ba48bc32a3297e7cba48ae74a94653a2",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/LiftHold.csv": "335bace2987de35b1c2ad475ae70cbe66e2ba5ed5612fc6e3a3108153a70c87e",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/PointFinger.csv": "dc5aad8d1f5375aff133c8e859b64cf36dee8d45372c3a94e9a9c3eaccb8e2ce",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/Relaxed.csv": "73fc0681dafa996e4735e7fe543d94a2385c38bfa86c72b7cdffc71cea058d0d",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/RelaxedTask.csv": "c03ab643aaa3ec3e7007c664be8494f9274127d1be76f46ef68e89cfa81cd60b",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/StretchHold.csv": "b2cc8ba280d6cf676d789076e89c72cbd80bb79904b604eee68f5f243d8f0f2e",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchIndex.csv": "163e927f99544a076547e87327534b2812edaaef16502d3e6710fd14d2b84453",
+    "/home/zyt/MFAM/data/processed/pads_multi_activity/v2_l1_full_length/manifests/TouchNose.csv": "7b294bb6aecc0de5d06e7f58519dc8fcc9e4144b1b4cf7f7bcff02dec0c8cf50"
+  },
+  "stages": [
+    {
+      "seed": 42,
+      "context": 0,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_0/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "71d2fb450ac7990a2c609f7ae8d7bd54f9afa1a9e669da0c5f7b3b1b74b7ab03",
+        "checkpoints/last.pt": "5bd09d2c425ac82cbb56fb9b8fe40c0f6e58bb40c8419af5825d5758d049c21b",
+        "predictions/validation.csv": "0cf171d5777a2470da6427522d61a47b0ec0157501bed1f70320d9cfc3c27163",
+        "stage_status.json": "e2901b5efe989cff4d8c937e8f6b101ca15ad84e975c753e7d6a744ba09bd12d",
+        "config.yaml": "c6eda8b18748906a8a6bdf2dc4d2418c1ab37834bd4ffb7e522c0fad076f67fa",
+        "normalization.json": "ad8e617bce3ea20ec01eddafd6e4f47cdde76fe47c17ea938a903485e5144187",
+        "split.json": "ea2ebb205cfe16c3fa3516bde8c625fc63e96249aeda66ec20288a43051c35b8",
+        "logs/epochs.jsonl": "e05cd182c592122c499a42f14437cb10a0b50d88495e0c7da1dcd107e3ba9b97"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 0,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_0/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "55b6801e0a1a7a9679056a374e06446161c4b94f78c5211b73a2a02afc90cdb4",
+        "checkpoints/last.pt": "70b06bde12b2539ce2bf76b640d412b52fd0b88ee7faad97e7100deda4367d31",
+        "predictions/validation.csv": "766e681aa545d1fc0972a189bbc3a1654ec9d052e778c013cf8e854898a58e58",
+        "stage_status.json": "98230516db9b68a839be94ba726b78e49942a9e5a9163c92c2c14e222f740389",
+        "config.yaml": "0b019c3c6fd31be1cf2b18180453b1bef96510ca6c4e967495d6857e8656d866",
+        "normalization.json": "ad8e617bce3ea20ec01eddafd6e4f47cdde76fe47c17ea938a903485e5144187",
+        "split.json": "ea2ebb205cfe16c3fa3516bde8c625fc63e96249aeda66ec20288a43051c35b8",
+        "logs/epochs.jsonl": "1df889b01434a955fd07092ec8fc3df54993424e874ef4888647bf54174681c7"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 0,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_0/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "3e3c79c4cc5ae7eae07b599f701b0a9267512fe350add793c753162def091443",
+        "checkpoints/last.pt": "f7c3ed6beaa075da6ef05a91a6bc28bbe4d6cfd44ae9acb6f708b455a423baf4",
+        "predictions/validation.csv": "355f705c0bd46292d585534ea570a7bf50e1c3e1f5e36e1259ada7569f1e61ab",
+        "stage_status.json": "8fd7651317305a7deb7f144b36cc1280dc3a5cc54e67238572da79ace0232cce",
+        "config.yaml": "fa836f190afdf5d7ec6eb537807227215cd4ec6693bf02661ac60b7891398901",
+        "normalization.json": "ad8e617bce3ea20ec01eddafd6e4f47cdde76fe47c17ea938a903485e5144187",
+        "split.json": "ea2ebb205cfe16c3fa3516bde8c625fc63e96249aeda66ec20288a43051c35b8",
+        "logs/epochs.jsonl": "8d4f166aab8fdb622d8cf6aa26f551a949cafea7fd8c00712e2fc947e8e0a189"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 0,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_0/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "fdc1c72d4b2d90bf325444c715f4de88ee2168d2fe8d0671e494a4c37bf0d9b2",
+        "checkpoints/last.pt": "ec4b8587b65cb7e86da0fa9efc1552fe0d5a9bcd3adcebe6723f93481afa9004",
+        "predictions/validation.csv": "3c45e963e08cb9e4d3348b81fe2342f332955302159a0514883526e18584fa78",
+        "stage_status.json": "5d6af618e2f2b84a2edf1f3102b7d24c925f640b6c220d32f30148ebeab288f2",
+        "config.yaml": "b5537db82f18eb415e9a4c7862291f11d307d2333db1cfc4f9db63148f4fd192",
+        "normalization.json": "3093e2fd702746c78ffed341989a84cb40bcca485c825972db752716f118d4a6",
+        "split.json": "784e59aea2be85cd89a23c62d71fcb4ebaab65a8c7603927b5d7edf829aa6660",
+        "logs/epochs.jsonl": "dfa4a798f7b943d86e5c2d556965b7a9ae8a0affe70b3f0778736c7dfc5e7a3c"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 0,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_0/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "84e6e721a7c02a2cb61ba43ab15c6c74173160bfc8285d35d1ed9c0142507ff5",
+        "checkpoints/last.pt": "9134dd03855306e5b552d52d4bf5c548c10ec53a45ea02b9eb95a38fb193d9ac",
+        "predictions/validation.csv": "12d780cbecef22f877c485fd69b565fc6d0f1c70b5bb7c794b4dfeda01a70eaa",
+        "stage_status.json": "f3dbc55f0e026a522d016d7ee6f1addf311fbe34d94112de3ac3dd9bd1de5d14",
+        "config.yaml": "150ad0aab49b3cc95e5a9be8ffc18ee410d07957578bd0eb6d5306f228784a2c",
+        "normalization.json": "3093e2fd702746c78ffed341989a84cb40bcca485c825972db752716f118d4a6",
+        "split.json": "784e59aea2be85cd89a23c62d71fcb4ebaab65a8c7603927b5d7edf829aa6660",
+        "logs/epochs.jsonl": "8f0fc354706e3d8ff2584750b5a0bdd8f240d30a93e9b0bf79f3a73f09f1edba"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 0,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_0/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "d8153787efd0d5940aa42510e9287363ff99153c1cf1d5c7d011077462654b4c",
+        "checkpoints/last.pt": "0d3d0129a6903b111aaa24f338d4c2bc899ba504266bbd2b8f9fff1efcd48ce5",
+        "predictions/validation.csv": "8b56f244651e648eaec83af5003763763bda7d660f114d7f3a7024c3cfb268a0",
+        "stage_status.json": "3a0ddd08674690d8d1c1c16645179f19702154c3da7d51c1fc529bfe62ceefd9",
+        "config.yaml": "17341ee0c5b87d097147489161f1084bc8caed2a5f90672f11048c2da149ccb5",
+        "normalization.json": "3093e2fd702746c78ffed341989a84cb40bcca485c825972db752716f118d4a6",
+        "split.json": "784e59aea2be85cd89a23c62d71fcb4ebaab65a8c7603927b5d7edf829aa6660",
+        "logs/epochs.jsonl": "367642f264cc4dd1847e8988aedac48dd554f104e591a65dc04114216f96bf86"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 0,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_0/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "7a5dcee65adea6d7a9c9d28b5ab9c4b97f5ff184c208ae7200c47fe4c4cbf877",
+        "checkpoints/last.pt": "4b501733bb8f05c18a1d3b737efb459df893e95e1f6fe7b109fa05bb17831ec6",
+        "predictions/validation.csv": "ae94e494336f7eaa576a6a7158e112e789ea2a4343c6022d86d513543127515d",
+        "stage_status.json": "87ffac70bb48610fdd3684c77b97a881af470272e6bcb5b23e8f374cb6c24929",
+        "config.yaml": "0c25b90ffbca3b54ab616b86b5956e84e682bcfd04cf63b23ccb2c8f3f103a65",
+        "normalization.json": "66c8409d50e0fc803edea5299bb5273883653146e5b65e2e8c5dfb174a5a405b",
+        "split.json": "bcf72be21fa5cad612d4682d68dc9d587e4842ce1e84e5ae9b06e796698a6f4e",
+        "logs/epochs.jsonl": "9c640efe2bdae66bcfa8cf3dc32bbd5528c09bc93f8963d1d3b24f3ad19f72c2"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 0,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_0/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "312f4b5be8a70c18b205609d089177288e12cd74964f72dd6e820f745737ca59",
+        "checkpoints/last.pt": "93f8e189a786f254747248c580e3872f151e5e59527ec7a4ff7149020301dc40",
+        "predictions/validation.csv": "ad3361fea70e50588d4aa06f8d5c9f5dbc4f959a65f49585aa6e67df5fb653c2",
+        "stage_status.json": "ce3ffa761888936db16144643f2cbd8c090a2654779f4c90502ce983cd9f57e0",
+        "config.yaml": "99ce5b0eae8c1aef144231f29a2c80bb83639b44742040767aa1811e744d0b67",
+        "normalization.json": "66c8409d50e0fc803edea5299bb5273883653146e5b65e2e8c5dfb174a5a405b",
+        "split.json": "bcf72be21fa5cad612d4682d68dc9d587e4842ce1e84e5ae9b06e796698a6f4e",
+        "logs/epochs.jsonl": "3a2706a581e7c5bce5211f4f9e26ea8c79879c572aa91910ac13f0035c9f4fb8"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 0,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_0/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "9875983d0b56a93c00660c1c1b4b68b34e927e773c7b94caa6e998da2aa71d63",
+        "checkpoints/last.pt": "deefb679cd31e926f68deb8dd32dbac45d10e3cef41777fb4e11df05d38b02f3",
+        "predictions/validation.csv": "cb49afbded5811e993821bbe0d7efcd4067ad37500680bcd799316da9beb2e66",
+        "stage_status.json": "8242d8f7c5ad44dddd8c7f6642729f4bf0d24d1604d48c63b598a5144d648fc7",
+        "config.yaml": "121321435467b434b723d01c68c103c62e1ffdafd9bff8fe566fa7746a3e4db7",
+        "normalization.json": "66c8409d50e0fc803edea5299bb5273883653146e5b65e2e8c5dfb174a5a405b",
+        "split.json": "bcf72be21fa5cad612d4682d68dc9d587e4842ce1e84e5ae9b06e796698a6f4e",
+        "logs/epochs.jsonl": "c0793111df394c967137e47e828abe8ce0f44621b0a3fc073e5c25e98d751a54"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 1,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_1/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "1246af6e524e9ad973ec6a1b9382eea683db734a7c5e82edacc60491b069354b",
+        "checkpoints/last.pt": "eb6882f092d7e3fb5792b94723fbbc231a1c15ef654ecf562db3cb627f3744e8",
+        "predictions/validation.csv": "b1bb105407d0b57de0f27e8b1f545d3f9d42aa787acfebecaac232faf91aa14f",
+        "stage_status.json": "85d72b942926b5ba1764a7ee5bc53c5cfda926d0f55104d2a81eea861d818ba8",
+        "config.yaml": "8d7f6706d53e2fae834bb8f980b1a4be2490469b9f7d3410a37233e53009a665",
+        "normalization.json": "cb2707fd9eccbbe71d552715fe018ddde8a778f7a39cdaedbd6dd0a61823498a",
+        "split.json": "ba71546f8ebced13ff8e7ce6b1874406716b95b0f4d79283346430154b616da8",
+        "logs/epochs.jsonl": "f7a6797f4c998ccf119083892583d4bc9089304153b44f47dd79e42210645a6b"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 1,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_1/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "8c6570299da3e35bb00038bcfb031f00199d02bd0cbd577f258f515444222d8c",
+        "checkpoints/last.pt": "85a8438fdb72492ad2801a5da3b52ab1c3f6e319c46d3dfdb6bf8a2df7966e1b",
+        "predictions/validation.csv": "bec707d6432ad58521308e7a2755d94242bdca688cffca95660d8696c260cb0e",
+        "stage_status.json": "223748b0705eed26bb0bbfec2453d1ca33a228badbae68ac5857328207fc7748",
+        "config.yaml": "cf4d740739fce02b41fca65d1b236c3f246b01902a18016b2a817d552f09d578",
+        "normalization.json": "cb2707fd9eccbbe71d552715fe018ddde8a778f7a39cdaedbd6dd0a61823498a",
+        "split.json": "ba71546f8ebced13ff8e7ce6b1874406716b95b0f4d79283346430154b616da8",
+        "logs/epochs.jsonl": "e2a353c5f88ae63f4df201cb02a177b23e1f823a5eeda793e5813e606fff451e"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 1,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_1/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "b1e8f0ce4bfb3c8715f9c20275cf90e578c5c048801a63d939d9f694aebb8588",
+        "checkpoints/last.pt": "0aa75b81745a5162698169c263cad8ba564a8807f07b99dd7cf51d2ad1578a53",
+        "predictions/validation.csv": "d389353785e21665d82245cdcb30b07bd675496b4ce7889013c6956cef5d7d50",
+        "stage_status.json": "f71a57920d34e8d079fedb4749981408a9f36f2c971fb74bf70a751e210e98d4",
+        "config.yaml": "bf1a4222d5e0bbde847d8768a77a30f77a426aaf2d198aca7636483a48130a38",
+        "normalization.json": "cb2707fd9eccbbe71d552715fe018ddde8a778f7a39cdaedbd6dd0a61823498a",
+        "split.json": "ba71546f8ebced13ff8e7ce6b1874406716b95b0f4d79283346430154b616da8",
+        "logs/epochs.jsonl": "14781eb9ecc0a84088dbb0b515c5b696d8e8e677d924e25ec6f3acdbeb25d23a"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 1,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_1/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "24c7fda4d756b9a863cc1fee8e38a928a13fa199506e399d1699228a1b0d4701",
+        "checkpoints/last.pt": "f1d62e2d540d0d432989202ebc1fd78c7bb5c0841bfbecd8847c5f1893e407b3",
+        "predictions/validation.csv": "fedd13e44fa50de60fe031547489502449944ee9b3de1e6b99df497d1659efe1",
+        "stage_status.json": "f5d1853123fcf81a76f9182144ffbfc5a6d4031ede8ff204052dc1c1661f9698",
+        "config.yaml": "00fbd03ccf765e353ee6c839b5e4111421999aea63f8271ce59a71077b57a8a0",
+        "normalization.json": "4fa3bd630d8bc0984f63a6044079073319c093f606f71b09b6615680e820f90b",
+        "split.json": "0fdc8b74ea08e472ed8d13375e3f15d2f5b1e9eadf06e5e4235a90fd4b0c0870",
+        "logs/epochs.jsonl": "d60910173098238027c60b59d079c827703cb134f913281ab8a86aee72ee1e76"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 1,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_1/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "11b40656f570b20af71ad8f94dc519617292e62615610864d0996479518158f3",
+        "checkpoints/last.pt": "229bc300d5a9c18be7794f161357cb35b78da605a17267d1be28118d231411e2",
+        "predictions/validation.csv": "5bfba1955e1ddfc1fed5a4b9702eb89892bdc8b2db6bfb5965c70e23db52d5fc",
+        "stage_status.json": "7cce7a7986ea968f393b7ea006c0d1f8684dbb833b10d57b234d4007e95d98e8",
+        "config.yaml": "4a4506b8a48082b2909520e10dc0a2484f4f15c265fbe8e044612790a4b11292",
+        "normalization.json": "4fa3bd630d8bc0984f63a6044079073319c093f606f71b09b6615680e820f90b",
+        "split.json": "0fdc8b74ea08e472ed8d13375e3f15d2f5b1e9eadf06e5e4235a90fd4b0c0870",
+        "logs/epochs.jsonl": "ef7f9b3d17de1e66c5ab59116f57bcf87c89451953c56366543ca024fe8cf3a0"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 1,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_1/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "bc4b43777f6ef68116c977da79090df63b49ae1f310d111123fbae5a339410ac",
+        "checkpoints/last.pt": "b42b91967ee03c3bbad2a9566c7ffaf4cc5ce97f20212d8d62e68e75049415fe",
+        "predictions/validation.csv": "a4ca794618bc2c7bd6f94d669d6a13796cf100800e231c570bfc3be98f2905b8",
+        "stage_status.json": "3a579e4022ac56398f3047cee84332ace6927552e8095da147da72b0dbbb3e11",
+        "config.yaml": "b6aae96a930099822ba8ca1a71b47ee35dd8baf0fefa68ddf9ffeec9ba1ef1c8",
+        "normalization.json": "4fa3bd630d8bc0984f63a6044079073319c093f606f71b09b6615680e820f90b",
+        "split.json": "0fdc8b74ea08e472ed8d13375e3f15d2f5b1e9eadf06e5e4235a90fd4b0c0870",
+        "logs/epochs.jsonl": "bfad2d013a7b4ce99bea698730f51f6d9ea3601092fb084eda967bc132b8566d"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 1,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_1/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "68e9c53e89c6beb1f14fb7a45884808b381ca4370162e7e85bfb9c8a66e7bb68",
+        "checkpoints/last.pt": "e289a95884ee171cca8fa8f995b69d386430ed70871c35a42a9e1ae445eec017",
+        "predictions/validation.csv": "b8bac637e0d9c69c3bd642434fd7d43e502229318850f25a850a1b758ad0e3e8",
+        "stage_status.json": "bd5d61c986e8b693b2caf29430e26527ecc748644c92fea030af3d3671722f33",
+        "config.yaml": "938dcc1a65b1824e2cde00d1af2c7f2301b95fb0516a1258ed1ddca842ccea2d",
+        "normalization.json": "741afa611f1b23001ee1f52fac033cd61de695927b1aac3a4701c27e62086311",
+        "split.json": "0c0e802fe772eae8ce15d6c5b8602146e10b5b366d9bb49b131c36dce7495954",
+        "logs/epochs.jsonl": "bc95a9c18efd8cade5a36397fe39874ffe5583d2728f98baa97f8d9468de8911"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 1,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_1/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "b895c19f5d240582cd27a448e46e37c67d0b36279c9d654912a747e67636e362",
+        "checkpoints/last.pt": "1626924e1c9d2a1d28f2e2bb29e18d8912f0b799056043831fa9467c6353f6ad",
+        "predictions/validation.csv": "8fbddcb2f4fcbb82f245b50646119dc6f8add8ef8fd2875dfe5a15acd72c6b46",
+        "stage_status.json": "2ed734c2cb037b66c0905e423ae110f477b8b5f16b4b77f788fd868fb6c276eb",
+        "config.yaml": "c2ebc17c099e3c028489b5dc1c10c2e4d5c41c931b2641f9612aadb677bb0858",
+        "normalization.json": "741afa611f1b23001ee1f52fac033cd61de695927b1aac3a4701c27e62086311",
+        "split.json": "0c0e802fe772eae8ce15d6c5b8602146e10b5b366d9bb49b131c36dce7495954",
+        "logs/epochs.jsonl": "b30b353ca7d19cc9ec4e305af9be4f70df2fd228ce482714c50ec0d5bef14faa"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 1,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_1/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "d499966df366fec5e86f32426e6423138c8c084ce26aab73e7c67873467bd97c",
+        "checkpoints/last.pt": "b6cf67856679f8bdb2e440c390c68ad8ecc31cd99aa230a4b342d3ff7097e932",
+        "predictions/validation.csv": "80cee7a47635e7f7223a293f0d1c1813d3cc534e42e86337274e999a5b758a97",
+        "stage_status.json": "79c952d2af28048a1b865b20d3ab19f019d65fe2ebb98ddcf32f895e74f45ae7",
+        "config.yaml": "113c51661c650be7613ddb3a192f69ddd9a0e665d9beff57c0565aa699edcfe2",
+        "normalization.json": "741afa611f1b23001ee1f52fac033cd61de695927b1aac3a4701c27e62086311",
+        "split.json": "0c0e802fe772eae8ce15d6c5b8602146e10b5b366d9bb49b131c36dce7495954",
+        "logs/epochs.jsonl": "fde86aefc7bd26b7a2d5a9215bfba8ededd7b1077ddcc5b5ed3ebd12a659e8cc"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 2,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_2/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "298f9561b12e3f7d096c7f5a1eee06dcbbde7da8ca84146c662f7b10a1333477",
+        "checkpoints/last.pt": "568f070c63bd00dd3bbdd1c5bed375aef1118cbcbd2069258ed66746661c3b14",
+        "predictions/validation.csv": "0d584bb96f5013330afba9c95adcd90fac0fce580b97d5e54d80a519f4188a56",
+        "stage_status.json": "ee288b0468e558d742c7d0d0580b46670eec5f5fb60bbf83376b8e43507c4240",
+        "config.yaml": "fffd29cbd021031d6cf70e5f17c90c91436f05f5c9ffa163c7a996cf6bca483c",
+        "normalization.json": "430a5d9a9f287073743571deca58527ab50ee9823c86f7675d8bef315b1d3890",
+        "split.json": "2da0a8309be47f5263156975ba94812194b35e5b1984bfbbee3d50b361f62950",
+        "logs/epochs.jsonl": "8ef271c1627d479749aa04ce09cc479f95140b0be27c6dacc1b0f79c6632719f"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 2,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_2/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "8375f6fc073a479fa891d268bab12488e6c6a9d43c548eae396d455e9ae96d66",
+        "checkpoints/last.pt": "ba8b4a5b05793c95bbf80dac22153865b2559572f62b4f4039cc06dfcb9ce2e6",
+        "predictions/validation.csv": "771046d1013bd115b1a4c5bb1e5cdf09f6dc97de1010edf8d88eaf26949ed2df",
+        "stage_status.json": "95c4b802a8cbc89fb6935a0e7c4908895572fbcd7b5a4c1cae4d3a9d928b6fdb",
+        "config.yaml": "7b25a13c8920b837240b8a18008fb0a32f02be78a8007e9815447255a0929b5c",
+        "normalization.json": "430a5d9a9f287073743571deca58527ab50ee9823c86f7675d8bef315b1d3890",
+        "split.json": "2da0a8309be47f5263156975ba94812194b35e5b1984bfbbee3d50b361f62950",
+        "logs/epochs.jsonl": "da4d2fdda78c4ae4cf6828133585f8b1ddf93da3ee3509e45571f99667edc746"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 2,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_2/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "db2955bf00a8e4c9245c1d4c54c1fc28f020f6eeb71a91dbf1168a30aff4a732",
+        "checkpoints/last.pt": "682cbf0c065ba10eae71e639afcf5ec193edb829d0f691d61249bd126961f6c7",
+        "predictions/validation.csv": "41371cec17b03b69784e9124ac2081046c4ef5414da7f848f3c029ee81c079a9",
+        "stage_status.json": "b3fb134b9c7c6ae0aea6b844f6b781daf1eaf1787a57a3fdab799623a078e7eb",
+        "config.yaml": "7252887b3dc2e5257321b245287a774bebca7873aafd8c24397b9c4c4f8d4ea7",
+        "normalization.json": "430a5d9a9f287073743571deca58527ab50ee9823c86f7675d8bef315b1d3890",
+        "split.json": "2da0a8309be47f5263156975ba94812194b35e5b1984bfbbee3d50b361f62950",
+        "logs/epochs.jsonl": "94cad590661cc7910765d3e01a2202fac8b1dff572a4829231146c7f307bc68b"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 2,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_2/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "7b1d7b3ee8f9b64dc0ea1f1ac9706258bdfc90acbd6eb4c8436aaba4aa705abd",
+        "checkpoints/last.pt": "0e2b366ca9854c531935a0becbdbe2e1e5fb269a356b1037ca297bfad5441d81",
+        "predictions/validation.csv": "2fdb23e2c256d0a7b543f33d342d237deb09e17e691c3c945bf5339ecfd2b6e0",
+        "stage_status.json": "68e2b127f4d0595b9ac6a587e5ecb63b94e8aafdffa646680539ba50ef969496",
+        "config.yaml": "72fe33876b72616a19a6f0f50ecdc33ba1bdd925bb6fc1e916ba4de67b79108a",
+        "normalization.json": "48c3c42084681fb813f768eb274fc4bbc05a660dd03ed4478f1f9ab12a09a376",
+        "split.json": "7996d72eeb1699c535f48b36ea41b4fb40019fbdbc4848e8c367819f588cef09",
+        "logs/epochs.jsonl": "8eb9be74e349fa2d9748b29aefe49bfc07c25a414237feae2c0361f5426ce51a"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 2,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_2/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "b4d5b3601a4b93094b4591c2e472439baaf134eae37f94ebbc919e39edc8f651",
+        "checkpoints/last.pt": "b808e9dc31724c24b4784c2bd095682f5af996e81d8fa6e7e220c9a2c573b755",
+        "predictions/validation.csv": "041de7b1eda19ea207dc02d978b42a8749c918a2b00727902e225827ec13eaa7",
+        "stage_status.json": "fc4078c035d1c9899487bad656c9d8242ac20f3b8708b83d880ab296c301fef3",
+        "config.yaml": "02f69501f2714ce058f733dade0d34a6fe60da57cfd4c9103b34796293bba1f2",
+        "normalization.json": "48c3c42084681fb813f768eb274fc4bbc05a660dd03ed4478f1f9ab12a09a376",
+        "split.json": "7996d72eeb1699c535f48b36ea41b4fb40019fbdbc4848e8c367819f588cef09",
+        "logs/epochs.jsonl": "ee7287201b26c5eae0773270196b5f441cd099c4ebcd0e286ae06d925598f52e"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 2,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_2/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "9c7137cee0e1cf1477a90f4dcdf853eb2271ebca9bedf5a4932ad956a6b7b165",
+        "checkpoints/last.pt": "722ee2c890c826f04dc1d387ba7d72ff9f76d68f6e3ba446854a8e5fc31ea624",
+        "predictions/validation.csv": "cd2c3c8cf5f7ca4a4b729a8266714baf7cfab422402cc7101159e9aa5976a131",
+        "stage_status.json": "be51671c96a9e4d1eb4858d6c5a88b639e90d73b344ff3ba2181dbcd2825fa4b",
+        "config.yaml": "2549abcdc4cfaa361064ba44ed724bdc59b063dc1891d2608048fc2ca4af3624",
+        "normalization.json": "48c3c42084681fb813f768eb274fc4bbc05a660dd03ed4478f1f9ab12a09a376",
+        "split.json": "7996d72eeb1699c535f48b36ea41b4fb40019fbdbc4848e8c367819f588cef09",
+        "logs/epochs.jsonl": "063ee01639078b77c691ee764759af9090f949c8da24ef1e0dce7e7e5f44ba81"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 2,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_2/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "00e9cf96a08841332fb83c7ebd5f9663f1a068e5f81a0987d4a798b6f49515ee",
+        "checkpoints/last.pt": "2715d0c95d7f8469ce0c069d4552da299db775bc6c76dcb4b4f6e8878e9c8228",
+        "predictions/validation.csv": "24abf4591cef18b9c4c626261f3d64a93474c32e1f683efa7058d6ebbd6d3cdc",
+        "stage_status.json": "1bf71e622ffe8e655b185275d187aed78d238e31980bb9b49682f368dc684e74",
+        "config.yaml": "407a16e2d4c1d96d14a73f545df0d32f0095a90d09b51d6f4f381aed3fcacde3",
+        "normalization.json": "726f12ef6b3c9802f9b5518a49dfe62d42acc281e9926da121bcb2a50f10b368",
+        "split.json": "b07c815ee64e280ec772c2374e588aee579066b9b8d579116266090f31a90c37",
+        "logs/epochs.jsonl": "f60dc8ba9ffe3c572af299f162d7e6bef4b21b1f20055b8430d26457fd618882"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 2,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_2/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "dba4b347afa91159576b29ea017a27e8fadb3d53fb9a6bf1678fe4188e3f1aea",
+        "checkpoints/last.pt": "327f2cf0729323ab28c9152c86c68b6cd4251748aaff6fecdd69ab60e3b9dd91",
+        "predictions/validation.csv": "ab4d11692709675b5408d6c1e226004a6f38121c789b848dbeedd110fa4634cb",
+        "stage_status.json": "98c30e4e94a1b6041b965287ef4fc3ea4577c7356ac92de8856e9b2def4d37f0",
+        "config.yaml": "cf65cd0059b10af9f07d6342054f545df94fd3d9b7786897f7119f8bc79a853c",
+        "normalization.json": "726f12ef6b3c9802f9b5518a49dfe62d42acc281e9926da121bcb2a50f10b368",
+        "split.json": "b07c815ee64e280ec772c2374e588aee579066b9b8d579116266090f31a90c37",
+        "logs/epochs.jsonl": "1f4319e0c4c75b396671333bea1540f2c6e404afcc470baa893117ea78dd76ab"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 2,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_2/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "ebb50c8c78561ddb1f45eef4f6742e430b964d130d77c2a22122b50dd9eaa42c",
+        "checkpoints/last.pt": "03fca14b35eb39fbe404db19f23c505d7a5bc11f4e0b59bab21be8dce125de21",
+        "predictions/validation.csv": "f43f97bb51527c2b26ecd9005aee8c857cfc587eecebc633d78e69162c9806ad",
+        "stage_status.json": "493d1f20e718cfe73b3a11e486451d8311304a28e38e30669f1250ccf56fd557",
+        "config.yaml": "ba6d856250f1c9f8449fc5a5750c4720ba19cd2682f5db4dc448c1da91fa3631",
+        "normalization.json": "726f12ef6b3c9802f9b5518a49dfe62d42acc281e9926da121bcb2a50f10b368",
+        "split.json": "b07c815ee64e280ec772c2374e588aee579066b9b8d579116266090f31a90c37",
+        "logs/epochs.jsonl": "86349334bf15426007da6825c0e071c223dd4bb7d497ae9dfff515f64fc1b1bc"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 3,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_3/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "762a1653dd525808bda5776f766d0bbf55e44c35c75cb41aa99f507f80a7765f",
+        "checkpoints/last.pt": "b6e61ef532f2b9d9e8680f0007524dde215bf727ce66c769ddb00391fbb6c971",
+        "predictions/validation.csv": "b33d582773c72961614f0a2cd6fb657734671317e37e876acf256a1d3f3dc433",
+        "stage_status.json": "f00a91bda9d6c57425c19f3c3dbf5c2cd526fc66d470aa74e6a9e06ee64c2d46",
+        "config.yaml": "bbc8e6d6a1cac83c557d98a07afc37e0af89989f10cdae79224ab7cb805df3b6",
+        "normalization.json": "dc615d3eb5280d63fa596ddd484b7cca8dbdd399793a6b38aaeed33706a7a26e",
+        "split.json": "913c163809d77f33bc4728a7f22c219afbfa4a226f4a59be6a9c2edfca7282ea",
+        "logs/epochs.jsonl": "0e22bca7ddf6c9cd39a571100d0191e37d02e70b208cafc734e86a54b94a24bd"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 3,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_3/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "b0d4fd1e4b6029ea0b7508be16ac66dbd66e9acb49c2602a8ecfc9f6d2b684b6",
+        "checkpoints/last.pt": "21247a8e9a3bddcd2e8f6e1ea4adfc236fd07f706b4d6e67c44667f592787930",
+        "predictions/validation.csv": "2878e85a0a42f07a624853c89cff1711cd47f94a6a2aeb24fc8d1d0a6ec702e4",
+        "stage_status.json": "2dd0a6aaf5b1da92765274415ab9c7f64aa91998c68dc5e0a804146f19123673",
+        "config.yaml": "7ba895097ff8495e6bcdaa7506a396d049ce0f704a90f9f54a77f6345f8bc62b",
+        "normalization.json": "dc615d3eb5280d63fa596ddd484b7cca8dbdd399793a6b38aaeed33706a7a26e",
+        "split.json": "913c163809d77f33bc4728a7f22c219afbfa4a226f4a59be6a9c2edfca7282ea",
+        "logs/epochs.jsonl": "c73b0bb3217bd1f9f9bc2b0584242e7674f32354d26344289f6310e2c63094a0"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 3,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_3/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "e99cc6f4632ccf04e851602adaecda22bdcee167f226ba582af24e1908784fc2",
+        "checkpoints/last.pt": "09b9bce9fe879f525b6fbfabf918f272e4ae298fc70c41f86a4c4d52d5375c92",
+        "predictions/validation.csv": "8a7772450c51f9cc72c87f03b8c4a177cce17f079fd1500a8158d2a96c98c8d5",
+        "stage_status.json": "695db8af5db4c6b4f9f080b228da0e412e2c19094cb1474cca02f68177733c9c",
+        "config.yaml": "77a5d1c2bf9d53b58857dd60fcf4d853656521f733c0b1dec2599672ad3b1d52",
+        "normalization.json": "dc615d3eb5280d63fa596ddd484b7cca8dbdd399793a6b38aaeed33706a7a26e",
+        "split.json": "913c163809d77f33bc4728a7f22c219afbfa4a226f4a59be6a9c2edfca7282ea",
+        "logs/epochs.jsonl": "cd5edcba12cf286bc0890393c92d2355854386438d84fb5bf8ada9d6f77d7467"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 3,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_3/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "32627f909c9bd28035c5cb81aac84ebe6f08f7fd6760131b2c171b463c5cea24",
+        "checkpoints/last.pt": "e0cdb9564d3fdc04091e0d874855afdf47db8dcf208a39ef67063679395dbd57",
+        "predictions/validation.csv": "d6042a19a95ec689a92cc3cc96c82b80eed74e328b688cb82399cbddc7bc2fd4",
+        "stage_status.json": "85bbdfc41b3072ba9272529e3af570b90158e1b671eb4c6a6fd96176e0104145",
+        "config.yaml": "4da98786b57ac4b1e560c1cc7b1560ff6570bbe1369fb6622370aba07f2e561a",
+        "normalization.json": "2c4af636b7c2ddbb7cd7ce1e6bf68a05d65ae6ae9eceafc89e40f20f928f5b02",
+        "split.json": "5780c78fb0326cb84894f06c9dd820abb2a2fd8b1e27bbd01bef334c2f9c6459",
+        "logs/epochs.jsonl": "175e6fa89072e953afdf166ccfa1f4dd655e2ad7fb52951ad40f06756d2ce399"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 3,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_3/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "265ce52f4ab5022ceaaef75376d8739ef7a6d11990c38b83369b1db619e192b6",
+        "checkpoints/last.pt": "9741528f09ee1c86261f9d0fe038e7e2af64f74d687d1e8ebe4a88890428aa64",
+        "predictions/validation.csv": "6e11c737755946985001d66b04747aee161eb177feb7e74bbe00756ecbf3e8db",
+        "stage_status.json": "0e072797b3c46d78c995374b7063bc4890e8228b95a91a0bf5f63c6387bdba1e",
+        "config.yaml": "4d23ec8a60973be0da5eae76f4a9511f0b1e2413eba6ab90b522e5ba64b1dfc9",
+        "normalization.json": "2c4af636b7c2ddbb7cd7ce1e6bf68a05d65ae6ae9eceafc89e40f20f928f5b02",
+        "split.json": "5780c78fb0326cb84894f06c9dd820abb2a2fd8b1e27bbd01bef334c2f9c6459",
+        "logs/epochs.jsonl": "73dd62eec12e385beafb3e5b6422d46a30fd1fccffd45c0fee18829bb69f2cc2"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 3,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_3/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "d8f6d8a9b603b86e83c9ef7dce3ac75d3129014302eb4e54ef2e51e06134cf73",
+        "checkpoints/last.pt": "de5e0f0ca7ee698eac274f4b3c05de54dd33c0472a1eba35e7e4ccfdfcaa1f84",
+        "predictions/validation.csv": "5a7fe45c97afb44c618e9d01b5da19686ebd98d8293168bcb3f9c73c514f0381",
+        "stage_status.json": "34513389155ea09bd0eafa8d8018cd88b906d1c8198dd9988e769b8a7ae72476",
+        "config.yaml": "cb4ca7595b2e1c1d72cbf976dd3fd02dcba932f7ce3fee3f8378a0d527e3ee26",
+        "normalization.json": "2c4af636b7c2ddbb7cd7ce1e6bf68a05d65ae6ae9eceafc89e40f20f928f5b02",
+        "split.json": "5780c78fb0326cb84894f06c9dd820abb2a2fd8b1e27bbd01bef334c2f9c6459",
+        "logs/epochs.jsonl": "7fd5171a4c2ebc0dfbbceeab788bf40220ee554b5166bf7177f48fd375fc3a87"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 3,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_3/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "2bb4e082b5ff350bee6deacf4915c746bf5bf2e5c2cd60138075e53b473dce95",
+        "checkpoints/last.pt": "5c3436c61a117878d913e515384cf829ee764aef0141c75847e912872767c55b",
+        "predictions/validation.csv": "651c38627c7e1c770f78a2842613c66e5a96556df73fc048edd6ab692ae9cefc",
+        "stage_status.json": "902cb52df81ad14e1e00855970e6044b3d9434b8578ce9c66e73d45f8bfc1c9d",
+        "config.yaml": "fbdedb748c97ccf02570bcb8bb497ccf5f822ea083fe9a56b9924c90b542d406",
+        "normalization.json": "c935c249829ad079acd89da4a5be61ef573a3ccb5437097ef9c1a60ef748fec5",
+        "split.json": "34b7449b4ea04303b55cadbdfb183f3a86feb331ed99afe113b821ca1d0ea41d",
+        "logs/epochs.jsonl": "c31285ce8d344f22f846fbea9b5b80c8c21b8e0766bfef4faf01d5781ab46d41"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 3,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_3/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "409027a19f5445322c9e536b0e1f4bb8210f427cf8a51dc202f9ec8d3ec0923f",
+        "checkpoints/last.pt": "c9109f57e4f81a2a96aa50a1da4bbcf023c3c4fe085fdf67c3eb81417fc70c4c",
+        "predictions/validation.csv": "31b5d0989605903b930642051b11c88e6ef9642115e0230be5bd041750c08ba0",
+        "stage_status.json": "c5bd2d59d855a056d6f6551f3722555fad2ce7ae010a1cd59ea818b8c28a8fc4",
+        "config.yaml": "ee9a3d2a18782aec2decc64e3054255e8c59ee35fe75974cc448419c6d49d608",
+        "normalization.json": "c935c249829ad079acd89da4a5be61ef573a3ccb5437097ef9c1a60ef748fec5",
+        "split.json": "34b7449b4ea04303b55cadbdfb183f3a86feb331ed99afe113b821ca1d0ea41d",
+        "logs/epochs.jsonl": "1f2e29563c581f05f6a34d4f0ec9d202633f128aeccbdfd39604787e3d1c25bc"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 3,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_3/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "0c275e3ac9fe4edc21eca705d33b4146f1e1d880ad564ab2e99f1e5e48f1a244",
+        "checkpoints/last.pt": "15719e3a8f20277c658558e66a5700684a02f95fd6011e36cca6ba005d2a8d0a",
+        "predictions/validation.csv": "fbfa406399fe6b156d1d9f0af15d4a7b4f22fa45c5eefebc5360b340dfbdd44d",
+        "stage_status.json": "fd2e0f2e0483c77d92348b143854ff81455376715cc1e937299743bee98c15c0",
+        "config.yaml": "2c4f6c3574a92991b443c1c0a229a81bc8f55d48d0e6b1df5aa4683f223d6fb0",
+        "normalization.json": "c935c249829ad079acd89da4a5be61ef573a3ccb5437097ef9c1a60ef748fec5",
+        "split.json": "34b7449b4ea04303b55cadbdfb183f3a86feb331ed99afe113b821ca1d0ea41d",
+        "logs/epochs.jsonl": "84b58d271175aff05208c58038e69d22641fa47d80484bbaab67cac3399099fa"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 4,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_4/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "c44224613b9dd93d5567d64b1b7efc9ada4e976d82a2053ad7418aba532fd228",
+        "checkpoints/last.pt": "e4bd8abbcee2bc8fe3b4871f074a4e3351973fd248994de0ccb32b5bf678ae72",
+        "predictions/validation.csv": "1b0236f0ab304fc176cd9e7f733c85e4222f3ecfe003a779c56ef080480ce53b",
+        "stage_status.json": "de7b98ccb6b680b1779e9e2cfe4e2d3bd650bb3f69ab87d1f5edc8e6d3bd3a26",
+        "config.yaml": "c3fd4f3ece04cad6ba54e692c7a439cf737c1d56b97e9178273db2827622c287",
+        "normalization.json": "755218f83976bd2640f43494883f45f818578f776f30b5b176426ca73266bed8",
+        "split.json": "9949063aa149c5230f0e6fa4b7e9a00cc7f3c60364343a3077e0a2633995af5c",
+        "logs/epochs.jsonl": "f1d73fc2597ef7eac4ad1e397a97ec956de4d9b3707a9a582e93c018485f4343"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 4,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_4/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "bc09693dd9c6afd17beeef6a7536db65ec458aca64500ee585d3af2e639e2843",
+        "checkpoints/last.pt": "1815fc67300a66905f3413262b0183f35337eb59aa802fad588e0a4ee18a3030",
+        "predictions/validation.csv": "dcb471f8e017e6797f7731ea5fe0934acdc93eb31299ea1af88f9cab492d9585",
+        "stage_status.json": "f5c00be4d6e0afa7ab1898656a734241a18836053ee274d2886fc6b2fe3c5d9b",
+        "config.yaml": "beb842d56ad4edbbb294b097e0ed5e2b5eedf27fd73dbf5aa6e4f2a83cae38f9",
+        "normalization.json": "755218f83976bd2640f43494883f45f818578f776f30b5b176426ca73266bed8",
+        "split.json": "9949063aa149c5230f0e6fa4b7e9a00cc7f3c60364343a3077e0a2633995af5c",
+        "logs/epochs.jsonl": "35e513e890a84a4e469549714c294f63650ff74413293012d6d3e4623b20016c"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 4,
+      "inner": 0,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_4/inner_0",
+      "files_sha256": {
+        "checkpoints/best.pt": "93f208f6ec1b54826457dae5af7ebeb8472fa6b1d56f309788530134920a805c",
+        "checkpoints/last.pt": "b8e95c3188828b5a548f0aa066e42a764a4b37f77e8af94811b87fccf58cc6dc",
+        "predictions/validation.csv": "dcf809a65b41b5aec2b8cb05a0c6387aea0ff5179e9e2c64453e9b0b42a288bf",
+        "stage_status.json": "d2a05011f1a32223a492533d29691409c9de71c5c1558c77af421ba0b147313b",
+        "config.yaml": "8597474627290d8e5c5e1c2b78eb5bda47ef667e8bd85d1acf10f5080bc32e69",
+        "normalization.json": "755218f83976bd2640f43494883f45f818578f776f30b5b176426ca73266bed8",
+        "split.json": "9949063aa149c5230f0e6fa4b7e9a00cc7f3c60364343a3077e0a2633995af5c",
+        "logs/epochs.jsonl": "31dea0a40369720246ca6f2b202a3c7d8b79789da4d3e469c2d9166e7c1a3dea"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 4,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_4/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "a1ca01c4dea295caa319947487c34c019384c1977b029cbc44668f1d0f01ee1b",
+        "checkpoints/last.pt": "0a412e9bc3ecb76847d54082f3740445eb399ec381a9ad5416f4b5ec57f07406",
+        "predictions/validation.csv": "5c18ad84d94af754f936ed5dc4f7cf5abbae645b768dcb2f6a449d65cf11657e",
+        "stage_status.json": "602346851bfca7e5e335e98173966cdff836fc81e2288fb58a7bb5cde7d460b4",
+        "config.yaml": "a5bc3ecf0804a7d823a4f601400e39c6a7f2eb878697f8dfbe53f0dd82cff9b1",
+        "normalization.json": "d45f1465bc379845c27c06cb03eab0a278093ad08d0c72cacd4554c039f48019",
+        "split.json": "f518fb1cb375f289056b6687fc1fff135b4eb1ebc2e3aba520b2d279b0e195f2",
+        "logs/epochs.jsonl": "e46383961d43f020c665521203195efcb442fd734dad8da0e81d39514c7ffbb8"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 4,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_4/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "231c9ee57c7aa2a7367d8b688d7fafeaa57a515f1fb6616ce0e653d6ac3d0bb9",
+        "checkpoints/last.pt": "a13e5a49b23f223b30384f254bda3f9564c17b599c0780c0c7b71a9e6ee0c215",
+        "predictions/validation.csv": "391f7cff1f7101c3482d6a2ef030e27d750fdfa35fbd06a0af93d023bc9da740",
+        "stage_status.json": "8f7d90e46c8402469009edb5460a2bd65351f4eda1d575a63609174e6b00dbab",
+        "config.yaml": "ef487ce9364babb580c59bb51607b047592bf8762912d4092cad5691608dfda2",
+        "normalization.json": "d45f1465bc379845c27c06cb03eab0a278093ad08d0c72cacd4554c039f48019",
+        "split.json": "f518fb1cb375f289056b6687fc1fff135b4eb1ebc2e3aba520b2d279b0e195f2",
+        "logs/epochs.jsonl": "d056f722ac420f09f85d1a6ba39a3a2ca356b0994320aa37fec5ff31dd297e7f"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 4,
+      "inner": 1,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_4/inner_1",
+      "files_sha256": {
+        "checkpoints/best.pt": "8dea7bad3bf38a1806d62c7336dfaf77393d1d782172eb457680f69eb0839e6a",
+        "checkpoints/last.pt": "9a96efaa4e9b3b7e65567bb2543260b6bca03355680e34e4df76b04ad18826e1",
+        "predictions/validation.csv": "f62bf534fc8bfb05717959fb10db54a251468efa451a1b5ac8f02948fabf04e4",
+        "stage_status.json": "34a53169efdd3c51ebb0a6a31fbc50a8f0c926a344cebc19115635f9bce239d3",
+        "config.yaml": "6228fcb82bc2bd4ef1b2c75afad0e3055d6531e21a42d4f62a9c6bf7acd83ef7",
+        "normalization.json": "d45f1465bc379845c27c06cb03eab0a278093ad08d0c72cacd4554c039f48019",
+        "split.json": "f518fb1cb375f289056b6687fc1fff135b4eb1ebc2e3aba520b2d279b0e195f2",
+        "logs/epochs.jsonl": "caee569042783cd8f5292a974ece76c14b1ca0aaedecd53b27c66fc4d6d686d5"
+      }
+    },
+    {
+      "seed": 42,
+      "context": 4,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed42_20260921/outer_4/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "88d328f2f0399bda45aa4eb45fedc6f9cacdf01811940e64aba2396c876c93bd",
+        "checkpoints/last.pt": "a20a9af517adeb8feaecc786bd2c44817f80163e359ec5e8cf3431f57dd54299",
+        "predictions/validation.csv": "add7aca4cfbb0193cabccf40051212920862e3061597a4e9081186674b59d734",
+        "stage_status.json": "78204b3e965b4f3e4ddff95dfbf9646fb77ed17ce90956d4ed44d7c93d219f11",
+        "config.yaml": "77de815fee486d686da10f8de7a915985e54f3dd789bc3a1371ee99b87efd578",
+        "normalization.json": "61e372dc02868c249b780be2d3b022173a1f2a681a4b1329a831ad30f17fa382",
+        "split.json": "f2c9b6e581c591019009e1aa5b4064a681551958e393ae4e963287071a0c5a3d",
+        "logs/epochs.jsonl": "31331176236cb79139c76a736e215b5d7ae05400febaa9845dc822c6cf2bcbe7"
+      }
+    },
+    {
+      "seed": 43,
+      "context": 4,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed43_20260921/outer_4/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "02ad58c733fced9c9b1c960663e41d804a02fce2739af85082de6112f7661b1f",
+        "checkpoints/last.pt": "2dcba6fdde5abeb35f83b788eaa14c02bf14a9f2eef970ce996fb8f7cf118b48",
+        "predictions/validation.csv": "f54b844d9be186cb4b51210750758f0096dea0db475aed3636064ce490b76ab5",
+        "stage_status.json": "df540f60ef812bd7079496c5126c904a0d43ad0b71823fad12f64afd96118242",
+        "config.yaml": "77f6cc8d575b1c6a94f5e7372bdf8988af3641f2161e21b53c24dc317cf9ca2c",
+        "normalization.json": "61e372dc02868c249b780be2d3b022173a1f2a681a4b1329a831ad30f17fa382",
+        "split.json": "f2c9b6e581c591019009e1aa5b4064a681551958e393ae4e963287071a0c5a3d",
+        "logs/epochs.jsonl": "d8eec94300bbd2c66add27f658ec062843c3818e1721e453b0dac619097e3ca9"
+      }
+    },
+    {
+      "seed": 44,
+      "context": 4,
+      "inner": 2,
+      "path": "/home/zyt/deep_final/foundation_validation/outputs/structured_token_residual/str01_seed44_20260921/outer_4/inner_2",
+      "files_sha256": {
+        "checkpoints/best.pt": "dbcfce5d8906a8d08bc5830412ee72da8d97ce81e922dfc78569aaba1814b56c",
+        "checkpoints/last.pt": "dcad0ad068f819bad861971cd88bcea01d66189d85da33a9379288e73ce4d8d7",
+        "predictions/validation.csv": "fb1513454a2e9453e81848c4d52328d6363fdaecd8c917cadd5ad86f50de8269",
+        "stage_status.json": "db2e9f70368bfe619e9b20e156a8838eeec9e367037badb4e18dbc607a6b41d6",
+        "config.yaml": "6f66ad8d86633f3987bd68670dc8d12959ca8c9f04d79cdb7676b3d4dbdc5505",
+        "normalization.json": "61e372dc02868c249b780be2d3b022173a1f2a681a4b1329a831ad30f17fa382",
+        "split.json": "f2c9b6e581c591019009e1aa5b4064a681551958e393ae4e963287071a0c5a3d",
+        "logs/epochs.jsonl": "e25add81f15f8ded1ad6545503423c933f8a053afde0443d16a2432e50aaaba9"
+      }
+    }
+  ],
+  "split_sha256": "b3c52317cb12b73c66046bbd7c50c94a7e707a64a38d3ad4f0fd4bc0c6ba6b3e",
+  "outer_access": false,
+  "prior_exact_reproduction": true
+}
