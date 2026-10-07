@@ -2135,3 +2135,10 @@ Correctness: full45F0validation forwards and15train-only normalization refits PA
 All evidence is DEVELOPMENT-ONLY: 15 overlapping split units after seed averaging, not45independent runs, subject/pair/window multipliers or external generalization. Paired bootstrap10,000/Wilcoxon/BH/effect sizes are descriptive repeated-development evidence; sequential reuse/selection optimism remains. No outer signal/prediction/performance was accessed; canonical partition/provenance metadata only was audited. No recipe/loss/sampler/augmentation/threshold change or post-hoc tuning. Original FOE01 boundary remains intact.
 
 [Final report](artifacts/frequency_prior_str_20261007/FINAL_REPORT.md); [paired18comparisons](artifacts/frequency_prior_str_20261007/analysis/paired_comparisons.csv); [decision](artifacts/frequency_prior_str_20261007/analysis/decision.json); [final integrity](artifacts/frequency_prior_str_20261007/analysis/final_integrity_audit.json). Code, reports, protocol and small aggregate results are published under completion tag `frequency-prior-final-reject-20261007`; final commit/ref verification is kept in an external publication receipt. Datasets/checkpoints/caches/weights/individual predictions/raw logs stay server-only. No training is running or recommended automatically.
+
+
+## 2026-10-07 WSSL contribution Phase A — full reproduction / residual interface PASS
+
+用户授权仅先做冻结模型贡献诊断。45正式checkpoint全部validation probabilities/decisions/六指标重现（最大差异1.11e-16）；15 train-only norm refits逐位一致；历史forward/独立接口/复用parts logits全batch逐位相同。归档CSV没有logits，不伪称与归档logit比对。37条件首个8subject batch与projection-output hook精确一致，STR token保留、projection bias也被屏蔽。没有训练/optimizer/backward、HarNet/cache/正式权重修改或outer信息使用。当前正式masked contribution结果尚未产生，不能作activity选择或模型建议。
+
+Stable-error主定义固定为DSG/RGD/PRR/PAG的四次seed-first validation error≥.75/≤.25；后续EMA all4定义是另一口径，只列sensitivity。独立目录[复现报告](artifacts/wssl_contribution_20261007/REPRODUCTION_REPORT.md)，[运行前协议](artifacts/wssl_contribution_20261007/PROTOCOL.md)。诊断脚本/判定/图表已SHA冻结，下一步仅执行inference-only矩阵并报告CASE A/B/C；不自动进入Phase B/C。
