@@ -1,0 +1,3 @@
+# F1 capacity-control implementation
+
+2026-10-07. PASS synthetic checks. Original wrist64→Linear64to17→GELU→Linear17to16→GELU→zero-initLinear16to64, added to corresponding original wrist.2,481addedparameters;78,005total. No signal/filter/frequency input in control. Original subject/activity/bilateral/structured calculation remains in original source. Base initial state and post-factory RNG match original; zero-init logits exactly match. Two scratch synthetic updates show zero upstream gradient at exact zero-init and nonzero upstream gradient after residual layer update. No scratch checkpoint or performance result retained. Full checkpoint/mask/reload and original-engine smoke follow at F2 combined verification.
