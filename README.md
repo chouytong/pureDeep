@@ -2200,3 +2200,10 @@ WSSL−STR概率变化覆盖较广：unique-subject平均absolute shift中位数
 所有证据development-only；无outer signals/predictions/performance、阈值/recipe/HarNet/正式结构修改、重采样或validation-guided调参。未新增独立外部支持。重复splits、多阶段复用和分组选择效应限制因果与泛化解释。
 
 中文[完整Phase A报告](artifacts/wssl_contribution_20261007/PHASE_A_REPORT.md)包含Table1/2/3/4、全部负结果/CI/seed/profile/subject-group与纯STR联系；[BA图](artifacts/wssl_contribution_20261007/figures/activity_ba_contribution.png)、[AUROC图](artifacts/wssl_contribution_20261007/figures/activity_auroc_contribution.png)。独立脚本与小型汇总Git发布，数据/checkpoints/cache/features/逐subject预测不公开。最终completion tag `wssl-contribution-phase-a-case-a-20261007`；远端SHA/匿名公共访问/文件排除核验存外部publication receipt。
+
+
+## 2026-10-08 WSSL Activity Scaling Phase B：ENTRY PASS / PRE-RESULT FREEZE
+
+最新用户授权唯一11scalar候选（uniform1、same activity双腕共享、unconstrained），从相同seed原STR/projection随机初始化完整训练；不warm-start训练g。所有45baseline checkpoints×两个真实validation batch精确logits/reload PASS；三seed scratch参数/RNG、gradient/STR-projection update、mask/index/instance isolation、optimizer重载及原引擎smoke PASS。143172→143183trainable，HarNet冻结10457408。复用当前source下45ordinary matched精确复现baseline；没有EMA候选或第二候选。
+
+正式45run尚未启动/无性能结论。运行前冻结BA>0/≥10正/CI下界>0、AUROC/F1不下降、PD/DD mean下降≤.01、BA/AUC seedSD≤1.25倍联合门槛；不足则REJECT或INCONCLUSIVE不保留，不事后救援。所有boundary=NO。独立[协议](artifacts/wssl_activity_scaling_20261008/PROTOCOL.md)、[测试报告](artifacts/wssl_activity_scaling_20261008/ENTRY_REPORT.md)。Phase A CASE A只提供提出候选资格，不保证收益。其他失败方向保持停止；FOE01outer仍隔离。

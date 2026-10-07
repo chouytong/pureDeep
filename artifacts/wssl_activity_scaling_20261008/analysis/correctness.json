@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "checkpoint_count": 45,
+  "real_validation_batches": 90,
+  "subjects_per_checkpoint": 16,
+  "baseline_reuse_exact": true,
+  "scratch_initialization": [
+    {
+      "seed": 42,
+      "status": "PASS",
+      "original_parameters_exact": true,
+      "rng_exact": true,
+      "logits_exact": true
+    },
+    {
+      "seed": 43,
+      "status": "PASS",
+      "original_parameters_exact": true,
+      "rng_exact": true,
+      "logits_exact": true
+    },
+    {
+      "seed": 44,
+      "status": "PASS",
+      "original_parameters_exact": true,
+      "rng_exact": true,
+      "logits_exact": true
+    }
+  ],
+  "g1_and_reload_bit_exact": true,
+  "finite_nonzero_gradient_all11": true,
+  "gradient": [
+    -0.005113600753247738,
+    -0.007309094071388245,
+    -0.005033036693930626,
+    -0.005295041017234325,
+    -0.0065404511988162994,
+    -0.006234447471797466,
+    -0.0023467037826776505,
+    -0.0030407037120312452,
+    -0.005737694911658764,
+    -0.004698113538324833,
+    -0.005359637085348368
+  ],
+  "str_and_projection_update": true,
+  "cache_frozen": true,
+  "harnet_instantiated": false,
+  "mask_activity_wrist_padding": true,
+  "activity_index_from_config": true,
+  "both_wrists_share_same_scalar": true,
+  "optimizer_reload_exact": true,
+  "instance_isolation": true,
+  "classifier_baseline_parameters": 143172,
+  "classifier_candidate_parameters": 143183,
+  "frozen_harnet_parameters": 10457408,
+  "system_baseline_parameters": 10600580,
+  "system_candidate_parameters": 10600591,
+  "outer_access": false,
+  "smoke_scores_used_for_design": false,
+  "source_provenance_current_baseline_exact": true,
+  "prior_full_validation_reproduction_sha256": "38fd138128c4a8b1be2f6b191a37338e959a60a345e29e9b9497be7a95900dcc",
+  "prior_normalization_audit_sha256": "d0d65a53e886fb1b68bc0657c2304c8cad660709f0d10478bdd6858470e08c52"
+}
