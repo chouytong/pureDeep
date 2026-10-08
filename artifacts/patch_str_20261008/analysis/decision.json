@@ -1,0 +1,48 @@
+{
+  "status": "complete",
+  "decision": "REJECT",
+  "gate": {
+    "P2-P0": {
+      "ba_mean_positive": false,
+      "ba_improvement_at_least_10": false,
+      "ba_ci_low_positive": false,
+      "ba_primary_bh_pass": false,
+      "auroc_drop_at_most_005": true,
+      "f1_non_decrease": false,
+      "pd_recall_drop_at_most_01": true,
+      "dd_recall_drop_at_most_01": true,
+      "ba_within_seed_sd_at_most_125": true,
+      "auroc_within_seed_sd_at_most_125": true
+    },
+    "P2-P1": {
+      "ba_mean_positive": true,
+      "ba_improvement_at_least_10": false,
+      "ba_ci_low_positive": false,
+      "ba_primary_bh_pass": false,
+      "auroc_drop_at_most_005": true,
+      "f1_non_decrease": true,
+      "pd_recall_drop_at_most_01": true,
+      "dd_recall_drop_at_most_01": true,
+      "ba_within_seed_sd_at_most_125": true,
+      "auroc_within_seed_sd_at_most_125": true
+    }
+  },
+  "full_candidate_runs": 90,
+  "reused_f0_runs": 45,
+  "primary_units": 15,
+  "seeds_averaged_first": true,
+  "explanation_allowed": false,
+  "p1_utilization_allowed": false,
+  "p2_order_shuffle_allowed": false,
+  "dd_subtype_analysis_allowed": false,
+  "p3_allowed": false,
+  "retained_formal_str_changed": false,
+  "outer_access": false,
+  "threshold_changed": false,
+  "recipe_changed": false,
+  "posthoc_tuning": false,
+  "source_guard_pass": true,
+  "statistical_boundary": "Overlapping fixed development splits, not independent external inference",
+  "control_boundary": "P2 adds321parameters, depthwise order convolution and attention pooling; not isolated order or capacity control",
+  "protocol_sha256": "001e6e4dc356ff514d24bd1d6981157193fd4cadac9c377223b27aab2fb28712"
+}

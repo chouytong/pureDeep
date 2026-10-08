@@ -620,3 +620,26 @@ BA/AUROC within-split seedSD满足固定1.25guard；BA下降至.020449、AUROC�
 Boundary全部NO：outer data used、threshold changed、HarNet adapted、training recipe changed、additional hyperparameter search。全部evidence DEVELOPMENT-ONLY，15重叠seed-first单位/顺序多轮复用；bootstrap/Wilcoxon/BH仅描述探索，不把45runs/subjects/pairs或bootstrap重复当独立样本，未提供外部支持。六指标BH q最小.3731；无稳定提升也不证明模型严格等价或信息缺失。
 
 中文[完整A–E报告](artifacts/wssl_activity_scaling_20261008/FINAL_REPORT.md)、[固定协议](artifacts/wssl_activity_scaling_20261008/PROTOCOL.md)、[paired表](artifacts/wssl_activity_scaling_20261008/analysis/scaling_paired.csv)、[decision](artifacts/wssl_activity_scaling_20261008/analysis/scaling_decision.json)、[最终完整性](artifacts/wssl_activity_scaling_20261008/analysis/final_integrity_audit.json)。代码/报告/小型汇总Git发布并标记；数据/权重/cache/逐subject预测/原始日志不公开。原FOE01保持隔离，不作为本候选选择或解释证据。没有训练在运行；当前模型不变。
+
+
+## 2026-10-08 Patch-based Temporal STR：最终开发结论
+
+正式结论 **REJECT**。完整报告：[PATCH_STR_REPORT.md](artifacts/patch_str_20261008/PATCH_STR_REPORT.md)。P0严格matched45正式结果复现PASS，P1/P2各45 scratch训练完成；三seed先取每split metric均值，以15共享subjects的development units为配对单位（非独立外部推断）。
+
+| condition | accuracy | ba | auroc | macro_f1 | pd_recall | dd_recall |
+| --- | --- | --- | --- | --- | --- | --- |
+| P0 | 0.730718 | 0.697189 | 0.717631 | 0.686068 | 0.777864 | 0.616515 |
+| P1 | 0.728773 | 0.696424 | 0.720416 | 0.684746 | 0.774540 | 0.618308 |
+| P2 | 0.730912 | 0.696581 | 0.721293 | 0.686044 | 0.779374 | 0.613789 |
+
+| comparison | mean_delta | improve_count | ci_low | ci_high | wilcoxon_p | bh_q_primary_ba3 |
+| --- | --- | --- | --- | --- | --- | --- |
+| P2-P0 | -0.000608 | 5 | -0.002851 | 0.001566 | 0.753079 | 0.761536 |
+| P2-P1 | 0.000157 | 5 | -0.002495 | 0.003238 | 0.733220 | 0.761536 |
+| P1-P0 | -0.000765 | 8 | -0.004240 | 0.002423 | 0.761536 | 0.761536 |
+
+原STR训练recipe、train-only normalization、mask、activity/wrist顺序、threshold、early stopping均保持；正式源码/STR assets hash guard及90run审计PASS；无outer-test、WSSL/HarNet/Frequency/FFT、loss/sampling/augmentation搜索。源码、协议、统计与retention已在preformal tag `patch-str-preformal-freeze-20261008`冻结，最终代码/报告tag `patch-str-final-result-20261008`。仅发布代码、配置、聚合指标/报告/hash，原始数据、privatecheckpoint、individualpredictions/caches排除。
+
+P2同时增加序列卷积和attention pooling及321参数，不能单独隔离order/capacity原因。bootstrap与Wilcoxon/BH分别保留，不以某一个结果替代另一种证据；完整18探索比较、六指标/seed/split波动、best-last轨迹、agreement、纠正/伤害见正式报告。online train含Dropout，不解释成eval泛化gap；不伪造中间checkpoint/EMA。
+
+本次未满足P3入口，STOP temporal adjacency pretext及WSSL+Patch；不调整patch/stride/hidden/pooling或改Transformer/InstanceNorm/triplet救援。只说明当前固定200/100实现未建立所要求的稳定增量，不否定所有patch方案。当前retained best继续为原Frozen WSSL-STR（本轮未训练或变更）。既有Frequency/EMA/普通recipe等停止边界继续有效；development-only，不使用原FOE-01 outer做选择。
