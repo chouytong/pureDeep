@@ -24,7 +24,7 @@ def dataset(ck,ids,role):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--condition',choices=['P1'],required=True);args=parser.parse_args();condition=args.condition
+    parser=argparse.ArgumentParser();parser.add_argument('--condition',choices=['P1','P2'],required=True);args=parser.parse_args();condition=args.condition
     torch.set_num_threads(4);seed_everything(42,True);lock=json.loads((HERE/'analysis/f0_lock.json').read_text());guard(lock)
     rows=[];sample=None
     for item in lock['stages']:
@@ -48,7 +48,11 @@ def main():
         require(same(base.state_dict(),original_state(model)),'Original initialized parameters differ')
         require(same(cpu,torch.get_rng_state()) and same(cuda,torch.cuda.get_rng_state_all()),'Training/DataLoader RNG altered')
         with torch.no_grad():require(torch.equal(base(*inputs)['logits'],model(*inputs)['logits']),'Fresh zero-init logits differ')
-        init.append(dict(seed=seed,status='PASS',parameters_logits_rng_exact=True))
+        seed_everything(seed,True);other=build_patch(cfg,'P2' if condition=='P1' else 'P1').cuda().eval()
+        for name in ['encoder','bottleneck','residual']:
+            require(same(getattr(model.wrist_encoder.branch,name).state_dict(),getattr(other.wrist_encoder.branch,name).state_dict()),'P1/P2 common branch initialization differs')
+        init.append(dict(seed=seed,status='PASS',parameters_logits_rng_exact=True,common_p1_p2_initialization_exact=True))
+        del other
     split=json.loads(SPLIT.read_text())['outer'][0]['inner_folds'][0]
     ds=dataset(ck,split['train_subjects'][:8],'train');batch=collate_subject_activities([ds[j] for j in range(len(ds))]);inputs=[batch[k].cuda() for k in ['x','wrist_mask','activity_mask','activity_lengths']];targets=batch['y'].cuda()
     cfg=config_for(42);seed_everything(42,True);model=build_patch(cfg,condition).cuda().train();optimizer=nt.build_optimizer(model,cfg);initial={k:v.clone() for k,v in model.state_dict().items()}
@@ -98,6 +102,8 @@ def main():
         branch.from_patches=feed(0);branch.aggregate=contaminated(0);a=model(*inputs)['logits'];branch.aggregate=contaminated(999);b=model(*inputs)['logits'];branch.aggregate=aggregate;branch.from_patches=method
         require(torch.equal(a,b),'Invalid patch embeddings affect logits')
         z=torch.randn(2,7,64,device='cuda');mask=torch.tensor([[1,1,1,1,0,0,0],[1]*7],dtype=torch.bool,device='cuda')
+        empty=branch.from_embeddings(z,torch.zeros_like(mask))
+        require(torch.isfinite(empty['patch_residual']).all() and not empty['patch_residual'].any() and not empty['patch_attention'].any(),'Empty patch row invalid')
         if condition=='P1':
             perm=torch.tensor([3,1,0,2,4,5,6],device='cuda');a=branch.aggregate(z,mask)[0];b=branch.aggregate(z[:,perm],mask[:,perm])[0];require(torch.allclose(a,b,atol=1e-6,rtol=0),'Bag summary uses explicit order')
         else:

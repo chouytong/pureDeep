@@ -6,20 +6,32 @@ from src.models import build_model as build_str
 from patch_extractor import extract_patches
 from patch_encoder import PatchEncoder
 
-COUNTS={'P1':80340}
+COUNTS={'P1':80340,'P2':80661}
 
 class PatchBranch(nn.Module):
     def __init__(self,condition):
         super().__init__()
-        require(condition=='P1','Only implemented registered condition')
+        require(condition in COUNTS,'Only registered conditions')
         self.condition=condition
         self.encoder=PatchEncoder()
         self.bottleneck=nn.Sequential(nn.Linear(64,16),nn.GELU())
         self.residual=nn.Linear(16,64)
         nn.init.zeros_(self.residual.weight);nn.init.zeros_(self.residual.bias)
+        # Common encoder/head initialize before P2-only tensors, preserving matching.
+        if condition=='P2':
+            self.order_conv=nn.Conv1d(64,64,3,padding=1,groups=64,bias=True)
+            self.scorer=nn.Linear(64,1)
+            self.activation=nn.GELU()
     def aggregate(self,z,mask):
         z=z.masked_fill(~mask[...,None],0)
-        attention=mask.to(z.dtype)/mask.sum(1,keepdim=True).clamp_min(1)
+        if self.condition=='P1':
+            attention=mask.to(z.dtype)/mask.sum(1,keepdim=True).clamp_min(1)
+        else:
+            z=self.activation(self.order_conv(z.transpose(1,2))).transpose(1,2)
+            z=z.masked_fill(~mask[...,None],0)
+            scores=self.scorer(z).squeeze(-1).masked_fill(~mask,-torch.finfo(z.dtype).max)
+            attention=torch.softmax(scores,dim=1)*mask.to(z.dtype)
+            attention=attention/attention.sum(1,keepdim=True).clamp_min(torch.finfo(z.dtype).tiny)
         return (z*attention[...,None]).sum(1),attention
     def from_embeddings(self,z,mask):
         summary,attention=self.aggregate(z,mask)
