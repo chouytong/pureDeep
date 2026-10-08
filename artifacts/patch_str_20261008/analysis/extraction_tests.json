@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "patch_length": 200,
+  "stride": 100,
+  "shared_length_contract": true,
+  "cases": [
+    {
+      "length": 0,
+      "count": 0,
+      "starts": [],
+      "status": "PASS"
+    },
+    {
+      "length": 1,
+      "count": 0,
+      "starts": [],
+      "status": "PASS"
+    },
+    {
+      "length": 199,
+      "count": 0,
+      "starts": [],
+      "status": "PASS"
+    },
+    {
+      "length": 200,
+      "count": 1,
+      "starts": [
+        0
+      ],
+      "status": "PASS"
+    },
+    {
+      "length": 201,
+      "count": 2,
+      "starts": [
+        0,
+        1
+      ],
+      "status": "PASS"
+    },
+    {
+      "length": 300,
+      "count": 2,
+      "starts": [
+        0,
+        100
+      ],
+      "status": "PASS"
+    },
+    {
+      "length": 976,
+      "count": 9,
+      "starts": [
+        0,
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        776
+      ],
+      "status": "PASS"
+    },
+    {
+      "length": 2000,
+      "count": 19,
+      "starts": [
+        0,
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000,
+        1100,
+        1200,
+        1300,
+        1400,
+        1500,
+        1600,
+        1700,
+        1800
+      ],
+      "status": "PASS"
+    }
+  ],
+  "ragged_padding_zero": true,
+  "tail_unique_covered": true,
+  "deterministic": true,
+  "padded_sample_unchanged": true,
+  "autograd_padding_zero": true,
+  "outer_access": false
+}
