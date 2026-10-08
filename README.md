@@ -2298,3 +2298,8 @@ BA/AUROC within-split seedSD满足固定1.25guard；BA下降至.020449、AUROC�
 Boundary全部NO：outer data used、threshold changed、HarNet adapted、training recipe changed、additional hyperparameter search。全部evidence DEVELOPMENT-ONLY，15重叠seed-first单位/顺序多轮复用；bootstrap/Wilcoxon/BH仅描述探索，不把45runs/subjects/pairs或bootstrap重复当独立样本，未提供外部支持。六指标BH q最小.3731；无稳定提升也不证明模型严格等价或信息缺失。
 
 中文[完整A–E报告](artifacts/wssl_activity_scaling_20261008/FINAL_REPORT.md)、[固定协议](artifacts/wssl_activity_scaling_20261008/PROTOCOL.md)、[paired表](artifacts/wssl_activity_scaling_20261008/analysis/scaling_paired.csv)、[decision](artifacts/wssl_activity_scaling_20261008/analysis/scaling_decision.json)、[最终完整性](artifacts/wssl_activity_scaling_20261008/analysis/final_integrity_audit.json)。代码/报告/小型汇总Git发布并标记；数据/权重/cache/逐subject预测/原始日志不公开。原FOE01保持隔离，不作为本候选选择或解释证据。没有训练在运行；当前模型不变。
+
+
+## 2026-10-08 Patch-STR：正式训练前冻结
+
+仅STR normalized6channel patch200/stride100，P0正式45复现PASS，P1/P2 correct/mask/RNG/重载/原引擎smoke PASS；P1/P2参数80,340/80,661。协议及统计先冻结在 artifacts/patch_str_20261008/PROTOCOL.md，study_lock SHA 123d260ad9c3dc1d2294432c7a9b12350ba308078d512f331ea3056bd22a25c0。三个primary BA比较BH，seed-first15 development单位，采用现有三条件residual retention规则；无outer、WSSL/Frequency/recipe搜索。训练前Git核验后执行90次scratch candidate训练。smoke仅正确性，不选择。FrozenWSSL总体retained地位未改变。
