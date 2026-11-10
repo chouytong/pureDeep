@@ -1,0 +1,84 @@
+{
+  "verification_date": "2026-11-11",
+  "execution_location": "server 10.12.43.173",
+  "new_formal_training": false,
+  "historical_study_date": "2026-10-08",
+  "historical_experiment": "/home/zyt/deep_final/artifacts/patch_str_20261008",
+  "decision": "REJECT",
+  "phases": {
+    "integrity": {
+      "stage": "integrity",
+      "status": "PASS",
+      "frozen_files": 21,
+      "milestone_commits": {
+        "baseline-audit": "849a544664de8f9a0e20ef02bebdef769003aafa",
+        "extraction-pass": "90915de4a66a6ae1063c7d68bc3632a107100622",
+        "final-result": "8abab7273e5dc966573de5f39598e7b6fc4f4a18",
+        "p1-tests-pass": "60fcfb2ce76f16d104911a5a32f6ffd71196a815",
+        "p2-tests-pass": "918ffd3166b92e737536d4af8f95121110a8e597",
+        "preformal-freeze": "b06f166a392e625323037c42c3cca2c3969c390a"
+      },
+      "head": "8abab7273e5dc966573de5f39598e7b6fc4f4a18",
+      "remote_main_and_tags": "UNAVAILABLE",
+      "original_assets_unchanged": true,
+      "outer_test_accessed": false,
+      "aggregate_sha256": {
+        "PATCH_STR_REPORT.md": "0ba67fcc19ae74978b05ca67040c90dba610336f56adda5c02a055d0d56f5b02",
+        "BASELINE_AUDIT.md": "ea19fc35b419b8505f2e6713f292d22b42e29991aa75b70ae8e78ad50679d385",
+        "PROTOCOL.md": "001e6e4dc356ff514d24bd1d6981157193fd4cadac9c377223b27aab2fb28712",
+        "analysis/summary.csv": "ea23396ef1a278ba42ffb2023d8751dcb557709d150f5cf2138b4b40ac010500",
+        "analysis/paired_comparisons.csv": "63386da056ed431d85cc58f931fc2e6a1d1ad25b7385bbc4afd5806a2450fe1d",
+        "analysis/15split_seedfirst.csv": "221c084a0cb9417e65aab553d9d1e68c053352b09ad6edf4be512480b17d3472",
+        "analysis/decision.json": "dc5445223af7e3f67baa4a88ecbb3421e37eddf9e3637c01aa108ca4b0453087",
+        "analysis/seed_means.csv": "3f8a3727d45d1461bb7f86686912eb1c370179ad719e411b11c047574b4c55a8",
+        "analysis/prediction_agreement.csv": "3448d6835cc45db04080df5aa27dea0c59a738c90631cfc2cecd01397a51d493",
+        "analysis/trajectory_summary.csv": "8c3ce28b97c96c1b058a7d65ab92e3626c5dcabe0342a81c66560531c1e9a484",
+        "analysis/timing_summary.csv": "76cd2c31391ec58494daae6b9c52fa1617622c81f1d7bdfeed12d9177c8579b5"
+      }
+    },
+    "baseline": {
+      "stage": "baseline",
+      "status": "PASS",
+      "full_validation_checkpoints": 45,
+      "normalization_refits": 15,
+      "historical_files_written": false,
+      "formal_training_started": false,
+      "outer_test_accessed": false
+    },
+    "correctness": {
+      "stage": "correctness",
+      "status": "PASS",
+      "fresh_model_test_conditions": [
+        "P1",
+        "P2"
+      ],
+      "historical_smoke_reaudited": true,
+      "smoke_retrained": false,
+      "historical_files_written": false,
+      "outer_test_accessed": false
+    },
+    "validation": {
+      "stage": "validation",
+      "status": "PASS",
+      "full_validation_checkpoints": 90,
+      "max_probability_difference": 1.1102230246251565e-16,
+      "individual_predictions_exported": false,
+      "historical_files_written": false,
+      "outer_test_accessed": false
+    },
+    "analysis": {
+      "stage": "analysis",
+      "status": "PASS",
+      "candidate_runs_reaudited": 90,
+      "metric_runs_recomputed": 135,
+      "seed_first_paired_units": 15,
+      "historical_files_written": false,
+      "formal_training_started": false,
+      "decision": "REJECT",
+      "outer_test_accessed": false
+    }
+  },
+  "local_aggregate_sha256_match": true,
+  "outer_test_accessed": false,
+  "server_frozen_files_modified": false
+}
