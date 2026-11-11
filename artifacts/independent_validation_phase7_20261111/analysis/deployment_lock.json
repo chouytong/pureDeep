@@ -1,0 +1,60 @@
+{
+  "status": "MODEL_AND_DESIGN_LOCKED_NO_ELIGIBLE_EXTERNAL_DATA",
+  "model": "Frozen WSSL-STR",
+  "selector": "lexicographic seed42/context0/inner0; no validation performance used",
+  "checkpoint_sha256": "60b6083bcef9fcf5e7a468c03ed01a383eed4368e0fa261d6a7a3b1a72582d73",
+  "checkpoint_path": "/home/zyt/deep_final/artifacts/phase3b_external_ssl_20260928/runs/b_str_pretrained/seed42/outer_0/inner_0/checkpoints/best.pt",
+  "training_subject_count": 205,
+  "normalization_file_sha256": "ad8e617bce3ea20ec01eddafd6e4f47cdde76fe47c17ea938a903485e5144187",
+  "normalization_values_sha256": "a7bd58abaf6206fd326ac97cc2e8a1ba778f83ef8d82cd678a209717326b2f35",
+  "canonical_config_sha256": "95a027d075f7aa7c13d3efc49b3d73c3a3b959e3e2eed99f9da9c5bab5d62ca8",
+  "preprocessing_config_sha256": "1ced7052705192511da4d89d1a066589cede62b658bb852ff5769d20551bbe6c",
+  "official_HarNet10_checkpoint_sha256": "c64f9135d99e2dcdfc9ae7cc0672f2bcc438df9ceb8215665882f92cddd162a6",
+  "classifier_trainable_parameter_count": 143172,
+  "external_encoder_parameter_count": 10457408,
+  "activities": [
+    "CrossArms",
+    "DrinkGlas",
+    "Entrainment",
+    "HoldWeight",
+    "LiftHold",
+    "PointFinger",
+    "Relaxed",
+    "RelaxedTask",
+    "StretchHold",
+    "TouchIndex",
+    "TouchNose"
+  ],
+  "wrist_order": [
+    "left",
+    "right"
+  ],
+  "channels": [
+    "AccX",
+    "AccY",
+    "AccZ",
+    "GyroX",
+    "GyroY",
+    "GyroZ"
+  ],
+  "threshold": 0.5,
+  "tie": "PD",
+  "class_encoding": {
+    "PD": 0,
+    "DD": 1
+  },
+  "calibrator": "NONE; existing T diagnostic not deployed",
+  "external_normalization_fit_allowed": false,
+  "external_label_adaptation_allowed": false,
+  "external_data_ready": false,
+  "external_metrics": null,
+  "external_data_downloaded": false,
+  "external_data_adapter_validation": "pending actual authorized compatible data",
+  "protocol_sha256": "3a7a7ca18629c7188780fe5571f5bb637590a0cb895a805c4671f474389cf2da",
+  "full_cohort_model_new_training": false,
+  "phase7_actual_hashes_verified": true,
+  "source_model_file_sha256": "da9fe522ef44fe971b7037544f3635ecb3f11b4c167e060ba3cecf9b246bcb95",
+  "mainline_source_audit_sha256": "81b14a77ee79db43c2e8195c0045d42270b7580906d3ac8f361b62ff9bb4af44",
+  "clinical_input_files_opened": 0,
+  "new_model_forward_calls": 0
+}

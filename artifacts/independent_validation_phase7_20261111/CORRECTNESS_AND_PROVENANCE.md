@@ -1,0 +1,17 @@
+# Correctness与来源边界
+
+正式起点6de6480fce87920a899181fa7c8586c01ce616f9。当前root/mainline/history和Phase6资产启动/结束受22529项SHA256保护。45个主线文件与新fetch的GitHub snapshot一致，19个指定历史/入口文档当前读取/hash，无MISSING，3行outer数值屏蔽。没有按旧对话假定现存状态；没有运行训练入口或旧outer loader。历史正式产物不覆盖。
+
+所有新代码与报告/配置/汇总source SHA在source_output_manifest.json；五项模型/config/norm/preprocessing哈希见model_lock_hash_audit.csv。SYNTHETIC_SOURCE_FREEZE在任何合成结果前锁住common/bootstrap/adapter/tests/PROTOCOL；数据源调查、reference分类审计与报告源随后登记，不冒称在Phase6结果前预注册。Phase6推理资产/旧统计保持原样，未重算成新临床证据。
+
+合成测试25项通过，重复logits逐位一致、norm与原checkpoint相同、131官方feature keys相同、全部模型状态/BN未变、无梯度/优化器更新。3个fixture仅程序生成；所有输入内存对象无临床标签，不读临床sensor、不解码旧全队列sensor/feature数组。L1趋势求解是既有确定预处理，不是拟合分类器、Scaler或温度。
+
+Reference审计只读取现有query评分/身份清单/源代码与序列化header；已有15×3query分组一致。为审计全部15个development单元，本轮完整加载既有Phase5 development分数表后再按context/inner分组，未把这种读取声称为subject级物理隔离；它不是旧outer-test性能表，也没有进入新的模型训练或临床输入。初版审计发现45个Scaler命名NPZ而停止，人工核实后按二维fusion Scaler分类，保留reference_audit_v1.py、logs/reference_audit.log和成功v2日志；active script仍为reference_audit.py。这个审计修订没有产生新距离、改变阈值或拟合状态。不能把首次停止隐藏为所有脚本首次均通过。
+
+完整私有fit/query/excluded与哈希、状态搜索目录/headers在restricted_manifests；日志在logs，不发布。新临床外部query ID空，新fit ID空，逐人预测未公开。公共兼容矩阵只有研究级样本数/来源，不存公开检索个体行。源README只经连接器读取，未clone仓库；网页technical访问失败按未知记录，未绕过授权或身份验证。
+
+外部下载、申请/联系人、代签协议、依赖安装/升级、新分类器/深度训练、温度/阈值/reference Scaler/PCA拟合均0。本轮不是全真实数据评价runner验收：真实格式parser/设备和时钟映射、数据访问/去重、临床标签盲法、子组方法按真实字典的预先冻结仍待完成。所有真实external_metrics与reference_external_interaction均null。
+
+历史outer性能文字接触、旧manifest整表/旧NPZ整数组读取与Phase6公开搜索结果的个体元数据摘要暴露永久保留。本轮宽检索再次意外返回公开PADS个体元数据摘要，未主动打开、保存个体行或用于实验。本轮未读取旧outer性能；历史文档逐行扫描时屏蔽3行可能涉及outer数值的段落，不用其作性能证据。保护哈希读取完整文件字节、旧私有分数表和fit/query身份元数据仍属应用层审计，不能称OS物理隔离或从未接触个体信息。15重叠development splits、seed和患者cluster区间不构成独立临床验证。
+
+最终验收会逐项检查需求文件、原模型锁、source freeze、25项结果、630个状态header的分类、全部保护hash和公开过滤。整体只能称PASS_WITH_BLOCKED_CLINICAL_AND_REFERENCE_EXECUTION，不应写全能力PASS。发布沿用未修改的选择式publisher与既有GitHub连接器exact-tree/CAS规则，保留历史MFAM快照且不重同步；不上传raw、IDs、逐人结果、特征、checkpoint、受保护manifest和运行日志。
