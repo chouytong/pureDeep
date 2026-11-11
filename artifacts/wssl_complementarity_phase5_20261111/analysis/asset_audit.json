@@ -1,0 +1,37 @@
+{
+  "status": "AVAILABLE_SCORE_ASSETS_VERIFIED_WITH_MISSING_STATE_SUBANALYSES",
+  "model_assets": 225,
+  "baseline": 45,
+  "adapted": 45,
+  "historical_OOF": 135,
+  "reference_fit_ID_records": 60,
+  "protected_assets": 4672,
+  "missing": [
+    {
+      "asset": "saved reference OOF row-level score vector",
+      "status": "MISSING",
+      "blocked": "joint/class-conditional OOF reference distribution and exact training-fusion score replay"
+    },
+    {
+      "asset": "serialized fitted reference Scaler/PCA and bank vectors",
+      "status": "MISSING",
+      "blocked": "independent numeric replay of reference fit/transform chain; ID/hash records only"
+    },
+    {
+      "asset": "post-adaptation final HarNet/local/subject features",
+      "status": "MISSING",
+      "blocked": "cosine/L2/norm representation drift"
+    },
+    {
+      "asset": "adapted raw two-class logits",
+      "status": "MISSING",
+      "blocked": "raw DD logit displacement; probability-implied log odds remain available"
+    }
+  ],
+  "original_probability_reproduction_reused": true,
+  "new_checkpoint_inference": false,
+  "new_feature_extraction": false,
+  "new_fits": 0,
+  "historical_outer_exposure_inherited": true,
+  "independent_reference_fit_replay_pass": false
+}
