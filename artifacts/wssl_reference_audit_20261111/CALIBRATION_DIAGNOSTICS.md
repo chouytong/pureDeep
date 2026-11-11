@@ -15,6 +15,8 @@
 
 全部45个T仅在对应target inner-train的合格deep-OOF log odds上拟合，固定正温度T∈[.05,20]，无阈值搜索；样本端点概率0行，无clip后伪造logit。validation截距/斜率90个descriptive fit只用于诊断，不部署；参数、梯度收敛、逐seed/split指标与固定10等宽reliability bins保留。proper unweighted NLL、双类sum Brier（2×二分类平方误差）、top-confidence ECE、classwise ECE均与weighted训练CE区分。
 
+每个温度sidecar只有1个拟合标量；两分数logistic有2个系数+1个截距，另保存输入Scaler；probe control 17维输入对应18个logistic参数，plus-local 33维对应34个。Scaler/PCA及参考库也属于拟合pipeline状态，不能把“0新增神经网络参数”写成“无任何拟合参数”。原生143,172参数主模型保持不变。
+
 NLL .616720→.577543，Δ-.039178，12/15改善，CI[-.064443,-.016595]，BH三项q=.016113。Brier .386441→.383837、ECE .110333→.107569，两者CI跨0。预登记mean NLL<0且Brier<=0的诊断规则通过，标记RETAIN_DIAGNOSTIC_ONLY；不代表校准已外部验证，更不改变原单模型身份。正T保留每个已有模型的排序及原.5决策，AUROC/BA无提升。
 
 OOF训练池更小、epoch10固定，deployment是full pool/best epoch；分数/参考库尺度迁移见A2_Bfusion_score_transfer.csv。该分布差不能由OOF来源合法自动消除；不使用其他见过当前validation的context模型补分数。按PD/DD/来源组的NLL/Brier/ECE及DD概率可靠性见A2_grouped_calibration、A2_DD_reliability_bins；这是描述性分组而非亚型校准器。reliability.svg为聚合图，重复appearance不当独立样本。

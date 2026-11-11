@@ -29,7 +29,7 @@
 | baseline | 0.745604 | 0.719644 | 0.759553 | 0.706589 | 0.782344 | 0.656945 |
 
 
-边界偏差（必须保留）：bootstrap 历史审计完整读取的旧综合报告 `reports/PURE_DEEP_RESEARCH_FINAL_REPORT.md` 含旧 V8 outer-test 汇总，派生的初版 ledger/摘录也包含该内容。因此本轮“完全未接触历史 outer 指标”不成立。未加载 outer-test 原始信号/标签表、逐受试者预测，也未运行 outer evaluation；但不能事后撤销已有的文字接触。该历史值未进入新拟合器或选择规则，所有新候选已停止，当前主线未改变。初版 `protected_assets.json` 的 `outer_access:false` 仅是当时声明，由本最终审计更正，不能作为合规证明。新分析只能作为有此偏差披露的 development 诊断。另：压缩 NPZ 缓存按整数组解压后仅索引合法 train/validation 行，存储读取粒度不等于逐行物理隔离；未用 outer 行拟合或评分。不能声称存在覆盖整个进程的强制系统级 outer-access sentinel。
+边界偏差（必须保留）：bootstrap 历史审计完整读取的旧综合报告 `reports/PURE_DEEP_RESEARCH_FINAL_REPORT.md` 含旧 V8 outer-test 汇总，派生的初版 ledger/摘录也包含该内容。因此本轮“完全未接触历史 outer 指标”不成立。没有针对outer-test构建信号dataset、加载其独立预测或运行outer evaluation；但不能事后撤销已有的文字接触。该历史值未进入新拟合器或选择规则，所有新候选已停止，当前主线未改变。初版 `protected_assets.json` 的 `outer_access:false` 仅是当时声明，由本最终审计更正，不能作为合规证明。新分析只能作为有此偏差披露的 development 诊断。读取粒度也需明确：通用CrossArms manifest含全部390人的标签，labels()先读整表再索引合法ID；压缩NPZ先解压整数组再索引合法train/validation行。因此不能声称物理上完全未读任何outer行。当前split的outer标签/特征未进入拟合、查询评分或选择，不等于逐行I/O隔离；保护文件hash核验也读取文件字节。不能声称存在覆盖整个进程的强制系统级outer-access sentinel。
 
 45次完整validation重推理概率误差最大1.11e-16；135历史deep-OOF checkpoint及预测确实保存并通过来源审计。A0正式weighted mean不是bug；历史全局目标未确认，seed44实际TF32梯度误差超预定容差，因此CE候选未运行。local probe的ΔBA+.000476、ΔAUROC+.000166，CI跨0；不能确认Gyro独有增量。
 

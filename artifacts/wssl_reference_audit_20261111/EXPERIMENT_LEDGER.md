@@ -31,6 +31,6 @@
 | phase3c-deep-OOF | 135 | 135 | completed-diagnostic | 135 actual checkpoints and prediction sets reused |
 
 
-计数口径：prototype=两种 loss×45=90；strong-backbone=ResNet45+InceptionTime45+GyroFFT45=135。Phase2=baseline重训45+16候选×45=765。Phase3C=360监督训练+135独立 deep-OOF，p100 frozen/STR复用。EMA=ordinary复现45+EMA45，不是90个新结构。Phase3D表内135监督run；train-only masked pretext另有历史报告记录45，未把它混入监督run，也未重新加载其权重。smoke不计入正式run。所有这些均非本轮新训练。
+计数口径：prototype=两种 loss×45=90；strong-backbone=ResNet45+InceptionTime45+GyroFFT45=135。Phase2=baseline重训45+16候选×45=765。Phase3C=360监督训练+135独立 deep-OOF，p100 frozen/STR复用。EMA表内90是ordinary45+EMA45模型评估状态，但只有45条optimizer训练轨迹，EMA同一次训练携带shadow，不是90次独立训练。Phase3D表内135监督run；train-only masked pretext另有历史报告记录45，未把它混入监督run，也未重新加载其权重。smoke不计入正式run。所有这些均非本轮新训练。
 
 Phase3D条件activity gate当时NOT_RUN；后续11-scalar activity scaling确已做45次，INCONCLUSIVE/DO NOT RETAIN，不能改写有害。Patch P1/P2在10月8日训练，11月11日仅复核。Phase C当时未启动独立loss数值审计；本轮才补做。Full HarNet fine-tuning、Patch P3、双prior均不因未做而自动获准。prototype alignment训练loss与当前冻结参考距离分类不是同一实验。

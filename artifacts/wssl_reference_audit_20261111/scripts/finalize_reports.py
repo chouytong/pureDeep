@@ -17,7 +17,7 @@ def means(f,cols=METRICS):return f.groupby(['context','inner'])[cols].mean().mea
 def metric_table():return read('ALL_stability_summary.csv').pivot(index='condition',columns='metric',values='mean')[METRICS].reset_index()
 
 LIMIT='''15 个 development splits 共享受试者和训练池，45 次已有 seed/run 不是 45 个独立样本。主统计先在同一 split 平均三个 seed 的指标，再汇总 15 splits；不是概率 ensemble。主 bootstrap seed=20261111、10,000 次；Wilcoxon 和 BH family 见各表。受试者分层 cluster bootstrap 将同一人的全部 appearance 一起重采样，仅描述固定已拟合模型下的条件性不确定性，不覆盖重训练、开发多重选择或外部泛化。5 个 context 汇总仅为 inner-development 分组，不是 outer-test。'''
-DEVIATION='''边界偏差（必须保留）：bootstrap 历史审计完整读取的旧综合报告 `reports/PURE_DEEP_RESEARCH_FINAL_REPORT.md` 含旧 V8 outer-test 汇总，派生的初版 ledger/摘录也包含该内容。因此本轮“完全未接触历史 outer 指标”不成立。未加载 outer-test 原始信号/标签表、逐受试者预测，也未运行 outer evaluation；但不能事后撤销已有的文字接触。该历史值未进入新拟合器或选择规则，所有新候选已停止，当前主线未改变。初版 `protected_assets.json` 的 `outer_access:false` 仅是当时声明，由本最终审计更正，不能作为合规证明。新分析只能作为有此偏差披露的 development 诊断。另：压缩 NPZ 缓存按整数组解压后仅索引合法 train/validation 行，存储读取粒度不等于逐行物理隔离；未用 outer 行拟合或评分。不能声称存在覆盖整个进程的强制系统级 outer-access sentinel。'''
+DEVIATION='''边界偏差（必须保留）：bootstrap 历史审计完整读取的旧综合报告 `reports/PURE_DEEP_RESEARCH_FINAL_REPORT.md` 含旧 V8 outer-test 汇总，派生的初版 ledger/摘录也包含该内容。因此本轮“完全未接触历史 outer 指标”不成立。没有针对outer-test构建信号dataset、加载其独立预测或运行outer evaluation；但不能事后撤销已有的文字接触。该历史值未进入新拟合器或选择规则，所有新候选已停止，当前主线未改变。初版 `protected_assets.json` 的 `outer_access:false` 仅是当时声明，由本最终审计更正，不能作为合规证明。新分析只能作为有此偏差披露的 development 诊断。读取粒度也需明确：通用CrossArms manifest含全部390人的标签，labels()先读整表再索引合法ID；压缩NPZ先解压整数组再索引合法train/validation行。因此不能声称物理上完全未读任何outer行。当前split的outer标签/特征未进入拟合、查询评分或选择，不等于逐行I/O隔离；保护文件hash核验也读取文件字节。不能声称存在覆盖整个进程的强制系统级outer-access sentinel。'''
 
 def ledger():
     src=HERE/'EXPERIMENT_LEDGER.csv'
@@ -49,7 +49,15 @@ def ledger():
         if eid in expected:f.loc[j,'expected_runs']=str(expected[eid])
         f.loc[j,'actual_new_deep_runs']=str(f.loc[j,'actual_completed_inner_stages'])+' historical runs; 0 this task'
         f.loc[j,'formal_conclusion_date']=dates.get(eid,'unknown; artifact date is not a verified formal conclusion date')
-        f.loc[j,'major_metrics']='See complete original report and history_sources.csv; initial automatic mixed-table extraction is superseded.'
+        f.loc[j,'major_metrics']=row.major_metrics if eid!='V8' else 'development-only: BA .6572; AUROC .6593; Macro-F1 .6565; remaining metrics see original inner summary (no outer summary used)'
+        known={'V8-GN':'Accuracy .7154; BA .6707; AUROC .6800; Macro-F1 .6631; PD .7782; DD .5631',
+          'prototype':'PA01: Accuracy .7057; BA .6692; AUROC .6783; Macro-F1 .6574; PD .7570; DD .5814. PA02: Accuracy .7170; BA .6715; AUROC .6789; Macro-F1 .6641; PD .7811; DD .5618',
+          'strong-backbone':'ResNet1D delta BA -.0237 / AUC -.0260; InceptionTime BA -.0014 / AUC +.0019; GyroFFT BA -.0146 / AUC -.0163 (vs V8GN); original reports contain full metrics',
+          'wssl-ema':'REJECT: mean BA/AUROC/F1 lower; DD recall and BA seed guard fail. 45 optimizer trajectories with paired ordinary/EMA outputs (90 evaluated states); no extra EMA optimizer',
+          'activity-scaling':'BA .721107, delta +.001463, CI[-.001351,.004273],8/2/5; AUC .759957, delta +.000404, CI[-.003310,.003671],10/0/5; INCONCLUSIVE'}
+        if eid in known:f.loc[j,'major_metrics']=known[eid]
+        if not str(f.loc[j,'major_metrics']).strip():f.loc[j,'major_metrics']='Diagnostic only; no retained new native classifier; full aggregate evidence in cited original report'
+        if eid=='wssl-ema':f.loc[j,'actual_new_deep_runs']='45 historical optimizer trajectories carrying ordinary+EMA shadows (90 evaluated model states); 0 this task'
         f.loc[j,'rejection_reason']=row.conclusion+'; fixed configuration only, not family-wide falsification'
         if eid in ['DSG-01','RGD-01','PRR-01','PAG-01']:f.loc[j,'status']='completed-diagnostic; conditional neural candidate not-run'
         if eid=='phase3a':f.loc[j,'status']='rejected'
@@ -60,7 +68,7 @@ def ledger():
     f.to_csv(src,index=False)
     put('EXPERIMENT_LEDGER.md','# 历史实验总账\n\n初版只数 artifact/runs，遗漏 foundation_validation/outputs，已按真实 inner stage 元数据补齐。初版保留于私有 restricted_manifests。来源路径/hash 见 CSV、history_sources 和 foundation_inner_stage_inventory。阶段日期无法核实时写 unknown。\n\n'+table(f[['experiment_id','expected_runs','actual_completed_inner_stages','status','conclusion']])+'''
 
-计数口径：prototype=两种 loss×45=90；strong-backbone=ResNet45+InceptionTime45+GyroFFT45=135。Phase2=baseline重训45+16候选×45=765。Phase3C=360监督训练+135独立 deep-OOF，p100 frozen/STR复用。EMA=ordinary复现45+EMA45，不是90个新结构。Phase3D表内135监督run；train-only masked pretext另有历史报告记录45，未把它混入监督run，也未重新加载其权重。smoke不计入正式run。所有这些均非本轮新训练。
+计数口径：prototype=两种 loss×45=90；strong-backbone=ResNet45+InceptionTime45+GyroFFT45=135。Phase2=baseline重训45+16候选×45=765。Phase3C=360监督训练+135独立 deep-OOF，p100 frozen/STR复用。EMA表内90是ordinary45+EMA45模型评估状态，但只有45条optimizer训练轨迹，EMA同一次训练携带shadow，不是90次独立训练。Phase3D表内135监督run；train-only masked pretext另有历史报告记录45，未把它混入监督run，也未重新加载其权重。smoke不计入正式run。所有这些均非本轮新训练。
 
 Phase3D条件activity gate当时NOT_RUN；后续11-scalar activity scaling确已做45次，INCONCLUSIVE/DO NOT RETAIN，不能改写有害。Patch P1/P2在10月8日训练，11月11日仅复核。Phase C当时未启动独立loss数值审计；本轮才补做。Full HarNet fine-tuning、Patch P3、双prior均不因未做而自动获准。prototype alignment训练loss与当前冻结参考距离分类不是同一实验。
 ''')
@@ -117,6 +125,8 @@ Float64手算/自动微分覆盖单PD/DD、B1、balanced、末小batch、未加�
 
 全部45个T仅在对应target inner-train的合格deep-OOF log odds上拟合，固定正温度T∈[.05,20]，无阈值搜索；样本端点概率0行，无clip后伪造logit。validation截距/斜率90个descriptive fit只用于诊断，不部署；参数、梯度收敛、逐seed/split指标与固定10等宽reliability bins保留。proper unweighted NLL、双类sum Brier（2×二分类平方误差）、top-confidence ECE、classwise ECE均与weighted训练CE区分。
 
+每个温度sidecar只有1个拟合标量；两分数logistic有2个系数+1个截距，另保存输入Scaler；probe control 17维输入对应18个logistic参数，plus-local 33维对应34个。Scaler/PCA及参考库也属于拟合pipeline状态，不能把“0新增神经网络参数”写成“无任何拟合参数”。原生143,172参数主模型保持不变。
+
 NLL .616720→.577543，Δ-.039178，12/15改善，CI[-.064443,-.016595]，BH三项q=.016113。Brier .386441→.383837、ECE .110333→.107569，两者CI跨0。预登记mean NLL<0且Brier<=0的诊断规则通过，标记RETAIN_DIAGNOSTIC_ONLY；不代表校准已外部验证，更不改变原单模型身份。正T保留每个已有模型的排序及原.5决策，AUROC/BA无提升。
 
 OOF训练池更小、epoch10固定，deployment是full pool/best epoch；分数/参考库尺度迁移见A2_Bfusion_score_transfer.csv。该分布差不能由OOF来源合法自动消除；不使用其他见过当前validation的context模型补分数。按PD/DD/来源组的NLL/Brier/ECE及DD概率可靠性见A2_grouped_calibration、A2_DD_reliability_bins；这是描述性分组而非亚型校准器。reliability.svg为聚合图，重复appearance不当独立样本。
@@ -162,7 +172,7 @@ relative相对两个单参考AUROC稳定占优；同空间centroid/full-bank敏�
     seeds=pd.concat(seedrows,ignore_index=True);seeds.to_csv(HERE/'analysis/per_seed_means.csv',index=False)
     appendix+='\n\n## 各seed均值\n\n'+table(seeds)
     put('STATISTICAL_APPENDIX.md',appendix)
-    decision=dict(status='COMPLETE_WITH_DISCLOSED_PROTOCOL_DEVIATION',retained_native_model='Frozen WSSL-STR',retained_native_model_changed=False,new_deep_training_runs=0,deep_optimizer_updates=0,A0='NOT_RUN_GATE_FAIL',A0_actual_precision='FAIL_SEED44_UNCHANGED_TOLERANCE',A1='NO_STABLE_LOCAL_INCREMENT',B_reference='EXPLORATORY_RELATIVE_OVER_SINGLE_REFERENCE',B_fusion='REJECT',A2_temperature='RETAIN_DIAGNOSTIC_ONLY_NOT_DEPLOYED',outer_evaluation_run=False,historical_outer_summary_text_exposed=True,strict_outer_no_access_certified=False,external_validation=False,stop='No new candidate or training. Preserve native WSSL and submit audited snapshot.',publication='Authorized; use existing selective publishing workflow, exclude private arrays and tables.')
+    decision=dict(status='COMPLETE_WITH_DISCLOSED_PROTOCOL_DEVIATION',retained_native_model='Frozen WSSL-STR',retained_native_model_changed=False,new_deep_training_runs=0,deep_optimizer_updates=0,A0='NOT_RUN_GATE_FAIL',A0_actual_precision='FAIL_SEED44_UNCHANGED_TOLERANCE',A1='NO_STABLE_LOCAL_INCREMENT',B_reference='EXPLORATORY_RELATIVE_OVER_SINGLE_REFERENCE',B_fusion='REJECT',A2_temperature='RETAIN_DIAGNOSTIC_ONLY_NOT_DEPLOYED',outer_evaluation_run=False,historical_outer_summary_text_exposed=True,whole_manifest_and_cache_read_before_allowed_ID_indexing=True,strict_outer_no_access_certified=False,external_validation=False,stop='No new candidate or training. Preserve native WSSL and submit audited snapshot.',publication='Authorized; use existing selective publishing workflow, exclude private arrays and tables.')
     write_json(HERE/'decision.json',decision)
     status=pd.DataFrame([['历史审计','完成并披露边界偏差','24组+135 OOF资产'],['基线','复用+45精确推理','不重训'],['A0','完成；CE候选未运行','b/e闸门失败'],['A1','完成/复用','90轻量probe；旧adapted45'],['A2','完成；诊断保留','45温度；90描述斜率'],['B','完成；融合拒绝','9确定评分方法；45融合fit'],['新深模型/outer','未运行','0 / 0'],['论文全文/分区','部分待核验','见LITERATURE_VERIFICATION.md']],columns=['工作','状态','证据/原因'])
     put('FINAL_REPORT.md','# Frozen WSSL-STR 主线审计与双参考诊断：最终报告\n\n原Frozen WSSL-STR继续保留；本轮新增deep training **0**，optimizer更新0，未运行outer evaluation。没有符合联合判别门槛的新主模型。\n\n'+table(status)+'\n\n'+table(priority)+'\n\n'+table(base)+'\n\n'+DEVIATION+'''
