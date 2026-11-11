@@ -133,7 +133,7 @@ def collect():
     selected, skipped = {}, {}
     def skip(key):
         skipped[key] = skipped.get(key, 0) + 1
-    for root, prefix in [(PRIMARY, Path()), (SECONDARY, Path('MFAM'))]:
+    for root, prefix in [(PRIMARY, Path())]:
         for current, dirs, files in os.walk(root, followlinks=False):
             parent = Path(current).relative_to(root)
             kept = []
@@ -164,6 +164,20 @@ def collect():
                 if SECRET.search(data):
                     raise RuntimeError('Secret pattern detected; stopped before copying: ' + str(p))
                 selected[dst.as_posix()] = (p, hashlib.sha256(data).hexdigest(), len(data))
+    # Retire MFAM as a source, preserving already-published history without deletion.
+    # A retained legacy file must still equal the previously recorded snapshot.
+    prior_manifest = UPLOAD / 'PUBLICATION_MANIFEST.json'
+    prior = json.loads(prior_manifest.read_text())
+    legacy = {x['path']: x for x in prior['files'] if x['path'].startswith('MFAM/')}
+    tracked_legacy = {x for x in git('ls-files', '-z').stdout.split('\0') if x.startswith('MFAM/')}
+    if tracked_legacy != set(legacy):
+        raise RuntimeError('Retired MFAM inventory changed; inspect without deleting')
+    for name, record in sorted(legacy.items()):
+        path = UPLOAD / name
+        if not path.is_file() or path.is_symlink() or hashlib.sha256(path.read_bytes()).hexdigest() != record['sha256']:
+            raise RuntimeError('Retired MFAM snapshot changed: ' + name)
+        selected[name] = (path, record['sha256'], path.stat().st_size)
+    skipped['retired_MFAM_files_preserved_without_resync'] = len(legacy)
     return selected, skipped
 
 def audit_tracked():
@@ -227,7 +241,7 @@ def main():
         if hashlib.sha256(target.read_bytes()).hexdigest() != sha:
             raise RuntimeError('Source/copy changed while syncing: ' + name)
     (UPLOAD / '.gitignore').write_text(IGNORE)
-    manifest = {'remote': REMOTE, 'primary_source': str(PRIMARY), 'secondary_source': str(SECONDARY),
+    manifest = {'remote': REMOTE, 'primary_source': str(PRIMARY), 'secondary_source': None, 'retired_legacy_prefix': 'MFAM/', 'active_code': str(PRIMARY / 'mainline'),
                 'max_file_bytes': MAX_BYTES, 'selected_file_count': len(selected),
                 'selected_total_bytes': sum(x[2] for x in selected.values()), 'excluded_by_reason': skipped,
                 'files': [{'path': n, 'sha256': v[1], 'bytes': v[2]} for n, v in sorted(selected.items())]}

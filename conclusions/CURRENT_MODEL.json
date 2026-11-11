@@ -1,0 +1,57 @@
+{
+  "updated": "2026-11-11",
+  "task": "PADS PD vs DD subject-level classification",
+  "canonical_root": "/home/zyt/deep_final",
+  "active_code": "/home/zyt/deep_final/mainline",
+  "active_data": "/home/zyt/deep_final/data",
+  "retained_model": {
+    "name": "Frozen WSSL-STR",
+    "condition": "frozen_wssl",
+    "classifier_trainable_parameters": 143172,
+    "frozen_external_encoder_parameters": 10457408,
+    "checkpoint_directory": "/home/zyt/deep_final/results/frozen_wssl",
+    "development_checkpoint_count": 45,
+    "single_all_subject_checkpoint_exists": false,
+    "metrics": {
+      "accuracy": 0.7456035855550418,
+      "ba": 0.7196443706265883,
+      "auroc": 0.7595531518231017,
+      "macro_f1": 0.7065893529498365,
+      "pd_recall": 0.7823439878234398,
+      "dd_recall": 0.6569447534297368
+    }
+  },
+  "baseline": {
+    "name": "STR-01",
+    "condition": "str01",
+    "trainable_parameters": 75524,
+    "checkpoint_directory": "/home/zyt/deep_final/results/str01",
+    "development_checkpoint_count": 45,
+    "metrics": {
+      "accuracy": 0.7307182278769944,
+      "ba": 0.6971894057191268,
+      "auroc": 0.7176307213700359,
+      "macro_f1": 0.686067804388738,
+      "pd_recall": 0.7778641655353984,
+      "dd_recall": 0.616514645902855
+    }
+  },
+  "protocol": {
+    "paired_development_units": 15,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "seed_first_aggregation": true,
+    "threshold": 0.5,
+    "independent_external_validation": false
+  },
+  "stopped": {
+    "patch_str": "REJECT",
+    "frequency_prior_str": "REJECT",
+    "wssl_activity_scaling": "INCONCLUSIVE / not retained"
+  },
+  "old_MFAM_runtime_dependency": false,
+  "migration_training_started": false
+}

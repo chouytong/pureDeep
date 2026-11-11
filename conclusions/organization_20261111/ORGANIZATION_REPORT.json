@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "canonical_root": "/home/zyt/deep_final",
+  "active_code": "/home/zyt/deep_final/mainline",
+  "active_data": "/home/zyt/deep_final/data",
+  "conclusions": "/home/zyt/deep_final/conclusions",
+  "old_MFAM_retired_not_deleted": true,
+  "frozen_paths_preserved": true,
+  "publisher_source": "deep_final only",
+  "legacy_MFAM_Git_snapshot_preserved": true,
+  "verification": {
+    "status": "PASS",
+    "source_location": "/home/zyt/deep_final/mainline",
+    "conditions": [
+      "str01",
+      "frozen_wssl"
+    ],
+    "checkpoint_validation_forwards": 90,
+    "train_only_normalization_refits": 15,
+    "max_probability_difference": 1.1102230246251565e-16,
+    "seed_first_means": {
+      "frozen_wssl": {
+        "accuracy": 0.7456035855550418,
+        "ba": 0.7196443706265883,
+        "auroc": 0.7595531518231017,
+        "macro_f1": 0.7065893529498365,
+        "pd_recall": 0.7823439878234398,
+        "dd_recall": 0.6569447534297368
+      },
+      "str01": {
+        "accuracy": 0.7307182278769944,
+        "ba": 0.6971894057191268,
+        "auroc": 0.7176307213700359,
+        "macro_f1": 0.686067804388738,
+        "pd_recall": 0.7778641655353984,
+        "dd_recall": 0.616514645902855
+      }
+    },
+    "old_MFAM_runtime_dependency": false,
+    "frozen_assets_unchanged": true,
+    "outer_signal_or_outcomes_accessed": false,
+    "training_started": false,
+    "model_or_training_recipe_changed": false,
+    "data_copy_verified": true
+  },
+  "backup_directory": "/home/zyt/deep_final/archives/layout_before_20261111",
+  "training": false,
+  "outer_analysis": false
+}

@@ -1,45 +1,13 @@
-# Git version control and GitHub publication
+# GitHub publication after mainline consolidation
 
-Established: 2026-10-01 (Asia/Shanghai), explicitly requested by the project owner.
+Canonical source is `/home/zyt/deep_final` only; active code is `mainline/`, private data is `data/`, conclusions are `conclusions/`. `/home/zyt/MFAM` is not a publishing source anymore.
 
-## Repository mapping
+The independent mirror is `/home/zyt/pureDeep-github-upload`; repository is https://github.com/chouytong/pureDeep, branch main. Use `tools/git_publish/publish_to_github.py` to preview, filter, checksum, audit and prepare/commit the snapshot. Never use force push or remove files automatically.
 
-- GitHub: https://github.com/chouytong/pureDeep.git, branch main.
-- Development/archive source: /home/zyt/deep_final, published at repository root.
-- Original source: /home/zyt/MFAM, published under MFAM/; its existing Git remote is preserved.
-- Independent Git publishing mirror: /home/zyt/pureDeep-github-upload.
-- Publisher: /home/zyt/deep_final/tools/git_publish/publish_to_github.py.
+The publisher retains already-published `MFAM/` files directly from the mirror only if their hashes match the previous publication manifest. This preserves history without importing new old-project code or requiring deletion. It must not read MFAM as an active source. Historical source paths inside reports/configs remain provenance, not current runtime dependencies.
 
-## After every code change
+Datasets, private raw/processed signals, checkpoint/model weights, individual predictions/clinical tables, fitted normalization with subject membership, caches/features and logs stay on the server. Data and result symlinks are excluded. Code, configs, reports, aggregate metrics and hashes are published.
 
-Complete relevant checks, then run on the server:
+The server HTTPS token was rejected in the 2026-11-11 sync. Existing authorized GitHub connector access for chouytong can publish the exact audited Git tree. Preserve any unpublished server commit on a local archive ref, then align the mirror only after proving identical trees and remote main. Connected-account access does not authorize changing data, recipe or experiments.
 
-```bash
-python3 /home/zyt/deep_final/tools/git_publish/publish_to_github.py
-python3 /home/zyt/deep_final/tools/git_publish/publish_to_github.py --apply --message "Describe the verified change"
-git -C /home/zyt/pureDeep-github-upload status --short
-git -C /home/zyt/pureDeep-github-upload rev-parse HEAD
-git -C /home/zyt/pureDeep-github-upload ls-remote origin refs/heads/main
-```
-
-The publisher discovers new eligible files, verifies SHA-256 copies, fetches remote history, stages a manifest, checks file size/content policy, commits, performs a push dry run, pushes and verifies matching HEADs. No automatic deletion or force push. A dirty mirror, unincorporated remote changes, missing previously tracked files or policy violations stop publication for inspection. No-change runs still verify/push existing commits.
-
-## Published content and exclusions
-
-Code, configs, Markdown reports, aggregate metrics, small diagnostic tables/figures and canonical split protocol metadata are included. PUBLICATION_MANIFEST.json records source paths, selected file hashes and exclusion counts. Historical/rejected model code is retained as an archive; its presence does not reopen experiments.
-
-Raw/processed datasets, fitted normalization files containing subject membership, checkpoints/model weights, feature arrays, individual prediction/clinical tables, training logs, caches, vendored dependencies, quarantined historical outer artifacts and credentials are excluded. Maximum published file size is 5 MiB. Formal readable reports and aggregate outer conclusions remain archived; outer data/predictions are not published or reused for development.
-
-The repository is an archival code/report snapshot, not a complete sensor dataset or model-weight distribution. Existing manifests may reference omitted server artifacts; those references document provenance and do not promise that all files are in Git. Reproduction requires separately obtaining the permitted dataset/external pretrained weights and installing the documented dependencies. Server-specific paths are preserved to avoid changing formal experiment behavior.
-
-## Connection and credential boundary
-
-Git runs on the server through the existing Mac SSH reverse SOCKS tunnel at socks5h://127.0.0.1:18743. The Mac must remain connected. Git uses the existing external askpass credential store; secrets are never embedded in repository URLs, scripts, reports or commits. Do not terminate unrelated tunnels.
-
-If authentication expires or permission is unavailable, retain the verified local commit and restore authentication before pushing. If GitHub contains new commits, inspect and merge/reconcile them first, then align the source tree with the agreed content before rerunning the publisher. Do not overwrite remote edits with an unchecked source sync.
-
-Mirror-local pre-commit/pre-push policy hooks are installed separately and are not automatically installed by cloning. Run the publisher audit explicitly on a new mirror.
-
-## Account migration — 2026-10-02
-
-At the owner's request, the active public repository is now https://github.com/chouytong/pureDeep. Existing Git history is retained; the previous-account remote remains an archival reference. New-account credentials are stored separately under /home/zyt/github-puredeep-chouytong-credentials, outside source/mirror. Publication filtering and frozen experiment results are unchanged. Verify unauthenticated access after pushing.
+Network access can use a temporary Mac SSH reverse SOCKS tunnel at 127.0.0.1:18743; do not terminate unrelated tunnels or change permanent proxy/credential configuration. Passwords/tokens never belong in source, URLs, reports or commits.
