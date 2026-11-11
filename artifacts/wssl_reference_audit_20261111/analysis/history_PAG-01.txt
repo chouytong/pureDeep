@@ -1,0 +1,27 @@
+
+SOURCE /home/zyt/deep_final/artifacts/pag01_preaggregation_disease_info_20260926/PAG01_REPORT.md SHA256 5031277c56758fa0f2f0f607ae3dc99d1159e51bfb980ed691d810b45f55a067
+
+Score-only baseline 为 STR final DD−PD logit 的 train-only 标准化 logistic disease probe；每个 representation 在控制同一 score 后，加入 train-only StandardScaler + 固定 PCA-16，再拟合固定 C=1/liblinear logistic。PCA-8/32 是预定敏感性，未按 validation 选维数。Inner-train 5-fold subject-level cross-fitting 分别拟合 score-only 与 score+activity raw probe，二者 OOF DD logit 的差为 incremental disease signal；validation 的真实 signal 用 full inner-train 拟合的两 probe 差计算。各 stage 用 score covariate + train-only PCA + Ridge α=1 预测该 OOF signal，再在 validation 检查 R²/MAE/Spearman 及 baseline disease logit+预测 signal 的 AUROC。
+
+Negative control 每 split-seed-stage 做 10 次，仅在 inner-train STR final score deciles 内打乱 PCA representation 的受试者对应关系；validation 无拟合、无置换。Ambiguity 只由 inner-train score-only probe 的 5-fold OOF **绝对 disease logit margin** 的三分位阈值给出：最小为 high，中间为 medium，最大为 low；同一训练集阈值应用到 full inner-train probe 的 validation margin。类别标签/正确性不用于 ambiguity 阈值选择。PD–DD pair 的 ambiguity 取成员中较高的一档。Stable-error 仅作敏感性。
+
+
+| Stage（均控制 final score） | AUROC | ΔAUROC vs score-only | BA | Macro-F1 | PD Recall | DD Recall | log loss |
+|---|---:|---:|---:|---:|---:|---:|---:|
+
+Activity raw 的 ΔAUROC `+0.0174`，12/15 split 改善；paired bootstrap 95% CI `[+0.0078,+0.0261]`、paired rank-biserial `0.733`、5-stage AUROC BH q=0.0171。Context `+0.0145`，13/15，q=0.0084；subject `−0.0212`，14/15 恶化，q=0.0084。Structured 和 combined 的 ΔAUROC 不稳定。原分数 log loss 最低，加入 representation 的线性 probe 虽改善 raw/context ranking，却明显损害概率质量；**不能作为正式模型或新训练收益估计**。BA、Macro-F1 和两类 recall 均已逐 split 保存，不能仅以 AUROC 解释阈值行为。
+
+
+但**不是逐级单调衰减**：raw→context disease AUROC 仅降 `0.0029`（CI 跨零）；context→subject 降 `0.0357`（14/15，q=0.0002）；subject→combined decision **回升 `0.0173`**（即 subject−decision `−0.0173`，CI `[−0.0258,−0.0091]`，q=0.0051）。Signal R² 也在 subject→decision 回升 `0.088`（15/15）。四个串联 stage 的严格单调 AUROC 仅 2/15 split、signal R² 为 0/15；PCA-8/32 同样不呈稳定单调序列。Structured ordered 是并行分支，不能强行排进一条单链。证据支持**activity/context 到 subject 的局部可读性下降，final decision 未完全恢复 activity raw 的增量**；不支持“信息在每个 aggregation/decision 步骤持续递减”的强 information-loss/compression 叙述。
+
+
+Validation 按固定 train-OOF margin 阈值分组，high/medium/low 每 split 平均人数 `48.0/28.4/27.6`。STR error rate 为 `37.50%/22.23%/14.59%`；high−medium `+15.27` 个百分点（15/15，CI `[+11.79,+18.63]`，BH q<0.001），high−low `+22.91` 个百分点（15/15，CI `[+20.12,+25.70]`，q<0.001）。因此无需 validation correctness 定义的 high-ambiguity 分组能识别更高错误负担，但它直接基于与 STR final score 同源的置信 margin，不能视作独立 phenotype 量测。
+
+
+虽然 disease probe 做了 inner-train subject-level 5-fold cross-fitting，**冻结 STR 模型在这些 inner-train subjects 上已训练过**。因此 OOF probe logits 不是深度模型层面的 OOF prediction。这个分布错位可直接观察：train OOF score-only AUROC 均值 `0.9541`，held-out validation 仅 `0.7176`；raw probe 对应 `0.9475` vs `0.7350`。增量 signal 的 train OOF target 与 validation full-train target、ambiguity 的 OOF 阈值与 validation margin 可能因此不完全同尺度。不能把 high ambiguity 视为独立、经过跨受试者校准的 phenotype 状态，也不能把高 signal R² 单独当作训练新网络的因果证据。
+
+4. **直接差异成立。** Raw−combined decision AUROC +0.0213、13/15、q=0.0005；signal R² +0.290、15/15。PCA-8/32 同方向。
+5. **只支持局部 attenuation，不足以支持整体单调 information-loss/compression 机制。** 现有 readout、分支混合与 train/validation score 分布错位无法被本轮线性诊断拆成因果信息损失。
+6. **是。** Train-derived high-ambiguity 的 validation STR error rate 37.5%，显著高于 medium 22.2% 和 low 14.6%。
+7. **不能断言完全无法改善。** High 的 raw gain 平均为正但不稳定，pair recovery 较低，net gain CI 触零；高错误负担仍在，且 high 与 stable-error 并非已证独立类别。
+8. **证据不足。** 预设训练闸门需要增量信息、conditional control、稳定 stage-wise attenuation、raw-vs-decision 直接比较四项同时成立。第 3 项的逐级稳定衰减不成立，而且 train-deep-score 的 in-sample/validation 错位显著。**ALLOW_NEW_TRAINING = NO。** 停止把本轮结果直接转为 activity-to-subject information-preservation、auxiliary loss、new decision head 或其他 deep training；保留冻结 STR-01。

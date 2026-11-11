@@ -1,0 +1,43 @@
+
+SOURCE /home/zyt/deep_final/artifacts/phase3c_ssl_adaptation_20260930/PHASE3C_REPORT.md SHA256 14d8d4c5a950d5ad5de19e63c93c03713b83376745e4793d7a1abe3146d2d158
+
+This study uses the fixed 15 subject-level inner-development splits (5 contexts × 3 inner folds), seeds 42/43/44, PD=0 and DD=1. Three seed results are aggregated inside each split before 15-split paired comparisons. All new experiments and diagnostics are development-only. The historical locked FOE-01 outer results were not used for model, learning-rate, threshold or representation selection. No H1, handcrafted features, teacher/student, new deep head, augmentation, backbone search or full HarNet fine-tuning was used. The original STR-01 and Phase-3B WSSL-STR development outputs are read-only matched references. See `PHASE3C_PROTOCOL.md` and `manifest.json` for choices fixed before validation inspection.
+
+
+E1 last-block adaptation uses one prespecified differential learning-rate configuration: HarNet layer1–4 frozen, layer5 trainable at `2e-5`, STR/projection at `2e-4`, with BN running statistics frozen. Trainable parameter count is 2,766,660, of which layer5 is 2,623,488. E1 smoke and checkpoint logits consistency passed: the same Phase-3B checkpoint and same input yielded maximum absolute logit difference 0; only layer5 received encoder gradients. All 45/45 E1 runs passed subject ID/label, normalization, checkpoint SHA, 1/10 LR and BN audits; no outer test loader was created. E1 training-source snapshots were retained and checked against `e1_source_sha256.txt`.
+
+E2 uses three subject-level crossfit folds inside each target inner-training split for each of three seeds: 135 crossfit fits total, each fixed to epoch 10 without OOF-label checkpoint selection. Every inner-training subject received exactly one OOF score per seed. OOF/target-validation subject overlap was absent; no outer loader was created. Audit: `analysis/e2_oof_integrity.csv`, `e2_oof_audit.log`. The threshold is selected on grid 0.05–0.95 by OOF BA only, with fixed tie rule, and applied to archived Phase-3B validation predictions. E2 is an operating-point diagnostic and trains no final candidate.
+
+|---|---:|---:|---:|---:|---:|---:|
+| Original STR-01 | 0.7307 | 0.6972 | 0.7176 | 0.6861 | 0.7779 | 0.6165 |
+| Frozen WSSL-STR | 0.7456 | 0.7196 | 0.7596 | 0.7066 | 0.7823 | 0.6569 |
+| Last-block adapted WSSL-STR | 0.7518 | 0.7244 | 0.7689 | 0.7128 | 0.7905 | 0.6583 |
+
+Adapted minus frozen: BA +0.0048 (10/15 split improvements; 95% split-bootstrap CI [−0.0006,+0.0102]; paired dz 0.431; four-primary-test BH q 0.2251). AUROC +0.0094 (11/15; [+0.0030,+0.0154]; dz 0.728; q 0.0603). Macro-F1 +0.0062 with CI crossing zero; DD Recall +0.0014 with CI crossing zero. Mean within-split seed SD was BA 0.0202 versus 0.0216 frozen and AUROC 0.0222 versus 0.0217. Mean seed-pair score Spearman rose 0.7734→0.7940, while 0.5-threshold disagreement was 0.1780→0.1786. The preset BA positive-CI gate and strict disagreement gate fail, so E1 is **not retained**. The modest AUROC signal is exploratory within this development comparison and does not justify a pretrained-LR search.
+
+## E2: train-only OOF threshold
+
+|---|---|---:|---:|---:|---:|---:|---:|
+| Single WSSL | Fixed 0.5 | 0.7456 | 0.7196 | 0.7596 | 0.7066 | 0.7823 | 0.6569 |
+| Single WSSL | Train-OOF BA threshold | 0.6683 | 0.6771 | 0.7596 | 0.6325 | 0.6559 | 0.6983 |
+| Three-seed ensemble | Fixed 0.5 | 0.7573 | 0.7200 | 0.7816 | 0.7141 | 0.8100 | 0.6301 |
+| Three-seed ensemble | Train-OOF BA threshold | 0.6764 | 0.6845 | 0.7816 | 0.6432 | 0.6650 | 0.7040 |
+
+Single threshold minus fixed BA −0.0426, 0/15 positive splits, 95% split-bootstrap CI [−0.0682,−0.0227], dz −0.888, BH q 0.0001; Macro-F1 −0.0741. DD Recall +0.0413 had a CI crossing zero while PD Recall fell −0.1265. Ensemble BA −0.0355, 4/15 positive, CI [−0.0764,+0.0008], dz −0.451, BH q 0.0962; Macro-F1 −0.0710. Ensemble DD Recall +0.0740, CI [+0.0217,+0.1287], came with PD Recall −0.1450. AUROC is unchanged by threshold. The 15 ensemble OOF thresholds had mean 0.3927 and range 0.15–0.57; 45 single thresholds had mean 0.4071 and range 0.08–0.70. Thus a train-only OOF operating point does **not** convert the WSSL ranking gain into a better BA/Macro-F1 trade-off; keep the fixed 0.5 rule. The crossfit models are trained on two-thirds of each target inner train set and fixed at epoch 10, so OOF/full-train score-distribution shift is a plausible limitation, not a validated explanation.
+
+
+Middle+final minus final-only frozen: BA +0.0008 (6/15; CI [−0.0038,+0.0054]; dz 0.081; four-primary-test BH q 0.8040); AUROC +0.0071 (10/15; CI [−0.0024,+0.0156]; dz 0.383; q 0.2251). Macro-F1 +0.0046 has a CI crossing zero; DD Recall −0.0167 has a CI crossing zero. Mean within-split seed SD was BA 0.0222 versus 0.0216 and AUROC 0.0259 versus 0.0217. The BA majority/CI and DD Recall gates fail. **Do not retain** the middle+final representation; stop layer search.
+
+| 75 | frozen WSSL | 0.7205 | 0.6956 | 0.7253 | 0.6804 | 0.7556 | 0.6356 |
+| 100 | STR | 0.7307 | 0.6972 | 0.7176 | 0.6861 | 0.7779 | 0.6165 |
+| 100 | frozen WSSL | 0.7456 | 0.7196 | 0.7596 | 0.7066 | 0.7823 | 0.6569 |
+
+
+**CASE D.** No further Phase-3C adaptation passes the frozen candidate gate. Retain the pretrained-**frozen** WSSL-STR, final 1024D HarNet feature only, original balanced CE/training recipe and fixed 0.5 decision threshold as the best **single-model pure-deep development configuration**: Accuracy 0.7456, BA 0.7196, AUROC 0.7596, Macro-F1 0.7066, PD Recall 0.7823, DD Recall 0.6569. Relative to original STR-01, the archived Phase-3B paired gains remain BA +0.0225 and AUROC +0.0419; E4 exactly reproduced the 100% means. Last-block adaptation, middle+final feature fusion and OOF thresholding are rejected as defaults. The three-seed frozen WSSL probability ensemble has AUROC 0.7816 but remains an inference-level reference; its OOF-adjusted operating point is not retained. Stop further HarNet encoder-LR, layer and threshold search on these same development splits. Further SSL adaptation is not justified; proceed to paper experiment consolidation and genuinely independent validation planning, without reusing the locked FOE-01 outer set for Phase-3B/C selection or claiming it as their independent test.
+
+Positive evidence is the robust frozen WSSL advantage over STR across tested subject-count fractions. Negative evidence is the lack of a stable added BA benefit from E1/E3, E2 operating-point harm, and absence of a supported BA/AUROC small-cohort interaction. The 15 fixed inner splits overlap in subjects and contexts, so their split-bootstrap intervals and BH values describe this repeated development design; they are not an independent external-cohort inference. Seed-runs, subjects, OOF folds, windows and fractions were not treated as independent replicates. E2 OOF fits used smaller training subsets than target models, limiting calibration transfer. E1/E3 have no independent outer evaluation, and FOE-01 outer was not used for Phase-3C development or re-evaluated for these new candidates.
+
+- E1 feature/logit and full-run audits: `analysis/stage4_audit.json`, `analysis/e1_consistency.json`, `analysis/e1_integrity.csv`, `e1_audit.log`.
+- E2 OOF audit, fixed analysis correction and tables: `analysis/e2_oof_integrity.csv`, `e2_oof_audit.log`, `ANALYSIS_FIX_NOTE.md`, `corrected_e2_analysis_sha256.txt`, `analysis/e2_threshold_paired.csv`.
+- E3 complete model comparison and audit: `analysis/model_summary.csv`, `analysis/model_paired.csv`, `analysis/model_gates.json`, `analysis/e3_integrity.csv`, `e3_audit.log`.
+- E4 complete learning curve and checkpoint audit: `analysis/e4_seed_split_metrics.csv`, `analysis/e4_summary.csv`, `analysis/e4_paired.csv`, `analysis/e4_dd_interaction_bh.csv`, `analysis/e4_checkpoint_integrity.csv`, `e4_curve_analysis.log`, `e4_checkpoint_audit.log`.

@@ -1,0 +1,21 @@
+
+SOURCE /home/zyt/deep_final/artifacts/wsr01_wrist_structured_residual_20260922/WSR01_REPORT.md SHA256 1c2d94891b87e6c292c3b9af4fb25a9ae3665d251cbc38d2c3c43b8d6d310314
+
+**Reject WSR-01. STR-01 remains the frozen strong pure-deep backbone. Structured-readout architecture expansion is stopped.**
+
+
+The experiment tested whether STR-01 still loses discriminative information by preserving activity identity only after bilateral fusion. All STR-01 paths were retained unchanged. For each of 11 activities, the pre-fusion left and right 64-D wrist embeddings were passed through one shared `Linear(64, 4) + GELU` projection. The ordered `11 activities × 2 wrists × 4 dimensions` tokens were masked, flattened to 88 D, and passed through one `Linear(88, 2)` residual classifier. Its weights and bias were zero-initialized, so the initial decision function exactly matched STR-01.
+
+No projection dimension, depth, attention, gating, fusion, loss, optimizer, preprocessing, split, or seed search was performed. The fixed protocol used the same 5×3 inner-development splits and seeds 42/43/44; no outer information was accessed.
+
+
+Three seeds were aggregated before the 15 independent split-level comparisons.
+
+| Accuracy | 0.7307 | 0.7234 | -0.0073 | 5/9/1 | 0.2092 | 0.4326 | -0.3810 |
+| Balanced accuracy | 0.6972 | 0.6965 | -0.0007 | 7/8/0 | 0.7764 | 0.7764 | -0.0833 |
+| Macro-F1 | 0.6861 | 0.6824 | -0.0036 | 6/9/0 | 0.3894 | 0.4673 | -0.2667 |
+- Maximum extracted logit-combination error: 0.0.
+- Statistical unit: independent split/subject, with seeds aggregated first.
+- Wilcoxon signed-rank tests, paired rank-biserial effects, and BH correction were used as specified.
+
+WSR-01 confirms that compact ordered pre-fusion wrist tokens preserve substantial activity/wrist-specific H1 information that is not as linearly accessible from STR-01's decision representation. This is a representation-accessibility result, not a classification improvement. Because the extra recoverability did not translate into BA, AUROC, or Macro-F1 gains, WSR-01 is rejected and no wrist projection, gating, attention, or further structured-readout variants will be searched. STR-01 remains the frozen strong pure-deep backbone.

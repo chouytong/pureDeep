@@ -1,0 +1,11 @@
+
+SOURCE /home/zyt/deep_final/artifacts/strong_backbone_benchmark_20260921/STRONG_BACKBONE_BENCHMARK_REPORT.md SHA256 3b384e70f4e91e72c6856932a43ac6fe5bddf7025ba77cc501e2c79f63878538
+seed波动更大。唯一的Gyro-only learnable FFT分支降低BA、AUROC、Macro-F1和DD recall，
+并显著恶化seed稳定性，因此拒绝且停止整个frequency-branch搜索路线。
+
+-0.517/-0.567。其BA未校正p=0.0084，但对Phase A/B 12项比较BH校正后q=0.1003；其他
+q也≥0.1329。虽然多重校正后未显著，效应方向、幅度与低胜率一致，足以按预注册性能门槛拒绝。
+
+但本实验表明其不能通过该轻量learnable branch转化为额外泛化性能；可能已被时域主干部分利用，
+或主要反映PD/DD标签空间重叠。按预注册规则停止frequency branch，不再搜索频率范围、FFT/
+STFT/wavelet或更大频域网络。

@@ -1,0 +1,11 @@
+{
+  "status": "PRECISION_LIMITED_ACTUAL_FP32",
+  "failed_actual_runtime_seeds": [
+    44
+  ],
+  "parameter_gradient_relative_tolerance": 2e-05,
+  "tolerance_relaxed": false,
+  "IEEE_FP32_shadow_passed": true,
+  "formal_TF32_settings_changed": false,
+  "interpretation": "The mathematical common-scalar identity and strict floating-point parameter-gradient equivalence are distinct. TF32-enabled convolution backward has scaling roundoff; not evidence of a PyTorch loss bug or DD-error causation. The original strict gate remains failed."
+}

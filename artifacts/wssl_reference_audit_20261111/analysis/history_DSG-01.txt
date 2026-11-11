@@ -1,0 +1,16 @@
+
+SOURCE /home/zyt/deep_final/artifacts/dsg01_cross_subject_disease_subspace_20260926/DSG01_REPORT.md SHA256 705d8a12203d21df94dcf1a1931e9d8fa966272f530817e2d381c637a5b335cc
+
+STR combined vs V8 subject 的 train-only probe BA/AUROC 增量为 `+0.0418/+0.0468`（15 split paired BH `q=0.0298/0.0028`），与正式分类结果 STR BA/AUROC `0.6972/0.7176` 高于 V8 `0.6707/0.6800` 一致，确认更强的 decision-accessible disease separability。普通 CKA 在这两个 stage 为 0.7277/0.5351；unbiased 核查后仍为 0.7013/0.5102（差 `+0.1911`，15/15，`q=0.0005`）。CKA 维度不同，不能把这项差直接解释为 disease-specific 不变性。
+
+
+11 个 activity 均完成 raw bilateral 258D、activity-context 258D 和 STR projected-token 16D 的 train-only centroid/probe 与对齐分析。raw/context 的平均 centroid direction cosine：V8 约 `0.746`，STR 约 `0.722`；按 split 先聚合 11 个 activity，STR−V8 为 `−0.0240/−0.0244`（各 1/15 split 改善，8 项 aggregate-family BH `q=0.00073`）。但平均 probe direction cosine、probe BA、AUROC 无系统差异（均 `q>0.55`）。
+
+
+## 7. 八个问题的结论与停止决定
+
+1. **更强 disease separability？** 是。正式分类及 train-only probe 均支持 STR combined 优于 V8 subject；STR original subject path 单独不改善。
+2. **稳定的 cross-subject/cross-split instability？** 有可检测的 centroid 方向变化和 probe transfer loss，但无证据将其归为一个独立、稳定的 disease-discriminative subspace 故障；probe direction 与同 split 跨 seed 对照未分离，alignment/抽样也有影响。
+3. **STR 改善 instability？** 对 decision representation 的 CKA 和对齐 probe/centroid direction 有改善；transfer BA drop 与 V8 持平，activity 方向平均下降。因此不是全面改善。
+7. **persistent errors？** 更符合持续对侧类别表示/phenotype overlap，而非单纯表示不稳定；临床原因尚不可判定。
+8. **启动 consistency experiment？** **否。** 虽有可检测变化与 transfer drop，但未同时满足“明确 disease-specific instability”及“该 instability 与分类退化稳定相关”两个门槛。停止本轮 consistency regularization 方向；不以 DSG-01 为依据训练 DANN、MMD、prototype、supervised contrastive 或新模块。

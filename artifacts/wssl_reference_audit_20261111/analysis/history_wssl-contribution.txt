@@ -1,0 +1,31 @@
+
+SOURCE /home/zyt/deep_final/artifacts/wssl_contribution_20261007/PHASE_A_REPORT.md SHA256 94cff3dc8c070bb09f592a6a79cd9c55a5a0028181b364cdf0d5461a576b868d
+
+**本轮只有 inference-only 诊断，训练次数/optimizer steps 均为0；未启动 Phase B 或 Phase C。** PROCEED 表示满足提出单一11-scalar对照的证据资格，不表示已经批准或运行下一阶段。
+
+|原STR-01|0.730718|0.697189|0.717631|0.686068|0.777864|0.616515|
+|Frozen WSSL-STR|0.745604|0.719644|0.759553|0.706589|0.782344|0.656945|
+
+
+primary如上；strict4为四次seed-mean全部对/全部错（EMA报告口径）；本轮all12字段是12个individual seed/context全部对/全部错的严格sensitivity（EMA式），**不是DSG历史12-appearance错误率阈值表**。运行前协议中“历史12”字样范围过宽，在此明确实际脚本的严格定义；不把不同阈值的人数并入primary或声称复现历史DSG sensitivity人数。所有辅助分组都未参与CASE/gate或模型选择。
+
+
+**下一步：CASE A / PROCEED，仅限提出一项Activity-conditioned WSSL Scaling对照的资格。** 若用户确认继续，唯一允许设计是所有11activity各一个scalar、全部g=1统一初始化；不由贡献图设置g、删活动或限制特定方向，不扩展MLP/attention/wrist gate，不叠加Frequency/EMA/loss/augmentation。本轮没有选择新的configuration，也不预期g一定提升性能。
+
+**Phase B未训练；Phase C未做数值/gradient audit。** 按用户“不要自动进入下一阶段”的要求，本轮在中文报告和Git归档后停止。Phase C将来独立核对历史覆盖与batch/loss/gradient；不与Phase B同时修改。
+
+
+SOURCE /home/zyt/deep_final/artifacts/wssl_contribution_20261007/REPRODUCTION_REPORT.md SHA256 ca5ca99552c42732b5bc1bcd638dd535e556b926be3f011c181a95411f536ab6
+
+复现指标：Accuracy 0.745604、BA 0.719644、AUROC 0.759553、Macro-F1 0.706589、PD Recall 0.782344、DD Recall 0.656945。每split三seed先均值；45单元均同split等权，结果一致。
+
+
+SOURCE /home/zyt/deep_final/artifacts/wssl_contribution_20261007/analysis/decision.json SHA256 51b309a39b44cf3a2ea8f4c5279391a7c9a520929ea4dcbbe6ffd3372a3864b4
+  "phase_C_started": false,
+  "diagnostic_gate": {
+    "mean_BA_spread_at_least_005": true,
+
+SOURCE /home/zyt/deep_final/artifacts/wssl_contribution_20261007/analysis/final_integrity_audit.json SHA256 3ea74286fdcb6230d160f12f9a62441a6acc754f662ab34f509b969c17011859
+  "original_source_cache_splits_checkpoints_predictions_normalization_unchanged": true,
+  "premask_diagnostic_code_protocol_and_gates_unchanged": true,
+  "full45_reproduction_pass": true,

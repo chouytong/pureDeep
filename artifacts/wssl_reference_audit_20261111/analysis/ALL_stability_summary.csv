@@ -1,0 +1,85 @@
+condition,metric,mean,split_sd,seed_mean_sd,mean_within_split_seed_sd,seed_interpretation
+baseline,accuracy,0.7456035855550418,0.04121834922018478,0.008650195510485596,0.031204631329050048,three initialized trained classifiers
+baseline,ba,0.7196443706265881,0.034562927883435325,0.006713958507039327,0.02160251426079496,three initialized trained classifiers
+baseline,auroc,0.7595531518231018,0.04392069295378708,0.0018118399287746112,0.02174134916630015,three initialized trained classifiers
+baseline,macro_f1,0.7065893529498365,0.03956074326487316,0.004946848236675762,0.02560506501999914,three initialized trained classifiers
+baseline,pd_recall,0.7823439878234401,0.06137909127516997,0.0255913414631233,0.0656589034130875,three initialized trained classifiers
+baseline,dd_recall,0.6569447534297368,0.05800655886005256,0.035929951921294154,0.07854238026215613,three initialized trained classifiers
+lastblock_adapted,accuracy,0.7518272156593115,0.041485445577107,0.016949204293940496,0.03465957243540673,three initialized trained classifiers
+lastblock_adapted,ba,0.7244016447001498,0.03749585701288262,0.009135988266738471,0.020237885802419652,three initialized trained classifiers
+lastblock_adapted,auroc,0.7689083561444023,0.04366338774878906,0.0067981242825971054,0.02221124241473194,three initialized trained classifiers
+lastblock_adapted,macro_f1,0.7128289039531261,0.04114383611162856,0.013481979113198957,0.026110632658284137,three initialized trained classifiers
+lastblock_adapted,pd_recall,0.7904932329589864,0.05331726786394624,0.029908782948672323,0.07452288341835485,three initialized trained classifiers
+lastblock_adapted,dd_recall,0.6583100564413135,0.04787452034664714,0.02003462455001246,0.0797512507635401,three initialized trained classifiers
+fusion,accuracy,0.752377548314156,0.02307590315895441,0.01324438152820585,0.022806996516066984,three initialized trained classifiers
+fusion,ba,0.6276382704797839,0.03797173576219759,0.011527874610442766,0.039350032711427944,three initialized trained classifiers
+fusion,auroc,0.7636398857906775,0.04694736640099105,0.008865217553868732,0.016965060195406258,three initialized trained classifiers
+fusion,macro_f1,0.6310568601595032,0.04825114340285409,0.017857308185976833,0.04997942319101298,three initialized trained classifiers
+fusion,pd_recall,0.9275700357892139,0.03823664476919181,0.015531219743126922,0.04231829938687105,three initialized trained classifiers
+fusion,dd_recall,0.3277065051703538,0.09500104633757171,0.008804261366098388,0.09909638413364372,three initialized trained classifiers
+score_ssl_control,accuracy,0.7540665604886049,0.029018691177499153,0.008401920654401256,0.02299784785128501,three initialized trained classifiers
+score_ssl_control,ba,0.6693481664882156,0.03922558279412655,0.013972779195630974,0.027812190783386127,three initialized trained classifiers
+score_ssl_control,auroc,0.7552910043540424,0.046984472959008323,0.0035572033963789207,0.02279987274222939,three initialized trained classifiers
+score_ssl_control,macro_f1,0.6785628733309055,0.04130241471522925,0.014349760162725822,0.029322133761580438,three initialized trained classifiers
+score_ssl_control,pd_recall,0.8734419350857707,0.023444184922453287,0.0006258779382009097,0.029645049882390577,three initialized trained classifiers
+score_ssl_control,dd_recall,0.46525439789066037,0.07000285500186494,0.027451859024286946,0.05413728886054243,three initialized trained classifiers
+score_ssl_plus_local,accuracy,0.7517306989180204,0.03131265569026998,0.008124095825171002,0.026954221833252814,three initialized trained classifiers
+score_ssl_plus_local,ba,0.6698245666697675,0.03965828844880588,0.01414630966727057,0.028557107635191523,three initialized trained classifiers
+score_ssl_plus_local,auroc,0.7554569673212914,0.03933974320827499,0.004584676940879389,0.024429697539739052,three initialized trained classifiers
+score_ssl_plus_local,macro_f1,0.6783782811746828,0.04203588100761232,0.014506019390899712,0.030971909815947638,three initialized trained classifiers
+score_ssl_plus_local,pd_recall,0.8671274013739768,0.028800624394689858,0.0012845625534625114,0.033381845647367354,three initialized trained classifiers
+score_ssl_plus_local,dd_recall,0.4725217319655583,0.06836245446396425,0.028741566356896613,0.050689730498991066,three initialized trained classifiers
+centroid_relative,accuracy,0.6539724099746943,0.03590368489072213,,,deterministic external-cache method; seed SD not applicable
+centroid_relative,ba,0.6559649591231106,0.04053650462140349,,,deterministic external-cache method; seed SD not applicable
+centroid_relative,auroc,0.7222446334368258,0.04425753025886134,,,deterministic external-cache method; seed SD not applicable
+centroid_relative,macro_f1,0.6271716535796418,0.03664945914693435,,,deterministic external-cache method; seed SD not applicable
+centroid_relative,pd_recall,0.6512526224854991,0.03470024856280535,,,deterministic external-cache method; seed SD not applicable
+centroid_relative,dd_recall,0.6606772957607218,0.059140012208425984,,,deterministic external-cache method; seed SD not applicable
+common_dd,accuracy,0.30121280426534564,0.01179095611051334,,,deterministic external-cache method; seed SD not applicable
+common_dd,ba,0.4972955021854103,0.012546773111579227,,,deterministic external-cache method; seed SD not applicable
+common_dd,auroc,0.4994347928009378,0.045912993992083595,,,deterministic external-cache method; seed SD not applicable
+common_dd,macro_f1,0.2479524124350799,0.016142674116398623,,,deterministic external-cache method; seed SD not applicable
+common_dd,pd_recall,0.025348636307540404,0.016894866416702382,,,deterministic external-cache method; seed SD not applicable
+common_dd,dd_recall,0.9692423680632803,0.029092038079274872,,,deterministic external-cache method; seed SD not applicable
+common_pd,accuracy,0.7116644422269778,0.026256360578238262,,,deterministic external-cache method; seed SD not applicable
+common_pd,ba,0.5355832477760952,0.02703695754714789,,,deterministic external-cache method; seed SD not applicable
+common_pd,auroc,0.668489106077751,0.04291149836066323,,,deterministic external-cache method; seed SD not applicable
+common_pd,macro_f1,0.5035767599685775,0.039666221203649155,,,deterministic external-cache method; seed SD not applicable
+common_pd,pd_recall,0.9593237072689128,0.03109262385389421,,,deterministic external-cache method; seed SD not applicable
+common_pd,dd_recall,0.11184278828327769,0.04871939965266806,,,deterministic external-cache method; seed SD not applicable
+full_dd,accuracy,0.30121280426534564,0.01179095611051334,,,deterministic external-cache method; seed SD not applicable
+full_dd,ba,0.4972955021854103,0.012546773111579227,,,deterministic external-cache method; seed SD not applicable
+full_dd,auroc,0.4994347928009378,0.045912993992083595,,,deterministic external-cache method; seed SD not applicable
+full_dd,macro_f1,0.2479524124350799,0.016142674116398623,,,deterministic external-cache method; seed SD not applicable
+full_dd,pd_recall,0.025348636307540404,0.016894866416702382,,,deterministic external-cache method; seed SD not applicable
+full_dd,dd_recall,0.9692423680632803,0.029092038079274872,,,deterministic external-cache method; seed SD not applicable
+full_pd,accuracy,0.7174219371592301,0.01986808739814561,,,deterministic external-cache method; seed SD not applicable
+full_pd,ba,0.5421427458512806,0.023508045576182683,,,deterministic external-cache method; seed SD not applicable
+full_pd,auroc,0.6513142328486622,0.03918136530231153,,,deterministic external-cache method; seed SD not applicable
+full_pd,macro_f1,0.510391533487826,0.04185495306242403,,,deterministic external-cache method; seed SD not applicable
+full_pd,pd_recall,0.9638405528816488,0.034565199559105884,,,deterministic external-cache method; seed SD not applicable
+full_pd,dd_recall,0.1204449388209121,0.06300156377978498,,,deterministic external-cache method; seed SD not applicable
+full_relative,accuracy,0.7128417530816159,0.008289172494048137,,,deterministic external-cache method; seed SD not applicable
+full_relative,ba,0.5087479915956,0.013539658307376011,,,deterministic external-cache method; seed SD not applicable
+full_relative,auroc,0.7099378702761459,0.04282212449211236,,,deterministic external-cache method; seed SD not applicable
+full_relative,macro_f1,0.43224907074383623,0.026956219563880095,,,deterministic external-cache method; seed SD not applicable
+full_relative,pd_recall,1.0,0.0,,,deterministic external-cache method; seed SD not applicable
+full_relative,dd_recall,0.017495983191200087,0.02707931661475202,,,deterministic external-cache method; seed SD not applicable
+relative,accuracy,0.675812868836855,0.04543893364786811,,,deterministic external-cache method; seed SD not applicable
+relative,ba,0.675841747090928,0.0531662320493573,,,deterministic external-cache method; seed SD not applicable
+relative,auroc,0.7356387699507148,0.049032757667553814,,,deterministic external-cache method; seed SD not applicable
+relative,macro_f1,0.6475987177675547,0.047521863374720516,,,deterministic external-cache method; seed SD not applicable
+relative,pd_recall,0.6757373812168334,0.04808624348445791,,,deterministic external-cache method; seed SD not applicable
+relative,dd_recall,0.6759461129650229,0.08897372351874037,,,deterministic external-cache method; seed SD not applicable
+strict_dd,accuracy,0.2877809575410946,0.008111736541936669,,,deterministic external-cache method; seed SD not applicable
+strict_dd,ba,0.49163077426703683,0.010424571412520083,,,deterministic external-cache method; seed SD not applicable
+strict_dd,auroc,0.4018554643448361,0.04441590649712503,,,deterministic external-cache method; seed SD not applicable
+strict_dd,macro_f1,0.2240479823544377,0.005964984131507193,,,deterministic external-cache method; seed SD not applicable
+strict_dd,pd_recall,0.0009009009009009,0.003489174185772444,,,deterministic external-cache method; seed SD not applicable
+strict_dd,dd_recall,0.9823606476331727,0.021230493919500357,,,deterministic external-cache method; seed SD not applicable
+strict_pd,accuracy,0.712934402040627,0.017020267118087448,,,deterministic external-cache method; seed SD not applicable
+strict_pd,ba,0.5269153310745948,0.016549560930430394,,,deterministic external-cache method; seed SD not applicable
+strict_pd,auroc,0.6240997404065959,0.03682230137056144,,,deterministic external-cache method; seed SD not applicable
+strict_pd,macro_f1,0.4823589666413547,0.028260416122286393,,,deterministic external-cache method; seed SD not applicable
+strict_pd,pd_recall,0.9746760459089228,0.020408239704149823,,,deterministic external-cache method; seed SD not applicable
+strict_pd,dd_recall,0.07915461624026691,0.03297326576265471,,,deterministic external-cache method; seed SD not applicable

@@ -1,0 +1,51 @@
+
+SOURCE /home/zyt/deep_final/artifacts/phase3a_puredeep_20260928/PHASE3A_REPORT.md SHA256 a614222edf244acf6be74d8d3094ad5bc04b4c2890a080f799ece77510d377f9
+
+All analyses use fixed 15 inner-development subject splits and seeds 42/43/44. The original STR-01 architecture, activity/wrist order, train-only normalization, balanced-CE baseline, and final score rule are the reference. Phase-2 exact-reproduction predictions and checkpoints serve as lambda=0 and natural-sampling baseline. Prior FOE-01 outer data and results are excluded; H1 and handcrafted/statistical methods are excluded from training, input, teacher, loss, representation, model and threshold selection. New checkpoints and diagnostics live only in this directory.
+
+The fixed protocol and retention gate were written to `PHASE3A_PROTOCOL.md` before E1/E3/E4 validation results. `manifest.json` records the four new configurations, `SOURCE_SHA256SUMS` freezes their runner/hook sources, and `SMOKE_AUDIT.json` records train/validation ID and normalization agreement, no outer loader, checkpoint reload, and E4 logits consistency. The auxiliary branch has 8,354 train-time parameters; the original STR backbone has 75,524. With the same frozen checkpoint and input, E4 eval-mode final logits are bitwise identical to STR (max difference 0), and the branch is disabled at inference.
+
+## E1 sampling/loss audit before the new control
+
+Code review confirmed that the previous `balanced_sampler` candidate used both weighted subject resampling and the original train-balanced CE. It did not override `loss.class_weights`. The three-way comparison is therefore (A) natural sampling + balanced CE (exact STR baseline), (B) balanced sampling + balanced CE (Phase-2 archive), and (C) balanced sampling + unweighted CE (new Phase-3A run). C changes only this compensation coupling. The smoke checkpoint resolved C class weights to `None`; the fixed inner split and normalization hash matched A/B. No sampling-ratio search is part of this phase.
+
+| Accuracy | 0.7307 | 0.7489 | +0.0182 | 11/15 | [+0.0046, +0.0319] | +0.6491 |
+| BA | 0.6972 | 0.6998 | +0.0026 | 8/15 | [−0.0116, +0.0163] | +0.0916 |
+| AUROC | 0.7176 | 0.7586 | +0.0410 | 15/15 | [+0.0324, +0.0493] | +2.3779 |
+
+## E1 completed: sampling–loss compensation
+
+|---|---:|---:|---:|---:|---:|---:|
+| A natural sampling + balanced CE | 0.7307 | 0.6972 | 0.7176 | 0.6861 | 0.7779 | 0.6165 |
+| B balanced sampling + balanced CE | 0.6908 | 0.6790 | 0.7059 | 0.6547 | 0.7080 | 0.6499 |
+
+C versus B improved BA **+0.0115** (10/15 splits; 95% CI +0.0022 to +0.0208), AUROC +0.0108 (9/15; CI −0.0030 to +0.0255), and Macro-F1 +0.0185 (11/15; CI +0.0077 to +0.0317). The earlier B deficit was therefore partly caused by simultaneous balanced sampling and balanced CE. Yet C versus A still had BA **−0.0067** (3/15; CI −0.0122 to −0.0006), AUROC −0.0009 (10/15; CI −0.0118 to +0.0087), Macro-F1 −0.0128 (3/15; CI −0.0224 to −0.0021), PD Recall −0.0290, and DD Recall +0.0156 with a CI spanning zero. C did not meet the joint retention gate. **Decision: stop sampling/class-exposure search on this fixed development set.**
+
+
+All 45 inner runs completed with the original batch, scheduler, balanced CE, architecture and early-stopping rule. The STR model uses GroupNorm and has no BatchNorm state affected by a SAM second pass. For the train/validation CE gap, training CE is taken from SAM's first (unperturbed-weight) forward pass; second-pass perturbed loss is logged separately. The median best epoch moved from 12 to 17. Mean CE gap at the selected epoch decreased from 0.3759 to 0.2542 and at stopping from 1.0450 to 0.6761; this is a training-behavior change, not sufficient classification evidence.
+
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Original STR-01 | 0.7307 | 0.6972 | 0.7176 | 0.6861 | 0.7779 | 0.6165 | 0.0117 | 0.0120 |
+| STR-01 + SAM | 0.7452 | 0.6935 | 0.7213 | 0.6915 | 0.8182 | 0.5687 | 0.0209 | 0.0318 |
+
+Paired SAM minus STR differences over 15 seed-averaged splits: BA **−0.0037** (5/15 positive; bootstrap 95% CI −0.0133 to +0.0068; dz −0.184), AUROC **+0.0036** (10/15; CI −0.0132 to +0.0166; dz +0.120), Macro-F1 +0.0054 (10/15; CI −0.0036 to +0.0147), Accuracy +0.0145, PD Recall +0.0404 (CI +0.0063 to +0.0737), and DD Recall **−0.0479** (5/15; CI −0.0929 to −0.0018). AUROC and BA seed SD rose to 0.0318 and 0.0209. The Accuracy gain mainly tracks PD favoring and fails the joint retention rule. **Decision: SAM is rejected; no rho search and no SAM+auxiliary combination.**
+
+
+The pre-aggregation 11×258D bilateral activity features feed a shared 258→32→2 branch. Only a masked mean of per-activity evidence receives subject-level balanced CE; no individual activity is assigned the full disease label. λ=0.1 and λ=0.3 were fixed in advance, and the original STR final logits alone supplied all validation predictions. Both variants completed 45/45 runs. The auxiliary CE and main CE are archived per epoch; the report compares main classification CE with validation CE, since total train loss includes λ×auxiliary loss and has a different scale.
+
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| baseline | 0.7307 | 0.6972 | 0.7176 | 0.6861 | 0.7779 | 0.6165 | 12 | 0.3759 | 1.0450 |
+| e4_aux_lambda01 | 0.7239 | 0.6943 | 0.7182 | 0.6812 | 0.7655 | 0.6232 | 11 | 0.2822 | 0.9641 |
+
+The slightly smaller main-CE train/validation gap under E4 did not yield improved final classification. A full or minimal representation probe was **not** run: the preregistered condition for that check was final classification improvement, and neither λ met it. The result does not support activity auxiliary supervision as a retained model mechanism on this fixed development set. No λ extension or additional auxiliary objective was attempted.
+
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| baseline | 0.7307 | 0.6972 | 0.7176 | 0.6861 | 0.7779 | 0.6165 | 0.0316 | 0.0117 | 0.0120 | 0.0408 |
+| e1_balanced_balanced | 0.6908 | 0.6790 | 0.7059 | 0.6547 | 0.7080 | 0.6499 | 0.0249 | 0.0127 | 0.0201 | 0.0095 |
+
+Complete paired differences, improvement counts, 10,000-draw split-bootstrap 95% CIs, paired standardized effect sizes (Cohen dz), Wilcoxon p and BA/AUROC BH-FDR q values are in `analysis/phase3_paired.csv`; the fixed gate decisions are in `analysis/retention_gate.json`. No positive new-training BA/AUROC result survived BH-FDR. Across E1-C, E3, E4-0.1, and E4-0.3, **0/4** training variants passed the joint gate. E2 is a separate inference comparison: AUROC q=0.0001 and BA q=0.7197. Its DD Recall decline at the original threshold remains a material limit.
+
+
+The best single-model pure-deep configuration remains the **original formal STR-01** (Accuracy 0.7307, BA 0.6972, AUROC 0.7176, Macro-F1 0.6861, PD Recall 0.7779, DD Recall 0.6165). No Phase-3A training variant earns a replacement or a new outer evaluation. The observed Accuracy rise under SAM is accompanied by DD Recall and BA losses and cannot justify retention. The three-seed probability ensemble is a distinct, development-only inference finding: excellent ranking gain, but lower DD Recall at the fixed threshold; it is not selected as the default six-metric classification strategy and is not a single-model architecture claim.
+
+E1, E3 and E4 all failed their predefined training-retention criteria. Following the user-specified decision tree, **CASE D** applies: stop further supervised STR architecture/loss/sampling/SAM/auxiliary searching on these same fixed PADS development subjects. The next research direction is to draft a separate, bounded **external wearable self-supervised pretraining** protocol using public large-scale IMU data, with pure-deep transfer and a new evidence boundary. No external pretraining is started in Phase-3A. The prior FOE-01 outer results remain frozen and cannot be reused to select this next approach.

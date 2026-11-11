@@ -1,0 +1,63 @@
+
+SOURCE /home/zyt/deep_final/artifacts/patch_str_20261008/PREFORMAL_REPORT.md SHA256 e555301ee74927b6a812e5b076e057b02e2cef117f23ad45901f8a2089e95585
+6. 无协议偏离。F0辅助文件名只是P0审计历史命名，不执行Frequency。
+7. study_lock SHA：123d260ad9c3dc1d2294432c7a9b12350ba308078d512f331ea3056bd22a25c0。统计/retention/conditional gates均在结果前固定。
+8. PROCEED：本报告、源码与protocol推送并核验Git后，执行90正式candidate runs；smoke分数不作为筛选条件。
+
+SOURCE /home/zyt/deep_final/artifacts/patch_str_20261008/P1_TEST_REPORT.md SHA256 5acc55be5fbb47fb888587ff0fc6d48806915bd7333d9d978ce467f186be8a22
+
+
+SOURCE /home/zyt/deep_final/artifacts/patch_str_20261008/EXTRACTION_REPORT.md SHA256 891376a2ce9647cc2ce93a249662db13b4303b73920bed82722ec39d2aaa14dc
+
+新增patch_extractor.py/test_extraction.py，固定P=200/S=100，不搜索。976 starts=[0,100,200,300,400,500,600,700,776]共9；2000 starts=0..1800每100共19。first/last内容、尾覆盖、去重、不越界、determinism PASS。0/1/199无完整patch，200一个，201带tail两个，300两个；不从短序列补造样本。Mixed lengths976/2000/199/201 pad到19，只index valid patch positions，不读true_length后samples。改变sample padding为NaN不影响extraction；invalid patches为0；autograd无padding梯度，异常length拒绝。
+
+
+SOURCE /home/zyt/deep_final/artifacts/patch_str_20261008/PATCH_STR_REPORT.md SHA256 0ba67fcc19ae74978b05ca67040c90dba610336f56adda5c02a055d0d56f5b02
+
+## 最终结论：REJECT
+
+- Q2：P2对P1，未建立超过bag-of-patches的稳定增量。BAΔ=+0.000157，5/15胜，95%CI[-0.002495,+0.003238]，q=0.761536。
+- Q3：P2对P0 BAΔ=-0.000608，5/15胜，CI[-0.002851,+0.001566]；正式决策按冻结的全部门槛为 **REJECT**，不能只挑正向指标。
+- Q4：当前结果符合“固定local patch配置未建立稳定BA增量”，不是“已证明patch有效但order无效”。P1/P2均有小幅AUROC均值增加，但不能替代BA门槛；不能从失败推导所有patch表征对PD/DD无用，也不能宣称已证明原STR存在information loss。
+
+
+P0完整45checkpoint全validation复现、15个train-only normalization refit、已有Phase2当前source45次scratch复现均PASS，正式P0重用。P1/P2各完整15split×3seed=45scratch runs，共90，另有correctness two-step与one-batch one-epoch smoke；P3未在本阶段训练。没有使用outer-test信号/结果，没有WSSL/HarNet/Frequency/FFT，没有改loss、weights、sampler、augmentation、optimizer、LR、WD、scheduler、batch、patience、threshold、activity/wrist顺序或原STR路径。context/outer_N目录仅development split索引，test subjects列表为空。
+
+
+## 7. 训练轨迹、停止与耗时
+
+
+epoch曲线只作描述；后期仅未停止runs仍存在，组成变化不能解释为配对性能改进。online train loss/BA含训练Dropout，不是eval-mode train performance；不据此宣称真实泛化gap。只有best/last权重，不虚构中间checkpoint或EMA。epoch_trajectories.csv保留所有训练epoch的train CE/BA、validation CE/BA/AUROC/F1/两Recall；best/stop逐run保留。无结果后增加max epochs/patience。
+
+
+同一subject可能在多split出现；这些是seed-first15unit平均的事件计数。DD subtype门槛为P2正式RETAIN，未满足时不访问或分析clinical subtype表。
+
+
+本轮正向但不足的证据是P2-P0 AUROCΔ+0.003662（11/15胜，bootstrap95%CI[+0.000435,+0.007246]）；Wilcoxon p=0.072998、18探索比较BH q=0.778617，必须与bootstrap结果分开保留。BA primary三个q均0.761536，三个CI均跨0。P2-P1虽BA均值微正，但只有5/15胜、10/15负，未形成可重复的ordered增量。Macro-F1的P2-P0负差约−0.000024非常小，不能宣称临床上明显恶化；其违反严格非下降门槛，而BA不提升已足以拒绝。
+
+P0/P1/P2 best epoch平均13.49/13.56/13.80，stop epoch平均25.49/25.56/25.80，均median best12/stop24。没有明显系统性更早停止或更晚最佳点；best后validation CE上升、BA下降在三条件均发生，未显示patch方案解决晚期退化。online train CE不能用于计算eval-mode泛化gap，也不据此更改epoch/patience。
+
+
+正负结果、CI跨0、种子/Recall trade-off均完整保留；当前 **REJECT** 不改变既有FrozenWSSL retained best。P3执行条件=False；不满足则STOP temporal adjacency pretext、WSSL+Patch、patch/stride/hidden/pooling rescue。Frequency组合始终禁止。若门槛满足，仅允许按预注册规则进入条件阶段，不能扩大搜索。
+
+5. 原recipe未改。
+6. 无协议偏离；未执行不满足门槛的后续。
+7. 完整六指标与三主比较/18探索比较如上。
+
+SOURCE /home/zyt/deep_final/artifacts/patch_str_20261008/P2_TEST_REPORT.md SHA256 5e20675636c890907840e6c18555084fc7b03c56b99ce54ccabba37866f28be1
+
+
+SOURCE /home/zyt/deep_final/artifacts/patch_str_20261008/analysis/decision.json SHA256 dc5445223af7e3f67baa4a88ecbb3421e37eddf9e3637c01aa108ca4b0453087
+  "status": "complete",
+  "decision": "REJECT",
+  "gate": {
+    "P2-P0": {
+  "p3_allowed": false,
+  "retained_formal_str_changed": false,
+  "outer_access": false,
+
+SOURCE /home/zyt/deep_final/artifacts/patch_str_20261008/analysis/final_integrity.json SHA256 7d47f7cbea7fec4674a13c579aefbfdff900670dd7228d0db5246e17d0c79cf7
+  "outer_access": false,
+  "retained_best_changed": false,
+  "decision": "REJECT",
+  "p3_started": false

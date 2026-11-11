@@ -1,0 +1,133 @@
+
+SOURCE /home/zyt/deep_final/artifacts/wssl_review_20261004/FINAL_INTERPRETATION_REVIEW.md SHA256 ef90b21523965eddd7062733e2737db80dcad2247a3adeaeb030f6b9aabb4db9
+
+Date: 2026-10-04. **Verdict: REJECT the single LR1e-4 control; retain frozen WSSL-STR with LR2e-4.** This is a read-only independent review of the completed aggregate results and frozen protocol. No data, script, gate or historical output was changed; no new model or outer analysis was run.
+
+
+Reviewed `LR_CONTROL_PROTOCOL.md`, current `scripts/analyze_lr_control.py`, `analysis/lr_control_lock.json`, `lr_decision.json`, `lr_seed_split_metrics.csv`, `lr_15split_seedfirst.csv`, `lr_summary.csv`, `lr_paired.csv`, `lr_prediction_agreement.csv`, and all three aggregate error tables.
+
+
+- BA mean bootstrap CI excludes zero narrowly, but its two-sided Wilcoxon p=.094604 and two-primary BH q=.189209 do not pass. These are different summaries/test statistics; one cannot substitute for the other or claim FDR-supported BA superiority. The frozen gate uses the BA CI rather than BH, and that criterion **passes**.
+- DD Recall CI excludes zero and Wilcoxon p=.027815, but exploratory six-endpoint BH q=.166889 does not pass. Describe a positive development estimate and class-sensitivity trade-off, not a multiplicity-confirmed independent DD-recognition improvement.
+- AUROC has a slightly negative mean, CI includes zero, primary BH q=.599487. The candidate fails the operational positive-AUROC gate; the evidence does **not** show statistically established AUROC deterioration.
+- Macro-F1 and PD Recall CIs also include zero. Their point estimates nevertheless fail the prespecified nondecrease /−.01 operational limits. Gate failure is not the same as proof of a population-level decrease.
+
+
+## 4. Frozen gate recomputation
+
+
+Several independent components of the registered joint rule fail. The final `REJECT`, retained LR.0002 and stop decision are correct. Do not retrospectively waive the count, AUROC, F1 or PD-recall criteria because BA CI is positive. No additional BH criterion is needed or added to reach this decision.
+
+
+The fixed gate uses **mean within-split SD for BA/AUROC only**, both increasing about6.1%/5.0% and staying below1.25×. Do not reject by substituting larger global seed-mean SD increases after results. Conversely, do not claim seed variability universally improved: the full six-metric table increases in both definitions.
+
+Mean three-seed classification unanimity falls .732973→.699774; mean pairwise prediction agreement falls .821982→.799849. Mean pairwise score Spearman rises .773440→.782181. Higher rank correlation and lower classification agreement can coexist; neither is a rescue metric or proof of independent generalization.
+
+
+## 7. Training adequacy and loss scope
+
+
+| Logged loss | Original2e-4 | LR1e-4 |
+|---|---:|---:|
+
+Train values are online, dropout-active; they are not checkpoint train-eval performance. At the candidate's actual last point, train loss falls relative to best in45/45 runs, while validation loss rises in43/45. Reduced loss divergence under lower LR does not establish a better joint classifier; its selected validation CE improves while AUROC does not. Zero cap hits offer no basis to rescue this candidate with more epochs or patience. No intermediate checkpoint or retrospective full EMA is claimed.
+
+
+Supported statement: **changing the existing frozen-WSSL classifier LR shifts its PD/DD operating behavior and reduces some recorded validation loss, but does not meet the pre-frozen joint retention rule.** It closes the specific LR coverage gap identified in the review.
+
+Unsupported statements: LR1e-4 is a globally better model; all WSSL hyperparameters are now optimal; imbalance/fusion is proved the sole ceiling; lower LR significantly harms AUROC; the BA/DD point estimates are externally confirmed; or the result permits another model/threshold/loss/EMA experiment.
+
+Retain original frozen WSSL-STR, classifier LR2e-4, all prior recipe/architecture/decision rules. Apply the registered stop: no extra LR value, WD compensation, new optimizer/scheduler, epoch/patience extension, differential group, EMA or combination to rescue this result. Prior failed structure/loss/sampling/augmentation/encoder-adaptation routes remain stopped. Repeated development subjects/splits and previous sequential selection limit inference; old FOE-01 information was not consulted and cannot validate this later WSSL recipe contrast.
+
+SOURCE /home/zyt/deep_final/artifacts/wssl_review_20261004/FINAL_REPORT.md SHA256 e46e50e30683dff5dd658730a65036b566c05f7bf908815a9754175deb480b44
+
+2026-10-04。**COMPLETE / REJECT LR1e-4；保留原 frozen WSSL-STR、LR2e-4。** 本轮审查现有模型及其recipe，没有增加模型结构、外部encoder、loss或augmentation，也没有读取outer performance。
+
+
+此前EMA普通参数对照已把45原WSSL训练数值轨迹、selected weights、停止epoch及完整validation predictions exact复现；本轮重新核验原source/cache/split/checkpoint/prediction/norm身份，复用该证据，**没有再训练45原baseline**。
+
+原模型真实best/last eval（Dropout关闭）：train BA .913406→.999546，validation BA .719644→.658764；train AUROC .964805→.999988，validation .759553→.745135；train主CE .239857→.013802，validation .679387→1.099845。45/45都best+12停止，0/45到max50。这支持后期过拟合，不支持由epoch cap造成的训练不足。BA-best邻域峰值受BA选择条件影响，不证明stopping rule全局最优。仅best/last权重可用，不能恢复中间checkpoint或历史完整EMA。
+
+真实recipe为FP32/AdamW lr2e-4/wd1e-4/betas(.9,.999)、batch8、cosine50/minLR1e-6、clip5、balanced CE/no smoothing、dropout(.1,.1,.2)、strict ordinary BA best/patience12。通用YAML的AMP=true被STR覆写false；OOF threshold声明不等于实际primary推理，当前为argmax/.5，OOF属于已拒绝诊断。旧本地foundation副本缺当前structured模块，本轮以服务器代码/正式资产为准。
+
+Phase2 LR/WD/loss/augmentation针对STR-only，Phase3C的低LR针对HarNet last block，不是frozen-WSSL classifier LR。因此填补这个真实覆盖缺口，不能将历史STR负结果自动归为WSSL结果。其他未比较超参数的最优性仍未知，未据此开展grid。
+
+
+固定协议 `LR_CONTROL_PROTOCOL.md` 与source/runner/analysis/launcher哈希在正式结果前冻结并Git归档。只改变classifier initial LR2e-4→1e-4，三seed42/43/44×15固定划分全部45完成，没有新reference refit。原architecture/HarNet/cache/normalization/loss/optimizer其他参数/batch/scheduler floor/threshold/max50/patience12不变，各自按同一普通BA规则选epoch。
+
+初始化旧/新构造的全部参数及训练batch logits exact；0optimizer updates。原engine一个batch/一个epoch smoke通过。单类smoke AUROC None审计边界在正式前修正并重复smoke；首轮产物保留，不删除，不改变forward/recipe/gate。正式后未修改候选或统计规则。
+
+最终45stage全部audit PASS，8核心artifact SHA齐全，full-current-source/metric/loss/config/official HarNet/cache/split guard PASS。原45checkpoint/prediction/normalization保持锁定SHA。训练正常terminal、GPU无compute进程。无EMA、encoder adaptation、outer loader或其他候选。见`analysis/final_integrity_audit.json`。
+
+
+Joint gate失败项：BA仅9/15(<10)；AUROC mean负且仅6/15；F1 mean轻微负；PD Recall drop .01743超过允许.01。通过项：BA mean/CI正，DD降幅限制、BA/AUROC within-split seedSD≤1.25reference。**REJECT**不依赖事后新增criterion。
+
+
+低LR的primary within-seed SD微升6.1%/5.0%，通过原1.25限制，不能事后用另一SD定义替换gate。Accuracy/F1/recall的其他SD也全部保存在`lr_summary.csv`。上述新LR训练loss是online Dropout-active值，不冒充train eval或量化其泛化差距；验证loss下降不证明校准最优或新疾病信息。
+
+
+这是每validation unit的平均计数，**不是独立人数或整个cohort独立被纠正人数**。表现更符合PD/DD识别trade-off；不能将其归因为特定activity、phenotype、aggregation信息损失或融合机制。本轮未启动这些mechanism/subgroup搜索。
+
+## 6. 最终回答与停止决定
+
+3. **LR确实影响class-recognition trade-off。** 降为1e-4改善BA/DD，但不满足BA/AUROC联合稳定收益，且PD下降超过限制。
+4. **保留原frozen WSSL-STR、LR2e-4。** 它是此已测试历史与joint objective下的retained best，不是全局最优性证明。
+5. **停止本次LR coefficient/WD补偿/patience/extraepoch/optimizer/scheduler扩展和与EMA等候选组合。** 不自动训练新模型，不重新打开已停止readout/attention/gating/adapter/domain/frequency/invariance/loss/sampling/augmentation/information-preservation路线。
+6. 下一个有效工作是整理现有论文方法/实验与规划真正独立的验证；本轮没有足够联合证据支持继续扩大训练或机制模块搜索。
+
+新增独立六个脚本：`test_preprocessing_contract.py`、`audit_assets_normalization.py`、`test_fusion_properties.py`、`run_lr_control.py`、`launch_lr_matrix.py`、`analyze_lr_control.py`。分项审查/协议/smoke/本报告与小型aggregate CSV/JSON均独立归档。原formal source/code/calculation/checkpoints/results不修改。数据、HarNet/cache、权重、individual predictions/labels、raw logs不上传Git。
+
+
+SOURCE /home/zyt/deep_final/artifacts/wssl_review_20261004/AUDIT_REPORT.md SHA256 e79e0b35633db7e0e5f07b30ea918c9fb2926f4b12f6fc32e8dbe110876ee494
+
+三个seed先在各split聚合，再对15个fixed development splits等权汇总。此前EMA同轨迹45次普通训练的数值日志、最佳权重、停止轮数和完整validation predictions均exact复现；本轮重新核验对应正式资产SHA和ID/label。无需为审查再次重复45次原recipe训练。旧本地 `code/MFAM-pure-deep/foundation_validation` 是不含当前structured模块的旧副本，本轮以服务器和 `current_source/` 快照核验。
+
+
+有限cache和ID契约仍必要：同形状但错subject的SSL张量不能由shape check识别；NaN乘mask不能清除NaN。当前cache全部finite、ID查找/重排正确，不据此增加网络模块。固定residual本身是否全局最优无法由正确性测试证明；已失败的gate/adapter/last-block/domain/readout路线继续关闭。
+
+
+已有真实best/last eval及45份日志：best epoch2–24，停止epoch14–36，45/45均best+12，0/45达到max50。
+
+
+这支持后期过拟合，不支持“因为epoch cap训练不足”。Dropout-active online train CE .291046与best eval CE .239857分开解释。最佳点按BA选中，因此邻域BA峰值是选择条件，不证明停止规则最优。仅best/last权重可用，中间日志不等于中间checkpoint或可恢复历史EMA。
+
+- 通用base YAML写AMP=true，但STR扩展配置/真实checkpoint为false；无实际冲突。
+- 通用threshold source写inner_oof_only，但当前inner inference执行固定argmax/.5；OOF阈值仅属于已拒绝Phase3C诊断。报告按实际执行规则记录，不修改历史配置。
+- Phase2的LR/WD/loss/sampling/augmentation全部针对STR-only。Phase3C的2e-5只用于HarNet last block，不是frozen WSSL分类器LR对照。Phase3D/3E/4/EMA沿用2e-4。因此不能据STR负结果声称当前WSSL recipe已接近全局最优。
+- 历史完整矩阵审计见`HISTORICAL_MATRIX_AUDIT.csv/json`；引用baseline在不同报告中重复出现是复用，不能算独立重现。Phase2数值gate有事后明确的时间限制，不改写成全程预注册。
+
+
+在当前用户授权的“审查后测试”范围，只检验现有frozen WSSL分类器初始LR **2e-4 vs预先固定1e-4**。这填补target-specific覆盖缺口，没有证据预设会提高。保留网络、外部encoder、输入、归一化、loss、batch、scheduler形式/最低LR、阈值与BA选择/停止规则；不同时改变其他变量，不加EMA、不重开loss/augmentation/模块。固定协议与gate须先冻结再训练；正式结果写独立目录，旧baseline仍冻结。若失败停止该LR对照，不追加LR系数或patience补救。
+
+
+45runs不是45独立样本，15split共享subjects；bootstrap/paired检验只描述重复development稳健性，不是独立外部验证。已有多轮相同development选择存在selection optimism。本轮不使用FOE01、历史隔离outer、H1或diagnostic probes制定规则。当前最佳是已测试候选中的retained best，不能宣称找到全局最优预处理、融合或training recipe。
+
+SOURCE /home/zyt/deep_final/artifacts/wssl_review_20261004/SMOKE_REPORT.md SHA256 00dc0ad295bd34bfc4a5c44b1c4bcdef74a5181e91115060373b1a4461c372ce
+# Single existing-WSSL LR control — entry gate PASS
+
+2026-10-04. No formal candidate training/result exists at this milestone. Original frozen WSSL stays retained. No outer performance/data loader, EMA, encoder adaptation or architecture change.
+
+- Initialization check: seed42, original2e-4 constructor versus new independent-interface1e-4 config, all initial state tensors exact; logits exact on eight inner-training subjects, zero optimizer updates. Python/NumPy/CPU/CUDA RNG restored.
+- Original engine candidate smoke: one optimizer batch, one validation batch, oneepoch, context0/inner0/seed42. Checkpoint load, fixed argmax, split/labels/normalization, onlyLR config diff, checkpoint hash/metrics and BA selection all PASS. Smoke performance is not evidence for retaining/rejecting1e-4 and is not included in the formal matrix.
+- First smoke also passed; read-only code review identified a generic single-class-batch AUROC None comparison edge. Audit now treats two None values as consistent, and mismatched availability as failure. Prior smoke preserved at `smoke_lr_preformal_v1/...`, no deletion. The revised identical smoke passed; no forward, recipe, result-selection or gate changes.
+- Independent statistical review confirms full45matrix/15seed-first bootstrap/BH/gate/error aggregation. Before formal results, freeze was broadened to all current foundation source (including actual metrics/loss modules); analysis asserts all eight candidate artifact hashes and adds best/last classification losses. No endpoint/gate/architecture changes.
+
+
+Protocol `LR_CONTROL_PROTOCOL.md`, hashed inputs/scripts `analysis/lr_control_lock.json`. One new LR1e-4 candidate, all45stages, source architecture/HarNet/normalization/optimizer/loss/batch/scheduler/threshold/stopping rules retained. Each configuration uses original ordinary BA selection independently. Reference uses45locked Phase3B outputs already exact-reproduced by ordinary EMA runs. Sequential launcher cannot choose a configuration or add a candidate.
+
+Code/report/protocol/small aggregate audits are committed/pushed/tagged before formal execution. Checkpoints, raw logs, caches, signals and per-subject prediction/label tables are excluded. Results are development-only. Prior FOE01 and quarantined outer information are not used.
+
+
+SOURCE /home/zyt/deep_final/artifacts/wssl_review_20261004/analysis/lr_decision.json SHA256 25c2e992bb91c19b5550b0574a5343091af9b2bc4ccf24f13cda489e5e2e49ec
+  "overlapping_splits": "Descriptive repeated-development robustness, not independent external inference",
+  "gate": {
+    "ba_mean_positive": true,
+  },
+  "decision": "REJECT",
+  "retained_learning_rate": 0.0002,
+  "outer_access": false,
+  "no_other_candidate": true,
+  "training_loss_scope": "Online dropout-active; not eval-mode train performance",
+  "protocol_sha256": "fabb1b2d5dc3dfc6832911520749bfc70b944084cc60af99643a53de4c97502b",
+
+SOURCE /home/zyt/deep_final/artifacts/wssl_review_20261004/analysis/final_integrity_audit.json SHA256 7cab4da19b2e24478fe9588198d44c6ffe11a15870e74929c8542a13f8a96d6a

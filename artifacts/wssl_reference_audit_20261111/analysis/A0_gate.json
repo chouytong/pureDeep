@@ -1,0 +1,22 @@
+{
+  "status": "AUDIT_COMPLETE",
+  "gate": {
+    "a_batch_ratio_path": true,
+    "b_explicit_historical_global_risk_target_confirmed": false,
+    "c_train_only_difference_reproduced": true,
+    "d_same_historical_denominator_control_absent": true,
+    "e_correctness_assets_pass": false
+  },
+  "training_allowed": false,
+  "new_deep_training_runs": 0,
+  "b_status": "NOT_CONFIRMED: inverse-frequency weights do not establish a historical global-denominator objective",
+  "documentary_hits": [],
+  "torch_version": "2.8.0+cu128",
+  "pytorch_documentation": "https://docs.pytorch.org/docs/2.8/generated/torch.nn.CrossEntropyLoss.html",
+  "runtime_loss_source": "/home/zyt/deep_final/mainline/src/losses/mfam_loss.py",
+  "runtime_epoch_aggregation_source": "/home/zyt/deep_final/mainline/src/engine/runner.py",
+  "default_weighted_mean_is_not_a_bug": true,
+  "within_batch_relative_class_weights_unchanged": true,
+  "DD_error_causation_proven": false,
+  "optimizer_updates": 0
+}

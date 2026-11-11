@@ -1,0 +1,179 @@
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/ITEM08_REPORT.md SHA256 65a5058f8275d1efa73a59fb5db9d7ef1ff2a81f87553e0e2599dd92d5c5b992
+
+Decision: **SKIP: no candidate passed the preregistered retention gate**. Items03/04/05/07 each completed 45 runs and were rejected. Existing frozen WSSL remains retained.
+
+
+Selected epochs, split SD, seed SD, prediction agreement and paired differences were already reported for every tested variant. There is no retained candidate to freeze for an additional stopping-epoch/split sensitivity study. Original early-stopping rule remains unchanged. No train-internal rule replacement, baseline refit, extra checkpoint selection or hyperparameter search was performed. The condition is explicitly resolved as skipped, not presented as a successful candidate review. Same-subject repeated development results are not external validation.
+
+The final metric/delta table is in FINAL_REPORT.md and analysis/study_final_summary.csv. All new candidates rejected; keep original WSSL. No follow-on experiment is automatically authorized.
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/ITEM04_REPORT.md SHA256 ea7897ca410b3d8cc8067a3f88996a8b08fc77f8562277ac54d23f714390ccdb
+
+Decision: **REJECT** under the preregistered gate. All 45 development stages completed; baseline source/checkpoint/prediction/normalization hashes remain unchanged. No outer evaluation.
+
+Files: scripts/window_hooks.py, run_inner.py, run_matrix.py, test_branch.py, analyze_variant.py and finalize_item.py; analysis/a2_delta_* aggregate CSV/JSON and this report. Historical model code stays unchanged. Checkpoints, caches and per-subject predictions are server-only.
+
+Tests: all 45 baseline checkpoints retain exactly unchanged logits at zero initialization; real inner-train batch [8,11,2,6,2000]; invalid-window/wrist/activity isolation; finite nonzero output gradients; hidden gradient zero initially and nonzero after output update; two single-batch updates; exact checkpoint reload. Formal one-epoch/one-batch smoke passed with original train-only normalization SHA. All final checkpoint weights are finite and learned output branches are nonzero. Smoke performance did not enter retention.
+
+|---|---:|---:|---:|---:|---:|---:|
+| baseline | 0.745604 | 0.719644 | 0.759553 | 0.706589 | 0.782344 | 0.656945 |
+| a1_mean | 0.744948 | 0.720714 | 0.761608 | 0.706817 | 0.779316 | 0.662111 |
+|---|---|---:|---:|---|---:|---:|
+| baseline | accuracy | -0.004299 | 6 | [-0.013884, +0.004440] | -0.227 | — |
+| baseline | ba | -0.001545 | 7 | [-0.004214, +0.000836] | -0.295 | 0.6271 |
+| baseline | auroc | +0.002950 | 10 | [-0.001513, +0.007195] | +0.329 | 0.3752 |
+| baseline | macro_f1 | -0.003069 | 6 | [-0.009500, +0.002672] | -0.247 | — |
+| baseline | pd_recall | -0.008207 | 7 | [-0.030207, +0.012621] | -0.186 | — |
+| baseline | dd_recall | +0.005117 | 7 | [-0.015883, +0.026289] | +0.117 | — |
+| a1_mean | accuracy | -0.003643 | 4 | [-0.010241, +0.003182] | -0.267 | — |
+| a2_delta | 0.006237 | 0.000670 | 0.018435 | 0.023251 | 0.813594 | 10 |
+| baseline | 0.006714 | 0.001812 | 0.021603 | 0.021741 | 0.821982 | 10 |
+
+Gate results: ba_mean_positive=False, ba_improved_10_of_15=False, ba_ci_low_positive=False, auroc_mean_positive=True, auroc_improved_10_of_15=True, macro_f1_non_decrease=False, pd_recall_drop_at_most_001=True, dd_recall_drop_at_most_001=True, ba_within_split_seed_sd_at_most_125x=True, auroc_within_split_seed_sd_at_most_125x=True.
+
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/ITEM05_REPORT.md SHA256 cae022be7965abf91d5339f36065df7c05cd826f51b60f309ac4df0d0a34b168
+
+Decision: **REJECT** under the original preregistered gate; 45/45 complete. Frozen baseline hashes remain unchanged. No outer evaluation.
+
+Files: scripts/prepare_raw_acc.py, raw_acc_hooks.py, run_raw_inner.py, test_raw_acc.py, finalize_raw_item.py; extensions to run_matrix.py/analyze_variant.py; analysis/b1_raw_* aggregate results. Server-only raw arrays are under features/raw_acc and excluded from Git, along with checkpoints/predictions.
+
+|---|---:|---:|---:|---:|---:|---:|
+| baseline | 0.745604 | 0.719644 | 0.759553 | 0.706589 | 0.782344 | 0.656945 |
+| b1_raw | 0.753274 | 0.717325 | 0.756623 | 0.709342 | 0.803990 | 0.630659 |
+| b1_raw | 0.004872 | 0.001414 | 0.020192 | 0.020876 | 0.801521 | 11 |
+| baseline | 0.006714 | 0.001812 | 0.021603 | 0.021741 | 0.821982 | 10 |
+
+Gate: ba_mean_positive=False, ba_improved_10_of_15=False, ba_ci_low_positive=False, auroc_mean_positive=False, auroc_improved_10_of_15=False, macro_f1_non_decrease=True, pd_recall_drop_at_most_001=True, dd_recall_drop_at_most_001=False, ba_within_split_seed_sd_at_most_125x=True, auroc_within_split_seed_sd_at_most_125x=True.
+
+Three seeds aggregate within each of 15 overlapping splits. Bootstrap intervals/BH/effect sizes are repeated-development robustness, not independent external evidence. Recall allowance 0.01 unchanged. No input/loss/hyperparameter combinations or filter search. Next numbered item is current frozen WSSL error analysis, using independent subjects and verified subtype metadata.
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/ITEM02_REPORT.md SHA256 88226f23501206076146b6b43478e8f45ace6debe1bb641dddfccf4c842047d4
+
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/FINAL_REPORT.md SHA256 0ee0fcdcd7e7d96b8645b5fd541acbd7c81100f8c009f882ed967bbbdc308445
+
+**Retained configuration: original frozen WSSL-STR.** Verified/reused 45 baseline stages; four independent 45-run studies (180 newly trained runs), all rejected by registered gates. Item06 updated current WSSL errors and enabled the one fixed C1 test; item08 skipped because no candidate was retained. No candidate stacking, dimensions/weights/threshold/recipe search or outer information use.
+
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| baseline | 0.745604 | 0.719644 | 0.759553 | 0.706589 | 0.782344 | 0.656945 | +0.000000 | +0.000000 | RETAIN existing frozen WSSL |
+| a1_mean | 0.744948 | 0.720714 | 0.761608 | 0.706817 | 0.779316 | 0.662111 | +0.001069 | +0.002054 | REJECT |
+| a2_delta | 0.741305 | 0.718099 | 0.762503 | 0.703521 | 0.774137 | 0.662062 | -0.001545 | +0.002950 | REJECT |
+| b1_raw | 0.753274 | 0.717325 | 0.756623 | 0.709342 | 0.803990 | 0.630659 | -0.002320 | -0.002930 | REJECT |
+| c1_dd_aux | 0.742770 | 0.718603 | 0.762054 | 0.704038 | 0.777107 | 0.660099 | -0.001041 | +0.002500 | REJECT |
+
+2. True front/back windows and masks preserved. Mean cache and same-input logits exactly equal for all 45 frozen checkpoints; no fake second window for short records.
+3. A1 mean branch: small BA/AUROC mean gain, BA improvement only 8/15, BA CI crosses zero; reject.
+4. A2 delta branch: BA and Macro-F1 decrease; no simultaneous BA/AUROC advantage over matched A1; reject. Both use same initialization/norm/masks; only Entrainment/Relaxed/RelaxedTask actually have double windows.
+5. Raw local Acc: Accuracy/PD recall increase, BA/AUROC decrease, DD recall decreases .026286 (CI −.049631 to −.003442), above allowed .01 drop; reject. Gyro/SSL/lengths unchanged.
+6. Fresh WSSL independent-subject summary: primary stable errors PD14/DD24. Verified source categories Other60/ET28/Atypical15/MS11. Other–ET exploratory consensus recall difference passes six-pair BH q=.029499 and subject-bootstrap CI. Strict seed unanimity is sensitivity only. No errors removed or validation-informed sampling.
+7. C1 source-category auxiliary weight .1: BA/F1 decrease; AUROC increase lacks stable support/required count. DD-only loss, no PD auxiliary update, no validation/inference subtype labels; reject. Broad source categories are not granular adjudicated clinical subtype labels.
+8. Conditional review skipped: no retained new candidate; stopping rule unchanged.
+
+All implementations passed applicable shape/mask/gradient/checkpoint-reload/single-batch tests and formal smoke before full runs. Classifier-side trainable parameters: baseline 143,172; A1/A2 151,948; raw Acc 143,172; C1 144,208 (auxiliary head unused at inference). Official HarNet10 stays frozen at 10,457,408. Selected epoch/seed/split SD/agreement, paired bootstrap intervals/counts/effect sizes/BH are in each numbered report and aggregate CSV.
+
+Original source/checkpoint/cache/normalization/prediction/split hashes verified unchanged at closure. Public Git contains source/configs/reports/aggregate metrics; datasets, raw arrays, feature caches, weights, per-subject predictions and labels stay on server. Each numbered item is individually committed/pushed/tagged; item08 final closure publishing follows this record.
+
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/ITEM03_REPORT.md SHA256 e5ef2b201fd17e8c09ba23be9894ddabe5215e4768fbddf7eb85aefdb8d2b467
+
+Decision: **REJECT** under the preregistered gate. All 45 development stages completed; baseline source/checkpoint/prediction/normalization hashes remain unchanged. No outer evaluation.
+
+Files: scripts/window_hooks.py, run_inner.py, run_matrix.py, test_branch.py, analyze_variant.py and finalize_item.py; analysis/a1_mean_* aggregate CSV/JSON and this report. Historical model code stays unchanged. Checkpoints, caches and per-subject predictions are server-only.
+
+Tests: all 45 baseline checkpoints retain exactly unchanged logits at zero initialization; real inner-train batch [8,11,2,6,2000]; invalid-window/wrist/activity isolation; finite nonzero output gradients; hidden gradient zero initially and nonzero after output update; two single-batch updates; exact checkpoint reload. Formal one-epoch/one-batch smoke passed with original train-only normalization SHA. All final checkpoint weights are finite and learned output branches are nonzero. Smoke performance did not enter retention.
+
+|---|---:|---:|---:|---:|---:|---:|
+| baseline | 0.745604 | 0.719644 | 0.759553 | 0.706589 | 0.782344 | 0.656945 |
+| a1_mean | 0.744948 | 0.720714 | 0.761608 | 0.706817 | 0.779316 | 0.662111 |
+|---|---|---:|---:|---|---:|---:|
+| baseline | accuracy | -0.000656 | 8 | [-0.006701, +0.004270] | -0.059 | — |
+| baseline | ba | +0.001069 | 8 | [-0.001282, +0.003377] | +0.224 | 0.3305 |
+| baseline | auroc | +0.002054 | 11 | [-0.000620, +0.004804] | +0.369 | 0.3111 |
+| baseline | macro_f1 | +0.000228 | 8 | [-0.003974, +0.003522] | +0.030 | — |
+| baseline | pd_recall | -0.003028 | 8 | [-0.016953, +0.009700] | -0.111 | — |
+| baseline | dd_recall | +0.005166 | 5 | [-0.009553, +0.020089] | +0.169 | — |
+
+| a1_mean | 0.004687 | 0.004630 | 0.018568 | 0.022587 | 0.827181 | 10 |
+| baseline | 0.006714 | 0.001812 | 0.021603 | 0.021741 | 0.821982 | 10 |
+
+Gate results: ba_mean_positive=True, ba_improved_10_of_15=False, ba_ci_low_positive=False, auroc_mean_positive=True, auroc_improved_10_of_15=True, macro_f1_non_decrease=True, pd_recall_drop_at_most_001=True, dd_recall_drop_at_most_001=True, ba_within_split_seed_sd_at_most_125x=True, auroc_within_split_seed_sd_at_most_125x=True.
+
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/ITEM01_REPORT.md SHA256 b97320dbaae139949f3d0589be51097a74d588fd029ec69d2ef4b9812ac1636d
+
+Latest Phase-3B–E formal retained baseline is frozen HarNet10 WSSL-STR. Earlier V8/STR-only summaries are historical and do not define the current baseline. Original checkpoint/cache/prediction files were not changed.
+
+| accuracy | 0.745604 | 0.041218 | 0.008650 | 0.031205 |
+| ba | 0.719644 | 0.034563 | 0.006714 | 0.021603 |
+| auroc | 0.759553 | 0.043921 | 0.001812 | 0.021741 |
+
+Median selected epoch 10; median epochs executed 22. Mean selected-epoch train loss 0.291046; validation loss 0.679387. Classifier trainable parameters 143,172; frozen HarNet10 10,457,408. Threshold: DD probability >0.5, tie PD (original argmax). All metric deltas from archived WSSL baseline are zero to 1e-12.
+
+Files: PROTOCOL.md, scripts/audit_baseline.py, analysis/baseline_lock.json, baseline_seed_split_metrics.csv, baseline_15split_seedfirst.csv and baseline_summary.csv. Public artifacts contain aggregate rows and hashes only; weights/features/predictions stay on server. New retention criteria are registered in PROTOCOL.md before candidate results.
+
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/ITEM06_REPORT.md SHA256 21d59b4ff7839d52e1f5fd5a4f9f5a73b38bc70d29deee27ddf465820eb1249b
+
+Files: ERROR_ANALYSIS_PROTOCOL.md, scripts/analyze_wssl_errors.py, analysis/wssl_* aggregate CSV/JSON; private predictions/wssl_subject_error_summary.csv and features/dd_source_category_labels.json remain server-only. Shape/mask/reload/gradient tests for frozen WSSL were already verified in items01–02; this read-only diagnosis fits no model.
+
+
+Independent subject aggregation avoids counting 12 repeated predictions as 12 subjects. These subjects and fitted models overlap across development contexts, so subtype Fisher/BH and bootstrap results are exploratory repeated-development evidence, not external confirmation. Category N 11/15 is small. C1 eligibility follows the registered source-label/N/BH/CI gate; one weight .1, all four source categories if eligible, DD train labels only. No label or weight search.
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/ITEM07_REPORT.md SHA256 9b4a104c12787e6bbe0321ee0ed149955e05b590f9f05d4889593f49ac2063b6
+
+Decision: **REJECT** under the original preregistered gate; 45/45 complete. Original baseline hashes unchanged. No outer evaluation.
+
+Files: C1_PROTOCOL.md, scripts/dd_aux_hooks.py, run_aux_inner.py, test_dd_aux.py, finalize_aux_item.py; run_matrix.py/analyze_variant.py extensions; analysis/c1_dd_aux_* aggregate results. Per-subject labels/predictions/checkpoints stay on server and are excluded from Git.
+
+
+Original WSSL paths/inputs/normalization and balanced CE unchanged. Training auxiliary Linear(258,4) taps original subject embedding: 1,036 added parameters, total 144,208 trainable. Loss is original main CE + .1×unweighted subtype CE on DD training samples in each batch. PD-only batch has no auxiliary loss, gradient or optimizer update. Validation and inference have no subtype targets/output/loss; the original PD/DD decision is unchanged. Frozen HarNet cache unchanged. No A1/A2/B1 combination.
+
+Tests: exact original inference for all 45 frozen baseline checkpoints; real [8,11,2,6,2000] input and [8,4] training auxiliary logits; DD auxiliary/local gradients finite nonzero, PD-only auxiliary gradient absent and weights unchanged, invalid masks isolated; single-batch update; exact checkpoint reload with empty training-ID/label sets; zero validation auxiliary loss. Formal smoke passed before full training. All final checkpoints finite, correctly dimensioned, and every validation epoch has auxiliary loss 0.
+
+|---|---:|---:|---:|---:|---:|---:|
+| baseline | 0.745604 | 0.719644 | 0.759553 | 0.706589 | 0.782344 | 0.656945 |
+| c1_dd_aux | 0.742770 | 0.718603 | 0.762054 | 0.704038 | 0.777107 | 0.660099 |
+|---|---:|---:|---:|---:|---:|---:|
+| baseline | 0.006714 | 0.001812 | 0.021603 | 0.021741 | 0.821982 | 10 |
+| c1_dd_aux | 0.004516 | 0.004531 | 0.018365 | 0.023214 | 0.817376 | 10 |
+
+Gate: ba_mean_positive=False, ba_improved_10_of_15=False, ba_ci_low_positive=False, auroc_mean_positive=True, auroc_improved_10_of_15=False, macro_f1_non_decrease=False, pd_recall_drop_at_most_001=True, dd_recall_drop_at_most_001=True, ba_within_split_seed_sd_at_most_125x=True, auroc_within_split_seed_sd_at_most_125x=True.
+
+Three seeds aggregate within each of 15 overlapping splits; statistical intervals/BH/effect sizes are repeated-development evidence, not external confirmation. All permitted average recall drops stay .01. No hyperparameter/threshold adjustment after results. Item08 applies only if a candidate passes the existing retention gate.
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/analysis/c1_dd_aux_decision.json SHA256 ef30b9ab3ad8ba8dd076be5fd1286f63c47519d1b2941be981607529c8632549
+  "overlapping_split_inference": "repeated-development descriptive robustness only",
+  "gate": {
+    "ba_mean_positive": false,
+  },
+  "decision": "REJECT",
+  "parameters": 144208,
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/analysis/wssl_error_analysis_decision.json SHA256 51caf51342f414a4daea5b05180f0bd596d9289602bfe93a76028ea1ded4e051
+
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/analysis/a1_mean_decision.json SHA256 9fa653542ccea69b0248e40448d5aab8ff6e6fa5fd32d5ad9043ca411b1d11c6
+  "overlapping_split_inference": "repeated-development descriptive robustness only",
+  "gate": {
+    "ba_mean_positive": true,
+  },
+  "decision": "REJECT",
+  "parameters": 151948,
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/analysis/b1_raw_decision.json SHA256 bae31a65109ddb148ed7645f21c579bd3a5b0b74cbdec6e4cf592d12815ffe7c
+  "overlapping_split_inference": "repeated-development descriptive robustness only",
+  "gate": {
+    "ba_mean_positive": false,
+  },
+  "decision": "REJECT",
+  "parameters": 143172,
+
+SOURCE /home/zyt/deep_final/artifacts/phase4_window_dynamics_20261002/analysis/a2_delta_decision.json SHA256 5e23001c8456390daeac5f81eb56579eeb877bafff255e1bcfd36748a1c4bc09
+  "overlapping_split_inference": "repeated-development descriptive robustness only",
+  "gate": {
+    "ba_mean_positive": false,
+  },
+  "decision": "REJECT",
+  "parameters": 151948,

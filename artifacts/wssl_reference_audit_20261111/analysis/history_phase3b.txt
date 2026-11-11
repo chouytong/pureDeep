@@ -1,0 +1,21 @@
+
+SOURCE /home/zyt/deep_final/artifacts/phase3b_external_ssl_20260928/PHASE3B_REPORT.md SHA256 ee05278fb6f90afd05112fc60440dcb229848da7fe8058186ba9bc054547c438
+
+PADS original wrist Acc XYZ is in g at 100 Hz. It was read from raw timeseries, not the STR L1-detrended, six-channel, train-normalized input. After the fixed first-48-sample trim, raw Acc was clipped to ±3g and anti-alias resampled by polyphase 3/10. A 2000-sample record used fixed first/last 10-second windows (two feature vectors averaged); a 976-sample record was edge-padded 12 samples per side (one window). No label, validation result or fold statistic selected a window or transformed the frozen cache. Acc-only SSL and Acc+Gyro STR paths retained the same subject → ordered 11 activities → left/right wrist mapping.
+
+|---|---:|---:|---:|---:|---:|---:|
+| Original STR-01 | 0.7307 | 0.6972 | 0.7176 | 0.6861 | 0.7779 | 0.6165 |
+| A: pretrained SSL-only | 0.7348 | 0.6949 | 0.7300 | 0.6865 | 0.7911 | 0.5987 |
+| B: STR + pretrained-frozen SSL | **0.7456** | **0.7196** | **0.7596** | **0.7066** | **0.7823** | **0.6569** |
+| C: STR + random-frozen SSL | 0.7272 | 0.6862 | 0.7089 | 0.6781 | 0.7850 | 0.5874 |
+
+A achieved AUROC >0.5 in all 15 splits (range 0.6712–0.7980), indicating transferable PD/DD signal in the frozen external representation. Relative to STR, A's BA difference −0.0023 (6/15 positive; 95% CI [−0.0129,+0.0095]) and AUROC difference +0.0123 (9/15; [−0.0006,+0.0257]) were unstable; its DD Recall fell −0.0179. It is a feasibility result, not a retained classifier. There is no random SSL-only comparator, so its standalone signal cannot by itself isolate pretraining from all architectural effects.
+
+
+B versus equal-capacity C: BA **+0.0334** (14/15; [+0.0222,+0.0449], dz 1.442, primary BH q=0.0005), AUROC **+0.0506** (15/15; [+0.0366,+0.0652], dz 1.718, q=0.0002), Macro-F1 +0.0285, DD Recall +0.0695. C itself was below original STR on BA (−0.0110; 4/15 positive) and AUROC (−0.0087; 4/15). Thus the benefit is not explained by residual insertion or extra trainable projection capacity alone; the fixed pretrained representation contributes. This is a controlled attribution within the current PADS development design, not causal proof of which external pretraining factor matters.
+
+
+For a separate inference-level comparison, each model's three DD probabilities were averaged by subject ID before computing validation metrics; no threshold was tuned. The original STR E2 ensemble AUROC **0.7586** was exactly reproduced. A/B/C ensemble AUROC was **0.7414/0.7816/0.7389**; B's ensemble Accuracy/BA/Macro-F1/PD Recall/DD Recall was **0.7573/0.7200/0.7141/0.8100/0.6301**. B ensemble minus original STR ensemble AUROC was **+0.0230** (8/15 positive; bootstrap 95% CI [+0.0044,+0.0420]); BA difference +0.0202 had CI [−0.0029,+0.0438]. Ensemble AUROC adds another +0.0221 relative to B single-model seed-first AUROC 0.7596, but these are different estimands; the primary retention gate uses single-model seed-first results. B's single-model AUROC itself approximately matches the prior E2 ensemble 0.7586, while maintaining higher DD Recall than the prior E2 0.5816.
+
+
+The preregistered frozen-transfer gate is **PASS**: B exceeds both original STR and C in BA and AUROC with positive means, ≥10/15 improving splits and bootstrap lower bounds >0 for all four primary comparisons; Macro-F1 and DD Recall rise, PD Recall does not materially fall, and BA/AUROC seed SD decreases. The BH adjustment covers the eight prespecified BA/AUROC paired comparisons (A/B/C vs baseline and B vs C); secondary claims are descriptive. Subjects, 45 seed-runs, 10,920 windows and PD–DD pairs were not treated as independent statistical units. Split bootstrap CIs summarize the repeated development scheme; the 15 splits share PADS subjects and are not an independent external cohort.

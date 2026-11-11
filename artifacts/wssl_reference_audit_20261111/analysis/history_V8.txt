@@ -1,0 +1,32 @@
+
+SOURCE /home/zyt/deep_final/reports/V13_RELATIVE_ENERGY_DECISION.md SHA256 1b8cc6ce2e0bdac4a447781592da391b2ffea75af5bb5f7423cc60f315877195
+The seed-42 discovery run used the same 15 development folds and downstream
+training protocol as V8. Its preregistered replication gate required a BA gain of
+at least 0.01, at least 9/15 paired-fold wins, no material AUROC regression and no
+
+Decision: reject V13 and stop this direction. Seeds 43/44 are not run, and filter
+count, kernel size and initialization frequencies are not tuned on the development
+
+SOURCE /home/zyt/deep_final/reports/V12_MASKED_PRETRAIN_DECISION.md SHA256 bd903756b00e6c504275ed01d5c6272ab1f9d7957df9be4dc8e4469a904c0c3a
+inner fold's training subjects improves the unchanged V8 downstream classifier.
+The downstream architecture, supervised loss, optimizer settings, split and
+seed are identical to V8 seed 42.
+
+## Preregistered gate
+
+
+Reject V12 as the new candidate. It fails both the minimum BA gain and paired-fold
+win gates. Do not run seeds 43/44, tune mask ratio/span length, or report isolated
+0.72-0.73 folds as evidence of success. V8 remains the selected pure-deep model;
+V12 is retained as a fully logged negative result.
+
+SOURCE /home/zyt/deep_final/reports/PURE_DEEP_RESEARCH_FINAL_REPORT.md SHA256 9247dbab0a74836740bbbb0bbd55ecc75d92a56dba7fff82b44dc986afbddd27
+Fold-specific thresholds and epoch counts were chosen only from the corresponding
+outer fold's inner OOF predictions. Outer-test data were loaded only after final
+training was fixed.
+and 0.5455 (mean 0.6112, population SD 0.0407). Default threshold 0.5 gives
+pooled BA 0.6134, so inner-OOF threshold selection does not improve the final
+estimate.
+- activity dropout, sensor-separated stems and wrist rotation did not pass the
+  retention gate;
+- an end-to-end full-spectrum branch regressed;

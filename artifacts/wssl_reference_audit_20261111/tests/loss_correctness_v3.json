@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "single_PD",
+      "batch_size": 8,
+      "weighted_mean": 0.7981388693815917,
+      "fixed": 0.5586972085671142,
+      "gradient_scale": 0.7,
+      "soft_label_formula_separate": true
+    },
+    {
+      "case": "single_DD",
+      "batch_size": 8,
+      "weighted_mean": 0.5981388693815919,
+      "fixed": 1.0467430214177857,
+      "gradient_scale": 1.75,
+      "soft_label_formula_separate": true
+    },
+    {
+      "case": "batch1",
+      "batch_size": 1,
+      "weighted_mean": 0.048587351573741965,
+      "fixed": 0.08502786525404844,
+      "gradient_scale": 1.75,
+      "soft_label_formula_separate": true
+    },
+    {
+      "case": "balanced",
+      "batch_size": 8,
+      "weighted_mean": 0.6552817265244489,
+      "fixed": 0.80272011499245,
+      "gradient_scale": 1.225,
+      "soft_label_formula_separate": true
+    },
+    {
+      "case": "last_small",
+      "batch_size": 3,
+      "weighted_mean": 0.7041546171525522,
+      "fixed": 0.73936234801018,
+      "gradient_scale": 1.05,
+      "soft_label_formula_separate": true
+    },
+    {
+      "case": "unweighted",
+      "batch_size": 3,
+      "weighted_mean": 0.6374879504858857,
+      "fixed": 0.6374879504858857,
+      "gradient_scale": 1.0,
+      "soft_label_formula_separate": true
+    }
+  ],
+  "autograd_double_absolute_tolerance": 1e-12,
+  "actual_FP32_relative_gradient_tolerance": 2e-05
+}

@@ -1,0 +1,23 @@
+{
+  "original_cudnn_allow_tf32": true,
+  "original_matmul_allow_tf32": false,
+  "cases": [
+    {
+      "cudnn_allow_tf32": true,
+      "ratio": 0.8314589262008667,
+      "gradient_relative_error": 5.1843808250851e-06,
+      "norm_a": 8.43061351776123,
+      "norm_b": 7.009708881378174,
+      "cosine": 0.9999998807907104
+    },
+    {
+      "cudnn_allow_tf32": false,
+      "ratio": 0.8314589262008667,
+      "gradient_relative_error": 1.5254278196152882e-07,
+      "norm_a": 8.430535316467285,
+      "norm_b": 7.0096435546875,
+      "cosine": 1.0
+    }
+  ],
+  "formal_training_settings_changed": false
+}

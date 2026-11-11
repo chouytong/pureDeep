@@ -1,0 +1,24 @@
+
+SOURCE /home/zyt/deep_final/artifacts/patch_str_recheck_20261111/RECHECK_REPORT.md SHA256 bbd57429bc3c545a1e23caeb7a2c68570e3aa89d4fae5b8b2172be9ce4fb0c81
+
+**结论：REJECT。** 服务器已于 2026-10-08 完成与本次要求相同的固定 200/100 Patch-STR 实验。本次重新执行服务器端验证与统计，结果与归档一致；没有将旧训练冒充新训练，也没有重复启动正式训练。
+
+| Trained candidate inference | P1/P2 全部 90 个正式 best checkpoint 严格加载并全 validation 推理，逐 subject 在服务器内对齐概率、标签、预测和六指标 | PASS，最大概率差 1.11×10⁻¹⁶ |
+| Paired analysis | 原冻结分析代码重新审计 90 个候选 run，重算 135 行指标、seed-first 15 单元、全部配对统计与保留判定；输出在内存中与归档逐项比较 | PASS，仍为 REJECT |
+
+
+已核对历史 Frequency-Prior 的 REJECT、gyro rFFT 与 long-dilation 停止记录、Phase2 16 个单因素训练/augmentation 对照。总体 retained best 仍是原 Frozen WSSL-STR（BA 0.719644、AUROC 0.759553），activity scaling 为 INCONCLUSIVE、不保留。本实验仍只比较 STR，不叠加 WSSL 或 Frequency。
+
+
+三条件均在 best 后出现 validation CE 上升和 BA 下降；没有证据表明 patch 消除了后期退化。没有更改 max epochs 或 patience。online train loss/BA 包含 dropout，不能据此计算 eval-mode 泛化 gap。完整逐 seed 六指标、全部稳定性指标、best/last 轨迹及同 seed 跨模型一致性见原完整报告。
+
+## Q1–Q4 与停止决定
+
+2. **Q2：显式 patch order 是否提供额外价值？** P2−P1 未建立稳定增量；只有 5/15 胜、10/15 负。P2 同时增加顺序卷积、attention pooling 和 321 参数，本身也不是纯 order/capacity 因果对照。
+3. **Q3：是否正式保留？** **REJECT**。冻结规则重算未变；P2−P0 BA 非正、胜数不足、CI 跨 0、主要 BH 不通过，F1 亦未满足严格非下降。拒绝保留不等于统计证明有害。
+4. **Q4：失败属于哪种？** 当前固定 local patch 配置未建立稳定增量；不属于“已证明 patch 有用、仅 order 无额外作用”。
+
+停止 P3、WSSL+Patch、patch/stride/hidden/pooling rescue；不执行未满足条件的 attention、order shuffle、DD subtype 分析，不重新开启 Frequency。只能说：**当前固定 2s / 1s stride Patch-STR implementation 未建立稳定增量价值。** 不能推出所有 patch representation 或长时序建模对 PD/DD 无用。
+
+
+**只读复核阶段未能实时确认 GitHub remote main/tag。** 当时服务器原代理 `127.0.0.1:18743` 连接被拒绝；临时绕过代理后仍无法解析 `github.com`。本机 tag 核验和历史 receipt 不冒充当时的远端确认。后续用户明确要求 GitHub 同步；同步状态和远端核验另见本目录 README 及外部同步 receipt，不改变上述实验结果。

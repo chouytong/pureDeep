@@ -1,0 +1,7 @@
+
+SOURCE /home/zyt/deep_final/artifacts/prr01_frozen_str_pair_rescue_20260926/PRR01_REPORT.md SHA256 e61c7033dd635fd90a68bc5252dee18e822ef735d0405d259fd3e7428704aefb
+
+BA 与 AUROC 的方向不同：A 原 STR 固定阈值 BA `0.6972`，C `0.6682`，F `0.6540`；相对 B 的 C/F BA 也分别低 `0.0122/0.0264`。这说明当前 correction 未形成可替代正式分类器的 threshold behavior。正式 STR/H1 performance 不受此诊断表影响。
+
+
+预设的五项宽泛判据（优于 score-only、gross rescue、总净 gain、AUROC 多数 split 提升、超过置换）**在 activity raw stage 满足**，所以可以承认冻结 STR 的前聚合表示含有当前最终分数未充分利用的部分 ranking information。可是 combined decision stage 没有稳定净收益；activity raw 的 target-specific net 几乎为零，stable-error pairs 仍易受损。按照 PRR-01 关于“仅 activity raw 有信息而 combined decision 不能恢复”和“persistent hard pairs 未能稳定恢复”的停止分支，**本轮不启动新的 lightweight readout、decision head 或任何 deep model training**。后续如继续，也应先在独立于 validation outcome 的设计中明确区分前聚合信息保留与 hard-subject overlap，而不是重开 activity/attention/gating/structured-readout/frequency/contrastive/invariance 搜索。

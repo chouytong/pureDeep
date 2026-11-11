@@ -1,0 +1,96 @@
+
+SOURCE /home/zyt/deep_final/artifacts/frequency_prior_str_20261007/IMPLEMENTATION_TEST_REPORT.md SHA256 2d9deb63000c77cf6c7c36f9f73f25018bc25ea113990e0157bf53d3df4718b2
+
+All45frozen STR checkpoints ×both candidates(90cases), each8validation subjects: zero-init logits exactly match original, and state save/reload exactly matches. Fresh original initial tensors and post-factory CPU RNG match for all3seeds; branch initialization uses fork_rng. Original base remains fully trainable in subsequent experiments. Two scratch training-only updates percondition verify finite/nonmissing gradients, zero upstream gradients at exact zero residual initialization, then nonzero upstream gradients after one projection update; all6F1/19F2branch state tensors update. Finite padding/invalid-wrist and NaN absent-activity perturbations leave logits exactly unchanged after updates. Valid nonfinite input is rejected. Deep-copied model parameters do not share storage or outputs after another copy is mutated.
+
+The inherited finite check requires finite placeholders for invalid wrists within a valid activity; this contract was not weakened. Whole absent activities can contain nonfinite values because they are excluded. Tests are sampled8subject batches for45checkpoints, not every possible input. Scratch models were not saved or reported as performance. No outer signal/outcome/loader, WSSL, loss/recipe/threshold change or tuning. Original-engine smoke and formal90runs remain outstanding.
+
+
+SOURCE /home/zyt/deep_final/artifacts/frequency_prior_str_20261007/FINAL_REPORT.md SHA256 8feed467d04eea9acf7fc1551b7ef7edc115cb240aed084754b9c82b398ea1c1
+
+Date: 2026-10-07 (Asia/Shanghai). **COMPLETE / REJECT F2.** Retain original STR-01 for this comparison. The overall retained WSSL-STR configuration is unchanged; it was not a model in this experiment.
+
+
+Completed original-model/data/config/history review, all45F0full-validation/15normalization audits, synthetic filter-bank tests, F1 then F2 implementation, all45frozen checkpoints×two candidates90zero-init/reload cases, fresh3seed/RNG and scratch gradient/mask/independence tests, both original-engine smoke runs, pre-result Git freeze, full45F1+45F2training and frozen15split seed-first analysis. No other performance candidate, WSSL combination, pretrained adaptation, auxiliary loss, sampler, augmentation, threshold or recipe search.
+
+
+All45already completed Phase2baseline checkpoints have the **exact current whole-tree source hash**, and their model/data/training/evaluation/loss/nested/self-supervised config sections, selected model-state tensors, normalization, best epochs and validation IDs/labels/decisions/probabilities match original STR exactly. They therefore provide a reusable, strictly current-source matched F0. The cached original F0 predictions in frozen arithmetic are numerically identical to this matched baseline; all comparisons and the REJECT result are unchanged. No redundant45run training was launched.
+
+
+F2 bands are [.5,3),[3,4),[4,6),[6,8),[8,12]Hz. Each true-length signal is even-extended `[x,reverse(x)]`, transformed at2L, masked with disjoint fixed bins, inverse-transformed and cropped. No bandpower/PSD peak/entropy/statistical feature input or fixed band-to-disease rule. This returns learned time-domain band representations, rather than rerunning the rejected gyro log-magnitude/interpolated-bin rFFT branch.
+
+Both wrist and activity identities are retained. Injection precedes original bilateral fusion; no Left/Right or activity averaging occurs beforehand. Activity conditioning is supplied by the unchanged downstream activity-ID and ordered STR paths, with a shared per-wrist branch. No extra activity classifier, asymmetry statistic or attention/gate is added.
+
+
+- Synthetic filter tests at976/2000: shapes[N,5,6,L], bin membership/edges, DC/out-of-band rejection, exact even-extension cosine modes, finite nonzero autograd and NaN/Inf rejection PASS. Resolution.0512295/.025Hz; bins perband49/20/39/39/78 and100/40/80/80/161. Fixed filter has no learned parameters.
+- All45frozen checkpoints×F1/F2: each8validation subjects, **zero-init logits exactly equal original**, state save/reload exact. This is90sampled cases, not every possible input; F0full validation itself was checked completely.
+- Two scratch inner-training updates percondition: first upstream gradients are exactly zero behind zero-init residual; after first projection update upstream gradients are finite/nonzero. All6F1/19F2branch state tensors update. Scratch models are not performance candidates or saved results.
+- After updates, finite ignored padding/absent-wrist and NaN absent-activity perturbations leave logits exactly unchanged. Valid nonfinite input is rejected. The original check still requires finite placeholders for an absent wrist within a valid activity; this contract was not silently weakened.
+- F1/F2 original-engine one-epoch/one-batch smoke PASS, selected checkpoint reload, normalization/ID/metric/recipe audits PASS. Smoke scores are not used for design or scientific performance. A preliminary manual metric assertion expected AUROC.5 incorrectly; the known-answer3of4pair case was corrected to.75 before freezing, with production metrics unchanged.
+- All90formal run audits PASS: original recipe/loss, train-only normalization, seed/split/labels, parameter count, strict ordinaryBA-selected earliest best, cap/patience, checkpoint SHA/last epoch, saved metric and fixed argmax/tiePD consistency. Final source/checkpoint/prediction/normalization/manifest/preprocessing/protocol guards PASS; no GPU compute process remained at closure.
+
+
+|Comparison|MeanΔBA|Win/tie/loss|Bootstrap95%CI|Paired dz|Rank-biserial|Wilcoxon p|BH q(3BA tests)|
+|---|---:|---|---|---:|---:|---:|---:|
+
+F2−F0 BA/F1 and F1−F0BA bootstrap intervals are negative, but Wilcoxon/BH results do not confirm FDR-significant deterioration. We report both; a bootstrap interval is not interchangeable with a Wilcoxon/BH test. **REJECT is the prespecified retention decision, not a claim of proven harmfulness of all frequency information.**
+
+
+|Comparison|Metric|Mean delta|Win/tie/loss|Bootstrap95%CI|Wilcoxon p|BH q(18 tests)|
+|---|---|---:|---|---|---:|---:|
+
+**REJECT F2 under the unchanged pre-result rule.** F2−F0 fails positiveBA,≥10splitBAimprovements, positiveBA bootstrap lower bound, primaryBH and Macro-F1 nondecrease. F2−F1 has10wins but fails positiveCI/primaryBH, Macro-F1 nondecrease and thePDRecall-drop guard. AUROC and the fixed within-split seedSD margins pass; they do not rescue failed primary/recall criteria.
+
+The prespecified positive-trend explanation gate is false. Consequently no activity/band importance, bilateral residual phenotype or DD subtype search was performed. We did not find a favored activity/band or use error patterns to redesign the branch. Aggregate class error counts above are the required core performance comparison.
+
+
+**STOP this configuration. No band/hidden/filter/loss/recipe/threshold rescue search. No WSSL+Frequency combination.** Original STR and overall retained frozen WSSL remain unchanged. The proposed next-stage pretrained-plus-frequency comparison has not met its prerequisite.
+
+|Outer signal/prediction/performance used|NO|
+|Original training recipe/loss/sampler/augmentation changed|NO|
+|Threshold changed/calibrated|NO|
+|Historical source-tree direct audit before formal training|NO; completed during final closure, existing exact-current-source matchedF0verified45/45, comparison unchanged|
+|F2 retained|NO|
+|WSSL+frequency prerequisite met|NO|
+
+Reports: F0_AUDIT_REPORT, FILTER_BANK_REPORT, F1_IMPLEMENTATION_REPORT, IMPLEMENTATION_TEST_REPORT, SMOKE_REPORT, PROTOCOL, SOURCE_PROVENANCE_COMPLETION, DESIGN_REVIEW and this FINAL_REPORT. Aggregate analysis CSV/JSON includes135metric rows(45eachF0/F1/F2),45seed-first condition/split rows,18paired comparisons,90candidate run audits, seed/variance/agreement/error tables and source/F0/final integrity checks.
+
+
+SOURCE /home/zyt/deep_final/artifacts/frequency_prior_str_20261007/F0_AUDIT_REPORT.md SHA256 4352e935890c6aefe80b9e1249fd62b3c6d148cce085fdbd8bfa8a85f8057c5f
+
+**Final-closure correction:** the initial audit omitted direct historical whole-tree SHA comparison. The original formal hash is available and differs from the current tree. All 45 existing Phase-2 matched baseline checkpoints carry the exact current tree hash, with matching configuration, selected weights, normalization, best epochs and ID-aligned predictions. Thus a strictly current-source matched F0 is already available and has identical numerical results. No redundant F0 training was started. This direct source check was completed after the first F1/F2 analysis; it must not be represented as a preformal gate. No candidate or analysis rule changed. See [SOURCE_PROVENANCE_COMPLETION.md](SOURCE_PROVENANCE_COMPLETION.md) and the supplementary 45-run audit.
+
+
+The early handoff header calls STR the current overall best, but latest reports retain frozen WSSL-STR as the stronger overall development configuration. **This user-authorized experiment specifically selects original STR-01 as F0.** No WSSL/HarNet component is used. The original gyro-only rFFT experiment on V8-GN used log magnitudes, 128 interpolated bins and concat fusion; it was rejected (BA/AUROC −.0146/−.0163). It is not rerun. The new question concerns five fixed reconstructed time-domain bands in all six STR input channels with zero-initialized per-wrist residual injection and an explicit capacity control.
+
+STR input is current processed/normalized Acc+Gyro, not untreated raw acceleration: full-length Acc L1 trend removal, trim48, original Gyro after trim, nominal100Hz, actual lengths976/2000. Bilateral left/right and all11activity identities remain unchanged. Source/model/config review found no current discrepancy requiring a formal-model edit. Unused inherited YAML frequency/encoder/MIL and OOF-threshold fields are not the STR forward/inner-decision implementation: STR spectral stream is disabled and development prediction uses fixed probability argmax, DD probability>.5, tie PD.
+
+
+SOURCE /home/zyt/deep_final/artifacts/frequency_prior_str_20261007/F1_IMPLEMENTATION_REPORT.md SHA256 39561737898432f2a0dae5e71ac106e2edd55b16de96643ffc70f154e12108f6
+
+2026-10-07. PASS synthetic checks. Original wrist64→Linear64to17→GELU→Linear17to16→GELU→zero-initLinear16to64, added to corresponding original wrist.2,481addedparameters;78,005total. No signal/filter/frequency input in control. Original subject/activity/bilateral/structured calculation remains in original source. Base initial state and post-factory RNG match original; zero-init logits exactly match. Two scratch synthetic updates show zero upstream gradient at exact zero-init and nonzero upstream gradient after residual layer update. No scratch checkpoint or performance result retained. Full checkpoint/mask/reload and original-engine smoke follow at F2 combined verification.
+
+SOURCE /home/zyt/deep_final/artifacts/frequency_prior_str_20261007/FILTER_BANK_REPORT.md SHA256 6ee0fd23e8feb446a0f0a74a142d3ef10e339cce7d27bd04f57f69045abd5742
+
+2026-10-07. PASS; synthetic inputs only, no performance selection. Five fixed disjoint bands at nominal100Hz. True lengths976/2000 are transformed after full even reflection to1952/4000 samples, reconstructed and cropped. Frequency-bin counts respectively49/20/39/39/78 and100/40/80/80/161. Shape[N,5,6,L], exact DCT cosine mode mapping, DC/out-of-band rejection, half-open boundaries(last upper inclusive), nonzero finite autograd, NaN/Inf rejection all pass. No learned/fitted filter parameters.
+
+
+SOURCE /home/zyt/deep_final/artifacts/frequency_prior_str_20261007/SMOKE_REPORT.md SHA256 7cb163a9de254b565ab6b4a23389b1016d1384cfdf48271a469b1f867ae01c27
+
+
+SOURCE /home/zyt/deep_final/artifacts/frequency_prior_str_20261007/analysis/decision.json SHA256 2992cff1c126ef71426a43780bf862ad9ff814da58b35e7bf85107da2d1eeab1
+  "status": "complete",
+  "decision": "REJECT",
+  "gate": {
+    "F2-F0": {
+  "explanation_allowed": false,
+  "retained_formal_str_changed": false,
+  "outer_access": false,
+
+SOURCE /home/zyt/deep_final/artifacts/frequency_prior_str_20261007/analysis/final_integrity_audit.json SHA256 a53ba34b27b993902424e0ea38bb26203347a1559637ab7db023fb1f4834ee0f
+  "all_candidate_run_audits_pass": true,
+  "all_entry_gates_pass": true,
+  "ordinary_BA_selection": true,
+  "explanation_performed": false,
+  "explanation_skipped_reason": "Prespecified positive-trend gate failed",
+  "launcher_terminal_exit_zero": true,
