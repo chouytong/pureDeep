@@ -1,0 +1,19 @@
+question,evidence_status,judgment
+1 原始质量是否有明确问题？,FACT/EVIDENCE,结构完整、finite且无exactduplicate；4条大时间戳间隙是真实观测，packet-loss机制UNKNOWN；高幅/jerk flag不是已确认坏信号。
+2 前几秒是否设备噪声？,FACT/UNKNOWN,官方启动振动约0.5s有依据，当前已裁48点；不能把所有前几秒活动认作噪声，也不能逐人分离振动和动作。
+3 是否11活动一致？,EVIDENCE,任务长度/时域/边界分布不同，无跨11活动支持统一再裁1–5s的证据。
+4 PD/DD启动特征不同？,EVIDENCE/UNKNOWN,固定BH440中启动项0显著、结束项9显著；不构成启动等价性证据，设备混杂/个体差异限制解释。
+5 应删0.5/1/2/3/5s？,NO_ACTION,维持当前48点；无证据额外删除1–5s。48与精确0.5s也不自动重新调整。
+6 采样/重采样合理？,FACT/QUALIFIED,STR标称100Hz索引，HarNet100→30匹配预训练；实测时基约99.2–100.8Hz且4间隙使均匀轴只是近似。
+7 抗混叠不足？,FACT/NO_ACTION,当前polyphase FIR存在，未发现缺失抗混叠；边界零延拓是不同问题。
+8 滤波丢震颤信息？,EVIDENCE/HYPOTHESIS,合成3–12Hz稳态保留、低频衰减且幅值依赖；真实临床震颤信息保留率UNKNOWN，不能把PSD能量差直接说成疾病信息丢失。
+9 双腕同步？,UNKNOWN,相对offset可量化，缺共同绝对时钟/触发校准，不能声称物理完全同步，不DTW。
+10 坐标系一致？,UNKNOWN/NO_ACTION,通道命名顺序一致不代表物理朝向一致，没有安装/轴标定不翻转。
+11 固定长度截断？,FACT,STR无额外固定crop，976/2000完整；HarNet完全覆盖post48，暂无尾部截断。
+12 padding/mask正确？,FACT,先真实norm后containerpad，encoder前切长度，合成bitwise不变测试通过。
+13 normalization丢疾病信息？,FACT/UNKNOWN,train-only共享affine不按人消幅；未见epsilon问题。下游特征利用和跨活动尺度影响未知，不能从元数据证明全部信息保留。
+14 统计泄漏？,FACT/LIMITATION,未发现现有norm成员/subject集合泄漏；重复validation选择、全缓存访问边界和历史outer接触仍在。全390标签质量探索也增加未来选择偏差。
+15 哪些保留？,NO_ACTION,保留原48裁剪、Gyro语义、11活动、完整变长、真长度/mask、train-onlynorm、HarNet现有抗混叠、subject级划分与原0.5规则。
+16 哪些独立对照？,HYPOTHESIS_READY_FOR_REVIEW,只把HarNetpadtype=line列具体可审阅单因素；设备混杂先审计；timestamp候选须先补clock证据。
+17 哪些可能改善模型？,HYPOTHESIS,数值边界修复可能减少伪transient，但实际BA/DD收益完全未测，不承诺。设备可靠性澄清可能比再滤波更有价值。
+18 哪些不值得继续？,NO_ACTION,无差别裁1–5s、重复添加已有抗混叠、仅求平滑、未知轴翻转/DTW、subject归一化、按MAD删患者及11活动标签驱动滤波搜索。

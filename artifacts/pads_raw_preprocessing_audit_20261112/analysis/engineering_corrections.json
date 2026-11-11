@@ -1,0 +1,38 @@
+{
+  "corrections": [
+    {
+      "stage": "metadata schema before signal diagnostics",
+      "problem": "initial check assumed6 metadata fields; actual7 includesTime",
+      "resolution": "DIAGNOSTICS_SCHEMA_V2 frozen; old source/output preserved; 8580 units/channel arrays verified",
+      "signal_outputs_affected": false
+    },
+    {
+      "stage": "smoke source syntax",
+      "problem": "v1 used a keyword starting with digit; parse failed before execution",
+      "resolution": "failed source moved to logs/failed_tests9_v1.py; tests.log preserved; tests9_v2.py passed",
+      "model_or_raw_data_changed": false
+    },
+    {
+      "stage": "inspection command environment",
+      "problem": "system python3 lacked pandas",
+      "resolution": "inspection rerun with existing mfam_analysis Python; no install/data mutation"
+    },
+    {
+      "stage": "PSD plotting warning",
+      "problem": "some physical-frequency endpoint bins exceed observed Nyquist and contain onlyNaN",
+      "resolution": "no extrapolation; NA retained; explicit valid patient counts per bin added; finite raw inputs verified"
+    },
+    {
+      "stage": "final privacy checker",
+      "problem": "initial blanket SHA column block also rejected legitimate code/report source hashes",
+      "resolution": "allowlist only source/history code-report hash tables and verify source suffixes; an over-literal UNKNOWN-token assertion was also corrected to accept the explicit unresolved-semantics STOP rule; v1/v2 checker sources and logs retained"
+    },
+    {
+      "stage": "final privacy checker",
+      "problem": "initial blanket SHA column block also rejected legitimate code/report source hashes",
+      "resolution": "allowlist only source/history code-report hash tables and verify source suffixes; an over-literal UNKNOWN-token assertion was also corrected to accept the explicit unresolved-semantics STOP rule; v1/v2 checker sources and logs retained"
+    }
+  ],
+  "no_failed_runs_deleted": true,
+  "existing_frozen_sources_unchanged": true
+}

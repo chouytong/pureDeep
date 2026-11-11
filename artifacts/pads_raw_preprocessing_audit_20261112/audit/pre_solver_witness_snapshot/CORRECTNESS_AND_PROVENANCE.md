@@ -1,0 +1,16 @@
+# 正确性、访问与保护
+
+启动先审查当前mainline和指定历史报告/准备/缓存源码；远端origin/main与mirror均为4745549，当前mainline逐文件与提交一致。DIAGNOSTICS/SCHEMA_V2及其他freeze保留源码hash。保护链覆盖原P8保护22585文件加所有当前data/mainline/P8产物及审查源，共24180，最终重复hash；哈希只读字节，不解码历史outer预测/性能。当前数据路径不依赖旧MFAM，旧目录仅只读历史准备报告。
+
+工程修正均在analysis/engineering_corrections.json：初始schema错把7元数据列当成6轴检查，信号统计前按Time+6sensor修正，原v1 source/freeze/输出保留；smokev1存在非法数字开头关键字，执行前SyntaxError，失败源码归档logs/failed_tests9_v1.py且tests.log保留，v2通过；一次检查误用无pandas的系统Python，改用已有环境，无安装；PSD末端超过记录Nyquist产生空slice warning，保留NA并补每bin有效患者数，不外推。没有删除失败记录，也没有修正正式数据。
+
+Synthetic correctness：常数run、6HzPSD、短窗NA、raw-root allowlist、给定norm数值apply、真实首记录schema/processedGyro检验；仅合成model输入的padding/activity/wristmask改变后logits逐位不变、checkpointstate不变。该合成forward不涉及真实验证/outer样本，训练/分类器fit/normalizationfit均0。8580真实records全量shape/finite、metadata、Gyroexact复核。L1只在42合成waveform及2合成prefix测试求解，不重处理真实signal。line重采样只作signal-level内存诊断，不保存候选signal或feature、不推理模型、不开展Level2性能消融。
+
+所有要求的逐人表与异常sample/time位置在restricted_manifests/analysis/同名或明确schema_v2表；analysis/同名文件为隐私聚合，避免命名误导。44固定代表原始图仅服务器restricted_manifests/figures，未下载/公开；公开13图只群体分布/合成信号。交叉分层<10人抑制数值，PSD每bin记录有效人数。source_output_manifest与phase9_integrity给出最终可核验闭合；源文件/权重/数据/原norm/原split/正式报告不改。
+
+
+---
+数据来源：服务器PADS v1.0.0的390人PD/DD任务子集，原始数据、既有v2信号及45 Frozen WSSL-STR checkpoint元数据；不是原库全部469人。统计单位为患者，同患者双腕先平均；原始记录/通道数只作描述性计数，不作为独立患者。15重叠development splits、seeds42/43/44用于来源核查，不是独立外部验证。缺失/不可计算值为NA，不补造；频谱超过记录Nyquist不外推；稀有交叉分层<10人的数值统计抑制，完整表仅私有。检验族132/440/880分别BH，患者bootstrap2000次；其余描述性表无额外显著性声明。接触全390人诊断标签及validation成员元数据用于质量关联，未读分类错误名单/分数，未构建outer loader、未解码outer性能/预测；历史outer接触永久披露。全队列探索会增加未来选择偏差，不能叫盲态独立验证。训练/分类器拟合/normalization重拟合均0，Level2未执行。
+
+
+发布前检查修正：初次检查把公开代码/报告来源hash也按原始逐文件hash阻止；已仅对两张代码/报告来源表白名单且验证文件类型，未放行raw或逐人hash。原失败检查器与日志保留；完整修正记录见engineering_corrections.json。原始Acc重力语义已收紧为UNKNOWN，较早草稿保留。
