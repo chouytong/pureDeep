@@ -1,0 +1,18 @@
+{
+  "wrist_local": 64,
+  "external": 1024,
+  "projected": 64,
+  "bilateral": 258,
+  "activities": 11,
+  "subject": 258,
+  "structured_token": 16,
+  "structured_concat": 176,
+  "main_readout": 434,
+  "baseline_readout": "affine subject258 + affine structured176; dropout eval off",
+  "baseline_activity": "independent token scoring + softmax competition + weighted pooling",
+  "STR": "tokenwiseLinear-GELU then orderedconcat then affine",
+  "pairwise_content_token_mixing": false,
+  "cross_activity_relations_completely_absent": false,
+  "B_equivalent_mechanism": false,
+  "expected_B_status": "NOVEL_RELATIVE_TO_THIS_READOUT_NOT_GLOBAL_NOVELTY"
+}

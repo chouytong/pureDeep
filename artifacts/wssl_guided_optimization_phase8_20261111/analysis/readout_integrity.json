@@ -1,0 +1,148 @@
+{
+  "status": "PASS_COMPLETE_A2",
+  "model_pairs": 45,
+  "final_classifier_fits": 180,
+  "scaler_fits": 45,
+  "feature_dim": 434,
+  "encoder_updates": 0,
+  "outer_inputs": 0,
+  "head_replay_max_error": 8.783185760918855e-07,
+  "SVC_train_internal_probability_estimation": true,
+  "xgboost_status": "NOT_RUN_DEPENDENCY_MISSING",
+  "decisions": [
+    {
+      "condition": "logistic_regression",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": false,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": false,
+        "MacroF1_non_decrease": false,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.3196443987895723,
+        "auroc": 1.3832134890866858
+      },
+      "stability_estimand": "mean within-split3seed SD BA+AUROC",
+      "mean_deltas": {
+        "accuracy": 0.0036341928689159753,
+        "ba": -0.04529738570301134,
+        "auroc": -0.005475437343266165,
+        "macro_f1": -0.02667067424480385,
+        "pd_recall": 0.07241350939981062,
+        "dd_recall": -0.1630082808058338,
+        "nll": 0.4678353297323149,
+        "brier": 0.036566338976862844,
+        "ece": 0.08558321482469382
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "linear_svm",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": false,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": false,
+        "MacroF1_non_decrease": false,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.3467448802177937,
+        "auroc": 1.7299418342901882
+      },
+      "stability_estimand": "mean within-split3seed SD BA+AUROC",
+      "mean_deltas": {
+        "accuracy": 0.004463914683789261,
+        "ba": -0.05824855132304796,
+        "auroc": -0.01229922640576786,
+        "macro_f1": -0.03719272030092802,
+        "pd_recall": 0.09261590357480776,
+        "dd_recall": -0.209113006220904,
+        "nll": 0.12266582354027789,
+        "brier": 0.002303235691411276,
+        "ece": 0.04183545269314683
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "rbf_svm",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": false,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": false,
+        "MacroF1_non_decrease": false,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.7002722115576216,
+        "auroc": 1.1746545933684684
+      },
+      "stability_estimand": "mean within-split3seed SD BA+AUROC",
+      "mean_deltas": {
+        "accuracy": 0.010386172724836329,
+        "ba": -0.04340282455646549,
+        "auroc": -0.00602790152061039,
+        "macro_f1": -0.02216824421209429,
+        "pd_recall": 0.08593113661606833,
+        "dd_recall": -0.17273678572899948,
+        "nll": 0.11142636205148237,
+        "brier": -0.003679095286246159,
+        "ece": 0.04028252588404228
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "random_forest",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": false,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": false,
+        "MacroF1_non_decrease": false,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.5379305778180148,
+        "auroc": 1.3699077362138208
+      },
+      "stability_estimand": "mean within-split3seed SD BA+AUROC",
+      "mean_deltas": {
+        "accuracy": -0.004095697859261449,
+        "ba": -0.04704505669824788,
+        "auroc": -0.018645025097323797,
+        "macro_f1": -0.03087169502687126,
+        "pd_recall": 0.056370068698835984,
+        "dd_recall": -0.1504601820953323,
+        "nll": null,
+        "brier": -0.017447369990394535,
+        "ece": -0.00957404367250636
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "xgboost",
+      "status": "NOT_RUN_DEPENDENCY_MISSING"
+    }
+  ],
+  "elapsed_seconds": 17.894458753056824,
+  "report_sha256": "267adf1b2b73bd65e5aa02252b7d7c6d05c837ece73557d66b39a05337f87de6"
+}

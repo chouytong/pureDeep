@@ -1,0 +1,42 @@
+{
+  "status": "PASS_COMPLETE_B",
+  "runs": 45,
+  "smoke": "PASS",
+  "formal_training_updates": 24170,
+  "baseline_all_parameters_unchanged": true,
+  "new_architecture_count": 1,
+  "decision": {
+    "condition": "activity_interaction",
+    "status": "REJECT",
+    "checks": {
+      "BA_positive": true,
+      "BA_wins_at_least10": true,
+      "BA_CI_low_positive": true,
+      "AUROC_non_decrease": true,
+      "MacroF1_non_decrease": true,
+      "PD_recall_drop_at_most01": true,
+      "DD_recall_drop_at_most01": false,
+      "correctness_and_provenance": true,
+      "stability_at_most1_25": true
+    },
+    "stability_ratios": {
+      "ba": 1.1637220542192155,
+      "auroc": 0.858205256325014
+    },
+    "stability_estimand": "mean within-split3seed SD BA+AUROC",
+    "mean_deltas": {
+      "accuracy": 0.023647870732393828,
+      "ba": 0.006160618539822416,
+      "auroc": 0.006691464652517243,
+      "macro_f1": 0.016117904440799746,
+      "pd_recall": 0.04851701016084575,
+      "dd_recall": -0.03619577308120148,
+      "nll": 0.05302044560163166,
+      "brier": -0.014337116402143524,
+      "ece": 0.014423000154422355
+    },
+    "independent_validation": false
+  },
+  "elapsed_seconds": 108.00262842793018,
+  "report_sha256": "bbe40da1d400814911ab4e3b37a512d0b39e75ad0bdb4839c7d8a8ccef0f60dd"
+}

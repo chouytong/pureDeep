@@ -1,0 +1,48 @@
+{
+  "status": "PASS_COMPLETE_C",
+  "runs": 45,
+  "smoke": "PASS",
+  "formal_optimizer_updates": 26852,
+  "valid_PD_anchors": 137193,
+  "zero_contrastive_batches": 1919,
+  "all_train_batches": 26852,
+  "new_loss_candidate_count": 1,
+  "lambda_supcon": 0.1,
+  "tau": 0.1,
+  "DD_subtype_supervision": false,
+  "original_HarNet_preprocessing_norm_unchanged": true,
+  "decision": {
+    "condition": "subject_supcon",
+    "status": "REJECT",
+    "checks": {
+      "BA_positive": true,
+      "BA_wins_at_least10": true,
+      "BA_CI_low_positive": false,
+      "AUROC_non_decrease": true,
+      "MacroF1_non_decrease": true,
+      "PD_recall_drop_at_most01": true,
+      "DD_recall_drop_at_most01": true,
+      "correctness_and_provenance": true,
+      "stability_at_most1_25": true
+    },
+    "stability_ratios": {
+      "ba": 0.7466297896687623,
+      "auroc": 0.7888293527630913
+    },
+    "stability_estimand": "mean within-split3seed SD BA+AUROC",
+    "mean_deltas": {
+      "accuracy": 0.008790523096633973,
+      "ba": 0.0032709304303314424,
+      "auroc": 0.00770801779883401,
+      "macro_f1": 0.00664388567147034,
+      "pd_recall": 0.016372536920482128,
+      "dd_recall": -0.009830676059819687,
+      "nll": -0.02455590428996801,
+      "brier": -0.01571240981723826,
+      "ece": -0.008553270003736457
+    },
+    "independent_validation": false
+  },
+  "elapsed_seconds": 672.4724826253951,
+  "report_sha256": "1adf0a8895f8fafdf1e13e805cc28b9219b1f43013d141cd308b0ec17bbf7b44"
+}

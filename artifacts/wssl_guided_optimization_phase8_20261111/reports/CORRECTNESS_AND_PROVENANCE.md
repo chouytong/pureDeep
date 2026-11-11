@@ -1,0 +1,7 @@
+# 正确性与来源边界
+
+启动核验45旧checkpoint/seed/split/train-query-excluded/norm/标签映射/特征SHA与原预测，保护22585既有文件。mainline源码和原split/预处理/模型均未改。A1只用合法分模型缓存；A2一个434D表示，每个scaler及classifier train-only fit，禁止跨split混合；SVC内部Platt是训练内概率估计，不是encoder全链OOF。B45run原参数无梯度且statehash不变，zero-output初始化精确原logits；新模块梯度、mask/NaN、token数、checkpoint恢复、重复推理通过。C45run原seed初始化逐位匹配，合法不同PD身份positive、DDnegative，缺positive为0不复制患者；原始真实长度/左右腕/activity顺序保留，padding、梯度、独立恢复、确定性、allowlist负例通过。全新90深度run和180传统finalfit，旧checkpoint不覆盖。
+
+历史特征提取当时读过全队列缓存，这是永久来源限制；本轮先核验每模型ID角色再解码该train∪validation包，没有解码全390人sensor/feature NPZ。旧feature创建时逐文件hash未保存，不能伪称完整创建时不可变追踪；当前hash、旧提取源码freeze、P5来源保护、P6完整validation重现共同支持有条件复用。C只读当期allowlist原processed六轴与官方固定HarNet每人external，与其他fold监督encoder无关。metadata整CSV被用于身份/标签审计及粗来源描述，包含历史excluded元数据；这是应用层筛选，不是OS/物理隔离。保留过去outer文字接触、whole-manifest/NPZ与公开检索摘要暴露披露；本轮没有旧outer性能/信号loader，也不把既往outer重新称untouched。
+
+每个epoch验证BA选checkpoint，属于既定开发选择，不称完全未接触validation标签；无validation名单参与梯度/权重/参数搜索，无outer选模型。logs/逐人预测/IDs/feature/weights仅服务器私有目录；公开只有代码/协议/汇总。final_integrity及source_output_manifest给出可核验结果。无异常值删除、概率裁剪、失败试验删档。

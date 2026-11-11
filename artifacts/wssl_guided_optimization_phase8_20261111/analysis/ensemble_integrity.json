@@ -1,0 +1,78 @@
+{
+  "status": "PASS_COMPLETE_A1",
+  "paired_units": 15,
+  "baseline_models": 45,
+  "probability_primary": true,
+  "raw_logit_sensitivity": true,
+  "new_training": 0,
+  "new_model_forward": 0,
+  "seed_subset_search": false,
+  "temperature_threshold_fit": false,
+  "decisions": [
+    {
+      "condition": "probability_ensemble",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": true,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": true,
+        "MacroF1_non_decrease": true,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.5442702626957605,
+        "auroc": 1.10510538034245
+      },
+      "stability_estimand": "between-split SD diagnostic for fixed ensemble; seedSD not identifiable",
+      "mean_deltas": {
+        "accuracy": 0.011714043513015415,
+        "ba": 0.00038035094231492206,
+        "auroc": 0.02206677672842494,
+        "macro_f1": 0.007546372748500896,
+        "pd_recall": 0.02765230984409084,
+        "dd_recall": -0.026891607959461106,
+        "nll": -0.0867418236020302,
+        "brier": -0.04010175194849619,
+        "ece": -0.03710404887456312
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "logit_ensemble",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": false,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": true,
+        "MacroF1_non_decrease": true,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.4913168700831512,
+        "auroc": 1.133067441607377
+      },
+      "stability_estimand": "between-split SD diagnostic for fixed ensemble; seedSD not identifiable",
+      "mean_deltas": {
+        "accuracy": 0.0084653469719147,
+        "ba": -0.003904538576396166,
+        "auroc": 0.0186320257508944,
+        "macro_f1": 0.0033905211522790024,
+        "pd_recall": 0.025825825825826043,
+        "dd_recall": -0.033634902978618375,
+        "nll": -0.0724689324495007,
+        "brier": -0.036174717096663034,
+        "ece": -0.025957158429284616
+      },
+      "independent_validation": false
+    }
+  ],
+  "report_sha256": "41f08aa8f8d04266b02a499daa90f78cdc4e787abdd8fa68df124b9254c300c7"
+}

@@ -1,0 +1,273 @@
+{
+  "decisions": [
+    {
+      "condition": "probability_ensemble",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": true,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": true,
+        "MacroF1_non_decrease": true,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.5442702626957605,
+        "auroc": 1.10510538034245
+      },
+      "stability_estimand": "between-split SD diagnostic for fixed ensemble; seedSD not identifiable",
+      "mean_deltas": {
+        "accuracy": 0.011714043513015415,
+        "ba": 0.00038035094231492206,
+        "auroc": 0.02206677672842494,
+        "macro_f1": 0.007546372748500896,
+        "pd_recall": 0.02765230984409084,
+        "dd_recall": -0.026891607959461106,
+        "nll": -0.0867418236020302,
+        "brier": -0.04010175194849619,
+        "ece": -0.0371040488745631
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "logistic_regression",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": false,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": false,
+        "MacroF1_non_decrease": false,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.3196443987895723,
+        "auroc": 1.3832134890866858
+      },
+      "stability_estimand": "mean within-split3seed SD BA+AUROC",
+      "mean_deltas": {
+        "accuracy": 0.0036341928689159753,
+        "ba": -0.04529738570301134,
+        "auroc": -0.005475437343266165,
+        "macro_f1": -0.02667067424480385,
+        "pd_recall": 0.07241350939981062,
+        "dd_recall": -0.1630082808058338,
+        "nll": 0.4678353297323149,
+        "brier": 0.036566338976862844,
+        "ece": 0.08558321482469379
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "linear_svm",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": false,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": false,
+        "MacroF1_non_decrease": false,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.3467448802177937,
+        "auroc": 1.7299418342901882
+      },
+      "stability_estimand": "mean within-split3seed SD BA+AUROC",
+      "mean_deltas": {
+        "accuracy": 0.004463914683789261,
+        "ba": -0.05824855132304796,
+        "auroc": -0.01229922640576786,
+        "macro_f1": -0.03719272030092802,
+        "pd_recall": 0.09261590357480776,
+        "dd_recall": -0.209113006220904,
+        "nll": 0.12266582354027789,
+        "brier": 0.002303235691411276,
+        "ece": 0.04183545269314677
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "rbf_svm",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": false,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": false,
+        "MacroF1_non_decrease": false,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.7002722115576216,
+        "auroc": 1.1746545933684684
+      },
+      "stability_estimand": "mean within-split3seed SD BA+AUROC",
+      "mean_deltas": {
+        "accuracy": 0.010386172724836329,
+        "ba": -0.04340282455646549,
+        "auroc": -0.00602790152061039,
+        "macro_f1": -0.02216824421209429,
+        "pd_recall": 0.08593113661606833,
+        "dd_recall": -0.17273678572899948,
+        "nll": 0.11142636205148237,
+        "brier": -0.0036790952862462145,
+        "ece": 0.040282525884042256
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "random_forest",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": false,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": false,
+        "MacroF1_non_decrease": false,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.5379305778180148,
+        "auroc": 1.3699077362138208
+      },
+      "stability_estimand": "mean within-split3seed SD BA+AUROC",
+      "mean_deltas": {
+        "accuracy": -0.004095697859261449,
+        "ba": -0.04704505669824788,
+        "auroc": -0.018645025097323797,
+        "macro_f1": -0.03087169502687126,
+        "pd_recall": 0.056370068698835984,
+        "dd_recall": -0.1504601820953324,
+        "nll": null,
+        "brier": -0.017447369990394535,
+        "ece": -0.009574043672506444
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "xgboost",
+      "status": "NOT_RUN_DEPENDENCY_MISSING"
+    },
+    {
+      "condition": "activity_interaction",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": true,
+        "BA_wins_at_least10": true,
+        "BA_CI_low_positive": true,
+        "AUROC_non_decrease": true,
+        "MacroF1_non_decrease": true,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": true
+      },
+      "stability_ratios": {
+        "ba": 1.1637220542192155,
+        "auroc": 0.858205256325014
+      },
+      "stability_estimand": "mean within-split3seed SD BA+AUROC",
+      "mean_deltas": {
+        "accuracy": 0.023647870732393828,
+        "ba": 0.006160618539822416,
+        "auroc": 0.006691464652517243,
+        "macro_f1": 0.016117904440799746,
+        "pd_recall": 0.04851701016084575,
+        "dd_recall": -0.03619577308120148,
+        "nll": 0.05302044560163166,
+        "brier": -0.01433711640214358,
+        "ece": 0.014423000154422327
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "subject_supcon",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": true,
+        "BA_wins_at_least10": true,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": true,
+        "MacroF1_non_decrease": true,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": true,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": true
+      },
+      "stability_ratios": {
+        "ba": 0.7466297896687623,
+        "auroc": 0.7888293527630913
+      },
+      "stability_estimand": "mean within-split3seed SD BA+AUROC",
+      "mean_deltas": {
+        "accuracy": 0.008790523096633973,
+        "ba": 0.0032709304303314424,
+        "auroc": 0.00770801779883401,
+        "macro_f1": 0.00664388567147034,
+        "pd_recall": 0.016372536920482128,
+        "dd_recall": -0.009830676059819687,
+        "nll": -0.02455590428996801,
+        "brier": -0.01571240981723826,
+        "ece": -0.008553270003736513
+      },
+      "independent_validation": false
+    },
+    {
+      "condition": "logit_ensemble",
+      "status": "REJECT",
+      "checks": {
+        "BA_positive": false,
+        "BA_wins_at_least10": false,
+        "BA_CI_low_positive": false,
+        "AUROC_non_decrease": true,
+        "MacroF1_non_decrease": true,
+        "PD_recall_drop_at_most01": true,
+        "DD_recall_drop_at_most01": false,
+        "correctness_and_provenance": true,
+        "stability_at_most1_25": false
+      },
+      "stability_ratios": {
+        "ba": 1.4913168700831512,
+        "auroc": 1.133067441607377
+      },
+      "stability_estimand": "between-split SD diagnostic for fixed ensemble; seedSD not identifiable",
+      "mean_deltas": {
+        "accuracy": 0.0084653469719147,
+        "ba": -0.003904538576396166,
+        "auroc": 0.0186320257508944,
+        "macro_f1": 0.0033905211522790024,
+        "pd_recall": 0.025825825825826043,
+        "dd_recall": -0.033634902978618375,
+        "nll": -0.0724689324495007,
+        "brier": -0.036174717096663034,
+        "ece": -0.025957158429284588
+      },
+      "independent_validation": false
+    }
+  ],
+  "baseline": "OFFICIAL_RETAINED_SINGLE_MODEL",
+  "primary_family_size": 16,
+  "secondary_family_size": 56,
+  "logit_sensitivity_size": 9,
+  "unavailable_p_for_adjustment": 1,
+  "unavailable_own_p_q": null,
+  "positive_class": "DD",
+  "threshold": 0.5,
+  "tie": "PD"
+}
