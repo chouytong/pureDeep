@@ -1,0 +1,14 @@
+component,unit,observations,mean,median,p95,maximum,throughput_items_per_CPU_second,peak_RSS_KiB,scope_note
+axis_solver,CPU_seconds,25740,0.005576608559945585,0.0061907070000000175,0.008635056000000009,0.0151132849999982,179.32045781060842,98924.0,measured user+system worker CPU; parent and QA counted separately in ledger
+wrist_complete_export,CPU_seconds,8580,0.020097405283216744,0.02198263099999835,0.027784566100000685,0.0438917490000001,49.75766701759733,98924.0,measured user+system worker CPU; parent and QA counted separately in ledger
+subject_22wrist_complete_export,CPU_seconds,390,0.4421429162307684,0.4391933484999953,0.4955836642499994,0.5612524329999989,2.2617121371635145,98924.0,measured user+system worker CPU; parent and QA counted separately in ledger
+str_classifier_forward_ms,classifier_forward_ms,45,3.4956947093208632,3.4986556507647038,3.5200352035462856,3.534333221614361,,,"batch8, warmup3, repeat10, synchronized; no IO/L1/normfit/HarNet encoding"
+str_subjects_per_second,subjects_per_second,45,2288.607527492012,2286.592565419073,2318.1472242638492,2323.7571245745653,,,"batch8, warmup3, repeat10, synchronized; no IO/L1/normfit/HarNet encoding"
+str_peak_GPU_allocated_bytes,peak_GPU_allocated_bytes,45,150293504.0,150293504.0,150293504.0,150293504.0,,,"batch8, warmup3, repeat10, synchronized; no IO/L1/normfit/HarNet encoding"
+wssl_classifier_forward_ms,classifier_forward_ms,45,3.9027544545630612,3.9084110409021378,3.9308914355933666,3.9567817002534866,,,"batch8, warmup3, repeat10, synchronized; no IO/L1/normfit/HarNet encoding"
+wssl_subjects_per_second,subjects_per_second,45,2049.9227760776494,2046.8676186508376,2075.2927840485872,2086.806615445985,,,"batch8, warmup3, repeat10, synchronized; no IO/L1/normfit/HarNet encoding"
+wssl_peak_GPU_allocated_bytes,peak_GPU_allocated_bytes,45,150835200.0,150835200.0,150835200.0,150835200.0,,,"batch8, warmup3, repeat10, synchronized; no IO/L1/normfit/HarNet encoding"
+train-wssl_total,CPU_seconds_parent_and_children,1,2136.746279364,,,,,,all attempts total user+system CPU including workers; cumulative wall_seconds=629.1755307391286
+train-str_total,CPU_seconds_parent_and_children,1,2464.4198524179997,,,,,,all attempts total user+system CPU including workers; cumulative wall_seconds=690.2612413410097
+fit-normalization_total,CPU_seconds_parent_and_children,1,16.094829561999997,,,,,,all attempts total user+system CPU including workers; cumulative wall_seconds=13.515636823140085
+solver_QA_pilot_export_and_readbacks_total,CPU_seconds_parent_and_children,1,214.952796947,,,,,,all charged attempts; limit21600 seconds

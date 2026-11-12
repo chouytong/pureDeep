@@ -1,0 +1,11 @@
+# 正确性与来源
+
+NUMERICAL_CORRECTNESS=PASS；RECORD_INDEPENDENCE=PASS；DATA_AND_TRAINING_PROVENANCE=PASS。正式起点4da80813a98586acf23a89507359e4ca93689289，协议修订在分类结果前冻结，预算WSSL45+STR45。旧主线、raw/legacy/norm/splits/checkpoints/预测/HarNet/当前模型指针保护清单最终复核，新增资产私有hash清单闭合，参见final_integrity.json。
+
+原正式配置90份逐项等价检查通过，训练实际复用只读mainline model factory、ResidualSSLSubject、train_epoch/evaluate_epoch/optimizer/scheduler/loss。原seed42/43/44初始化，balanced CE、8batch/AdamW2e−4/WD1e−4/cosine50min1e−6/clip5/max50/pat12、strict BA选模、4workers、persistent、AMPfalse、deterministic warn_only、cuDNNdeterministictrue/benchmarkfalse、CUBLAS4096:8。TF32运行默认matmulFalse/cuDNNTrue，旧源码未显式改TF32但缺少历史运行时完整回执，不能宣称该项有历史bitwise证据。未用旧监督权重warmstart，未用旧supervised embedding代替新训练。
+
+synthetic smoke各模型1次优化更新单列，不用性能选型；真实正式45+45次，失败/重试以stage账和started/complete receipts为准。每run train/query/excluded边界明确，只加载fit/query新信号和合法逐人HarNet cache；无excluded预测或outer loader。WSSL完整且对照报告归档后才启动STR，不按涨点决定。
+
+Acc单位g、通道和原文件可核验；是否含完整重力向量、SDK导出前变换、左右腕物理轴/绝对同步仍UNKNOWN。本次只修复固定索引L1目标，不声称物理重力去除，不改变HarNet输入。
+
+重复的15个development split共享390人，每split先平均3个seed的单模型指标，再对15split等权；不是概率ensemble，也不是390人的独立外部验证。历史outer接触与多轮development的选择偏差保留，本次PASS不能消除。subject-cluster条件于固定已训练模型，所有同一人的重复appearance/seed共用同一个权重。

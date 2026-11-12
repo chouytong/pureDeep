@@ -1,0 +1,20 @@
+{
+  "algorithm": "independent_dual_log_barrier_newton_v1",
+  "lambda_fixed": 50.0,
+  "dtype": "float64",
+  "max_newton_iterations": 600,
+  "max_barrier_stages": 30,
+  "barrier_reduction": 0.1,
+  "line_search_steps": 60,
+  "step_fraction": 0.995,
+  "initial_q": "zeros for each axis",
+  "initial_mu": "max(E_aff/(2*(T-2)),1e-12) each axis only",
+  "gap_rule": "1e-8+1e-4*E_aff",
+  "E_aff": ".5*sum((y-x_aff)**2)",
+  "negative_gap_rule": "64eps64*(1+abs(P)+abs(D)+sumabs(y*v)+50sumabs(x))",
+  "failure_policy": "FAIL; no fallback; no training-ready marker",
+  "matrix_cache": "immutable length-only D2D2T pattern; no record values",
+  "production_reason": "per-axis fixedrho40 ADMM reference still fails certificate at30k; estimated lower bound30601.8CPU s exceeds21600; barrier crosschecks pass",
+  "numpy": "2.2.6",
+  "scipy": "1.15.3"
+}

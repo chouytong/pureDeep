@@ -1,0 +1,32 @@
+{
+  "condition": "WSSL-CERTIFIED-L1",
+  "status": "NOT_ESTABLISHED",
+  "checks": {
+    "BA_positive": false,
+    "BA_wins_at_least10": false,
+    "BA_CI_low_positive": false,
+    "AUROC_non_decrease": false,
+    "MacroF1_non_decrease": false,
+    "PD_recall_drop_at_most01": true,
+    "DD_recall_drop_at_most01": true,
+    "correctness_and_provenance": true,
+    "stability_at_most1_25": true
+  },
+  "stability_ratios": {
+    "ba": 0.8584356927906684,
+    "auroc": 0.8830001088191038
+  },
+  "stability_estimand": "mean within-split3seed SD BA+AUROC",
+  "mean_deltas": {
+    "accuracy": -0.00407004126021826,
+    "ba": -0.000744774365844858,
+    "auroc": -0.00026823462040692636,
+    "macro_f1": -0.0030284256963327705,
+    "pd_recall": -0.00844954543584675,
+    "dd_recall": 0.006959996704156812,
+    "nll": 0.006316803051455211,
+    "brier": 0.004494574398054119,
+    "ece": 0.0033251436826567254
+  },
+  "independent_validation": false
+}
