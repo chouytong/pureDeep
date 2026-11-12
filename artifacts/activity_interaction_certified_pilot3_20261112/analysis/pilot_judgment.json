@@ -1,0 +1,36 @@
+{
+  "CORRECTNESS": "PASS",
+  "PILOT_STATUS": "COMPLETED",
+  "PERFORMANCE_PATTERN": "PD/DD权衡仍存在",
+  "mean_deltas": {
+    "accuracy": 0.05079365079365073,
+    "ba": 0.0047951176983435,
+    "auroc": -0.004795117698343533,
+    "macro_f1": 0.023578648732022065,
+    "pd_recall": 0.1171171171171171,
+    "dd_recall": -0.10752688172043008,
+    "nll": 0.3621186405397052,
+    "brier": -0.0041040091074357,
+    "ece": 0.0504971299905607
+  },
+  "DD_recall_drop_gt01_seeds": [
+    42,
+    43,
+    44
+  ],
+  "improving_seed_counts": {
+    "accuracy": 3,
+    "ba": 2,
+    "auroc": 1,
+    "macro_f1": 3,
+    "pd_recall": 3,
+    "dd_recall": 0
+  },
+  "BA_PD_component_mean": 0.05855855855855855,
+  "BA_DD_component_mean": -0.05376344086021504,
+  "request_full15x3_recommendation_is_research_judgment": true,
+  "worth_requesting_same_full_plan_now": false,
+  "recommendation": "当前结果不足以支持直接申请相同固定方案的完整15×3；应先解释混合方向或DD代价。若后续另获批准，使用原15split且本3run在来源完全一致时可复用。",
+  "automatic_RETAIN": false,
+  "remaining42_started": false
+}
