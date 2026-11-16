@@ -1,0 +1,40 @@
+{
+  "status": "PASS_MAINTENANCE_AUDIT",
+  "timestamp_utc": "2026-11-16T06:50:07.491440+00:00",
+  "execution_host": "server",
+  "python_executable": "/home/zyt/envs/mfam_analysis/bin/python",
+  "source_commit": "8720b45fe82f0037b10ba779588c1bd6281be911",
+  "source_tree": "748bec911c629ae09a473caaceaf4f6967d578ee",
+  "remote_main": "8720b45fe82f0037b10ba779588c1bd6281be911",
+  "historical_manifest_files_verified": 25461,
+  "historical_source_mirror_manifest_match": true,
+  "pre_existing_uncommitted_changes": false,
+  "existing_publisher_filters_and_tracked_audit": "PASS",
+  "protected": {
+    "protected_history_files": 109,
+    "registration_private_assets": 17,
+    "registration_public_assets": 20,
+    "registered_checkpoint_files": 48,
+    "checkpoint_scopes": {
+      "legacy_l1_15split_development": 45,
+      "certified_l1_single_split_pilot": 3
+    },
+    "current_model_pointer_sha256": "a30c1262c7e37793050a73bfd1c0ba6f8f68c0cc020a21cda1434a0f5f05a820",
+    "retained_model": "Frozen WSSL-STR",
+    "candidate_status": "Experimental Candidate"
+  },
+  "new_training_runs": 0,
+  "optimizer_updates": 0,
+  "new_performance_experiments": 0,
+  "new_normalization_fits": 0,
+  "new_threshold_or_hyperparameter_searches": 0,
+  "raw_data_or_signals_read": false,
+  "publication": "requires separate exact-tree readback receipt",
+  "limitations": [
+    "This maintenance audit verifies stored files, not a repeat of model performance.",
+    "Certified AI pilot remains context0/inner0 seeds42/43/44 only; remaining42 runs not authorized.",
+    "Historical old-L1 45 runs do not substitute for full Certified L1 validation.",
+    "All3 Certified pilot DD Recall deltas are below -0.01; no model promotion.",
+    "CURRENT_MODEL metrics retain their historical data scope; they are not relabeled Certified L1."
+  ]
+}
