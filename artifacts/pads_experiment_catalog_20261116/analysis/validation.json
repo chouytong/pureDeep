@@ -1,0 +1,87 @@
+{
+  "status": "PASS",
+  "execution_host": "server",
+  "python_executable": "/home/zyt/envs/mfam_analysis/bin/python",
+  "source_commit": "7c6573aeed86dcec792b3a086618ee63653eb9cb",
+  "rows": 257,
+  "stages": 38,
+  "columns": 38,
+  "rows_with_all_six_metrics": 227,
+  "rows_with_partial_metrics": 19,
+  "nonperformance_or_not_run_rows": 11,
+  "csv_sha256": "4bbb13b13fbaf627e4ca8ebfc8a61cc494b5c6c1214a864bf0d70928bec50490",
+  "csv_bytes": 285314,
+  "source_files_verified": 145,
+  "immutable_sources_unchanged": true,
+  "protected": {
+    "protected_history_files": 109,
+    "registration_private_assets": 17,
+    "registration_public_assets": 20,
+    "registered_checkpoint_files": 48,
+    "checkpoint_scopes": {
+      "legacy_l1_15split_development": 45,
+      "certified_l1_single_split_pilot": 3
+    },
+    "current_model_pointer_sha256": "a30c1262c7e37793050a73bfd1c0ba6f8f68c0cc020a21cda1434a0f5f05a820",
+    "retained_model": "Frozen WSSL-STR",
+    "candidate_status": "Experimental Candidate"
+  },
+  "checks": [
+    {
+      "stage": "phase3b_external_ssl_20260928",
+      "method": "variant=b_str_pretrained",
+      "accuracy": 0.7456035855550419,
+      "ba": 0.7196443706265883,
+      "auroc": 0.7595531518231017
+    },
+    {
+      "stage": "activity_interaction_certified_pilot3_20261112",
+      "method": "condition=AI-WSSL-CERTIFIED-L1",
+      "accuracy": 0.746031746031746,
+      "ba": 0.6761115954664342,
+      "auroc": 0.7070619006102877
+    },
+    {
+      "check": "retained_pointer_metric_identity",
+      "metric": "accuracy",
+      "status": "PASS"
+    },
+    {
+      "check": "retained_pointer_metric_identity",
+      "metric": "ba",
+      "status": "PASS"
+    },
+    {
+      "check": "retained_pointer_metric_identity",
+      "metric": "auroc",
+      "status": "PASS"
+    },
+    {
+      "check": "retained_pointer_metric_identity",
+      "metric": "macro_f1",
+      "status": "PASS"
+    },
+    {
+      "check": "retained_pointer_metric_identity",
+      "metric": "pd_recall",
+      "status": "PASS"
+    },
+    {
+      "check": "retained_pointer_metric_identity",
+      "metric": "dd_recall",
+      "status": "PASS"
+    }
+  ],
+  "new_training_runs": 0,
+  "new_model_inference_runs": 0,
+  "new_threshold_fits": 0,
+  "new_normalization_fits": 0,
+  "cached_PRR_scores_reaggregated_only": true,
+  "locked_outer_results_opened": false,
+  "omitted_scope": [
+    "sealed historical outer/final results",
+    "non-PADS paper replications",
+    "retired MFAM source resynchronization"
+  ],
+  "timestamp_utc": "2026-11-16T07:18:55.589896+00:00"
+}

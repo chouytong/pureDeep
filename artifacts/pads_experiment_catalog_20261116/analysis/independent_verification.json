@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "independent_numpy_checks": [
+    {
+      "stage": "phase2_str_training_20260926",
+      "method": "variant=baseline",
+      "metrics_checked": 6,
+      "status": "PASS"
+    },
+    {
+      "stage": "phase3b_external_ssl_20260928",
+      "method": "variant=b_str_pretrained",
+      "metrics_checked": 6,
+      "status": "PASS"
+    },
+    {
+      "stage": "patch_str_20261008",
+      "method": "condition=P2",
+      "metrics_checked": 6,
+      "status": "PASS"
+    },
+    {
+      "stage": "l1_precision_rebuild_phase9_level2_20261112",
+      "method": "condition=WSSL-CERTIFIED-L1",
+      "metrics_checked": 6,
+      "status": "PASS"
+    },
+    {
+      "stage": "activity_interaction_certified_pilot3_20261112",
+      "method": "condition=AI-WSSL-CERTIFIED-L1",
+      "metrics_checked": 6,
+      "status": "PASS"
+    },
+    {
+      "stage": "wssl_reference_audit_20261111",
+      "method": "condition=relative",
+      "metrics_checked": 6,
+      "status": "PASS"
+    }
+  ],
+  "sample_SD_ddof": 1,
+  "all_csv_rows_checked": 257,
+  "source_hashes_unchanged": true,
+  "NA_not_replaced_by_zero": true,
+  "duplicate_rows": false,
+  "protected_assets_unchanged": true,
+  "csv_sha256": "4bbb13b13fbaf627e4ca8ebfc8a61cc494b5c6c1214a864bf0d70928bec50490",
+  "new_fits_or_model_inference": 0
+}
