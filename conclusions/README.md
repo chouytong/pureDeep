@@ -23,3 +23,10 @@
 本次目录整理校验了 PADS 原始/处理后数据副本、冻结 cache、90 个开发 checkpoint 的概率/预测/六指标、15 次训练集 normalization、原正式文件 hash。没有重新训练、模型选择、threshold tuning 或 outer 分析。详细数字见 [VERIFICATION](organization_20261111/VERIFICATION.json) 与 [COPY_AUDIT](organization_20261111/COPY_AUDIT.json)。
 
 [当前模型机器可读清单](CURRENT_MODEL.json) · [目录整理验收报告](organization_20261111/ORGANIZATION_REPORT.md)
+
+
+## Model registration update: AI-WSSL-STR
+
+[MODEL_INDEX](MODEL_INDEX.md) now lists STR-01, Frozen WSSL-STR and **AI-WSSL-STR (Activity Interaction WSSL-STR)** in parallel. AI is an **Experimental Candidate** with independent source/config/training/checkpoint identity. It is not the current retained model. [Model card and architecture diagram](../mainline/docs/models/AI_WSSL_STR.md) links the old-L1 Phase8 45-run result and Certified L1 one-split three-seed pilot, with their distinct provenance and DD Recall limitation. Full Certified 15-split paired validation remains incomplete.
+
+[Independent registration change report](../artifacts/ai_wssl_str_registration_20261116/reports/MODEL_REGISTRATION_REPORT.md). This update does not modify CURRENT_MODEL.json or replace STR/WSSL results; registration testing performs loading/forward/save-restore only, with zero optimizer updates.

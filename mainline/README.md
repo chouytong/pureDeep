@@ -1,6 +1,6 @@
 # 当前可运行主线
 
-这里只保留 PADS PD vs DD 的 STR-01 与 retained Frozen WSSL-STR，以及所需的数据、训练、指标和 provenance 工具。模型工厂拒绝 MFAM/subject-MFAM 等其他模型；没有导入旧复现的 s4_final、r2_stabilization、targeted_ablation、H1 或其他数据集项目。原 STR 算子源码直接复制；WSSL 使用归档的相同 forward 和 checkpoint state keys。
+主线并列管理 STR-01（Matched Baseline）、Frozen WSSL-STR（Retained Model）和 AI-WSSL-STR（Experimental Candidate）。AI 通过新增统一注册 API 和独立配置/训练/推理入口调用；原 STR/WSSL 底层工厂、实现及历史入口保持兼容，不导入 MFAM 等其他论文复现。正式模型指针仍为 Frozen WSSL-STR。
 
 ## 路径
 
@@ -25,3 +25,31 @@ cd /home/zyt/deep_final/mainline
 `scripts/verify_mainline.py` 是本次迁移验证工具，执行开发集推理与 norm refit，不训练；已有验证输出时拒绝覆盖。结果已保存于 `../conclusions/organization_20261111/`。
 
 配置中的绝对数据路径已改到 deep_final。正式归档 checkpoint/config/source 不改路径，以保留旧 hash；验证时用统一配置构建相同模型并 strict load 原权重，不宣称迁移源码 hash 等于训练时历史整棵源码 hash。
+
+
+## Independent model registry
+
+[Project model index](../conclusions/MODEL_INDEX.md) · [Registry](models/registry.json) · [AI-WSSL-STR architecture/config/provenance](docs/models/AI_WSSL_STR.md).
+
+```python
+from src.models.registry import build_registered_model, list_models
+from src.models.registered_checkpoint import load_registered_checkpoint
+model = build_registered_model("AI-WSSL-STR", seed=42)
+model, provenance = load_registered_checkpoint(
+    "AI-WSSL-STR",
+    checkpoint_id="AI-WSSL-STR:certified-l1:seed42:context0:inner0",
+    device="cuda",
+)
+# No training: named checkpoint forward on matching cached bilateral tokens.
+result = model.forward_tokens(bilateral_tokens, activity_mask)
+```
+
+`src.models.registry.build_registered_model` accepts all three model names. The original `src.models.build_model` remains the unchanged low-level STR-backbone factory used by historical STR/WSSL code; it is not silently repurposed. AI owns `src/models/ai_wssl_str.py`, three independent `configs/ai_wssl_str_seed*.yaml`, `scripts/train_ai_wssl_str.py`, the named `scripts/model_cli.py`, and a48-checkpoint catalog. New save format records model ID/status/config; historical checkpoints strict-load unchanged.
+
+```bash
+/home/zyt/envs/mfam_analysis/bin/python -B scripts/model_cli.py --list
+/home/zyt/envs/mfam_analysis/bin/python -B scripts/model_cli.py --model AI-WSSL-STR --checkpoint-id AI-WSSL-STR:certified-l1:seed42:context0:inner0 --device cuda
+/home/zyt/envs/mfam_analysis/bin/python -B scripts/train_ai_wssl_str.py --help
+```
+
+AI training remains the original Phase8B token recipe (batch8/workers0/train-balanced CE/AdamW/cosine50/patience12); only the added67,522 parameters train. The training CLI offers `--validate-only`, which was used for registration tests. No new training, L1 processing, normalization fit, HarNet extraction, threshold fitting or full15-split comparison was run. The candidate's current Certified pilot has DD Recall tradeoffs and is **not Retained**.

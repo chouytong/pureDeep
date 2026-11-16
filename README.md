@@ -33,3 +33,16 @@ deep_final/
 代码、配置、报告、聚合结果可同步 GitHub；`data/`、private checkpoint、个体预测、临床个体表、缓存不上传。后续只从 `deep_final` 收集新内容；仓库既有 `MFAM/` 作为冻结历史保留，不再从旧目录同步。[同步规则](GIT_VERSION_CONTROL.md)
 
 [当前模型机器可读清单](conclusions/CURRENT_MODEL.json) · [目录整理验收报告](conclusions/organization_20261111/ORGANIZATION_REPORT.md)
+
+
+## Registered model identities (2026-11-16)
+
+| Model | Lifecycle status | Entry |
+|---|---|---|
+| STR-01 | Matched Baseline | existing STR development entry |
+| Frozen WSSL-STR | **Retained Model** | existing frozen WSSL entry |
+| **AI-WSSL-STR** (Activity Interaction WSSL-STR) | **Experimental Candidate** | independent named model/config/training/checkpoint interface |
+
+[Model index](conclusions/MODEL_INDEX.md) · [AI model card and architecture diagram](mainline/docs/models/AI_WSSL_STR.md) · [Machine-readable registry](mainline/models/registry.json) · [Registration change report](artifacts/ai_wssl_str_registration_20261116/reports/MODEL_REGISTRATION_REPORT.md).
+
+AI-WSSL-STR adds cross-activity Self-Attention and residual logit correction to Frozen WSSL-STR with its original modules frozen. Existing Phase8 old-L1 results and Certified L1 three-seed pilot are linked separately. Full Certified L1 15-split validation is incomplete and DD Recall declines remain a limitation. Registration is not promotion: the current Frozen WSSL-STR pointer, STR/WSSL historical files, architecture/loss/recipe and existing checkpoints remain unchanged. No training was started for registration.

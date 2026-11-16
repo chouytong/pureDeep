@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "checks": [
+    "three parallel model names and correct lifecycle statuses",
+    "original attention/residual class AST identical except name",
+    "full signal + explicit frozen HarNet to token/logit equivalence and padding invariance",
+    "legacy checkpoint identity strict-load and synthetic forward",
+    "STR-01 original factory initialization bitwise unchanged",
+    "Frozen WSSL-STR original factory initialization bitwise unchanged",
+    "dedicated trainer validates data/source/normalization and unchanged recipe with zero updates",
+    "named model list/load/infer CLI and --validate-only training CLI passed"
+  ],
+  "seed_results": [
+    {
+      "seed": 42,
+      "checkpoint_id": "AI-WSSL-STR:certified-l1:seed42:context0:inner0",
+      "source_checkpoint_sha256": "6a8b0e5eb2659533bd98e89c1414db16be32d3125d646f5bf343f686acb16878",
+      "train_only_test_samples": 8,
+      "all_state_keys_compatible": true,
+      "original_vs_registered_logits_bitwise": true,
+      "repeat_bitwise": true,
+      "reload_bitwise": true,
+      "frozen_base_unchanged": true,
+      "optimizer_updates": 0,
+      "parameters": 210694,
+      "trainable_parameters": 67522,
+      "status": "PASS"
+    },
+    {
+      "seed": 43,
+      "checkpoint_id": "AI-WSSL-STR:certified-l1:seed43:context0:inner0",
+      "source_checkpoint_sha256": "c3929b0a0ca08a917d49c635e256ce353237170f16303455a326cd1723935b55",
+      "train_only_test_samples": 8,
+      "all_state_keys_compatible": true,
+      "original_vs_registered_logits_bitwise": true,
+      "repeat_bitwise": true,
+      "reload_bitwise": true,
+      "frozen_base_unchanged": true,
+      "optimizer_updates": 0,
+      "parameters": 210694,
+      "trainable_parameters": 67522,
+      "status": "PASS"
+    },
+    {
+      "seed": 44,
+      "checkpoint_id": "AI-WSSL-STR:certified-l1:seed44:context0:inner0",
+      "source_checkpoint_sha256": "9eb179003e8915e9cd3dd6a5727ed81aca31a245326428319df8c5b0576b065f",
+      "train_only_test_samples": 8,
+      "all_state_keys_compatible": true,
+      "original_vs_registered_logits_bitwise": true,
+      "repeat_bitwise": true,
+      "reload_bitwise": true,
+      "frozen_base_unchanged": true,
+      "optimizer_updates": 0,
+      "parameters": 210694,
+      "trainable_parameters": 67522,
+      "status": "PASS"
+    }
+  ],
+  "legacy_checkpoint_records": 45,
+  "certified_checkpoint_records": 3,
+  "model_names": [
+    "STR-01",
+    "Frozen WSSL-STR",
+    "AI-WSSL-STR"
+  ],
+  "model_statuses": [
+    "Matched Baseline",
+    "Retained Model",
+    "Experimental Candidate"
+  ],
+  "checkpoint_restore_files_are_test_only": true,
+  "optimizer_updates": 0,
+  "new_training_runs": 0,
+  "new_validation_performance_evaluation": false,
+  "clinical_forward_inputs": "first8 train tokens per seed only",
+  "raw_signal_test": "synthetic only",
+  "elapsed_seconds": 4.105038505978882
+}

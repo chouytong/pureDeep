@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "current_retained_pointer": "../conclusions/CURRENT_MODEL.json",
+  "models": [
+    {
+      "model_id": "str01",
+      "display_name": "STR-01",
+      "status": "Matched Baseline",
+      "aliases": [
+        "str-01",
+        "pure_deep_subject"
+      ],
+      "architecture_version": "str01_v1",
+      "configuration_pattern": "configs/str01_seed{seed}.yaml",
+      "architecture_definition": "src/models/pure_deep.py",
+      "training_entry": "scripts/run_development.py --condition str01",
+      "checkpoint_identity_source": "../conclusions/CURRENT_MODEL.json",
+      "classifier_parameters": 75524,
+      "frozen_external_parameters": 0
+    },
+    {
+      "model_id": "frozen_wssl",
+      "display_name": "Frozen WSSL-STR",
+      "status": "Retained Model",
+      "aliases": [
+        "frozen_wssl_str"
+      ],
+      "architecture_version": "wssl_str_v1",
+      "configuration_pattern": "configs/str01_seed{seed}.yaml",
+      "architecture_definition": "src/models/wssl.py",
+      "training_entry": "scripts/run_development.py --condition frozen_wssl",
+      "checkpoint_identity_source": "../conclusions/CURRENT_MODEL.json",
+      "classifier_parameters": 143172,
+      "frozen_external_parameters": 10457408
+    },
+    {
+      "model_id": "ai_wssl_str",
+      "display_name": "AI-WSSL-STR",
+      "long_name": "Activity Interaction WSSL-STR",
+      "status": "Experimental Candidate",
+      "aliases": [
+        "ai-wssl-str",
+        "activity_interaction_wssl_str"
+      ],
+      "architecture_version": "phase8_activity_interaction_v1",
+      "configuration_pattern": "configs/ai_wssl_str_seed{seed}.yaml",
+      "architecture_definition": "src/models/ai_wssl_str.py",
+      "training_entry": "scripts/train_ai_wssl_str.py",
+      "inference_entry": "scripts/model_cli.py --model AI-WSSL-STR",
+      "checkpoint_catalog": "models/ai_wssl_str_checkpoints.json",
+      "model_card": "docs/models/AI_WSSL_STR.md",
+      "classifier_parameters": 210694,
+      "trainable_parameters": 67522,
+      "frozen_classifier_parameters": 143172,
+      "frozen_external_parameters": 10457408,
+      "unique_deployment_parameters": 10668102,
+      "certified_development_splits_completed": 1,
+      "certified_training_runs_completed": 3,
+      "full_certified_15split_validation_complete": false,
+      "promotion_authorized": false
+    }
+  ]
+}
