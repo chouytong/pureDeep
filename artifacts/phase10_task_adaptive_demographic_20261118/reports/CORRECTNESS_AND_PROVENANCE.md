@@ -1,0 +1,14 @@
+# Phase10 正确性与来源
+
+服务器独立目录执行，起点99db920b97b81004327a575796c70476f8381090。实际检查源码/配置/日志及服务器和GitHub差异，未覆盖mainline或既有实验。A、B、C、D freeze记录执行前代码和协议SHA256，每run config/checkpoint/数据manifest/norm SHA、fit/query/excluded provenance、best epoch、CPU/CUDA/loader RNG及optimizer/scheduler state均在服务器restricted_manifests闭环。公开per-run配置无IDs，逐人信号/人口值/预测/权重不出服务器。完整公开快照沿用既有发布器过滤及审计，认证失败时以已授权GitHub连接器构造相同tree并回读校验，未强推。
+
+Correctness包括：90份Certified既有预测及来源核对；8580腕记录SHA；15份norm来源；四字段train-only LR预处理独立重算；非法字段不影响输入；阈值概率指标不变；实际HarNet stage/BN affine/running state冻结；fresh官方初始化和原classifier RNG一致；新分支零初始化逐位一致；padding不进入pool；有限gradient与非零参数更新；model+optimizer roundtrip；DD实际weighted-mean CE手算及常数缩放梯度不变。test_models10最初误把manifest状态期望写成COMPLETE，实际源schema是PASS，修复后重跑；失败副本和日志保留，无临床数据或算法变化，详见CORRECTNESS_FIX_NOTE.md。不得隐瞒这次工程失败。
+
+HarNet官方权重SHA256 c64f9135d99e2dcdfc9ae7cc0672f2bcc438df9ceb8215665882f92cddd162a6。Certified manifest SHA256 cdc5e26db77ccb101c7157fc1a7aacde132de9d5e6d5449203f8bf84aa393f16。CURRENT_MODEL.json仍为a30c1262c7e37793050a73bfd1c0ba6f8f68c0cc020a21cda1434a0f5f05a820。保护原文件共22,444个，包含历史公开内容与正式科学资产，不改动退役MFAM。FT使用按人官方冻结prefix cache，其source hash独立验证；它不是旧监督embedding。DEMO新导出当前Certified baseline logits，query与原预测1e-6内一致，全部私有；原WSSL始终eval且无更新。设备只分层，不是模型输入。
+
+元数据age/gender/height/weight来自原记录与官方说明。原字段gender不可冒称已核实生物学sex，age_at_diagnosis/用药/病程/问卷等从输入排除。完整JSON解析后只保留白名单，不声称物理零读取其他键。[PhysioNet数据说明](https://physionet.org/content/parkinsons-disease-smartwatch/1.0.0/)与[原论文Table3](https://pmc.ncbi.nlm.nih.gov/articles/PMC10770131/)支持采集年龄及years/cm/kg单位。没有把数字证书PASS等同于临床采集质量或已证明无混杂/标签泄漏。
+
+分析仅读取受控fit/query signal与prediction。未读取封存outer-test performance。历史Phase3C/Phase8只作明确分区的来源审计，不作为Certified性能或训练初始化；未解码旧整队列压缩cache。没有追加seed、换split、搜阈值/超参数、删样本或启动Phase11。
+
+最终独立重算结果写入tests/final_verification.json和analysis/phase10_integrity.json；这两个文件需与最终GitHub远端回读收据一起使用，服务器最终收据在项目根之外避免递归写入已审计快照。15个split有受试者重叠，三个seed也不是三个患者队列。新候选仅1 split×3 seed，全部未通过资源闸门，不能据此证明泛化劣于基线或发布15split显著性结论。历史数据与Certified数据分开，当前正式模型指针未变。
+
