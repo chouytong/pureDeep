@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "closing_stage": true,
+  "gate": {
+    "candidate": "DEMO",
+    "scope": "one_split_three_seed_pilot",
+    "status": "PILOT_REJECT_STOP",
+    "expand": false,
+    "checks": {
+      "BA_positive": false,
+      "BA_improved_at_least2of3": false,
+      "AUROC_non_decrease": false,
+      "DD_recall_drop_at_most01": false,
+      "NLL_increase_at_most05": true,
+      "correctness_and_provenance": true,
+      "PD_recall_drop_at_most01": true,
+      "fusion_not_dominated_by_demographics_only": true,
+      "no_extreme_evaluable_group_recall_drop": true,
+      "at_least_one_evaluable_group": true
+    },
+    "mean_deltas": {
+      "accuracy": 0.0,
+      "ba": -0.0031240918337692345,
+      "auroc": -0.00043591979075852105,
+      "macro_f1": -0.0019202117495312383,
+      "pd_recall": 0.004504504504504532,
+      "dd_recall": -0.010752688172043038,
+      "nll": -0.0018475440366981417,
+      "brier": -0.0012584357440008076,
+      "ece": 0.004436886689019512
+    },
+    "new_runs": 3,
+    "independent_validation": false
+  },
+  "source_sha256": "d463dd37d2ece34f57d6e8bc50ff76c73e636112a179d5fa7a339e772bcfe3ea",
+  "timestamp_utc": "2026-11-18T12:39:51.195108+00:00"
+}
