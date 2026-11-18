@@ -31,6 +31,7 @@ def update_catalog(stage,metric_file,status,purpose,result):
     v=s[key];row[name+suffix]=format(float(v),'.12g') if pd.notna(v) else 'NA'
   if condition=='WSSL-CERTIFIED-L1':row.update(Total_Params=10600580,Trainable_Params=143172,Frozen_Params=10457408)
   if condition=='STR-CERTIFIED-L1':row.update(Total_Params=75524,Trainable_Params=75524,Frozen_Params=0)
+  if condition in ['WSSL-CERTIFIED-L1','STR-CERTIFIED-L1']:row['历史判定']='MATCHED_CERTIFIED_REFERENCE_REUSED'
   if condition=='D0-DEMOGRAPHIC-ONLY':row.update(Total_Params=5,Trainable_Params=5,Frozen_Params=0,seed数=0,seed列表='NA',缺失值与限制='15个确定性train-only LR fit；seed_SD不可估计，不复制为45独立fit')
   if 'source_commit' in g and g.source_commit.notna().any():row['来源提交']=str(g.source_commit.iloc[0])
   costs=HERE/'analysis'/f'{stage.lower()}_costs.csv'
@@ -39,6 +40,7 @@ def update_catalog(stage,metric_file,status,purpose,result):
    if len(co):
     for dst,src in [('Total_Params','total_parameters'),('Trainable_Params','trainable_parameters'),('Frozen_Params','frozen_parameters')]:row[dst]=int(co[src].iloc[0])
     row['Training_Time_seconds']=co.wall_seconds.sum();row['Peak_GPU_memory_bytes']=int(co.peak_GPU_allocated_bytes.max())
+    if 'cached_path_validation_inference_seconds' in co:row['Inference_Time_seconds']=co.cached_path_validation_inference_seconds.mean()
   rows.append(row)
  with out.open('a',encoding='utf-8',newline='') as f:csv.DictWriter(f,fieldnames=columns).writerows(rows)
  assert out.read_bytes().startswith(before)

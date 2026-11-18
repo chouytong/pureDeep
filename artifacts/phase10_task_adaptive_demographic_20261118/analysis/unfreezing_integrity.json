@@ -1,0 +1,42 @@
+{
+  "status": "PASS_COMPLETE_WITH_NEGATIVE_RESULT",
+  "candidate": "FT-L1",
+  "scope": "pilot",
+  "formal_runs": 3,
+  "correctness": true,
+  "provenance": true,
+  "all_frozen_states_unchanged": true,
+  "official_weights_fresh_each_run": true,
+  "optimizer_state_saved_all_runs": true,
+  "data_version": "pads_l1_lambda50_certified_v1",
+  "normalization_per_split_unchanged": true,
+  "gate": {
+    "candidate": "FT-L1",
+    "scope": "one_split_three_seed_pilot",
+    "status": "PILOT_REJECT_STOP",
+    "expand": false,
+    "checks": {
+      "BA_positive": false,
+      "BA_improved_at_least2of3": false,
+      "AUROC_non_decrease": false,
+      "DD_recall_drop_at_most01": false,
+      "NLL_increase_at_most05": true,
+      "correctness_and_provenance": true
+    },
+    "mean_deltas": {
+      "accuracy": 7.401486830834377e-17,
+      "ba": -0.0031240918337692345,
+      "auroc": -0.006974716652136004,
+      "macro_f1": -0.0018455671521351302,
+      "pd_recall": 0.004504504504504496,
+      "dd_recall": -0.010752688172043038,
+      "nll": -0.15834434066458758,
+      "brier": -0.04884396157409778,
+      "ece": -0.09173682133356735
+    },
+    "new_runs": 3,
+    "independent_validation": false
+  },
+  "protected_files_verified": 22444,
+  "timestamp_utc": "2026-11-18T12:29:53.284126+00:00"
+}
