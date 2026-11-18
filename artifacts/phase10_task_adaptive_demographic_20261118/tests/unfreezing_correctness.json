@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "checks": [
+    "all8580 Certified processed-file hashes verified",
+    "same-seed original WSSL initialization bitwise unchanged",
+    "zero residual original logits exact",
+    "padding/invalid second window invariance",
+    "only selected conv/ordinary classifier parameters update",
+    "BN running and affine unchanged after2 synthetic updates",
+    "encoder nonzero gradient after zero-residual warmup",
+    "model/optimizer roundtrip exact",
+    "balanced CE actual batch-weight denominator verified",
+    "global weight renormalization gradient invariance verified",
+    "excluded signal path rejected before IO"
+  ],
+  "synthetic_optimizer_updates": 2,
+  "formal_training_runs": 0,
+  "official_init_verified": true,
+  "BN_running_and_affine_frozen": true,
+  "data_version": "pads_l1_lambda50_certified_v1",
+  "verified_processed_records": 8580,
+  "original_model_pointer_unchanged": true,
+  "protected_files_verified": 22444,
+  "source_sha256": "3fa160be95bbb7365c7d64618039bab0a5576cb3a211685eaecf0c789cc065b8"
+}
