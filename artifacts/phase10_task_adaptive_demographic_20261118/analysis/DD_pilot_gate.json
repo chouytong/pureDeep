@@ -1,0 +1,30 @@
+{
+  "candidate": "DD",
+  "scope": "one_split_three_seed_pilot",
+  "status": "PILOT_REJECT_STOP",
+  "expand": false,
+  "checks": {
+    "BA_positive": true,
+    "BA_improved_at_least2of3": true,
+    "AUROC_non_decrease": true,
+    "DD_recall_drop_at_most01": true,
+    "NLL_increase_at_most05": false,
+    "correctness_and_provenance": true,
+    "PD_recall_drop_at_most01": true,
+    "DD_recall_positive": true,
+    "MacroF1_non_decrease": true
+  },
+  "mean_deltas": {
+    "accuracy": 0.01587301587301589,
+    "ba": 0.017509444928799762,
+    "auroc": 0.014240046498110984,
+    "macro_f1": 0.017247593365160536,
+    "pd_recall": 0.013513513513513523,
+    "dd_recall": 0.021505376344086002,
+    "nll": 0.12539520177741514,
+    "brier": 0.0031302285649532267,
+    "ece": 0.047988698406824924
+  },
+  "new_runs": 3,
+  "independent_validation": false
+}
